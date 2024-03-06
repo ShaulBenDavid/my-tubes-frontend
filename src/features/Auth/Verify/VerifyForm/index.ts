@@ -1,1 +1,0 @@
-export { VerifyForm } from "./VerifyForm";

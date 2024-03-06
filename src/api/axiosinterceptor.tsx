@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { dwInstance } from "./http.service";
 import {
   axiosRequest,
@@ -10,7 +10,6 @@ import {
 import { AuthContext } from "../context/auth";
 import { useLogout, useRefresh } from "./auth/hooks";
 import type { AuthResponseType } from "./auth";
-import { UnauthorizedModal } from "../features/Auth/UnauthorizedModal";
 
 export const AxiosInterceptor = ({
   children,
@@ -45,10 +44,5 @@ export const AxiosInterceptor = ({
       dwInstance.interceptors.response.eject(responseInterceptor);
     };
   }, [auth?.accessToken, refresh]);
-  return (
-    <>
-      <UnauthorizedModal />
-      {children}
-    </>
-  );
+  return children;
 };

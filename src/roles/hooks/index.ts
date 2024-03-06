@@ -1,1 +1,0 @@
-export { useGetUserRoutes } from "./useGetUserRoutes";

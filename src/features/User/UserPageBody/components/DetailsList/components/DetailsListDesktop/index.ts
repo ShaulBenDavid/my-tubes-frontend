@@ -1,1 +1,0 @@
-export { DetailsListDesktop } from "./DetailsListDesktop";

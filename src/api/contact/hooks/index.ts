@@ -1,1 +1,0 @@
-export { usePostContactUs } from "./usePostContactUs";
