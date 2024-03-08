@@ -21,7 +21,7 @@ export const AuthProvider = ({
   useRefresh({
     handleSuccess,
     handleLogout: logout,
-    enabled: !isAuthInitialized,
+    enabled: !isAuthInitialized && false,
   });
 
   // eslint-disable-next-line react/jsx-no-useless-fragment
