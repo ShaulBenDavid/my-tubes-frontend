@@ -1,6 +1,6 @@
 export enum ApiEndpoints {
   // AUTH
-  LOGIN = "auth/login/",
+  LOGIN = "user/auth/login/google/",
   LOGOUT = "auth/logout/",
   REFRESH = "auth/refresh/",
 }
