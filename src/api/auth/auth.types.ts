@@ -1,8 +1,13 @@
 export type AuthResponseType = {
-  accessToken: string;
+  user: {
+    first_name: string;
+    last_name: string;
+    email: string;
+  };
+  picture: string;
+  access_token: string;
 };
 
-export type LoginPayloadType = {
-  email: string;
-  password: string;
+export type LoginParamsType = {
+  code: string;
 };
