@@ -18,7 +18,7 @@ export const Login = (): JSX.Element => {
     <div className="flex h-screen items-center justify-center">
       <a
         href={url}
-        className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-slate-700 transition duration-150 hover:border-slate-400 hover:text-slate-900 hover:shadow"
+        className="flex gap-2 rounded-lg border border-slate-700 px-4 py-2 text-slate-200 transition duration-150 hover:border-slate-500 hover:text-slate-300 hover:shadow"
       >
         <FcGoogle size={24} />
         <span>Login with Google</span>

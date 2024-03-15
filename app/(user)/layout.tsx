@@ -3,7 +3,6 @@ import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 import { defaultMetadata } from "@/src/metadata";
 import { AppProviders } from "@/src/providers";
-import { Header } from "@/src/components/Header";
 import "@/src/styles/global.css";
 
 const inter = Inter({
@@ -24,10 +23,10 @@ const RootLayout = ({
 }): JSX.Element => (
   <html lang="en">
     <body
-      className={`min-h-[100dvh] w-full ${inter.variable} flex flex-col items-center justify-start font-inter text-wizard-black`}
+      /* prettier-ignore */
+      className={`min-h-[100dvh] w-full ${inter.variable} bg-spec-space-bg flex flex-col  items-center justify-start font-inter text-white`}
     >
       <AppProviders>
-        <Header />
         <main className="w-[1227px] flex-1 justify-center pt-14 max-lg:w-[1000px] max-md:w-full max-md:px-4">
           {children}
         </main>

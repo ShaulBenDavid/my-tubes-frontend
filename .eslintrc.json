@@ -13,7 +13,8 @@
     "prettier",
     "plugin:storybook/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/eslint-recommended"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:tailwindcss/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -25,6 +26,7 @@
   "plugins": ["react", "prettier", "react-hooks", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": "error",
+    "tailwindcss/classnames-order": "off",
     "@typescript-eslint/no-non-null-assertion": "error",
     "react/react-in-jsx-scope": "error",
     "react/jsx-props-no-spreading": "off",

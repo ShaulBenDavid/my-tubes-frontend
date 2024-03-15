@@ -1,0 +1,49 @@
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 300px;
+  display: grid;
+  place-content: center;
+  color: white;
+  text-shadow: 0 1px 0 #000;
+
+  --border-angle: 0turn;
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    #282828,
+    #282828 5%,
+    #282828 60%,
+    #282828 95%
+  );
+
+  border: solid 5px transparent;
+  border-radius: 12px;
+  --gradient-border: conic-gradient(
+    from var(--border-angle),
+    transparent 25%,
+    #08f,
+    #f03 99%,
+    transparent
+  );
+
+  background:
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box;
+
+  background-position: center center;
+
+  animation: bg-spin 3s linear infinite;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}

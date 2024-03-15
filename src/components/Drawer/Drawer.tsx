@@ -25,7 +25,7 @@ export const Drawer = ({ onClose, isOpen, children }: DrawerProps) => {
   return (
     <div
       data-testid="drawer"
-      className={`fixed inset-0 z-50 h-[100dvh] w-screen ${
+      className={`fixed inset-0 z-50 h-dvh w-screen ${
         isOpen ? "flex" : "hidden"
       }`}
       role="presentation"

@@ -27,7 +27,7 @@ export const Alert = ({
     data-testid="alert-component-test-id"
   >
     <BsFillInfoCircleFill
-      className="inline flex-shrink-0"
+      className="inline shrink-0"
       aria-hidden="true"
       size={18}
       fill="currentColor"

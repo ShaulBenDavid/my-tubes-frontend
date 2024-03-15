@@ -54,7 +54,7 @@ export const TextArea = ({
         {...register(label)}
       />
       {!!errorMessage && (
-        <p className="absolute top-[100%] text-sm font-medium leading-4 text-red-500 first-letter:capitalize">
+        <p className="absolute top-full text-sm font-medium leading-4 text-red-500 first-letter:capitalize">
           {errorMessage as string}
         </p>
       )}
