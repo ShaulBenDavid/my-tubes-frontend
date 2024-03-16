@@ -12,7 +12,7 @@ export const login = (params: LoginParamsType): Promise<AuthResponseType> =>
 
 export const logout = (): Promise<void> =>
   refreshMethodInstance<void>({
-    url: ApiEndpoints.LOGOUT,
+    url: ApiEndpoints.REFRESH,
     method: Methods.DELETE,
   });
 

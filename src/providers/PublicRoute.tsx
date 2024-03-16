@@ -5,24 +5,24 @@ import { useRouter } from "next/navigation";
 import { AuthContext } from "@/src/context/auth";
 import { Routes } from "../routes";
 
-interface ProtectedRouteProps {
+interface PublicRouteProps {
   defaultRoute?: Routes;
   children: React.ReactNode;
 }
 
-export const ProtectedRoute = ({
-  defaultRoute = Routes.LOGIN,
+export const PublicRoute = ({
+  defaultRoute = Routes.DASHBOARD,
   children,
-}: ProtectedRouteProps): JSX.Element | null => {
+}: PublicRouteProps): JSX.Element | null => {
   const { isAuth } = useContext(AuthContext);
   const router = useRouter();
 
   useEffect(() => {
-    if (!isAuth) {
+    if (isAuth) {
       router.push(defaultRoute);
     }
   }, [router, isAuth, defaultRoute]);
 
   // eslint-disable-next-line react/jsx-no-useless-fragment
-  return isAuth ? <>{children}</> : <></>;
+  return isAuth ? <></> : <>{children}</>;
 };
