@@ -11,7 +11,7 @@ interface ProtectedRouteProps {
 }
 
 export const ProtectedRoute = ({
-  defaultRoute = Routes.SIGN_IN,
+  defaultRoute = Routes.LOGIN,
   children,
 }: ProtectedRouteProps): JSX.Element | null => {
   const { isAuth } = useContext(AuthContext);

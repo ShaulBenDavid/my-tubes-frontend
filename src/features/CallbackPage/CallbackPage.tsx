@@ -6,6 +6,11 @@ import { FcGoogle } from "react-icons/fc";
 import type { AuthResponseType } from "@/src/api/auth";
 import { useLogin } from "@/src/api/auth/hooks";
 import { AuthContext } from "@/src/context/auth";
+import WarningSVG from "@/src/assets/images/WarningDrawSVG.svg";
+import { Card } from "@/src/components/Card";
+import { EmptyState } from "@/src/components/EmptyState";
+import { Routes } from "@/src/routes";
+import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
 import S from "./CallbackPage.module.css";
 
 export const CallbackPage = (): JSX.Element => {
@@ -20,7 +25,7 @@ export const CallbackPage = (): JSX.Element => {
   const handleSuccess = (res: AuthResponseType): void => {
     setAuth(res);
   };
-  const { isLoginLoading } = useLogin({
+  const { isLoginLoading, isLoginError } = useLogin({
     params,
     enabled: !!code,
     handleSuccess,
@@ -35,6 +40,22 @@ export const CallbackPage = (): JSX.Element => {
             <small className="text-lg">Just a moment...</small>
           </section>
         </div>
+      )}
+      {(!code || isLoginError) && (
+        <Card className="p-4">
+          <EmptyState
+            header="Sorry the login failed, please try again."
+            svgUrl={WarningSVG}
+            footer={
+              <ButtonLink
+                href={Routes.LOGIN}
+                variant={ButtonLinkVariants.PRIMARY}
+              >
+                Go to login
+              </ButtonLink>
+            }
+          />
+        </Card>
       )}
     </div>
   );

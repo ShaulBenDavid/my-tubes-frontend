@@ -3,7 +3,7 @@ export enum Routes {
   OUR_STORY = "/our-story",
   CONTACT_US = "/contact-us",
   NEWS = "/news",
-  SIGN_IN = "/sign-in",
+  LOGIN = "/login",
   SIGN_UP = "/sign-up",
   VERIFY = "/verify",
   ACTIVATE = "/activate",

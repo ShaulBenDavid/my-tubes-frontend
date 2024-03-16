@@ -27,7 +27,7 @@ const RootLayout = ({
       className={`min-h-[100dvh] w-full ${inter.variable} bg-spec-space-bg flex flex-col  items-center justify-start font-inter text-white`}
     >
       <AppProviders>
-        <main className="w-[1227px] flex-1 justify-center pt-14 max-lg:w-[1000px] max-md:w-full max-md:px-4">
+        <main className="w-[1227px] flex-1 justify-center max-lg:w-[1000px] max-md:w-full max-md:px-4">
           {children}
         </main>
       </AppProviders>

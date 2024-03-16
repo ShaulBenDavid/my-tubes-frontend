@@ -1,0 +1,19 @@
+.loginBackground {
+  position: relative;
+  height: 100%;
+  @apply flex justify-center pt-[40%] md:pt-[20%];
+}
+
+.loginBackground::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 150dvw;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  background: linear-gradient(83.21deg, #3245ff 0%, #ff0000 100%);
+  mask-image: radial-gradient(rgba(15, 15, 15, 0.45), transparent 70%);
+  -webkit-mask-image: radial-gradient(rgba(15, 15, 15, 0.45), transparent 70%);
+}

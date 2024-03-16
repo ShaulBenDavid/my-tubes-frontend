@@ -23,6 +23,6 @@ describe("ButtonLink", () => {
     const buttonElement = getByText("s");
     expect(buttonElement).toBeInTheDocument();
     expect(buttonElement).toHaveClass("text-white");
-    expect(buttonElement).toHaveClass("bg-primary-900");
+    expect(buttonElement).toHaveClass("bg-primary-700");
   });
 });

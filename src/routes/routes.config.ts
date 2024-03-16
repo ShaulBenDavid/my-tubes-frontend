@@ -5,7 +5,7 @@ export const routesTitlesConfig = {
   [Routes.OUR_STORY]: "our story",
   [Routes.CONTACT_US]: "contact us",
   [Routes.NEWS]: "news",
-  [Routes.SIGN_IN]: "sign in",
+  [Routes.LOGIN]: "sign in",
   [Routes.SIGN_UP]: "sign up",
   [Routes.PRIVACY_POLICY]: "privacy policy",
   [Routes.TERMS_CONDITIONS]: "terms & conditions",
@@ -25,7 +25,7 @@ export const publicRoutes = [
 export const visitorRoutes = [
   ...publicRoutes,
   Routes.SIGN_UP,
-  Routes.SIGN_IN,
+  Routes.LOGIN,
   Routes.RESET_PASSWORD,
 ];
 

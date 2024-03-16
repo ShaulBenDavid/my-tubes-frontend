@@ -10,7 +10,7 @@
     @apply animate-[skeleton-loading_1s_ease-in-out_infinite];
   }
   .app-card {
-    @apply rounded-md border-[1px] border-dw-grey bg-bg-grey;
+    @apply rounded-xl bg-bg-grey;
   }
   .polka-bg {
     @apply bg-white bg-[radial-gradient(#810ca8_0.8px,transparent_0.8px),radial-gradient(#810ca8_0.8px,#ffffff_0.8px)] bg-[length:28px_28px] bg-[0_0,14px_14px];
