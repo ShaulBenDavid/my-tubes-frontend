@@ -10,6 +10,7 @@ import { AuthContextProvider } from "../context/auth";
 import { AuthProvider } from "./auth.provider";
 import "react-toastify/dist/ReactToastify.css";
 import "react-loading-skeleton/dist/skeleton.css";
+import theme from "../styles/tailwind.theme";
 
 const MAX_NUMBER_DISPLAYED_TOASTS = 4;
 
@@ -33,7 +34,7 @@ export const AppProviders = ({
           <Suspense fallback={null}>
             <ProgressBar
               height="4px"
-              color="#810ca8"
+              color={theme.primary[200]}
               options={{ showSpinner: false }}
               shallowRouting
             />
