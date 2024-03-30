@@ -9,11 +9,14 @@ import { dwInstance } from "./http.service";
 export const axiosRequest = (
   config: InternalAxiosRequestConfig,
   token?: string,
+  googleToken?: string,
 ): InternalAxiosRequestConfig => {
   // eslint-disable-next-line no-param-reassign
   config.headers = config.headers ?? {};
   // eslint-disable-next-line no-param-reassign
   config.headers.Authorization = token ? `Bearer ${token}` : "";
+  // eslint-disable-next-line no-param-reassign
+  config.headers["X-Google-Token"] = token ? `${googleToken}` : "";
 
   return config;
 };

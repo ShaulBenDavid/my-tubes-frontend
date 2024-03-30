@@ -31,7 +31,7 @@ export const AxiosInterceptor = ({
 
   useLayoutEffect(() => {
     const reqInterceptor = dwInstance.interceptors.request.use((config) =>
-      axiosRequest(config, auth?.access_token),
+      axiosRequest(config, auth?.access_token, auth?.google_token),
     );
 
     const responseInterceptor = dwInstance.interceptors.response.use(
@@ -43,6 +43,6 @@ export const AxiosInterceptor = ({
       dwInstance.interceptors.request.eject(reqInterceptor);
       dwInstance.interceptors.response.eject(responseInterceptor);
     };
-  }, [auth?.access_token, refresh]);
+  }, [auth?.access_token, auth?.google_token, refresh]);
   return children;
 };
