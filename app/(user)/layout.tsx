@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { defaultMetadata } from "@/src/metadata";
 import { AppProviders } from "@/src/providers";
 import "@/src/styles/global.css";
+import theme from "@/src/styles/tailwind.theme";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,7 +14,7 @@ const inter = Inter({
 export const metadata = defaultMetadata;
 
 export const viewport: Viewport = {
-  themeColor: "#810CA8",
+  themeColor: theme.primary[700],
 };
 
 const RootLayout = ({
@@ -24,13 +25,9 @@ const RootLayout = ({
   <html lang="en">
     <body
       /* prettier-ignore */
-      className={`min-h-[100dvh] w-full ${inter.variable} bg-spec-space-bg flex flex-col  items-center justify-start font-inter text-white`}
+      className={`min-h-[100dvh] w-full ${inter.variable} bg-spec-space-bg font-inter text-white`}
     >
-      <AppProviders>
-        <main className="w-[1227px] flex-1 justify-center max-lg:w-[1000px] max-md:w-full max-md:px-4">
-          {children}
-        </main>
-      </AppProviders>
+      <AppProviders>{children}</AppProviders>
     </body>
   </html>
 );

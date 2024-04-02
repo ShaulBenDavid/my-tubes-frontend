@@ -6,7 +6,9 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps): JSX.Element => (
-  <PublicRoute>{children}</PublicRoute>
+  <PublicRoute>
+    <main className="w-full flex-1 justify-center">{children}</main>
+  </PublicRoute>
 );
 
 export default Layout;

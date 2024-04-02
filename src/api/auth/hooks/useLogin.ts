@@ -23,6 +23,7 @@ export const useLogin = ({
     queryKey: [GET_LOGIN_KEY],
     queryFn: () => login(params),
     enabled,
+    gcTime: 60 * 60 * 1000,
   });
 
   useEffect(() => {
