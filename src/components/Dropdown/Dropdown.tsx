@@ -56,7 +56,8 @@ export const Dropdown = ({
       )}
       <div
         className={twMerge(
-          `absolute top-[115%] z-50 h-fit w-fit flex-col rounded-md bg-white p-2 shadow-dropdown ${
+          /* prettier-ignore */
+          `bg-spec-menu-bg absolute top-[115%] z-50 h-fit w-fit flex-col rounded-xl p-2 shadow-dropdown ${
             isOpen ? "flex" : "hidden"
           }`,
           className,

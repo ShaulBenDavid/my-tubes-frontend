@@ -63,6 +63,7 @@ module.exports = {
       "wizard-black": "#1D0325",
       "wizard-white": "#FAF2FD",
       "spec-space-bg": "#0f0f0f",
+      "spec-menu-bg": "#282828",
       orange: "#EC5D0D",
       white: "#ffffff",
       black: "#222222",
