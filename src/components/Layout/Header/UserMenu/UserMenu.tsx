@@ -36,13 +36,13 @@ export const UserMenu = (): JSX.Element => {
           <ReactFocusLock>
             <ul role="menu" className="flex flex-col gap-1">
               <li role="menuitem">
-                <AppLink href={`/@${userInfo.username}`}>
+                <AppLink href={`/${userInfo.username}`}>
                   <div className="flex flex-col">
                     <span>
                       {userInfo.first_name} {userInfo.last_name}
                     </span>
-                    <small className="text-sm opacity-70">
-                      @{userInfo.username}
+                    <small className="text-sm lowercase opacity-70 first-letter:capitalize">
+                      {userInfo.username}
                     </small>
                   </div>
                 </AppLink>

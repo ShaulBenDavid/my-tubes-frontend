@@ -43,7 +43,7 @@ export const SelectInput = ({
             form={form}
             id={idFor}
             className={twMerge(
-              `h-10 resize-none rounded-md border-[1px] border-secondary-950 bg-transparent px-2 text-secondary-950 placeholder:text-wizard-grey ${
+              `h-10 resize-none rounded-xl border-[1px] border-secondary-950 bg-transparent px-2 text-secondary-950 placeholder:text-wizard-grey ${
                 !!errorMessage &&
                 "border-red-500 focus:border-2 focus:border-red-500 focus:outline-none"
               }`,
