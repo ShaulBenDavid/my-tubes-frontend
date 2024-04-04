@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps): JSX.Element => (
   <PublicRoute>
-    <main className="w-full flex-1 justify-center">{children}</main>
+    <main className="h-full w-full flex-1 justify-center">{children}</main>
   </PublicRoute>
 );
 
