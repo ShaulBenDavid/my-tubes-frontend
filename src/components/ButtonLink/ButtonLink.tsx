@@ -15,16 +15,12 @@ export const ButtonLink = ({
   variant,
   width,
   children,
-  ariaLabel,
-  isAriaCurrent = false,
   ...props
 }: ButtonLinkProps): JSX.Element => (
   <Link
     {...props}
     className={`flex h-[35px] w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-xl px-5 text-base capitalize ${linkStyleConfig[variant]}`}
     style={{ width }}
-    aria-label={ariaLabel}
-    aria-current={isAriaCurrent ? "page" : undefined}
   >
     {children}
   </Link>

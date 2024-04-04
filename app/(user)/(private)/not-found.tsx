@@ -15,7 +15,7 @@ const NotFound = () => (
           variant={ButtonLinkVariants.PRIMARY}
           width="180px"
         >
-          Go to home page
+          Go to Dashboard page
         </ButtonLink>
       }
     />

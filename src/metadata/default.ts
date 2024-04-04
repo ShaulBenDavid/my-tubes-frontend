@@ -5,13 +5,13 @@ const url = new URL("https://dwizard.io");
 
 export const defaultMetadata: Metadata = {
   title: {
-    default: "Dev Wizard - A Place For Developers",
+    default: "My Tubes - A YouTube manager",
     template: "%s | Dev Wizard",
   },
   description:
     "Welcome to dwizard, your go-to programming blog for developers. Explore coding tutorials, tips, and discussions on various programming languages, frameworks, and technologies.",
   metadataBase: url,
-  applicationName: "Dev Wizard",
+  applicationName: "My Tubes",
   authors: { name: "Dwizard team", url },
   creator: "Dev Wizard Team",
   keywords: [
