@@ -9,7 +9,7 @@ export const Navbar = (): JSX.Element => {
   const activeSegment = useSelectedLayoutSegment() ?? "/";
 
   return (
-    <nav role="navigation" aria-label="main" className="pt-4">
+    <nav role="navigation" aria-label="main" className="flex-1 pt-4">
       <ul className="flex flex-col gap-2">
         {navigationLinksConfig.map(({ label, href, icon }) => {
           const isActive = activeSegment === href.substring(1);
