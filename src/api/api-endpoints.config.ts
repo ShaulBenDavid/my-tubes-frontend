@@ -4,4 +4,6 @@ export enum ApiEndpoints {
   REFRESH = "user/auth/token/",
   // USER
   USER_INFO = "user/info/",
+  // SUBSCRIPTIONS
+  SUBSCRIPTIONS_LIST = "subscribe/user/",
 }
