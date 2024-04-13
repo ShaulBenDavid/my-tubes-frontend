@@ -7,21 +7,33 @@ interface ButtonLinkProps extends LinkProps {
   variant: ButtonLinkVariants;
   width?: string;
   ariaLabel?: string;
-  isAriaCurrent?: boolean;
+  isOutSource?: boolean;
   children: ReactNode;
 }
 
 export const ButtonLink = ({
   variant,
   width,
+  isOutSource = false,
   children,
   ...props
-}: ButtonLinkProps): JSX.Element => (
-  <Link
-    {...props}
-    className={`flex h-[35px] w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-xl px-5 text-base capitalize ${linkStyleConfig[variant]}`}
-    style={{ width }}
-  >
-    {children}
-  </Link>
-);
+}: ButtonLinkProps): JSX.Element => {
+  const className = `flex h-[35px] w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-xl px-5 text-base capitalize ${linkStyleConfig[variant]}`;
+
+  return isOutSource ? (
+    <Link {...props} className={className} style={{ width }}>
+      {children}
+    </Link>
+  ) : (
+    // !! to fix
+    <a
+      href={props.href as string}
+      className={className}
+      style={{ width }}
+      target="_blank"
+      rel="noreferrer"
+    >
+      {children}
+    </a>
+  );
+};
