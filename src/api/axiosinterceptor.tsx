@@ -31,18 +31,18 @@ export const AxiosInterceptor = ({
 
   useLayoutEffect(() => {
     const reqInterceptor = dwInstance.interceptors.request.use((config) =>
-      axiosRequest(config, auth?.access_token, auth?.google_token),
+      axiosRequest(config, auth?.accessToken, auth?.googleToken),
     );
 
     const responseInterceptor = dwInstance.interceptors.response.use(
       resInterceptor,
-      (error) => errInterceptor(error, refresh, auth?.access_token),
+      (error) => errInterceptor(error, refresh, auth?.accessToken),
     );
 
     return () => {
       dwInstance.interceptors.request.eject(reqInterceptor);
       dwInstance.interceptors.response.eject(responseInterceptor);
     };
-  }, [auth?.access_token, auth?.google_token, refresh]);
+  }, [auth?.accessToken, auth?.googleToken, refresh]);
   return children;
 };

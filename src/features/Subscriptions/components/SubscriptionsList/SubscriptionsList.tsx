@@ -2,21 +2,26 @@
 
 import React from "react";
 import { useGetSubscriptions } from "@/src/api/subscription/hooks";
-import { ChannelCard } from "../ChannelCard";
+import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
 
 export const SubscriptionsList = (): JSX.Element => {
-  const { subscriptionsList } = useGetSubscriptions();
+  const { subscriptionsList, isSubscriptionsLoading } = useGetSubscriptions();
 
   return (
-    <div className="h-full w-96 overflow-y-auto">
-      {subscriptionsList?.subscriptions && (
-        <ChannelCard
-          title={subscriptionsList.subscriptions[0].title}
-          description={subscriptionsList.subscriptions[0].description}
-          imageUrl={subscriptionsList.subscriptions[0].image_url}
-          channelId={subscriptionsList.subscriptions[0].channel_id}
-        />
-      )}
+    <div className="flex h-full w-96 snap-y snap-mandatory flex-col gap-4 overflow-y-auto ">
+      {isSubscriptionsLoading && <ChannelCardLoader />}
+      {subscriptionsList?.subscriptions &&
+        subscriptionsList?.subscriptions.map(
+          ({ title, description, imageUrl, channelId }) => (
+            <ChannelCard
+              key={channelId}
+              title={title}
+              description={description}
+              imageUrl={imageUrl}
+              channelId={channelId}
+            />
+          ),
+        )}
     </div>
   );
 };

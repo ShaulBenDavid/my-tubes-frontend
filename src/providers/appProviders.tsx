@@ -23,7 +23,7 @@ export const AppProviders = ({
     <AuthContextProvider>
       <AxiosInterceptor>
         <AuthProvider>
-          <SkeletonTheme baseColor="#E8E3EA" highlightColor="#F3F2F4">
+          <SkeletonTheme baseColor="#282828" highlightColor="#48484833">
             {children}
             <ToastContainer
               limit={MAX_NUMBER_DISPLAYED_TOASTS}

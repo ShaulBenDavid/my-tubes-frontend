@@ -19,7 +19,7 @@ export const ChannelCard = ({
   imageUrl,
   channelId,
 }: ChannelCardProps): JSX.Element => (
-  <Card>
+  <Card className="snap-start">
     <div className="flex flex-row items-center gap-2">
       <Avatar name={title} url={imageUrl} />
       <h5 className="line-clamp-1 text-ellipsis text-base font-semibold capitalize">

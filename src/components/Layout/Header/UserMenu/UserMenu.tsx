@@ -26,8 +26,8 @@ export const UserMenu = (): JSX.Element => {
           isOpen={isOpen}
           trigger={
             <Avatar
-              name={`${userInfo.first_name} ${userInfo.last_name}`}
-              url={userInfo.image_url ?? ""}
+              name={`${userInfo.firstName} ${userInfo.lastName}`}
+              url={userInfo.imageUrl ?? ""}
             />
           }
           label="user menu"
@@ -39,7 +39,7 @@ export const UserMenu = (): JSX.Element => {
                 <AppLink href={`/${userInfo.username}`}>
                   <div className="flex flex-col">
                     <span>
-                      {userInfo.first_name} {userInfo.last_name}
+                      {userInfo.firstName} {userInfo.lastName}
                     </span>
                     <small className="text-sm lowercase opacity-70 first-letter:capitalize">
                       {userInfo.username}

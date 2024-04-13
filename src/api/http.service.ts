@@ -1,5 +1,6 @@
 import type { AxiosInstance, AxiosRequestConfig } from "axios";
 import axios from "axios";
+import applyCaseMiddleware from "axios-case-converter";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -9,7 +10,9 @@ const config: AxiosRequestConfig = {
   withCredentials: true,
 };
 
-export const dwInstance: AxiosInstance = axios.create(config);
+export const dwInstance: AxiosInstance = applyCaseMiddleware(
+  axios.create(config),
+);
 
 export const apiMethodInstance = <T>(options: AxiosRequestConfig): Promise<T> =>
   dwInstance(options).then((res) => res.data);
@@ -20,7 +23,9 @@ const refreshConfig: AxiosRequestConfig = {
   withCredentials: true,
 };
 
-export const refreshInstance: AxiosInstance = axios.create(refreshConfig);
+export const refreshInstance: AxiosInstance = applyCaseMiddleware(
+  axios.create(refreshConfig),
+);
 
 export const refreshMethodInstance = <T>(
   options: AxiosRequestConfig,

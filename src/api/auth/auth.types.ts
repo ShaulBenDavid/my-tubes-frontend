@@ -1,6 +1,6 @@
 export type AuthResponseType = {
-  access_token: string;
-  google_token: string;
+  accessToken: string;
+  googleToken: string;
 };
 
 export type LoginParamsType = {

@@ -1,11 +1,11 @@
 export interface SubscriptionType {
   title: string;
   description: string;
-  channel_id: string;
-  image_url: string;
+  channelId: string;
+  imageUrl: string;
 }
 
 export interface GetSubscriptionsListResponse {
   subscriptions: SubscriptionType[];
-  last_sync_date: Date;
+  lastSyncDate: Date;
 }

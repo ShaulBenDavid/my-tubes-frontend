@@ -20,20 +20,19 @@ export const ButtonLink = ({
 }: ButtonLinkProps): JSX.Element => {
   const className = `flex h-[35px] w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-xl px-5 text-base capitalize ${linkStyleConfig[variant]}`;
 
-  return isOutSource ? (
-    <Link {...props} className={className} style={{ width }}>
-      {children}
-    </Link>
-  ) : (
-    // !! to fix
+  return isOutSource ? ( // !! to fix
     <a
       href={props.href as string}
       className={className}
       style={{ width }}
       target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
     >
       {children}
     </a>
+  ) : (
+    <Link {...props} className={className} style={{ width }}>
+      {children}
+    </Link>
   );
 };

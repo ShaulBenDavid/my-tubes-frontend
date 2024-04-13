@@ -40,7 +40,7 @@ export const AuthContextProvider = ({
   const value = useMemo(
     (): AuthContextObj => ({
       auth,
-      isAuth: !!auth?.access_token,
+      isAuth: !!auth?.accessToken,
       isAuthInitialized: auth !== undefined,
       setAuth,
       handleLogout,
