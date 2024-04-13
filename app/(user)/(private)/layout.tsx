@@ -13,7 +13,9 @@ const Layout = ({ children }: LayoutProps): JSX.Element => (
       <SideMenu />
       <div className="flex w-full flex-col">
         <Header />
-        <main className="w-full flex-1 justify-center p-4">{children}</main>
+        <main className="w-full flex-1 justify-center overflow-hidden p-4">
+          {children}
+        </main>
       </div>
     </div>
   </ProtectedRoute>
