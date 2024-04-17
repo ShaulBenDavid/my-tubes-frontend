@@ -5,7 +5,7 @@ export interface SubscriptionType {
   imageUrl: string;
 }
 
-export interface GetSubscriptionsListResponse {
-  subscriptions: SubscriptionType[];
+export interface GetSubscriptionsInfoResponse {
+  subscriptionsCount: number;
   lastSyncDate: Date;
 }

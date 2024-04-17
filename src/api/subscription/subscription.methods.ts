@@ -1,10 +1,10 @@
 import { ApiEndpoints } from "../api-endpoints.config";
 import { Methods } from "../api.config";
 import { apiMethodInstance } from "../http.service";
-import type { GetSubscriptionsListResponse } from "./subscription.types";
+import type { GetSubscriptionsInfoResponse } from "./subscription.types";
 
-export const getSubscriptionsList = (): Promise<GetSubscriptionsListResponse> =>
-  apiMethodInstance<GetSubscriptionsListResponse>({
-    url: ApiEndpoints.SUBSCRIPTIONS_LIST,
+export const getSubscriptionsInfo = (): Promise<GetSubscriptionsInfoResponse> =>
+  apiMethodInstance<GetSubscriptionsInfoResponse>({
+    url: ApiEndpoints.SUBSCRIPTIONS_INFO,
     method: Methods.GET,
   });

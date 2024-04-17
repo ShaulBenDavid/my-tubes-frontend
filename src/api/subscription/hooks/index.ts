@@ -1,1 +1,1 @@
-export { useGetSubscriptions } from "./useGetSubscriptions";
+export { useGetSubscriptionsInfo } from "./useGetSubscriptionsInfo";

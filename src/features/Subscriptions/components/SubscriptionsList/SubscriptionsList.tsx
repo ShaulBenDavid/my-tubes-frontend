@@ -1,16 +1,18 @@
 "use client";
 
 import React from "react";
-import { useGetSubscriptions } from "@/src/api/subscription/hooks";
-import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
+import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
+import { ChannelCardLoader } from "../ChannelCard";
 
 export const SubscriptionsList = (): JSX.Element => {
-  const { subscriptionsList, isSubscriptionsLoading } = useGetSubscriptions();
+  const { subscriptionsInfo, isSubscriptionsLoading } =
+    useGetSubscriptionsInfo();
+  console.log(subscriptionsInfo);
 
   return (
     <div className="flex h-full w-96 snap-y snap-mandatory flex-col gap-4 overflow-y-auto ">
       {isSubscriptionsLoading && <ChannelCardLoader />}
-      {subscriptionsList?.subscriptions &&
+      {/* {subscriptionsList?.subscriptions &&
         subscriptionsList?.subscriptions.map(
           ({ title, description, imageUrl, channelId }) => (
             <ChannelCard
@@ -21,7 +23,7 @@ export const SubscriptionsList = (): JSX.Element => {
               channelId={channelId}
             />
           ),
-        )}
+        )} */}
     </div>
   );
 };
