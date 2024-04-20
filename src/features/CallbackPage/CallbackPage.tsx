@@ -24,7 +24,7 @@ export const CallbackPage = (): JSX.Element => {
   };
 
   const handleSuccess = (res: AuthResponseType): void => {
-    router.push("/dashboard");
+    router.push(Routes.DASHBOARD);
     setAuth(res);
   };
   const { isLoginLoading, isLoginError } = useLogin({

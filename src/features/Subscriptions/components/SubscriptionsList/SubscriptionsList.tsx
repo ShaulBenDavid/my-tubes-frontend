@@ -3,8 +3,10 @@
 import React from "react";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import { useGetSubscriptionsList } from "@/src/api/subscription/hooks";
-import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
 import { Spinner } from "@/src/components/Spinner";
+import { EmptyState } from "@/src/components/EmptyState";
+import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
+import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
 
 export const SubscriptionsList = (): JSX.Element => {
   const {
@@ -30,6 +32,11 @@ export const SubscriptionsList = (): JSX.Element => {
       ref={rootRef}
     >
       {isSubscriptionsLoading && <ChannelCardLoader />}
+      {!isSubscriptionsLoading && !subscriptionsList?.length && (
+        <div className="flex h-full w-full items-center justify-center">
+          <EmptyState svgUrl={NoDataSVG} header="No Subscriptions Data." />
+        </div>
+      )}
       {!!subscriptionsList?.length &&
         subscriptionsList.map(({ title, description, imageUrl, channelId }) => (
           <ChannelCard
