@@ -136,3 +136,9 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: red;
 }
+
+/* React - Tooltip style  */
+body {
+  --rt-color-info: #606060;
+  --rt-opacity: 1;
+}

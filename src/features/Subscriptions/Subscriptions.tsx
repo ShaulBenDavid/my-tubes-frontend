@@ -3,6 +3,7 @@
 import React from "react";
 import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
 import { formatDateToCustomFormat } from "@/src/utils";
+import { InfoTooltip } from "@/src/components/InfoTooltip";
 import { SubscriptionsList } from "./components/SubscriptionsList";
 
 export const Subscriptions = (): JSX.Element => {
@@ -16,14 +17,17 @@ export const Subscriptions = (): JSX.Element => {
           <span>({subscriptionsInfo?.subscriptionsCount ?? 0})</span>
         </h1>
         {subscriptionsInfo && (
-          <span>
-            last sync:{" "}
-            <time className="font-bold">
-              {formatDateToCustomFormat(
-                new Date(subscriptionsInfo.lastSyncDate),
-              )}
-            </time>
-          </span>
+          <div className="flex flex-row gap-2">
+            <span>
+              last sync:{" "}
+              <time className="font-bold">
+                {formatDateToCustomFormat(
+                  new Date(subscriptionsInfo.lastSyncDate),
+                )}
+              </time>
+            </span>
+            <InfoTooltip title="Last Sync: This indicates the most recent time we synchronized your subscribers with your YouTube account." />
+          </div>
         )}
       </div>
       <SubscriptionsList />

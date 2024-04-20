@@ -28,6 +28,7 @@ type Theme = {
       };
       "wizard-black": string;
       "wizard-white": string;
+      "spec-text-secondary": string;
       orange: string;
       white: string;
       black: string;

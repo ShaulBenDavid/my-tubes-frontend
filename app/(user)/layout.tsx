@@ -3,8 +3,8 @@ import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 import { defaultMetadata } from "@/src/metadata";
 import { AppProviders } from "@/src/providers";
-import "@/src/styles/global.css";
 import theme from "@/src/styles/tailwind.theme";
+import "@/src/styles/global.css";
 
 const inter = Inter({
   variable: "--font-inter",

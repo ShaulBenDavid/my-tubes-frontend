@@ -10,6 +10,7 @@ import { AuthContextProvider } from "../context/auth";
 import { AuthProvider } from "./auth.provider";
 import "react-toastify/dist/ReactToastify.css";
 import "react-loading-skeleton/dist/skeleton.css";
+import "react-tooltip/dist/react-tooltip.css";
 import theme from "../styles/tailwind.theme";
 
 const MAX_NUMBER_DISPLAYED_TOASTS = 4;
