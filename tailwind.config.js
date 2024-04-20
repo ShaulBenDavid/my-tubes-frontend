@@ -64,6 +64,7 @@ module.exports = {
       "wizard-white": "#FAF2FD",
       "spec-space-bg": "#0f0f0f",
       "spec-menu-bg": "#282828",
+      "spec-text-secondary": "#606060",
       orange: "#EC5D0D",
       white: "#ffffff",
       black: "#222222",

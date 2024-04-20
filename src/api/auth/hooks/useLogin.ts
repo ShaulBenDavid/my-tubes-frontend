@@ -24,6 +24,7 @@ export const useLogin = ({
     queryFn: () => login(params),
     enabled,
     gcTime: 60 * 60 * 1000,
+    retry: 0,
   });
 
   useEffect(() => {

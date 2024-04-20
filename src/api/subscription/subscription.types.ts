@@ -1,3 +1,5 @@
+import type { PaginationType } from "../common.types";
+
 export interface SubscriptionType {
   title: string;
   description: string;
@@ -9,3 +11,5 @@ export interface GetSubscriptionsInfoResponse {
   subscriptionsCount: number;
   lastSyncDate: Date;
 }
+
+export type GetSubscriptionsListResponse = PaginationType<SubscriptionType>;

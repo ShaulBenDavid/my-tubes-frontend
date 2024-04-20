@@ -5,8 +5,8 @@ const LOADERS_COUNT = 5;
 
 export const ChannelCardLoader = (): JSX.Element => (
   <div className="flex flex-col gap-6">
-    {Array.from({ length: LOADERS_COUNT }).map((key) => (
-      <div key={String(key)} className="flex flex-col gap-2">
+    {Array.from({ length: LOADERS_COUNT }).map((_, index) => (
+      <div key={String(index)} className="flex flex-col gap-2">
         <span className="flex flex-row gap-2">
           <Skeleton
             circle

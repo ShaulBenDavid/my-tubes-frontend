@@ -109,3 +109,30 @@ h6 {
 ::backdrop {
   background: rgba(29, 13, 37, 0.3);
 }
+
+/*
+      11. Scroll bar
+    */
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 12px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #606060;
+  border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: red;
+}

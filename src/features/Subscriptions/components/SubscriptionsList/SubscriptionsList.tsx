@@ -1,29 +1,29 @@
 "use client";
 
 import React from "react";
-import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
-import { ChannelCardLoader } from "../ChannelCard";
+import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
+import type { SubscriptionType } from "@/src/api/subscription/subscription.types";
 
-export const SubscriptionsList = (): JSX.Element => {
-  const { subscriptionsInfo, isSubscriptionsLoading } =
-    useGetSubscriptionsInfo();
-  console.log(subscriptionsInfo);
+interface SubscriptionsListProps {
+  data: SubscriptionType[];
+  isLoading: boolean;
+}
 
-  return (
-    <div className="flex h-full w-96 snap-y snap-mandatory flex-col gap-4 overflow-y-auto ">
-      {isSubscriptionsLoading && <ChannelCardLoader />}
-      {/* {subscriptionsList?.subscriptions &&
-        subscriptionsList?.subscriptions.map(
-          ({ title, description, imageUrl, channelId }) => (
-            <ChannelCard
-              key={channelId}
-              title={title}
-              description={description}
-              imageUrl={imageUrl}
-              channelId={channelId}
-            />
-          ),
-        )} */}
-    </div>
-  );
-};
+export const SubscriptionsList = ({
+  data,
+  isLoading,
+}: SubscriptionsListProps): JSX.Element => (
+  <div className="flex h-full w-96 snap-y snap-mandatory flex-col gap-4 overflow-y-auto ">
+    {isLoading && <ChannelCardLoader />}
+    {!!data.length &&
+      data.map(({ title, description, imageUrl, channelId }) => (
+        <ChannelCard
+          key={title}
+          title={title}
+          description={description}
+          imageUrl={imageUrl}
+          channelId={channelId}
+        />
+      ))}
+  </div>
+);
