@@ -11,7 +11,7 @@ export const Spinner = ({
   variant = SpinnerVariants.PRIMARY,
   size = SpinnerSize.MEDIUM,
 }: SpinnerProps): JSX.Element => (
-  <div role="status">
+  <div role="status" className="relative">
     <svg
       aria-hidden="true"
       className={`animate-spin text-wizard-grey text-opacity-40 ${spinnerSizesConfig[size]} ${spinnerVariantConfig[variant]} `}

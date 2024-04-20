@@ -8,4 +8,5 @@ export type PaginationType<T> = {
 export type PaginationParams = {
   page?: number;
   pageSize?: number;
+  pageParam?: number;
 };

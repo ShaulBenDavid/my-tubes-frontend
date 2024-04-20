@@ -11,7 +11,9 @@ interface NavigationLinksConfig {
   icon: TabIconsType;
 }
 
-export const navigationLinksConfig: NavigationLinksConfig[] = [
+export const getNavigationLinksConfig = (
+  count?: number,
+): NavigationLinksConfig[] => [
   {
     href: Routes.DASHBOARD,
     label: "dashboard",
@@ -22,7 +24,7 @@ export const navigationLinksConfig: NavigationLinksConfig[] = [
   },
   {
     href: Routes.SUBSCRIPTIONS,
-    label: "subscriptions",
+    label: `subscriptions (${count ?? "--"})`,
     icon: {
       default: (
         <MdOutlineSubscriptions aria-hidden size={24} stroke={theme.white} />
