@@ -69,7 +69,7 @@ export const SubscriptionsList = (): JSX.Element => {
             <Spinner />
           </div>
         )}
-      </div>{" "}
+      </div>
     </div>
   );
 };

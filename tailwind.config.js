@@ -87,6 +87,9 @@ module.exports = {
         dropdown:
           "0 10px 15px -3px rgba(45, 3, 59, 0.1), 0 4px 6px -2px rgba(45, 3, 59, 0.05), 0 0 0 1px rgba(45, 3, 59, 0.1)",
       },
+      gridTemplateColumns: {
+        "groups-auto-fit": "repeat(auto-fill, minmax(400px, 1fr))",
+      },
       keyframes: {
         fadeIn: {
           "0%": { opacity: 0 },
