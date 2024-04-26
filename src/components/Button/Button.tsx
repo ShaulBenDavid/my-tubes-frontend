@@ -19,8 +19,10 @@ export const Button = ({
   className,
   onClick,
   disabled,
+  ...props
 }: ButtonProps): JSX.Element => (
   <button
+    {...props}
     type={type}
     onClick={onClick}
     disabled={disabled || isLoading}

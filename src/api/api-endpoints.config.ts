@@ -7,4 +7,6 @@ export enum ApiEndpoints {
   // SUBSCRIPTIONS
   SUBSCRIPTIONS_INFO = "subscribe/info/",
   SUBSCRIPTIONS_LIST = "subscribe/list/",
+  // GROUPS
+  GROUPS = "subscribe/groups/",
 }

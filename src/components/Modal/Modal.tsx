@@ -9,7 +9,7 @@ interface ModalProps extends React.DialogHTMLAttributes<HTMLDialogElement> {
 
 export const Modal = forwardRef(
   (
-    { closeModal, children }: ModalProps,
+    { closeModal, id, children }: ModalProps,
     ref: ForwardedRef<HTMLDialogElement>,
   ): JSX.Element => {
     const contentRef = useRef<HTMLDivElement>(null);
@@ -19,6 +19,7 @@ export const Modal = forwardRef(
       <dialog
         onCancel={closeModal}
         ref={ref}
+        id={id}
         className="left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] overflow-hidden rounded-xl focus:outline-none"
       >
         <div ref={contentRef}>{children}</div>
