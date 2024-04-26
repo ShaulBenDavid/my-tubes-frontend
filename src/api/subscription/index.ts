@@ -1,1 +1,4 @@
-export type { SubscriptionType } from "./subscription.types";
+export type {
+  SubscriptionType,
+  SubscriptionsListSortEnum,
+} from "./subscription.types";

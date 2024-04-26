@@ -3,10 +3,17 @@
 import { useMemo } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getSubscriptionsList } from "../subscription.methods";
+import type { SubscriptionsListSortEnum } from "../subscription.types";
 
 const GET_SUBSCRIPTIONS_LIST_KEY = "getSubscriptionList";
 
-export const useGetSubscriptionsList = () => {
+interface UserInfoTypeGetSubscriptionsListProps {
+  ordering?: SubscriptionsListSortEnum;
+}
+
+export const useGetSubscriptionsList = ({
+  ordering,
+}: UserInfoTypeGetSubscriptionsListProps) => {
   const {
     data,
     hasNextPage,
@@ -15,8 +22,9 @@ export const useGetSubscriptionsList = () => {
     isLoading,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],
-    queryFn: ({ pageParam = 1 }) => getSubscriptionsList({ page: pageParam }),
+    queryKey: [GET_SUBSCRIPTIONS_LIST_KEY, { ordering }],
+    queryFn: ({ pageParam = 1 }) =>
+      getSubscriptionsList({ page: pageParam, ordering }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.next,
     getPreviousPageParam: (firstPage) => firstPage.previous,

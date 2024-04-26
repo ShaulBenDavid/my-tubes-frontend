@@ -1,4 +1,4 @@
-import type { PaginationType } from "../common.types";
+import type { PaginationParams, PaginationType } from "../common.types";
 
 export interface SubscriptionType {
   title: string;
@@ -13,3 +13,12 @@ export interface GetSubscriptionsInfoResponse {
 }
 
 export type GetSubscriptionsListResponse = PaginationType<SubscriptionType>;
+
+export enum SubscriptionsListSortEnum {
+  ASCENDING = "title",
+  DESCENDING = "-title",
+}
+
+export type GetSubscriptionsListParams = PaginationParams & {
+  ordering?: SubscriptionsListSortEnum;
+};

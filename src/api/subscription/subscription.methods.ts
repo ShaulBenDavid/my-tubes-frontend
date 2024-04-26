@@ -1,9 +1,9 @@
 import { ApiEndpoints } from "../api-endpoints.config";
 import { Methods } from "../api.config";
-import type { PaginationParams } from "../common.types";
 import { apiMethodInstance } from "../http.service";
 import type {
   GetSubscriptionsInfoResponse,
+  GetSubscriptionsListParams,
   GetSubscriptionsListResponse,
 } from "./subscription.types";
 
@@ -14,7 +14,7 @@ export const getSubscriptionsInfo = (): Promise<GetSubscriptionsInfoResponse> =>
   });
 
 export const getSubscriptionsList = (
-  params: PaginationParams,
+  params: GetSubscriptionsListParams,
 ): Promise<GetSubscriptionsListResponse> =>
   apiMethodInstance<GetSubscriptionsListResponse>({
     url: ApiEndpoints.SUBSCRIPTIONS_LIST,
