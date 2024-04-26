@@ -24,7 +24,7 @@ export const SortFilter = <T extends string | number>({
   <div className="relative h-8 w-full">
     <label
       htmlFor={method}
-      className="absolute inset-0 left-1 cursor-pointer bg-spec-space-bg px-4 text-center font-semibold capitalize leading-8"
+      className="absolute inset-0 cursor-pointer bg-spec-space-bg px-4 text-center font-semibold capitalize leading-8"
     >
       <span className="flex flex-row items-center justify-center gap-2">
         {label}
@@ -34,7 +34,7 @@ export const SortFilter = <T extends string | number>({
     <select
       id={method}
       tabIndex={0}
-      className="absolute inset-0 left-1 bg-transparent opacity-[0.0000001]"
+      className="absolute inset-0 bg-transparent opacity-[0.0000001]"
       onChange={(event) => {
         const selectedValue = event.target.value as T;
         handleChange(selectedValue || undefined);
