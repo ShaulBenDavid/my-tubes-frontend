@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import ms from "ms";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getSubscriptionsList } from "../subscription.methods";
 import type { SubscriptionsListSortEnum } from "../subscription.types";
@@ -28,6 +29,7 @@ export const useGetSubscriptionsList = ({
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.next,
     getPreviousPageParam: (firstPage) => firstPage.previous,
+    gcTime: ms("4h"),
   });
 
   const flatData = useMemo(
