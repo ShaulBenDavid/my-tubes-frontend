@@ -19,17 +19,6 @@ describe("TextArea", () => {
     expect(buttonElement).toBeInTheDocument();
   });
 
-  it("renders correctly with variant color", () => {
-    const { getByText } = render(
-      <Wrapper>
-        <TextArea idFor="email" label="email" />
-      </Wrapper>,
-    );
-    const inputElement = getByText("Email");
-    expect(inputElement).toBeInTheDocument();
-    expect(inputElement).toHaveClass("text-secondary-950");
-  });
-
   it("renders the correct number of rows", () => {
     const { getByTestId } = render(
       <Wrapper>

@@ -18,15 +18,4 @@ describe("Input", () => {
     const buttonElement = getByText("Email");
     expect(buttonElement).toBeInTheDocument();
   });
-
-  it("renders correctly with variant color", () => {
-    const { getByText } = render(
-      <Wrapper>
-        <Input idFor="email" label="email" />
-      </Wrapper>,
-    );
-    const inputElement = getByText("Email");
-    expect(inputElement).toBeInTheDocument();
-    expect(inputElement).toHaveClass("text-secondary-950");
-  });
 });

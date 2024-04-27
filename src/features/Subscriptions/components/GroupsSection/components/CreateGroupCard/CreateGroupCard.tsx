@@ -3,6 +3,7 @@ import { FaFolderPlus } from "react-icons/fa";
 import { Card } from "@/src/components/Card";
 import { Button, ButtonVariants } from "@/src/components/Button";
 import { Modal } from "@/src/components/Modal";
+import { CreateForm } from "./CreateForm";
 
 export const CreateGroupCard = (): JSX.Element => {
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -29,7 +30,7 @@ export const CreateGroupCard = (): JSX.Element => {
         id="createGroupModal"
         closeModal={() => modalRef?.current?.close()}
       >
-        s
+        <CreateForm />
       </Modal>
     </>
   );

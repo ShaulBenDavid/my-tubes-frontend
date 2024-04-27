@@ -5,7 +5,7 @@ import type {
   GetSubscriptionsInfoResponse,
   GetSubscriptionsListParams,
   GetSubscriptionsListResponse,
-  PostSubscriptionGroup,
+  PostSubscriptionGroupPayload,
   SubscriptionsGroupType,
 } from "./subscription.types";
 
@@ -25,7 +25,7 @@ export const getSubscriptionsList = (
   });
 
 export const postSubscriptionsGroup = (
-  data: PostSubscriptionGroup,
+  data: PostSubscriptionGroupPayload,
 ): Promise<SubscriptionsGroupType> =>
   apiMethodInstance<SubscriptionsGroupType>({
     url: ApiEndpoints.GROUPS,

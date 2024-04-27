@@ -28,10 +28,7 @@ export const Input = ({
 
   return (
     <div className="relative flex flex-col gap-1">
-      <label
-        htmlFor={idFor}
-        className="font-medium capitalize text-secondary-950"
-      >
+      <label htmlFor={idFor} className="font-medium capitalize text-white">
         {camelCaseToWords(label)}
       </label>
       <input
@@ -40,7 +37,8 @@ export const Input = ({
         placeholder={placeholder}
         value={value}
         className={twMerge(
-          `h-10 rounded-xl border-[1px] border-secondary-950 bg-transparent px-2 text-secondary-950 placeholder:text-wizard-grey ${
+          /* prettier-ignore */
+          `border-spec-text-secondary h-10 rounded-xl border-[1px] bg-transparent px-2 text-white placeholder:text-white/70 ${
             !!errorMessage &&
             "border-red-500 focus:border-2 focus:border-red-500 focus:outline-none"
           }`,

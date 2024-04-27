@@ -30,7 +30,7 @@ export type SubscriptionsGroupType = {
   subscriptionCount: number;
 };
 
-export type PostSubscriptionGroup = Pick<
+export type PostSubscriptionGroupPayload = Pick<
   SubscriptionsGroupType,
   "title" | "description"
 >;
