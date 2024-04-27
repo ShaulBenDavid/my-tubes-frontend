@@ -32,3 +32,9 @@ export const postSubscriptionsGroup = (
     method: Methods.POST,
     data,
   });
+
+export const getSubscriptionsGroups = (): Promise<SubscriptionsGroupType[]> =>
+  apiMethodInstance<SubscriptionsGroupType[]>({
+    url: ApiEndpoints.GROUPS,
+    method: Methods.GET,
+  });

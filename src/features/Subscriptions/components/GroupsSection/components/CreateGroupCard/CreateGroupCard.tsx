@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import { FaFolderPlus } from "react-icons/fa";
 import { Card } from "@/src/components/Card";

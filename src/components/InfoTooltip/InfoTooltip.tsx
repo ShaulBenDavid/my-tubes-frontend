@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useId } from "react";
+import React, { type ReactNode, useId } from "react";
 import { Tooltip } from "react-tooltip";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import theme from "@/src/styles/tailwind.theme";
 
 interface InfoTooltipProps {
-  title: string;
+  title: ReactNode;
 }
 
 export const InfoTooltip = ({ title }: InfoTooltipProps): JSX.Element => {

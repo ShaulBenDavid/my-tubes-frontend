@@ -113,28 +113,34 @@ h6 {
 /*
       11. Scroll bar
     */
-c
+
 /* width */
-::-webkit-scrollbar {
-  width: 7px;
-  border-radius: 12px;
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 7.5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
+  background: none;
   background: transparent;
-  border-radius: 12px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+  border-radius: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #606060;
-  border-radius: 12px;
+  border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: red;
+  background: #535353;
 }
 
 /* React - Tooltip style  */

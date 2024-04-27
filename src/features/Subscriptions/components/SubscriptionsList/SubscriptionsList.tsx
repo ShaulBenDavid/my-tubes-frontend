@@ -33,7 +33,7 @@ export const SubscriptionsList = (): JSX.Element => {
   });
 
   return (
-    <div className="flex h-full w-96 flex-col gap-4">
+    <div className="flex h-full w-96 shrink-0 flex-col gap-4">
       <SortFilter
         label="sort"
         options={subscriptionsListSortConfig}

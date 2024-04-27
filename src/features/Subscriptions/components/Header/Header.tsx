@@ -23,7 +23,16 @@ export const Header = ({
             {formatDateToCustomFormat(new Date(lastSyncDate))}
           </time>
         </span>
-        <InfoTooltip title="Last Sync: This indicates the most recent time we synchronized your subscribers with your YouTube account." />
+        <InfoTooltip
+          title={
+            <>
+              Last Sync: This indicates the most recent time we synchronized
+              your subscribers with your YouTube account.
+              <br />
+              (For Lite users we sync once a month)
+            </>
+          }
+        />
       </div>
     )}
   </div>
