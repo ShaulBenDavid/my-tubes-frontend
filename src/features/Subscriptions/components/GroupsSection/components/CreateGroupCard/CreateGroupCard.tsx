@@ -8,6 +8,8 @@ import { CreateForm } from "./CreateForm";
 export const CreateGroupCard = (): JSX.Element => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
+  const handleCloseModal = (): void => modalRef?.current?.close();
+
   return (
     <>
       <Card>
@@ -25,12 +27,8 @@ export const CreateGroupCard = (): JSX.Element => {
           </Button>
         </div>
       </Card>
-      <Modal
-        ref={modalRef}
-        id="createGroupModal"
-        closeModal={() => modalRef?.current?.close()}
-      >
-        <CreateForm />
+      <Modal ref={modalRef} id="createGroupModal" closeModal={handleCloseModal}>
+        <CreateForm handleCloseModal={handleCloseModal} />
       </Modal>
     </>
   );

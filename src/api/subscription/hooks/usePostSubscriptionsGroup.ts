@@ -12,13 +12,15 @@ interface UsePostSubscriptionsGroupProps {
 export const usePostSubscriptionsGroup = ({
   handleSuccess,
 }: UsePostSubscriptionsGroupProps) => {
-  const { isPending, isError } = useMutation({
+  const { mutate, isPending, isError, error } = useMutation({
     mutationKey: [POST_SUBSCRIPTIONS_GROUP_KEY],
     mutationFn: postSubscriptionsGroup,
     onSuccess: handleSuccess,
   });
 
   return {
+    postGroup: mutate,
+    groupError: error,
     isPostGroupLoading: isPending,
     isPostGroupError: isError,
   };

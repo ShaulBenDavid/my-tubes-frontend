@@ -18,9 +18,5 @@ export const groupDetailsSchema = z.object({
     })
     .trim()
     .min(1)
-    .max(255, "Description can be long than 255 characters")
-    .refine(
-      (value) => /^[A-Za-z\s]*$/.test(value),
-      "only english letters allowed",
-    ),
+    .max(255, "Description can be long than 255 characters"),
 });

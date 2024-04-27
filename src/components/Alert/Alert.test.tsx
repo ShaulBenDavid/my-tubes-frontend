@@ -17,7 +17,7 @@ describe("Alert", () => {
       <Alert variant={AlertVariants.DANGER} content="some test" />,
     );
     const alertElement = getByTestId("alert-component-test-id");
-    expect(alertElement).toHaveClass("text-red-800");
-    expect(alertElement).toHaveClass("bg-red-50");
+    expect(alertElement).toHaveClass("text-primary-400");
+    expect(alertElement).toHaveClass("bg-spec-space-bg");
   });
 });

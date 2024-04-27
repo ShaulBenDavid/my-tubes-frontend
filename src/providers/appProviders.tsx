@@ -29,7 +29,8 @@ export const AppProviders = ({
             <ToastContainer
               limit={MAX_NUMBER_DISPLAYED_TOASTS}
               stacked
-              position="top-left"
+              position="top-right"
+              theme="dark"
             />
           </SkeletonTheme>
           <Suspense fallback={null}>
