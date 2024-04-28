@@ -2,6 +2,7 @@ import { ApiEndpoints } from "../api-endpoints.config";
 import { Methods } from "../api.config";
 import { apiMethodInstance } from "../http.service";
 import type {
+  EditSubscriptionGroupPayload,
   GetSubscriptionsInfoResponse,
   GetSubscriptionsListParams,
   GetSubscriptionsListResponse,
@@ -31,6 +32,22 @@ export const postSubscriptionsGroup = (
     url: ApiEndpoints.GROUPS,
     method: Methods.POST,
     data,
+  });
+
+export const editSubscriptionsGroup = ({
+  id,
+  ...restData
+}: EditSubscriptionGroupPayload): Promise<SubscriptionsGroupType> =>
+  apiMethodInstance<SubscriptionsGroupType>({
+    url: `${ApiEndpoints.GROUPS}${id}/`,
+    method: Methods.PATCH,
+    data: restData,
+  });
+
+export const deleteSubscriptionsGroup = (id: number): Promise<object> =>
+  apiMethodInstance<object>({
+    url: `${ApiEndpoints.GROUPS}${id}/`,
+    method: Methods.DELETE,
   });
 
 export const getSubscriptionsGroups = (): Promise<SubscriptionsGroupType[]> =>

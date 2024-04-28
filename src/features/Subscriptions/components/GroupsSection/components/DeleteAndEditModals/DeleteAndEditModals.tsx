@@ -1,6 +1,15 @@
-import React, { type RefObject } from "react";
+"use client";
+
+import React, { useCallback, type RefObject } from "react";
+import { toast } from "react-toastify";
+import { appQueryClient } from "@/src/queries";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { Modal } from "@/src/components/Modal";
+import {
+  GET_SUBSCRIPTIONS_GROUPS_KEY,
+  useDeleteSubscriptionsGroup,
+  useEditSubscriptionsGroup,
+} from "@/src/api/subscription/hooks";
 import {
   ARIA_CONTROL_GROUP_DELETE,
   ARIA_CONTROL_GROUP_EDIT,
@@ -23,7 +32,37 @@ export const DeleteAndEditModals = ({
   deleteModalRef,
   editModalRef,
 }: DeleteAndEditModalsProps): JSX.Element => {
-  const { title, description } = group ?? {};
+  const { title, description, id } = group ?? {};
+
+  const handleDeleteSuccess = useCallback((): void => {
+    toast.success(`${title} Group deleted successfully!`);
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    onDeleteClose();
+  }, [onDeleteClose, title]);
+
+  const { deleteGroup, isDeleteGroupLoading } = useDeleteSubscriptionsGroup({
+    handleSuccess: handleDeleteSuccess,
+    handleError: () => {
+      toast.error(
+        `we failed to delete group - ${title}. please try again later.`,
+      );
+    },
+  });
+
+  const handleEditSuccess = useCallback((): void => {
+    toast.success(`${title} Group updated successfully!`);
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    onEditClose();
+  }, [onEditClose, title]);
+
+  const { editGroup, isEditGroupLoading, isEditGroupError, editGroupError } =
+    useEditSubscriptionsGroup({
+      handleSuccess: handleEditSuccess,
+    });
 
   return (
     <>
@@ -32,22 +71,29 @@ export const DeleteAndEditModals = ({
         closeModal={onDeleteClose}
         id={ARIA_CONTROL_GROUP_DELETE}
       >
-        {title && <DeleteGroup title={title} onClose={onDeleteClose} />}
+        {title && id && (
+          <DeleteGroup
+            title={title}
+            isLoading={isDeleteGroupLoading}
+            onClose={onDeleteClose}
+            onDelete={() => deleteGroup(id)}
+          />
+        )}
       </Modal>
       <Modal
         ref={editModalRef}
         closeModal={onEditClose}
         id={ARIA_CONTROL_GROUP_EDIT}
       >
-        {title && description && (
+        {title && description && id && (
           <GroupForm
             key={title}
             title={`Edit Group - ${title}`}
             content="Update your group content."
-            isLoading={false}
-            isError={false}
-            errorMessage=""
-            mutate={() => ({})}
+            isLoading={isEditGroupLoading}
+            isError={isEditGroupError}
+            errorMessage={editGroupError?.message ?? ""}
+            mutate={(data) => editGroup({ id, ...data })}
             handleCloseModal={onEditClose}
             defaultValues={{
               title,

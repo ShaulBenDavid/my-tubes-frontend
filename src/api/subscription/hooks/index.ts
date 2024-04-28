@@ -5,3 +5,5 @@ export {
   useGetSubscriptionsGroups,
   GET_SUBSCRIPTIONS_GROUPS_KEY,
 } from "./useGetSubscriptionsGroups";
+export { useEditSubscriptionsGroup } from "./useEditSubscriptionsGroup";
+export { useDeleteSubscriptionsGroup } from "./useDeleteSubscriptionsGroup";

@@ -5,12 +5,16 @@ import theme from "@/src/styles/tailwind.theme";
 
 interface DeleteGroupProps {
   title: string;
+  isLoading: boolean;
   onClose: () => void;
+  onDelete: () => void;
 }
 
 export const DeleteGroup = ({
   title,
+  isLoading,
   onClose,
+  onDelete,
 }: DeleteGroupProps): JSX.Element => (
   <div className="flex h-fit w-96 flex-col items-center justify-center">
     <div className="flex flex-col items-center">
@@ -28,9 +32,8 @@ export const DeleteGroup = ({
       </Button>
       <Button
         variant={ButtonVariants.PRIMARY}
-        type="submit"
-        // disabled={!isValid}
-        // isLoading={isLoading}
+        isLoading={isLoading}
+        onClick={onDelete}
       >
         I am sure
       </Button>

@@ -34,3 +34,8 @@ export type PostSubscriptionGroupPayload = Pick<
   SubscriptionsGroupType,
   "title" | "description"
 >;
+
+export type EditSubscriptionGroupPayload = Omit<
+  SubscriptionsGroupType,
+  "subscriptionCount"
+>;
