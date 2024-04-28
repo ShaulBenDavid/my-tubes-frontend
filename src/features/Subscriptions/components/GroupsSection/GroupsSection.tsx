@@ -1,13 +1,40 @@
 "use client";
 
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
+import type { SubscriptionsGroupType } from "@/src/api/subscription";
+import { useGetSubscriptionsGroups } from "@/src/api/subscription/hooks";
 import { CreateGroupCard } from "./components/CreateGroupCard";
 import { GroupCard } from "./components/GroupCard";
-import { useGetSubscriptionsGroups } from "@/src/api/subscription/hooks";
 import { GroupCardLoader } from "./components/GroupCard/GroupCard.loader";
+import { DeleteAndEditModals } from "./components/DeleteAndEditModals";
 
 export const GroupsSection = (): JSX.Element => {
+  const [selectedGroup, setSelectedGroup] = useState<
+    SubscriptionsGroupType | undefined
+  >();
+  const deleteModalRef = useRef<HTMLDialogElement>(null);
+  const editModalRef = useRef<HTMLDialogElement>(null);
+
   const { subscriptionsGroups, isGroupsLoading } = useGetSubscriptionsGroups();
+
+  const onDeleteClose = (): void => deleteModalRef?.current?.close();
+  const onEditClose = (): void => editModalRef?.current?.close();
+
+  const handleDeleteClick = useCallback(
+    (data: SubscriptionsGroupType) => {
+      setSelectedGroup(data);
+      deleteModalRef.current?.showModal();
+    },
+    [deleteModalRef],
+  );
+
+  const handleEditClick = useCallback(
+    (data: SubscriptionsGroupType) => {
+      setSelectedGroup(data);
+      editModalRef.current?.showModal();
+    },
+    [editModalRef],
+  );
 
   return (
     <section
@@ -17,17 +44,21 @@ export const GroupsSection = (): JSX.Element => {
       <CreateGroupCard />
       {isGroupsLoading && <GroupCardLoader />}
       {!isGroupsLoading &&
-        subscriptionsGroups?.map(
-          ({ id, title, description, subscriptionCount }) => (
-            <GroupCard
-              key={id}
-              id={id}
-              title={title}
-              description={description}
-              subscriptionCount={subscriptionCount}
-            />
-          ),
-        )}
+        subscriptionsGroups?.map((group) => (
+          <GroupCard
+            key={group.id}
+            data={group}
+            handleDeleteClick={() => handleDeleteClick(group)}
+            handleEditClick={() => handleEditClick(group)}
+          />
+        ))}
+      <DeleteAndEditModals
+        group={selectedGroup}
+        deleteModalRef={deleteModalRef}
+        editModalRef={editModalRef}
+        onDeleteClose={onDeleteClose}
+        onEditClose={onEditClose}
+      />
     </section>
   );
 };

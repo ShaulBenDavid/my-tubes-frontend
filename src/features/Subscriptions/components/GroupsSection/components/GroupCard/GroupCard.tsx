@@ -3,16 +3,20 @@ import { HiMiniUserGroup } from "react-icons/hi2";
 import { Card } from "@/src/components/Card";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { stringToColor } from "@/src/utils";
+import { CardActions } from "./CardActions";
 
-type GroupCardProps = SubscriptionsGroupType;
+interface GroupCardProps {
+  data: SubscriptionsGroupType;
+  handleDeleteClick: () => void;
+  handleEditClick: () => void;
+}
 
 export const GroupCard = ({
-  // !! will be used later with the edit method
-  //   id,
-  title,
-  description,
-  subscriptionCount,
+  data,
+  handleDeleteClick,
+  handleEditClick,
 }: GroupCardProps): JSX.Element => {
+  const { title, description, subscriptionCount } = data;
   const color = stringToColor(title);
 
   return (
@@ -22,10 +26,17 @@ export const GroupCard = ({
     >
       <h5 className="text-lg font-semibold capitalize">{title}</h5>
       <p className="line-clamp-6">{description}</p>
-      <span className="mt-auto flex flex-row gap-1">
-        <HiMiniUserGroup size={24} color={color} />
-        {subscriptionCount}
-      </span>
+      <div className="mt-auto flex flex-row justify-between">
+        <span className="flex flex-row gap-1">
+          <HiMiniUserGroup size={24} color={color} />
+          {subscriptionCount}
+        </span>
+        <CardActions
+          name={title}
+          onDelete={handleDeleteClick}
+          onEdit={handleEditClick}
+        />
+      </div>
     </Card>
   );
 };

@@ -13,6 +13,8 @@ import { Button, ButtonVariants } from "@/src/components/Button";
 import { Modal } from "@/src/components/Modal";
 import { GroupForm } from "../GroupForm";
 
+const ARIA_CONTROL_GROUP_CREATE = "createGroupModal";
+
 export const CreateGroupCard = (): JSX.Element => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
@@ -45,15 +47,21 @@ export const CreateGroupCard = (): JSX.Element => {
             width="190px"
             onClick={() => modalRef.current?.showModal()}
             id="openModalButton"
-            aria-controls="createGroupModal"
+            aria-controls={ARIA_CONTROL_GROUP_CREATE}
           >
             New Group
           </Button>
         </div>
       </Card>
-      <Modal ref={modalRef} id="createGroupModal" closeModal={handleCloseModal}>
+      <Modal
+        ref={modalRef}
+        id={ARIA_CONTROL_GROUP_CREATE}
+        closeModal={handleCloseModal}
+      >
         <GroupForm
           key={groupData?.id}
+          title="Create a new group"
+          content="The group will help you to organize your Subscriptions by subjects."
           isLoading={isPostGroupLoading}
           isError={isPostGroupError}
           errorMessage={groupError?.message ?? ""}
