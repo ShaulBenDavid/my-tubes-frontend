@@ -4,11 +4,15 @@ import React from "react";
 import { toast } from "react-toastify";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { appQueryClient } from "@/src/queries";
 import type { PostSubscriptionGroupPayload } from "@/src/api/subscription";
 import { Input } from "@/src/components/Input";
 import { Button, ButtonVariants } from "@/src/components/Button";
 import { TextArea } from "@/src/components/TextArea";
-import { usePostSubscriptionsGroup } from "@/src/api/subscription/hooks";
+import {
+  usePostSubscriptionsGroup,
+  GET_SUBSCRIPTIONS_GROUPS_KEY,
+} from "@/src/api/subscription/hooks";
 import { Alert, AlertVariants } from "@/src/components/Alert";
 import { groupDetailsSchema } from "./CreateForm.config";
 
@@ -34,6 +38,9 @@ export const CreateForm = ({
     reset({
       title: "",
       description: "",
+    });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
     });
     handleCloseModal();
   };

@@ -1,4 +1,7 @@
 export { useGetSubscriptionsInfo } from "./useGetSubscriptionsInfo";
 export { useGetSubscriptionsList } from "./useGetSubscriptionsList";
 export { usePostSubscriptionsGroup } from "./usePostSubscriptionsGroup";
-export { useGetSubscriptionsGroups } from "./useGetSubscriptionsGroups";
+export {
+  useGetSubscriptionsGroups,
+  GET_SUBSCRIPTIONS_GROUPS_KEY,
+} from "./useGetSubscriptionsGroups";

@@ -4,9 +4,10 @@ import React from "react";
 import { CreateGroupCard } from "./components/CreateGroupCard";
 import { GroupCard } from "./components/GroupCard";
 import { useGetSubscriptionsGroups } from "@/src/api/subscription/hooks";
+import { GroupCardLoader } from "./components/GroupCard/GroupCard.loader";
 
 export const GroupsSection = (): JSX.Element => {
-  const { subscriptionsGroups } = useGetSubscriptionsGroups();
+  const { subscriptionsGroups, isGroupsLoading } = useGetSubscriptionsGroups();
 
   return (
     <section
@@ -14,17 +15,19 @@ export const GroupsSection = (): JSX.Element => {
       className="grid-cols-groups-auto-fit grid h-full w-full auto-rows-fr grid-rows-4 gap-2 overflow-hidden"
     >
       <CreateGroupCard />
-      {subscriptionsGroups?.map(
-        ({ id, title, description, subscriptionCount }) => (
-          <GroupCard
-            key={id}
-            id={id}
-            title={title}
-            description={description}
-            subscriptionCount={subscriptionCount}
-          />
-        ),
-      )}
+      {isGroupsLoading && <GroupCardLoader />}
+      {!isGroupsLoading &&
+        subscriptionsGroups?.map(
+          ({ id, title, description, subscriptionCount }) => (
+            <GroupCard
+              key={id}
+              id={id}
+              title={title}
+              description={description}
+              subscriptionCount={subscriptionCount}
+            />
+          ),
+        )}
     </section>
   );
 };

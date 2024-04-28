@@ -2,7 +2,7 @@ import ms from "ms";
 import { useQuery } from "@tanstack/react-query";
 import { getSubscriptionsGroups } from "../subscription.methods";
 
-const GET_SUBSCRIPTIONS_GROUPS_KEY = "getSubscriptionsGroups";
+export const GET_SUBSCRIPTIONS_GROUPS_KEY = "getSubscriptionsGroups";
 
 export const useGetSubscriptionsGroups = () => {
   const { isLoading, isError, data } = useQuery({
