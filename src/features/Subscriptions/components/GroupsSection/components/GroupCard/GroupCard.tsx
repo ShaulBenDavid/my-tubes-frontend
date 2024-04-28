@@ -20,7 +20,7 @@ export const GroupCard = ({
       className="flex h-full w-full flex-col border-2"
       style={{ borderColor: color }}
     >
-      <h5 className="text-lg font-semibold">{title}</h5>
+      <h5 className="text-lg font-semibold capitalize">{title}</h5>
       <p className="line-clamp-6">{description}</p>
       <span className="mt-auto flex flex-row gap-1">
         <HiMiniUserGroup size={24} color={color} />

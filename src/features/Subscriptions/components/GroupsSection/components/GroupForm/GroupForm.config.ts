@@ -5,6 +5,7 @@ export const groupDetailsSchema = z.object({
     .string({
       required_error: "Title is required",
     })
+    .toLowerCase()
     .trim()
     .min(1)
     .max(100, "Title can be long than 100 characters")

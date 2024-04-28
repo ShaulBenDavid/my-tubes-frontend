@@ -2,15 +2,37 @@
 
 import React, { useRef } from "react";
 import { FaFolderPlus } from "react-icons/fa";
+import { toast } from "react-toastify";
+import {
+  GET_SUBSCRIPTIONS_GROUPS_KEY,
+  usePostSubscriptionsGroup,
+} from "@/src/api/subscription/hooks";
 import { Card } from "@/src/components/Card";
+import { appQueryClient } from "@/src/queries";
 import { Button, ButtonVariants } from "@/src/components/Button";
 import { Modal } from "@/src/components/Modal";
-import { CreateForm } from "./CreateForm";
+import { GroupForm } from "../GroupForm";
 
 export const CreateGroupCard = (): JSX.Element => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   const handleCloseModal = (): void => modalRef?.current?.close();
+
+  const handleSuccess = (): void => {
+    toast.success("Group created successfully!");
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    handleCloseModal();
+  };
+
+  const {
+    postGroup,
+    groupData,
+    isPostGroupLoading,
+    isPostGroupError,
+    groupError,
+  } = usePostSubscriptionsGroup({ handleSuccess });
 
   return (
     <>
@@ -30,7 +52,14 @@ export const CreateGroupCard = (): JSX.Element => {
         </div>
       </Card>
       <Modal ref={modalRef} id="createGroupModal" closeModal={handleCloseModal}>
-        <CreateForm handleCloseModal={handleCloseModal} />
+        <GroupForm
+          key={groupData?.id}
+          isLoading={isPostGroupLoading}
+          isError={isPostGroupError}
+          errorMessage={groupError?.message ?? ""}
+          mutate={postGroup}
+          handleCloseModal={handleCloseModal}
+        />
       </Modal>
     </>
   );

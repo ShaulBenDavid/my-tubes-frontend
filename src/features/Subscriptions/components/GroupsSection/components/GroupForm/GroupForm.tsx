@@ -1,28 +1,30 @@
 "use client";
 
 import React from "react";
-import { toast } from "react-toastify";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { appQueryClient } from "@/src/queries";
 import type { PostSubscriptionGroupPayload } from "@/src/api/subscription";
 import { Input } from "@/src/components/Input";
 import { Button, ButtonVariants } from "@/src/components/Button";
 import { TextArea } from "@/src/components/TextArea";
-import {
-  usePostSubscriptionsGroup,
-  GET_SUBSCRIPTIONS_GROUPS_KEY,
-} from "@/src/api/subscription/hooks";
 import { Alert, AlertVariants } from "@/src/components/Alert";
-import { groupDetailsSchema } from "./CreateForm.config";
+import { groupDetailsSchema } from "./GroupForm.config";
 
-interface CreateFormProps {
+interface GroupFormProps {
+  mutate: (data: PostSubscriptionGroupPayload) => void;
+  isLoading: boolean;
+  isError: boolean;
+  errorMessage: string;
   handleCloseModal: () => void;
 }
 
-export const CreateForm = ({
+export const GroupForm = ({
+  mutate,
+  isLoading,
+  isError,
+  errorMessage,
   handleCloseModal,
-}: CreateFormProps): JSX.Element => {
+}: GroupFormProps): JSX.Element => {
   const method = useForm<PostSubscriptionGroupPayload>({
     resolver: zodResolver(groupDetailsSchema),
     mode: "onTouched",
@@ -33,24 +35,14 @@ export const CreateForm = ({
     formState: { isValid },
   } = method;
 
-  const handleSuccess = (): void => {
-    toast.success("Group created successfully!");
-    reset({
-      title: "",
-      description: "",
-    });
-    appQueryClient.invalidateQueries({
-      queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
-    });
-    handleCloseModal();
-  };
-
-  const { postGroup, isPostGroupLoading, isPostGroupError, groupError } =
-    usePostSubscriptionsGroup({ handleSuccess });
-
   const onSubmit = handleSubmit((value): void => {
-    postGroup(value);
+    mutate(value);
   });
+
+  const onClose = (): void => {
+    handleCloseModal();
+    reset({ title: "", description: "" });
+  };
 
   return (
     <div className="flex h-fit w-96 flex-col items-center justify-center">
@@ -61,10 +53,10 @@ export const CreateForm = ({
         The group will help you to organize your <strong>Subscriptions </strong>
         by subjects.
       </p>
-      {isPostGroupError && (
+      {isError && (
         <Alert
           variant={AlertVariants.DANGER}
-          content={groupError?.message ?? ""}
+          content={errorMessage}
           className="mt-4"
         />
       )}
@@ -82,14 +74,19 @@ export const CreateForm = ({
             placeholder="Enter description of the group."
             rows={4}
           />
-          <Button
-            variant={ButtonVariants.PRIMARY}
-            type="submit"
-            disabled={!isValid}
-            isLoading={isPostGroupLoading}
-          >
-            create group
-          </Button>
+          <div className="flex flex-row gap-2">
+            <Button variant={ButtonVariants.SECONDARY} onClick={onClose}>
+              cancel
+            </Button>
+            <Button
+              variant={ButtonVariants.PRIMARY}
+              type="submit"
+              disabled={!isValid}
+              isLoading={isLoading}
+            >
+              create group
+            </Button>
+          </div>
         </form>
       </FormProvider>
     </div>
