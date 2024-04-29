@@ -7,14 +7,18 @@ import { Spinner } from "@/src/components/Spinner";
 import { EmptyState } from "@/src/components/EmptyState";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription/subscription.types";
 import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
+import { SearchInput } from "@/src/components/SearchInput";
 import { SortFilter } from "@/src/components/SortFilter";
 import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
 import { subscriptionsListSortConfig } from "./SubscriptionsList.config";
+import { useDebounce } from "@/src/hooks";
 
 export const SubscriptionsList = (): JSX.Element => {
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
+  const [search, setSearch] = useState<string>("");
+  console.log("text =", search);
   const {
     subscriptionsList,
     isSubscriptionsLoading,
@@ -32,16 +36,28 @@ export const SubscriptionsList = (): JSX.Element => {
     rootMargin: "100px",
   });
 
+  const debouncedHandleInputChange = useDebounce((searchValue: string) => {
+    setSearch(searchValue);
+  }, 300);
+
   return (
     <div className="flex h-full w-96 shrink-0 flex-col gap-4">
-      <SortFilter
-        label="sort"
-        options={subscriptionsListSortConfig}
-        handleChange={(value) => setSelectedSort(value)}
-      />
+      <div>
+        <SortFilter
+          label="sort"
+          options={subscriptionsListSortConfig}
+          handleChange={(value) => setSelectedSort(value)}
+        />
+        <SearchInput
+          onReset={() => ({})}
+          placeholder="Search Channels..."
+          onChange={(event) => debouncedHandleInputChange(event.target.value)}
+        />
+      </div>
       <div
         className="flex h-full w-full snap-y snap-mandatory flex-col gap-4 overflow-y-auto"
         ref={rootRef}
+        id="searchResults"
       >
         {isSubscriptionsLoading && <ChannelCardLoader />}
         {!isSubscriptionsLoading && !subscriptionsList?.length && (
