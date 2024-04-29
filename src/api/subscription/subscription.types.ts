@@ -21,6 +21,7 @@ export enum SubscriptionsListSortEnum {
 
 export type GetSubscriptionsListParams = PaginationParams & {
   ordering?: SubscriptionsListSortEnum;
+  search?: string;
 };
 
 export type SubscriptionsGroupType = {

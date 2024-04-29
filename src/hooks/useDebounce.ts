@@ -1,13 +1,19 @@
-export const useDebounce = <T extends any[], P extends number>(
-  cb: (...args: T) => void,
-  delay: P,
-) => {
-  let timeout: ReturnType<typeof setTimeout>;
+"use client";
 
-  return (...args: T) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      cb(...args);
+import { useState, useEffect } from "react";
+
+export const useDebounce = (value: string, delay: number): string => {
+  const [debouncedValue, setDebouncedValue] = useState<string>("");
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedValue(value);
     }, delay);
-  };
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
 };

@@ -39,7 +39,7 @@ export const GroupForm = ({
   const {
     handleSubmit,
     reset,
-    formState: { isValid },
+    formState: { isValid, isDirty },
   } = method;
 
   const onSubmit = handleSubmit((value): void => {
@@ -83,7 +83,7 @@ export const GroupForm = ({
             <Button
               variant={ButtonVariants.PRIMARY}
               type="submit"
-              disabled={!isValid}
+              disabled={!isValid || !isDirty}
               isLoading={isLoading}
             >
               submit

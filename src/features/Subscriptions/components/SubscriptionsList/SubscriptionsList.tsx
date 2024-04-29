@@ -2,23 +2,23 @@
 
 import React, { useState } from "react";
 import useInfiniteScroll from "react-infinite-scroll-hook";
+import { useDebounce } from "@/src/hooks";
 import { useGetSubscriptionsList } from "@/src/api/subscription/hooks";
 import { Spinner } from "@/src/components/Spinner";
 import { EmptyState } from "@/src/components/EmptyState";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription/subscription.types";
 import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
-import { SearchInput } from "@/src/components/SearchInput";
-import { SortFilter } from "@/src/components/SortFilter";
 import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
 import { subscriptionsListSortConfig } from "./SubscriptionsList.config";
-import { useDebounce } from "@/src/hooks";
+import { FiltersHeader } from "./FiltersHeader";
 
 export const SubscriptionsList = (): JSX.Element => {
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
   const [search, setSearch] = useState<string>("");
-  console.log("text =", search);
+  const debouncedValue = useDebounce(search, 300);
+
   const {
     subscriptionsList,
     isSubscriptionsLoading,
@@ -26,7 +26,10 @@ export const SubscriptionsList = (): JSX.Element => {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useGetSubscriptionsList({ ordering: selectedSort });
+  } = useGetSubscriptionsList({
+    ordering: selectedSort,
+    search: debouncedValue,
+  });
 
   const [sentryRef, { rootRef }] = useInfiniteScroll({
     loading: isSubscriptionsLoading || isFetchingNextPage,
@@ -36,24 +39,15 @@ export const SubscriptionsList = (): JSX.Element => {
     rootMargin: "100px",
   });
 
-  const debouncedHandleInputChange = useDebounce((searchValue: string) => {
-    setSearch(searchValue);
-  }, 300);
-
   return (
     <div className="flex h-full w-96 shrink-0 flex-col gap-4">
-      <div>
-        <SortFilter
-          label="sort"
-          options={subscriptionsListSortConfig}
-          handleChange={(value) => setSelectedSort(value)}
-        />
-        <SearchInput
-          onReset={() => ({})}
-          placeholder="Search Channels..."
-          onChange={(event) => debouncedHandleInputChange(event.target.value)}
-        />
-      </div>
+      <FiltersHeader
+        searchValue={search}
+        sortOptions={subscriptionsListSortConfig}
+        onSortChange={(value) => setSelectedSort(value)}
+        onSearchReset={() => setSearch("")}
+        onSearchChange={(searchValue) => setSearch(searchValue)}
+      />
       <div
         className="flex h-full w-full snap-y snap-mandatory flex-col gap-4 overflow-y-auto"
         ref={rootRef}

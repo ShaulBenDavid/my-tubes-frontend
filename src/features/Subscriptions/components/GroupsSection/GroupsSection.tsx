@@ -1,12 +1,22 @@
 "use client";
 
 import React, { useCallback, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { useGetSubscriptionsGroups } from "@/src/api/subscription/hooks";
 import { CreateGroupCard } from "./components/CreateGroupCard";
 import { GroupCard } from "./components/GroupCard";
 import { GroupCardLoader } from "./components/GroupCard/GroupCard.loader";
-import { DeleteAndEditModals } from "./components/DeleteAndEditModals";
+
+const DeleteAndEditModals = dynamic(
+  () =>
+    import("./components/DeleteAndEditModals").then(
+      (mod) => mod.DeleteAndEditModals,
+    ),
+  {
+    ssr: false,
+  },
+);
 
 export const GroupsSection = (): JSX.Element => {
   const [selectedGroup, setSelectedGroup] = useState<
