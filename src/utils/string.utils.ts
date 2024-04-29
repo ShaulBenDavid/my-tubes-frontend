@@ -32,3 +32,6 @@ export const isLink = (str: string): boolean => {
   const urlPattern = /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(:\d+)?(\/\S*)?$/;
   return urlPattern.test(str);
 };
+
+export const wordToCapitalize = (word: string): string =>
+  word.charAt(0).toUpperCase() + word.slice(1);

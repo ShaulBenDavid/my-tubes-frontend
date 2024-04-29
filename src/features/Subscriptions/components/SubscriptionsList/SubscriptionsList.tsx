@@ -49,7 +49,7 @@ export const SubscriptionsList = (): JSX.Element => {
         onSearchChange={(searchValue) => setSearch(searchValue)}
       />
       <div
-        className="flex h-full w-full snap-y snap-mandatory flex-col gap-4 overflow-y-auto"
+        className="flex h-full w-full snap-y snap-mandatory flex-col gap-4 overflow-y-auto pr-2"
         ref={rootRef}
         id="searchResults"
       >

@@ -49,7 +49,7 @@ export const GroupsSection = (): JSX.Element => {
   return (
     <section
       /* prettier-ignore */
-      className="grid-cols-groups-auto-fit grid h-full w-full auto-rows-fr grid-rows-4 gap-2 overflow-hidden"
+      className="grid-cols-groups-auto-fit grid h-full w-full auto-rows-fr grid-rows-4 gap-2 overflow-hidden overflow-y-auto"
     >
       <CreateGroupCard />
       {isGroupsLoading && <GroupCardLoader />}
