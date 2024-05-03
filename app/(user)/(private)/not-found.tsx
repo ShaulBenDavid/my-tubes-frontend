@@ -13,7 +13,7 @@ const NotFound = () => (
         <ButtonLink
           href={Routes.DASHBOARD}
           variant={ButtonLinkVariants.PRIMARY}
-          width="180px"
+          width="200px"
         >
           Go to Dashboard page
         </ButtonLink>
