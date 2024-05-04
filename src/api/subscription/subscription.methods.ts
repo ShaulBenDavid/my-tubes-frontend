@@ -6,7 +6,9 @@ import type {
   GetSubscriptionsInfoResponse,
   GetSubscriptionsListParams,
   GetSubscriptionsListResponse,
+  PostAddSubscriptionGroupPayload,
   PostSubscriptionGroupPayload,
+  SubscriptionType,
   SubscriptionsGroupType,
 } from "./subscription.types";
 
@@ -54,4 +56,17 @@ export const getSubscriptionsGroups = (): Promise<SubscriptionsGroupType[]> =>
   apiMethodInstance<SubscriptionsGroupType[]>({
     url: ApiEndpoints.GROUPS,
     method: Methods.GET,
+  });
+
+export const postAddSubscriptionGroup = ({
+  groupId,
+  ...restData
+}: PostAddSubscriptionGroupPayload): Promise<SubscriptionType> =>
+  apiMethodInstance<SubscriptionType>({
+    url: ApiEndpoints.ADD_SUBSCRIPTION_GROUP.replace(
+      "{groupId}",
+      String(groupId),
+    ),
+    method: Methods.POST,
+    data: restData,
   });

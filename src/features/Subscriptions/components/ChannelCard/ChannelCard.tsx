@@ -7,6 +7,7 @@ import { Card } from "@/src/components/Card";
 import { Avatar } from "@/src/components/Avatar";
 import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
 import { YOUTUBE_CHANNEL_URL } from "./ChannelCard.config";
+import { DND_TYPE_ID } from "../GroupsSection/components/GroupCard";
 
 interface ChannelCardProps {
   title: string;
@@ -25,8 +26,8 @@ export const ChannelCard = ({
 }: ChannelCardProps): JSX.Element => {
   const [{ opacity }, drag] = useDrag(
     () => ({
-      type: "channel",
-      item: { title, channelId, itemId },
+      type: DND_TYPE_ID,
+      item: { title, channelId, id: itemId, imageUrl, description },
       collect: (monitor) => ({
         opacity: monitor.isDragging() ? 0.4 : 1,
       }),

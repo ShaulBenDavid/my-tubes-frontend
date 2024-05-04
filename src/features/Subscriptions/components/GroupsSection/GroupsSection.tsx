@@ -1,12 +1,21 @@
 "use client";
 
 import React, { useCallback, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import dynamic from "next/dynamic";
-import type { SubscriptionsGroupType } from "@/src/api/subscription";
-import { useGetSubscriptionsGroups } from "@/src/api/subscription/hooks";
+import type {
+  SubscriptionType,
+  SubscriptionsGroupType,
+} from "@/src/api/subscription";
+import {
+  GET_SUBSCRIPTIONS_GROUPS_KEY,
+  useGetSubscriptionsGroups,
+  usePostAddSubscriptionGroup,
+} from "@/src/api/subscription/hooks";
 import { CreateGroupCard } from "./components/CreateGroupCard";
 import { GroupCard } from "./components/GroupCard";
 import { GroupCardLoader } from "./components/GroupCard/GroupCard.loader";
+import { appQueryClient } from "@/src/queries";
 
 const DeleteAndEditModals = dynamic(
   () =>
@@ -26,6 +35,14 @@ export const GroupsSection = (): JSX.Element => {
   const editModalRef = useRef<HTMLDialogElement>(null);
 
   const { subscriptionsGroups, isGroupsLoading } = useGetSubscriptionsGroups();
+  const { addSubscriptionGroup } = usePostAddSubscriptionGroup({
+    handleSuccess: (res) => {
+      appQueryClient.invalidateQueries({
+        queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+      });
+      toast.success(`${res.title} was added to a group successfully!`);
+    },
+  });
 
   const onDeleteClose = (): void => deleteModalRef?.current?.close();
   const onEditClose = (): void => editModalRef?.current?.close();
@@ -46,6 +63,13 @@ export const GroupsSection = (): JSX.Element => {
     [editModalRef],
   );
 
+  const handleDrop = useCallback(
+    (data: SubscriptionType, groupId: number) => {
+      addSubscriptionGroup({ groupId, subscriptionId: data.id });
+    },
+    [addSubscriptionGroup],
+  );
+
   return (
     <section
       /* prettier-ignore */
@@ -58,6 +82,7 @@ export const GroupsSection = (): JSX.Element => {
           <GroupCard
             key={group.id}
             data={group}
+            onDrop={handleDrop}
             handleDeleteClick={() => handleDeleteClick(group)}
             handleEditClick={() => handleEditClick(group)}
           />

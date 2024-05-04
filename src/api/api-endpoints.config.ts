@@ -9,4 +9,5 @@ export enum ApiEndpoints {
   SUBSCRIPTIONS_LIST = "subscribe/list/",
   // GROUPS
   GROUPS = "subscribe/groups/",
+  ADD_SUBSCRIPTION_GROUP = "subscribe/groups/{groupId}/add-subscription/",
 }

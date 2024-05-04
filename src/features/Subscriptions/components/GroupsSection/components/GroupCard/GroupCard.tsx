@@ -5,20 +5,27 @@ import { Tooltip } from "react-tooltip";
 import { useDrop } from "react-dnd";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { Card } from "@/src/components/Card";
-import type { SubscriptionsGroupType } from "@/src/api/subscription";
+import type {
+  SubscriptionType,
+  SubscriptionsGroupType,
+} from "@/src/api/subscription";
 import { stringToColor, wordToCapitalize } from "@/src/utils";
 import { CardActions } from "./CardActions";
+
+export const DND_TYPE_ID = "channel";
 
 interface GroupCardProps {
   data: SubscriptionsGroupType;
   handleDeleteClick: () => void;
   handleEditClick: () => void;
+  onDrop: (data: SubscriptionType, groupId: number) => void;
 }
 
 export const GroupCard = ({
   data,
   handleDeleteClick,
   handleEditClick,
+  onDrop,
 }: GroupCardProps): JSX.Element => {
   const { title, description, subscriptionCount, id } = data;
   const color = stringToColor(title);
@@ -26,13 +33,10 @@ export const GroupCard = ({
   const countDetails = `Subscriptions count in ${capitalizedTitle} group is ${subscriptionCount}`;
 
   const [{ isOver }, drop] = useDrop({
-    accept: "channel",
-    drop: (dropData) => {
-      console.log(dropData);
-    },
+    accept: DND_TYPE_ID,
+    drop: (dropData: SubscriptionType) => onDrop(dropData, data.id),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
     }),
   });
 

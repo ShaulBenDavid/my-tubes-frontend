@@ -41,3 +41,8 @@ export type EditSubscriptionGroupPayload = Omit<
   SubscriptionsGroupType,
   "subscriptionCount"
 >;
+
+export type PostAddSubscriptionGroupPayload = Record<
+  `${"subscription" | "group"}Id`,
+  number
+>;

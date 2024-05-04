@@ -7,3 +7,4 @@ export {
 } from "./useGetSubscriptionsGroups";
 export { useEditSubscriptionsGroup } from "./useEditSubscriptionsGroup";
 export { useDeleteSubscriptionsGroup } from "./useDeleteSubscriptionsGroup";
+export { usePostAddSubscriptionGroup } from "./usePostAddSubscriptionGroup";
