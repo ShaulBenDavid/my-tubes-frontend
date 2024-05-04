@@ -12,6 +12,7 @@ interface ChannelCardProps {
   title: string;
   description: string;
   imageUrl: string;
+  itemId: number;
   channelId: string;
 }
 
@@ -19,12 +20,13 @@ export const ChannelCard = ({
   title,
   description,
   imageUrl,
+  itemId,
   channelId,
 }: ChannelCardProps): JSX.Element => {
   const [{ opacity }, drag] = useDrag(
     () => ({
       type: "channel",
-      item: { title },
+      item: { title, channelId, itemId },
       collect: (monitor) => ({
         opacity: monitor.isDragging() ? 0.4 : 1,
       }),

@@ -61,12 +61,13 @@ export const SubscriptionsList = (): JSX.Element => {
         )}
         {!!subscriptionsList?.length &&
           subscriptionsList.map(
-            ({ title, description, imageUrl, channelId }) => (
+            ({ title, description, imageUrl, channelId, id }) => (
               <ChannelCard
                 key={title}
                 title={title}
                 description={description}
                 imageUrl={imageUrl}
+                itemId={id}
                 channelId={channelId}
               />
             ),

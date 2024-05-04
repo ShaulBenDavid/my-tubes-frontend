@@ -1,6 +1,7 @@
 import type { PaginationParams, PaginationType } from "../common.types";
 
 export interface SubscriptionType {
+  id: number;
   title: string;
   description: string;
   channelId: string;
