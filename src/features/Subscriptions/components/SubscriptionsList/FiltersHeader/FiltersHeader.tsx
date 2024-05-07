@@ -3,6 +3,7 @@ import { SearchInput } from "@/src/components/SearchInput";
 import { SortFilter } from "@/src/components/SortFilter";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
 import type { SubscriptionsSortOptionType } from "../SubscriptionsList.config";
+import { Checkbox } from "@/src/components/Checkbox";
 
 interface FiltersHeaderProps {
   searchValue: string;
@@ -25,6 +26,7 @@ export const FiltersHeader = ({
       options={sortOptions}
       handleChange={onSortChange}
     />
+    <Checkbox idFor="ungroup-subscription" label="Show Ungroup Subscriptions" />
     <SearchInput
       value={searchValue}
       onReset={onSearchReset}
