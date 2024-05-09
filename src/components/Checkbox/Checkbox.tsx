@@ -12,6 +12,7 @@ export const Checkbox = ({
   ...props
 }: CheckboxProps): JSX.Element => (
   <label
+    aria-checked={props["aria-checked"]}
     htmlFor={idFor}
     className="flex items-center whitespace-nowrap p-4 text-sm font-medium text-white"
   >

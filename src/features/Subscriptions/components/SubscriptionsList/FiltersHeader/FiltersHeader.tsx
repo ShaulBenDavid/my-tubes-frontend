@@ -6,6 +6,8 @@ import type { SubscriptionsSortOptionType } from "../SubscriptionsList.config";
 import { Checkbox } from "@/src/components/Checkbox";
 
 interface FiltersHeaderProps {
+  isShowUngroup: boolean;
+  onUngroupChange: () => void;
   searchValue: string;
   sortOptions: SubscriptionsSortOptionType[];
   onSortChange: (value?: SubscriptionsListSortEnum | undefined) => void;
@@ -14,6 +16,8 @@ interface FiltersHeaderProps {
 }
 
 export const FiltersHeader = ({
+  isShowUngroup,
+  onUngroupChange,
   searchValue,
   sortOptions,
   onSortChange,
@@ -30,6 +34,9 @@ export const FiltersHeader = ({
       <Checkbox
         idFor="ungroup-subscription"
         label="Show Ungroup Subscriptions"
+        checked={isShowUngroup}
+        aria-checked={isShowUngroup}
+        onChange={onUngroupChange}
       />
     </div>
     <SearchInput

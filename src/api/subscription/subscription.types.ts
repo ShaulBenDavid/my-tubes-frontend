@@ -23,6 +23,7 @@ export enum SubscriptionsListSortEnum {
 export type GetSubscriptionsListParams = PaginationParams & {
   ordering?: SubscriptionsListSortEnum;
   search?: string;
+  group?: number | "ungroup";
 };
 
 export type SubscriptionsGroupType = {

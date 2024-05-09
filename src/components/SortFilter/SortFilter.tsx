@@ -24,7 +24,7 @@ export const SortFilter = <T extends string | number>({
   <div className="relative h-8 w-full">
     <label
       htmlFor={method}
-      className="absolute inset-0 bg-spec-space-bg px-4 text-center font-semibold capitalize leading-8"
+      className="absolute inset-0 bg-spec-space-bg text-center font-semibold capitalize leading-8"
     >
       <span className="flex flex-row items-center justify-center gap-2">
         {label}

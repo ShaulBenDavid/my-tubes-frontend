@@ -12,11 +12,14 @@ import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
 import { subscriptionsListSortConfig } from "./SubscriptionsList.config";
 import { FiltersHeader } from "./FiltersHeader";
 
+const UNGROUP_SUBSCRIPTION_FILTER = "ungroup";
+
 export const SubscriptionsList = (): JSX.Element => {
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
   const [search, setSearch] = useState<string>("");
+  const [isShowUngroup, setIsShowUngroup] = useState<boolean>(false);
   const debouncedValue = useDebounce(search, 300);
 
   const {
@@ -29,6 +32,7 @@ export const SubscriptionsList = (): JSX.Element => {
   } = useGetSubscriptionsList({
     ordering: selectedSort,
     search: debouncedValue,
+    group: isShowUngroup ? UNGROUP_SUBSCRIPTION_FILTER : undefined,
   });
 
   const [sentryRef, { rootRef }] = useInfiniteScroll({
@@ -42,6 +46,8 @@ export const SubscriptionsList = (): JSX.Element => {
   return (
     <div className="flex h-full w-96 shrink-0 flex-col gap-4">
       <FiltersHeader
+        isShowUngroup={isShowUngroup}
+        onUngroupChange={() => setIsShowUngroup((prev) => !prev)}
         searchValue={search}
         sortOptions={subscriptionsListSortConfig}
         onSortChange={(value) => setSelectedSort(value)}
