@@ -21,12 +21,17 @@ export const FiltersHeader = ({
   onSearchReset,
 }: FiltersHeaderProps): JSX.Element => (
   <div>
-    <SortFilter
-      label="sort"
-      options={sortOptions}
-      handleChange={onSortChange}
-    />
-    <Checkbox idFor="ungroup-subscription" label="Show Ungroup Subscriptions" />
+    <div className="flex flex-row items-center">
+      <SortFilter
+        label="sort"
+        options={sortOptions}
+        handleChange={onSortChange}
+      />
+      <Checkbox
+        idFor="ungroup-subscription"
+        label="Show Ungroup Subscriptions"
+      />
+    </div>
     <SearchInput
       value={searchValue}
       onReset={onSearchReset}
