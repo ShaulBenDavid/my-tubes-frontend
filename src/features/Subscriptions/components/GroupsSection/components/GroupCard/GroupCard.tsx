@@ -51,7 +51,12 @@ export const GroupCard = ({
         <h5 className="text-lg font-semibold">
           <Link
             className="hover:text-blue-400 hover:underline"
-            href={buildRoutePath(Routes.GROUP, String(id))}
+            href={buildRoutePath(
+              Routes.SUBSCRIPTIONS,
+              Routes.GROUP,
+              title,
+              String(id),
+            )}
           >
             <span style={{ color }}>#</span>
             {capitalizedTitle}
