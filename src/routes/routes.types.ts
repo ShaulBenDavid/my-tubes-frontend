@@ -7,4 +7,5 @@ export enum Routes {
   // Private Routes
   DASHBOARD = "/dashboard",
   SUBSCRIPTIONS = "/subscriptions",
+  GROUP = "/group",
 }

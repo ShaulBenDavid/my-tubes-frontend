@@ -8,7 +8,10 @@ import { Spinner } from "@/src/components/Spinner";
 import { EmptyState } from "@/src/components/EmptyState";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription/subscription.types";
 import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
-import { ChannelCard, ChannelCardLoader } from "../ChannelCard";
+import {
+  ChannelCard,
+  ChannelCardLoader,
+} from "../../../../components/ChannelCard";
 import { subscriptionsListSortConfig } from "./SubscriptionsList.config";
 import { FiltersHeader } from "./FiltersHeader";
 
@@ -75,6 +78,7 @@ export const SubscriptionsList = (): JSX.Element => {
                 imageUrl={imageUrl}
                 itemId={id}
                 channelId={channelId}
+                isDraggable
               />
             ),
           )}

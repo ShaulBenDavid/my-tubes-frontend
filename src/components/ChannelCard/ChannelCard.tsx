@@ -7,7 +7,7 @@ import { Card } from "@/src/components/Card";
 import { Avatar } from "@/src/components/Avatar";
 import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
 import { YOUTUBE_CHANNEL_URL } from "./ChannelCard.config";
-import { DND_TYPE_ID } from "../GroupsSection/components/GroupCard";
+import { DND_TYPE_ID } from "../../features/Subscriptions/components/GroupsSection/components/GroupCard";
 
 interface ChannelCardProps {
   title: string;
@@ -15,6 +15,7 @@ interface ChannelCardProps {
   imageUrl: string;
   itemId: number;
   channelId: string;
+  isDraggable?: boolean;
 }
 
 export const ChannelCard = ({
@@ -23,27 +24,32 @@ export const ChannelCard = ({
   imageUrl,
   itemId,
   channelId,
+  isDraggable = false,
 }: ChannelCardProps): JSX.Element => {
-  const [{ opacity }, drag] = useDrag(
+  const [{ opacity, draggingClass }, drag] = useDrag(
     () => ({
       type: DND_TYPE_ID,
       item: { title, channelId, id: itemId, imageUrl, description },
+      canDrag: isDraggable,
       collect: (monitor) => ({
         opacity: monitor.isDragging() ? 0.4 : 1,
+        draggingClass: monitor.isDragging() ? "cursor-grabbing" : "cursor-grab",
       }),
     }),
     [title],
   );
 
   return (
-    <div ref={drag} style={{ opacity }}>
+    <div ref={drag} style={{ opacity }} className={draggingClass}>
       <Card className="snap-start">
         <div className="flex flex-row items-center gap-2">
           <Avatar name={title} url={imageUrl} />
           <h5 className="line-clamp-1 text-ellipsis text-base font-semibold capitalize">
             {title}
           </h5>
-          <MdDragIndicator size={30} className="ml-auto opacity-70" />
+          {isDraggable && (
+            <MdDragIndicator size={30} className="ml-auto opacity-70" />
+          )}
         </div>
         <p className="line-clamp-3 text-ellipsis pt-2">{description}</p>
         <div className="ml-auto flex w-7/12 flex-row gap-2 pt-2">

@@ -1,15 +1,17 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Tooltip } from "react-tooltip";
 import { useDrop } from "react-dnd";
 import { HiMiniUserGroup } from "react-icons/hi2";
+import { Routes } from "@/src/routes";
 import { Card } from "@/src/components/Card";
 import type {
   SubscriptionType,
   SubscriptionsGroupType,
 } from "@/src/api/subscription";
-import { stringToColor, wordToCapitalize } from "@/src/utils";
+import { buildRoutePath, stringToColor, wordToCapitalize } from "@/src/utils";
 import { CardActions } from "./CardActions";
 
 export const DND_TYPE_ID = "channel";
@@ -28,7 +30,7 @@ export const GroupCard = ({
   onDrop,
 }: GroupCardProps): JSX.Element => {
   const { title, description, subscriptionCount, id } = data;
-  const color = stringToColor(title);
+  const color = stringToColor(title + id);
   const capitalizedTitle = wordToCapitalize(title);
   const countDetails = `Subscriptions count in ${capitalizedTitle} group is ${subscriptionCount}`;
 
@@ -46,7 +48,15 @@ export const GroupCard = ({
         className="flex h-full w-full flex-col border-2"
         style={{ borderColor: color }}
       >
-        <h5 className="text-lg font-semibold">{capitalizedTitle}</h5>
+        <h5 className="text-lg font-semibold">
+          <Link
+            className="hover:text-blue-400 hover:underline"
+            href={buildRoutePath(Routes.GROUP, String(id))}
+          >
+            <span style={{ color }}>#</span>
+            {capitalizedTitle}
+          </Link>
+        </h5>
         <p className="line-clamp-6">{description}</p>
         <div className="mt-auto flex flex-row justify-between">
           <Tooltip content={countDetails} id={String(id)} />
