@@ -15,11 +15,7 @@ const GroupPage = async ({ params: { group } }: GroupPageProps) => {
     notFound();
   }
 
-  return (
-    <div>
-      <Groups groupId={group[1]} />
-    </div>
-  );
+  return <Groups groupName={group[0]} groupId={Number(groupId)} />;
 };
 
 export default GroupPage;

@@ -40,8 +40,12 @@ export const ChannelCard = ({
   );
 
   return (
-    <div ref={drag} style={{ opacity }} className={draggingClass}>
-      <Card className="snap-start">
+    <div
+      ref={drag}
+      style={{ opacity }}
+      className={isDraggable ? draggingClass : ""}
+    >
+      <Card className="flex h-full snap-start flex-col">
         <div className="flex flex-row items-center gap-2">
           <Avatar name={title} url={imageUrl} />
           <h5 className="line-clamp-1 text-ellipsis text-base font-semibold capitalize">
@@ -52,7 +56,7 @@ export const ChannelCard = ({
           )}
         </div>
         <p className="line-clamp-3 text-ellipsis pt-2">{description}</p>
-        <div className="ml-auto flex w-7/12 flex-row gap-2 pt-2">
+        <div className="ml-auto mt-auto flex w-7/12 flex-row gap-2 pt-2">
           <ButtonLink
             variant={ButtonLinkVariants.PRIMARY}
             href={`${YOUTUBE_CHANNEL_URL}${channelId}`}

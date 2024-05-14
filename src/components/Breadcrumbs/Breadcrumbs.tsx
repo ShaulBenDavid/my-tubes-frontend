@@ -25,7 +25,7 @@ export const Breadcrumbs = ({ breadcrumbs }: BreadcrumbsProps): JSX.Element => (
             {isLastItem ? (
               <span className="opacity-60">{link}</span>
             ) : (
-              <Link href={link} className="hover:underline">
+              <Link href={`/${link}`} className="hover:underline">
                 {link}
               </Link>
             )}
