@@ -52,6 +52,14 @@ export const deleteSubscriptionsGroup = (id: number): Promise<object> =>
     method: Methods.DELETE,
   });
 
+export const getSubscriptionsGroup = (
+  id: number,
+): Promise<SubscriptionsGroupType> =>
+  apiMethodInstance<SubscriptionsGroupType>({
+    url: `${ApiEndpoints.GROUPS}${id}/`,
+    method: Methods.GET,
+  });
+
 export const getSubscriptionsGroups = (): Promise<SubscriptionsGroupType[]> =>
   apiMethodInstance<SubscriptionsGroupType[]>({
     url: ApiEndpoints.GROUPS,

@@ -4,7 +4,10 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import { Breadcrumbs } from "@/src/components/Breadcrumbs";
-import { useGetSubscriptionsList } from "@/src/api/subscription/hooks";
+import {
+  useGetSubscriptionsGroup,
+  useGetSubscriptionsList,
+} from "@/src/api/subscription/hooks";
 import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
 import { ChannelCard, ChannelCardLoader } from "@/src/components/ChannelCard";
 import { EmptyState } from "@/src/components/EmptyState";
@@ -12,10 +15,9 @@ import { Spinner } from "@/src/components/Spinner";
 
 interface GroupsProps {
   groupId: number;
-  groupName: string;
 }
 
-export const Groups = ({ groupId, groupName }: GroupsProps): JSX.Element => {
+export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
   const pathname = usePathname();
   const breadcrumbs = pathname.split("/").filter((crumb) => crumb !== "");
   const breadcrumbsWithoutLast = breadcrumbs.slice(0, -1);
@@ -30,6 +32,7 @@ export const Groups = ({ groupId, groupName }: GroupsProps): JSX.Element => {
   } = useGetSubscriptionsList({
     group: groupId,
   });
+  const { subscriptionsGroup } = useGetSubscriptionsGroup({ groupId });
 
   const [sentryRef, { rootRef }] = useInfiniteScroll({
     loading: isSubscriptionsLoading || isFetchingNextPage,
@@ -42,12 +45,12 @@ export const Groups = ({ groupId, groupName }: GroupsProps): JSX.Element => {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />
-      <header>
-        <h1 className="pt-3 text-xl font-semibold capitalize">
-          {groupName}
+      <header className="border-b border-white/30 py-4">
+        <h1 className="text-xl font-semibold capitalize">
+          {subscriptionsGroup?.title}
           <span className="ps-2">({subscriptionsCount ?? "--"})</span>
         </h1>
-        <p>Description</p>
+        <p className="w-3/5">{subscriptionsGroup?.description}</p>
       </header>
       <section
         /* prettier-ignore */
