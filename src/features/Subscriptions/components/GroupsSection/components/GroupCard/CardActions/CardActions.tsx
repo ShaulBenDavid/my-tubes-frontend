@@ -32,7 +32,7 @@ export const CardActions = ({
       id="delete-group-button"
       aria-label={`Delete group - ${name}`}
       aria-controls={ARIA_CONTROL_GROUP_DELETE}
-      className="rounded-xl p-2 hover:bg-white/20 active:bg-white/30"
+      className="rounded-xl p-2 hover:bg-red-600/20 active:bg-red-600/30"
       onClick={onDelete}
     >
       <TiFolderDelete size={24} />

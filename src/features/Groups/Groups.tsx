@@ -54,8 +54,8 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
     <div className="flex h-full flex-col overflow-hidden">
       <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />
       <GroupHeader
-        title={subscriptionsGroup?.title ?? ""}
-        description={subscriptionsGroup?.description ?? ""}
+        title={subscriptionsGroup?.title}
+        description={subscriptionsGroup?.description}
         subscriptionsCount={subscriptionsCount}
         searchValue={search}
         sortOptions={subscriptionsListSortConfig}
