@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import { Breadcrumbs } from "@/src/components/Breadcrumbs";
@@ -8,16 +8,25 @@ import {
   useGetSubscriptionsGroup,
   useGetSubscriptionsList,
 } from "@/src/api/subscription/hooks";
+import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
 import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
 import { ChannelCard, ChannelCardLoader } from "@/src/components/ChannelCard";
+import { useDebounce } from "@/src/hooks";
 import { EmptyState } from "@/src/components/EmptyState";
 import { Spinner } from "@/src/components/Spinner";
+import { GroupHeader } from "./GroupHeader";
+import { subscriptionsListSortConfig } from "../Subscriptions/components/SubscriptionsList";
 
 interface GroupsProps {
   groupId: number;
 }
 
 export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
+  const [selectedSort, setSelectedSort] = useState<
+    SubscriptionsListSortEnum | undefined
+  >();
+  const [search, setSearch] = useState<string>("");
+  const debouncedValue = useDebounce(search, 300);
   const pathname = usePathname();
   const breadcrumbs = pathname.split("/").filter((crumb) => crumb !== "");
   const breadcrumbsWithoutLast = breadcrumbs.slice(0, -1);
@@ -31,6 +40,8 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
     isFetchingNextPage,
   } = useGetSubscriptionsList({
     group: groupId,
+    search: debouncedValue,
+    ordering: selectedSort,
   });
   const { subscriptionsGroup } = useGetSubscriptionsGroup({ groupId });
 
@@ -45,13 +56,16 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />
-      <header className="border-b border-white/30 py-4">
-        <h1 className="text-xl font-semibold capitalize">
-          {subscriptionsGroup?.title}
-          <span className="ps-2">({subscriptionsCount ?? "--"})</span>
-        </h1>
-        <p className="w-3/5">{subscriptionsGroup?.description}</p>
-      </header>
+      <GroupHeader
+        title={subscriptionsGroup?.title ?? ""}
+        description={subscriptionsGroup?.description ?? ""}
+        subscriptionsCount={subscriptionsCount}
+        searchValue={search}
+        sortOptions={subscriptionsListSortConfig}
+        onSortChange={(value) => setSelectedSort(value)}
+        onSearchReset={() => setSearch("")}
+        onSearchChange={(searchValue) => setSearch(searchValue)}
+      />
       <section
         /* prettier-ignore */
         className="grid-rows-groups-row-fit grid h-full w-full grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4"
@@ -63,7 +77,11 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
           <div className="col-span-full row-span-full flex h-full w-full items-center justify-center">
             <EmptyState
               svgUrl={NoDataSVG}
-              header="No Subscriptions In this group."
+              header={
+                debouncedValue.length
+                  ? `No Results Found For: ${debouncedValue}`
+                  : "No Subscriptions In this group."
+              }
             />
           </div>
         )}
