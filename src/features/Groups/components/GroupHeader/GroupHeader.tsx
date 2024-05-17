@@ -2,7 +2,7 @@ import React from "react";
 import { SearchInput } from "@/src/components/SearchInput";
 import { SortFilter } from "@/src/components/SortFilter";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
-import type { SubscriptionsSortOptionType } from "../../Subscriptions/components/SubscriptionsList";
+import type { SubscriptionsSortOptionType } from "../../../Subscriptions/components/SubscriptionsList";
 
 interface GroupHeaderProps {
   title: string;
@@ -29,7 +29,7 @@ export const GroupHeader = ({
     <div className="w-3/5">
       <h1 className="text-xl font-semibold capitalize">
         {title}
-        <span className="ps-2">({subscriptionsCount ?? "--"})</span>
+        <span className="ps-2">({subscriptionsCount || "--"})</span>
       </h1>
       <p>{description}</p>
     </div>

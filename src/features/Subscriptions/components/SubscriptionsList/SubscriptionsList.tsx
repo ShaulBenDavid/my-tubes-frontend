@@ -62,7 +62,11 @@ export const SubscriptionsList = (): JSX.Element => {
         ref={rootRef}
         id="searchResults"
       >
-        {isSubscriptionsLoading && <ChannelCardLoader />}
+        {isSubscriptionsLoading && (
+          <div className="flex flex-col gap-6">
+            <ChannelCardLoader />
+          </div>
+        )}
         {!isSubscriptionsLoading && !subscriptionsList?.length && (
           <div className="flex h-full w-full items-center justify-center">
             <EmptyState svgUrl={NoDataSVG} header="No Subscriptions Data." />

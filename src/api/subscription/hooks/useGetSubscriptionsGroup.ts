@@ -1,4 +1,5 @@
 import ms from "ms";
+import { isAxiosError } from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { getSubscriptionsGroup } from "../subscription.methods";
 
@@ -11,7 +12,7 @@ interface UseGetSubscriptionsGroupProps {
 export const useGetSubscriptionsGroup = ({
   groupId,
 }: UseGetSubscriptionsGroupProps) => {
-  const { isLoading, isError, data } = useQuery({
+  const { isLoading, isError, data, error } = useQuery({
     queryKey: [GET_SUBSCRIPTIONS_GROUP_KEY, groupId],
     queryFn: () => getSubscriptionsGroup(groupId),
     gcTime: ms("4h"),
@@ -21,5 +22,6 @@ export const useGetSubscriptionsGroup = ({
     subscriptionsGroup: data,
     isGroupLoading: isLoading,
     isGroupError: isError,
+    groupError: isAxiosError(error) ? error : undefined,
   };
 };
