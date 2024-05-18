@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
+import { toast } from "react-toastify";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import type {
   FetchNextPageOptions,
@@ -13,8 +14,13 @@ import { EmptyState } from "@/src/components/EmptyState";
 import { Spinner } from "@/src/components/Spinner";
 import type { SubscriptionType } from "@/src/api/subscription";
 import type { GetSubscriptionsListResponse } from "@/src/api/subscription/subscription.types";
+import { ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP } from "@/src/components/ChannelCard/ChannelCard";
+import { Modal } from "@/src/components/Modal";
+import { ValidationContentModal } from "@/src/components/ValidationContentModal";
+import { useDeleteSubscriptionFromGroup } from "@/src/api/subscription/hooks";
 
 interface GroupBodyProps {
+  groupName: string;
   isSubscriptionsLoading: boolean;
   isFetchingNextPage: boolean;
   isSubscriptionsError: boolean;
@@ -32,6 +38,7 @@ interface GroupBodyProps {
 }
 
 export const GroupBody = ({
+  groupName,
   isSubscriptionsLoading,
   isFetchingNextPage,
   isSubscriptionsError,
@@ -40,6 +47,11 @@ export const GroupBody = ({
   subscriptionsList,
   searchValue,
 }: GroupBodyProps): JSX.Element => {
+  const [selectedSubscription, setSelectedSubscription] = useState<
+    SubscriptionType | undefined
+  >();
+  const removeSubscriptionModalRef = useRef<HTMLDialogElement>(null);
+
   const [sentryRef, { rootRef }] = useInfiniteScroll({
     loading: isSubscriptionsLoading || isFetchingNextPage,
     onLoadMore: fetchNextPage,
@@ -48,47 +60,95 @@ export const GroupBody = ({
     rootMargin: "100px",
   });
 
+  const handleClose = (): void => removeSubscriptionModalRef?.current?.close();
+
+  const { removeSubscription, isRemoveSubscriptionLoading } =
+    useDeleteSubscriptionFromGroup({
+      handleSuccess: () => {
+        toast.success(
+          `We removed successfully ${selectedSubscription?.title} from ${groupName} group.`,
+        );
+        handleClose();
+      },
+      handleError: () => {
+        toast.error(
+          `We failed to remove ${selectedSubscription?.title} from ${groupName} group. please try again later.`,
+        );
+      },
+    });
+
+  const handleSubscriptionSelect = (subscription: SubscriptionType): void => {
+    setSelectedSubscription(subscription);
+    removeSubscriptionModalRef.current?.showModal();
+  };
+
   return (
-    <section
-      /* prettier-ignore */
-      className="grid-rows-groups-row-fit grid h-full w-full grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4"
-      ref={rootRef}
-      id="searchResults"
-    >
-      {isSubscriptionsLoading && <ChannelCardLoader />}
-      {!isSubscriptionsLoading && !subscriptionsList?.length && (
-        <div className="col-span-full row-span-full flex h-full w-full items-center justify-center">
-          <EmptyState
-            svgUrl={NoDataSVG}
-            header={
-              searchValue.length
-                ? `No Results Found For: ${searchValue}`
-                : "No Subscriptions In this group."
-            }
-          />
-        </div>
-      )}
-      {!!subscriptionsList?.length &&
-        subscriptionsList.map(
-          ({ title, description, imageUrl, channelId, id }) => (
-            <ChannelCard
-              key={title}
-              title={title}
-              description={description}
-              imageUrl={imageUrl}
-              itemId={id}
-              channelId={channelId}
+    <>
+      <section
+        /* prettier-ignore */
+        className="grid-rows-groups-row-fit grid h-full w-full grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4"
+        ref={rootRef}
+        id="searchResults"
+      >
+        {isSubscriptionsLoading && <ChannelCardLoader />}
+        {!isSubscriptionsLoading && !subscriptionsList?.length && (
+          <div className="col-span-full row-span-full flex h-full w-full items-center justify-center">
+            <EmptyState
+              svgUrl={NoDataSVG}
+              header={
+                searchValue.length
+                  ? `No Results Found For: ${searchValue}`
+                  : "No Subscriptions In this group."
+              }
             />
-          ),
+          </div>
         )}
-      {(isFetchingNextPage || hasNextPage) && (
-        <div
-          ref={sentryRef}
-          className="col-span-full flex w-full items-center justify-center p-2"
-        >
-          <Spinner />
-        </div>
-      )}
-    </section>
+        {!!subscriptionsList?.length &&
+          subscriptionsList.map(
+            ({ title, description, imageUrl, channelId, id }) => (
+              <ChannelCard
+                key={title}
+                title={title}
+                description={description}
+                imageUrl={imageUrl}
+                itemId={id}
+                channelId={channelId}
+                onRemove={() =>
+                  handleSubscriptionSelect({
+                    title,
+                    description,
+                    imageUrl,
+                    channelId,
+                    id,
+                  })
+                }
+              />
+            ),
+          )}
+        {(isFetchingNextPage || hasNextPage) && (
+          <div
+            ref={sentryRef}
+            className="col-span-full flex w-full items-center justify-center p-2"
+          >
+            <Spinner />
+          </div>
+        )}
+      </section>
+      <Modal
+        ref={removeSubscriptionModalRef}
+        closeModal={handleClose}
+        id={ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP}
+      >
+        {selectedSubscription?.title && (
+          <ValidationContentModal
+            title={`Remove ${selectedSubscription.title}`}
+            content={`Removing ${selectedSubscription.title} from ${groupName}, the subscription will not be deleted.`}
+            isLoading={isRemoveSubscriptionLoading}
+            onClose={handleClose}
+            onDelete={() => removeSubscription(selectedSubscription.id)}
+          />
+        )}
+      </Modal>
+    </>
   );
 };

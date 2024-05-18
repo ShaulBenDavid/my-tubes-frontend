@@ -29,7 +29,10 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
   const [search, setSearch] = useState<string>("");
   const debouncedValue = useDebounce(search, 300);
   const pathname = usePathname();
-  const breadcrumbs = pathname.split("/").filter((crumb) => crumb !== "");
+  const breadcrumbs = pathname
+    .replace("%20", " ")
+    .split("/")
+    .filter((crumb) => crumb !== "");
   const breadcrumbsWithoutLast = breadcrumbs.slice(0, -1);
 
   const { subscriptionsGroup, groupError } = useGetSubscriptionsGroup({
@@ -81,6 +84,7 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
         </div>
       ) : (
         <GroupBody
+          groupName={subscriptionsGroup?.title ?? ""}
           isFetchingNextPage={isFetchingNextPage}
           isSubscriptionsError={isSubscriptionsError}
           isSubscriptionsLoading={isSubscriptionsLoading}

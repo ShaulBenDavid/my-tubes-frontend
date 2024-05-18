@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { appQueryClient } from "@/src/queries";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { Modal } from "@/src/components/Modal";
+import { ValidationContentModal } from "@/src/components/ValidationContentModal";
 import {
   GET_SUBSCRIPTIONS_GROUPS_KEY,
   useDeleteSubscriptionsGroup,
@@ -14,7 +15,6 @@ import {
   ARIA_CONTROL_GROUP_DELETE,
   ARIA_CONTROL_GROUP_EDIT,
 } from "../GroupCard/CardActions/CardActions";
-import { DeleteGroup } from "./DeleteGroup";
 import { GroupForm } from "../GroupForm";
 
 interface DeleteAndEditModalsProps {
@@ -46,7 +46,7 @@ export const DeleteAndEditModals = ({
     handleSuccess: handleDeleteSuccess,
     handleError: () => {
       toast.error(
-        `we failed to delete group - ${title}. please try again later.`,
+        `We failed to delete group - ${title}. please try again later.`,
       );
     },
   });
@@ -72,8 +72,9 @@ export const DeleteAndEditModals = ({
         id={ARIA_CONTROL_GROUP_DELETE}
       >
         {title && id && (
-          <DeleteGroup
-            title={title}
+          <ValidationContentModal
+            title={`Delete - ${title}`}
+            content="After deleting the group you can't go back!"
             isLoading={isDeleteGroupLoading}
             onClose={onDeleteClose}
             onDelete={() => deleteGroup(id)}

@@ -9,3 +9,4 @@ export { useEditSubscriptionsGroup } from "./useEditSubscriptionsGroup";
 export { useDeleteSubscriptionsGroup } from "./useDeleteSubscriptionsGroup";
 export { usePostAddSubscriptionGroup } from "./usePostAddSubscriptionGroup";
 export { useGetSubscriptionsGroup } from "./useGetSubscriptionsGroup";
+export { useDeleteSubscriptionFromGroup } from "./useDeleteSubscriptionFromGroup";

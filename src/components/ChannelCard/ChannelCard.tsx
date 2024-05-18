@@ -1,6 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import { RiExternalLinkLine } from "react-icons/ri";
+import { FaRegObjectUngroup } from "react-icons/fa";
 import { MdDragIndicator } from "react-icons/md";
 import theme from "@/src/styles/tailwind.theme";
 import { Card } from "@/src/components/Card";
@@ -9,6 +10,9 @@ import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
 import { YOUTUBE_CHANNEL_URL } from "./ChannelCard.config";
 import { DND_TYPE_ID } from "../../features/Subscriptions/components/GroupsSection/components/GroupCard";
 
+export const ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP =
+  "removeSubscriptionFromGroupModal";
+
 interface ChannelCardProps {
   title: string;
   description: string;
@@ -16,6 +20,7 @@ interface ChannelCardProps {
   itemId: number;
   channelId: string;
   isDraggable?: boolean;
+  onRemove?: () => void;
 }
 
 export const ChannelCard = ({
@@ -25,6 +30,7 @@ export const ChannelCard = ({
   itemId,
   channelId,
   isDraggable = false,
+  onRemove,
 }: ChannelCardProps): JSX.Element => {
   const [{ opacity, draggingClass }, drag] = useDrag(
     () => ({
@@ -56,17 +62,31 @@ export const ChannelCard = ({
           )}
         </div>
         <p className="line-clamp-3 text-ellipsis pt-2">{description}</p>
-        <div className="ml-auto mt-auto flex w-7/12 flex-row gap-2 pt-2">
-          <ButtonLink
-            variant={ButtonLinkVariants.PRIMARY}
-            href={`${YOUTUBE_CHANNEL_URL}${channelId}`}
-            isOutSource
-          >
-            <span className="flex flex-row items-center gap-2">
-              Channel
-              <RiExternalLinkLine size={20} color={theme.white} />
-            </span>
-          </ButtonLink>
+        <div className="mt-auto flex w-full flex-row items-center justify-between gap-2 pt-2">
+          {onRemove && (
+            <button
+              type="button"
+              id="remove-subscription-from-group-button"
+              aria-label={`remove ${title} from the group `}
+              aria-controls={ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP}
+              className="rounded-xl p-2 hover:bg-red-600/20 active:bg-red-600/30"
+              onClick={onRemove}
+            >
+              <FaRegObjectUngroup size={24} />
+            </button>
+          )}
+          <span className="ml-auto w-7/12">
+            <ButtonLink
+              variant={ButtonLinkVariants.PRIMARY}
+              href={`${YOUTUBE_CHANNEL_URL}${channelId}`}
+              isOutSource
+            >
+              <span className="flex flex-row items-center gap-2">
+                Channel
+                <RiExternalLinkLine size={20} color={theme.white} />
+              </span>
+            </ButtonLink>
+          </span>
         </div>
       </Card>
     </div>

@@ -78,3 +78,14 @@ export const postAddSubscriptionGroup = ({
     method: Methods.POST,
     data: restData,
   });
+
+export const deleteSubscriptionFromGroup = (
+  subscriptionId: number,
+): Promise<void> =>
+  apiMethodInstance<void>({
+    url: ApiEndpoints.REMOVE_SUBSCRIPTION_GROUP.replace(
+      "{subscriptionId}",
+      String(subscriptionId),
+    ),
+    method: Methods.DELETE,
+  });
