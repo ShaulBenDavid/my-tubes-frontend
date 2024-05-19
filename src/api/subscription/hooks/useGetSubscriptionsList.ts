@@ -6,7 +6,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { getSubscriptionsList } from "../subscription.methods";
 import type { GetSubscriptionsListParams } from "../subscription.types";
 
-const GET_SUBSCRIPTIONS_LIST_KEY = "getSubscriptionList";
+export const GET_SUBSCRIPTIONS_LIST_KEY = "getSubscriptionList";
 
 export const useGetSubscriptionsList = (params: GetSubscriptionsListParams) => {
   const {

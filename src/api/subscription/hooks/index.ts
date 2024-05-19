@@ -1,5 +1,8 @@
 export { useGetSubscriptionsInfo } from "./useGetSubscriptionsInfo";
-export { useGetSubscriptionsList } from "./useGetSubscriptionsList";
+export {
+  useGetSubscriptionsList,
+  GET_SUBSCRIPTIONS_LIST_KEY,
+} from "./useGetSubscriptionsList";
 export { usePostSubscriptionsGroup } from "./usePostSubscriptionsGroup";
 export {
   useGetSubscriptionsGroups,
@@ -8,5 +11,8 @@ export {
 export { useEditSubscriptionsGroup } from "./useEditSubscriptionsGroup";
 export { useDeleteSubscriptionsGroup } from "./useDeleteSubscriptionsGroup";
 export { usePostAddSubscriptionGroup } from "./usePostAddSubscriptionGroup";
-export { useGetSubscriptionsGroup } from "./useGetSubscriptionsGroup";
+export {
+  useGetSubscriptionsGroup,
+  GET_SUBSCRIPTIONS_GROUP_KEY,
+} from "./useGetSubscriptionsGroup";
 export { useDeleteSubscriptionFromGroup } from "./useDeleteSubscriptionFromGroup";

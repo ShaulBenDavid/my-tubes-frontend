@@ -7,15 +7,16 @@ import type {
   SubscriptionType,
   SubscriptionsGroupType,
 } from "@/src/api/subscription";
+import { appQueryClient } from "@/src/queries";
 import {
   GET_SUBSCRIPTIONS_GROUPS_KEY,
+  GET_SUBSCRIPTIONS_LIST_KEY,
   useGetSubscriptionsGroups,
   usePostAddSubscriptionGroup,
 } from "@/src/api/subscription/hooks";
 import { CreateGroupCard } from "./components/CreateGroupCard";
 import { GroupCard } from "./components/GroupCard";
 import { GroupCardLoader } from "./components/GroupCard/GroupCard.loader";
-import { appQueryClient } from "@/src/queries";
 
 const DeleteAndEditModals = dynamic(
   () =>
@@ -39,6 +40,9 @@ export const GroupsSection = (): JSX.Element => {
     handleSuccess: (res) => {
       appQueryClient.invalidateQueries({
         queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+      });
+      appQueryClient.invalidateQueries({
+        queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],
       });
       toast.success(`${res.title} was added to a group successfully!`);
     },

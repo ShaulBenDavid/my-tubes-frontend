@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import type {
@@ -17,7 +17,13 @@ import type { GetSubscriptionsListResponse } from "@/src/api/subscription/subscr
 import { ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP } from "@/src/components/ChannelCard/ChannelCard";
 import { Modal } from "@/src/components/Modal";
 import { ValidationContentModal } from "@/src/components/ValidationContentModal";
-import { useDeleteSubscriptionFromGroup } from "@/src/api/subscription/hooks";
+import {
+  GET_SUBSCRIPTIONS_GROUPS_KEY,
+  GET_SUBSCRIPTIONS_LIST_KEY,
+  GET_SUBSCRIPTIONS_GROUP_KEY,
+  useDeleteSubscriptionFromGroup,
+} from "@/src/api/subscription/hooks";
+import { appQueryClient } from "@/src/queries";
 
 interface GroupBodyProps {
   groupName: string;
@@ -62,14 +68,25 @@ export const GroupBody = ({
 
   const handleClose = (): void => removeSubscriptionModalRef?.current?.close();
 
+  const handleSuccess = useCallback(() => {
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUP_KEY],
+    });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],
+    });
+    toast.success(
+      `We removed successfully ${selectedSubscription?.title} from ${groupName} group.`,
+    );
+    handleClose();
+  }, [groupName, selectedSubscription?.title]);
+
   const { removeSubscription, isRemoveSubscriptionLoading } =
     useDeleteSubscriptionFromGroup({
-      handleSuccess: () => {
-        toast.success(
-          `We removed successfully ${selectedSubscription?.title} from ${groupName} group.`,
-        );
-        handleClose();
-      },
+      handleSuccess,
       handleError: () => {
         toast.error(
           `We failed to remove ${selectedSubscription?.title} from ${groupName} group. please try again later.`,
