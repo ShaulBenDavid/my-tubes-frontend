@@ -28,10 +28,5 @@ export const camelCaseToWords = (s: string): string => {
   return result.charAt(0).toUpperCase() + result.slice(1);
 };
 
-export const isLink = (str: string): boolean => {
-  const urlPattern = /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(:\d+)?(\/\S*)?$/;
-  return urlPattern.test(str);
-};
-
 export const wordToCapitalize = (word: string): string =>
   word.charAt(0).toUpperCase() + word.slice(1);
