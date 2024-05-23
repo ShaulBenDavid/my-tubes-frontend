@@ -54,7 +54,7 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
   });
 
   return (
-    <div className="flex h-full flex-col overflow-hidden">
+    <>
       <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />
       <GroupHeader
         title={subscriptionsGroup?.title}
@@ -94,6 +94,6 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
           subscriptionsList={subscriptionsList}
         />
       )}
-    </div>
+    </>
   );
 };

@@ -10,7 +10,7 @@ export const Subscriptions = (): JSX.Element => {
   const { subscriptionsInfo } = useGetSubscriptionsInfo();
 
   return (
-    <div className="flex h-full w-full flex-col overflow-hidden">
+    <>
       <Header
         subscriptionsCount={subscriptionsInfo?.subscriptionsCount ?? "--"}
         lastSyncDate={subscriptionsInfo?.lastSyncDate}
@@ -19,6 +19,6 @@ export const Subscriptions = (): JSX.Element => {
         <SubscriptionsList />
         <GroupsSection />
       </div>
-    </div>
+    </>
   );
 };
