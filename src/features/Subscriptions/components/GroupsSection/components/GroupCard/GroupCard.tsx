@@ -45,7 +45,7 @@ export const GroupCard = ({
   return (
     <div ref={drop} style={{ opacity: isOver ? 0.5 : 1 }}>
       <Card
-        className="flex h-full w-full flex-col border-2"
+        className="flex h-60 w-full flex-col border-2"
         style={{ borderColor: color }}
       >
         <h5 className="text-lg font-semibold">

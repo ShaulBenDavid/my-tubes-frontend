@@ -103,7 +103,7 @@ export const GroupBody = ({
     <>
       <section
         /* prettier-ignore */
-        className="grid-rows-groups-row-fit grid h-full w-full grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4"
+        className="grid-rows-groups-row-fit grid h-full w-full grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4 pr-2"
         ref={rootRef}
         id="searchResults"
       >
@@ -124,12 +124,13 @@ export const GroupBody = ({
           subscriptionsList.map(
             ({ title, description, imageUrl, channelId, id }) => (
               <ChannelCard
-                key={title}
+                key={channelId}
                 title={title}
                 description={description}
                 imageUrl={imageUrl}
                 itemId={id}
                 channelId={channelId}
+                className="h-60"
                 onRemove={() =>
                   handleSubscriptionSelect({
                     title,

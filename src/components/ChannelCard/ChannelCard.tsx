@@ -3,12 +3,13 @@ import { useDrag } from "react-dnd";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { FaRegObjectUngroup } from "react-icons/fa";
 import { MdDragIndicator } from "react-icons/md";
+import { twMerge } from "tailwind-merge";
 import theme from "@/src/styles/tailwind.theme";
 import { Card } from "@/src/components/Card";
 import { Avatar } from "@/src/components/Avatar";
+import { DND_TYPE_ID } from "@/src/features/Subscriptions/components/GroupsSection/components/GroupCard";
 import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
 import { YOUTUBE_CHANNEL_URL } from "./ChannelCard.config";
-import { DND_TYPE_ID } from "../../features/Subscriptions/components/GroupsSection/components/GroupCard";
 
 export const ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP =
   "removeSubscriptionFromGroupModal";
@@ -19,6 +20,7 @@ interface ChannelCardProps {
   imageUrl: string;
   itemId: number;
   channelId: string;
+  className?: string;
   isDraggable?: boolean;
   onRemove?: () => void;
 }
@@ -29,6 +31,7 @@ export const ChannelCard = ({
   imageUrl,
   itemId,
   channelId,
+  className,
   isDraggable = false,
   onRemove,
 }: ChannelCardProps): JSX.Element => {
@@ -51,7 +54,7 @@ export const ChannelCard = ({
       style={{ opacity }}
       className={isDraggable ? draggingClass : ""}
     >
-      <Card className="flex h-full snap-start flex-col">
+      <Card className={twMerge("flex h-full snap-start flex-col", className)}>
         <div className="flex flex-row items-center gap-2">
           <Avatar name={title} url={imageUrl} />
           <h5 className="line-clamp-1 text-ellipsis text-base font-semibold capitalize">
