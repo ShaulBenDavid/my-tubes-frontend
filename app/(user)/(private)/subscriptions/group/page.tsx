@@ -2,7 +2,7 @@ import React from "react";
 import { EmptyState } from "@/src/components/EmptyState";
 import UnderConstructionSVG from "@/src/assets/images/UnderConstructionSVG.svg";
 
-const Dashboard = () => (
+const GroupPage = () => (
   <section className="flex h-full w-full items-center justify-center py-14">
     <EmptyState
       svgUrl={UnderConstructionSVG}
@@ -14,4 +14,4 @@ const Dashboard = () => (
   </section>
 );
 
-export default Dashboard;
+export default GroupPage;

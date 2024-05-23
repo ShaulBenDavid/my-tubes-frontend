@@ -10,6 +10,7 @@ export const Breadcrumbs = ({ breadcrumbs }: BreadcrumbsProps): JSX.Element => (
     <ol className="flex flex-row">
       {breadcrumbs.map((link, index) => {
         const isLastItem = index === breadcrumbs.length - 1;
+        const accumulatedPath = breadcrumbs.slice(0, index + 1).join("/");
 
         return (
           <li key={link} className="text-sm font-medium capitalize">
@@ -25,7 +26,7 @@ export const Breadcrumbs = ({ breadcrumbs }: BreadcrumbsProps): JSX.Element => (
             {isLastItem ? (
               <span className="opacity-60">{link}</span>
             ) : (
-              <Link href={`/${link}`} className="hover:underline">
+              <Link href={`/${accumulatedPath}`} className="hover:underline">
                 {link}
               </Link>
             )}
