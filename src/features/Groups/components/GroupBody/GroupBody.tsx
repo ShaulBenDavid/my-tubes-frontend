@@ -122,7 +122,7 @@ export const GroupBody = ({
         )}
         {!!subscriptionsList?.length &&
           subscriptionsList.map(
-            ({ title, description, imageUrl, channelId, id }) => (
+            ({ title, description, imageUrl, channelId, id }, index) => (
               <ChannelCard
                 key={channelId}
                 title={title}
@@ -130,7 +130,8 @@ export const GroupBody = ({
                 imageUrl={imageUrl}
                 itemId={id}
                 channelId={channelId}
-                className="h-60"
+                className="h-60 animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0"
+                style={{ animationDelay: `${index * 0.07}s` }}
                 onRemove={() =>
                   handleSubscriptionSelect({
                     title,

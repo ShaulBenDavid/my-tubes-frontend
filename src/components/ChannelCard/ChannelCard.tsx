@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type CSSProperties } from "react";
 import { useDrag } from "react-dnd";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { FaRegObjectUngroup } from "react-icons/fa";
@@ -21,6 +21,7 @@ interface ChannelCardProps {
   itemId: number;
   channelId: string;
   className?: string;
+  style?: CSSProperties;
   isDraggable?: boolean;
   onRemove?: () => void;
 }
@@ -32,6 +33,7 @@ export const ChannelCard = ({
   itemId,
   channelId,
   className,
+  style,
   isDraggable = false,
   onRemove,
 }: ChannelCardProps): JSX.Element => {
@@ -54,7 +56,10 @@ export const ChannelCard = ({
       style={{ opacity }}
       className={isDraggable ? draggingClass : ""}
     >
-      <Card className={twMerge("flex h-full snap-start flex-col", className)}>
+      <Card
+        className={twMerge("flex h-full snap-start flex-col", className)}
+        style={style}
+      >
         <div className="flex flex-row items-center gap-2">
           <Avatar name={title} url={imageUrl} />
           <h5 className="line-clamp-1 text-ellipsis text-base font-semibold capitalize">

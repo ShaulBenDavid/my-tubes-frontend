@@ -34,11 +34,12 @@ export const GroupCard = ({
   const capitalizedTitle = wordToCapitalize(title);
   const countDetails = `Subscriptions count in ${capitalizedTitle} group is ${subscriptionCount}`;
 
-  const [{ isOver }, drop] = useDrop({
+  const [{ isOver, isDrag }, drop] = useDrop({
     accept: DND_TYPE_ID,
     drop: (dropData: SubscriptionType) => onDrop(dropData, data.id),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
+      isDrag: !!monitor.getItemType(),
     }),
   });
 
@@ -46,7 +47,7 @@ export const GroupCard = ({
     <div ref={drop} style={{ opacity: isOver ? 0.5 : 1 }}>
       <Card
         className="flex h-60 w-full flex-col border-2"
-        style={{ borderColor: color }}
+        style={{ borderColor: color, borderStyle: isDrag ? "dashed" : "solid" }}
       >
         <h5 className="text-lg font-semibold">
           <Link
