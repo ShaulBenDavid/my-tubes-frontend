@@ -64,7 +64,7 @@ export const CreateGroupCard = (): JSX.Element => {
           content="The group will help you to organize your Subscriptions by subjects."
           isLoading={isPostGroupLoading}
           isError={isPostGroupError}
-          errorMessage={groupError?.message ?? ""}
+          errorMessage={groupError?.response?.data.error ?? ""}
           mutate={postGroup}
           handleCloseModal={handleCloseModal}
         />

@@ -46,6 +46,9 @@ export const GroupsSection = (): JSX.Element => {
       });
       toast.success(`${res.title} was added to a group successfully!`);
     },
+    handleError: (err) => {
+      toast.error(err?.response?.data.error ?? "");
+    },
   });
 
   const onDeleteClose = (): void => deleteModalRef?.current?.close();

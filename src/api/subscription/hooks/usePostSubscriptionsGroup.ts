@@ -1,5 +1,6 @@
 "use client";
 
+import { isAxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { postSubscriptionsGroup } from "../subscription.methods";
 
@@ -21,7 +22,7 @@ export const usePostSubscriptionsGroup = ({
   return {
     groupData: data,
     postGroup: mutate,
-    groupError: error,
+    groupError: isAxiosError(error) ? error : undefined,
     isPostGroupLoading: isPending,
     isPostGroupError: isError,
   };
