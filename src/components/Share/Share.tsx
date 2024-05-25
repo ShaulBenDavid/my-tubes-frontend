@@ -29,9 +29,7 @@ export const Share = ({
   title,
 }: ShareProps): JSX.Element => (
   <div className="flex w-full flex-col gap-3">
-    <h2 className="text-base font-bold text-wizard-black">
-      Share with your friends
-    </h2>
+    <h3 className="text-base font-semibold">Share with your friends</h3>
     <div
       className="flex flex-wrap gap-2 pl-2"
       data-testid="share-component-test-id"
