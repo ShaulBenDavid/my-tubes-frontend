@@ -8,6 +8,7 @@ import { Modal } from "@/src/components/Modal";
 import { ValidationContentModal } from "@/src/components/ValidationContentModal";
 import {
   GET_SUBSCRIPTIONS_GROUPS_KEY,
+  GET_SUBSCRIPTIONS_LIST_KEY,
   useDeleteSubscriptionsGroup,
   useEditSubscriptionsGroup,
 } from "@/src/api/subscription/hooks";
@@ -38,6 +39,9 @@ export const DeleteAndEditModals = ({
     toast.success(`${title} Group deleted successfully!`);
     appQueryClient.invalidateQueries({
       queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],
     });
     onDeleteClose();
   }, [onDeleteClose, title]);
