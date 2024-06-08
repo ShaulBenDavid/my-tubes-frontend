@@ -1,39 +1,29 @@
 import type { Metadata } from "next";
 import { WEBSITE_URL } from "../constants";
 
-const url = new URL("https://dwizard.io");
+const url = new URL("https://my-tubes.com");
 
 export const defaultMetadata: Metadata = {
   title: {
-    default: "My Tubes - A YouTube manager",
-    template: "%s | Dev Wizard",
+    default:
+      "My-Yubes - Manage Your YouTube Channels and Get Detailed Statistics",
+    template: "%s | My-Tubes",
   },
   description:
-    "Welcome to dwizard, your go-to programming blog for developers. Explore coding tutorials, tips, and discussions on various programming languages, frameworks, and technologies.",
+    "My-Tubes is a comprehensive tool for managing your YouTube channels, following other channels, and accessing a detailed statistics dashboard. Optimize your content and track your growth with ease.",
   metadataBase: url,
   applicationName: "My Tubes",
   authors: { name: "Dwizard team", url },
   creator: "Dev Wizard Team",
   keywords: [
-    "Next.js",
-    "React",
-    "JavaScript",
-    "Typescript",
-    "css",
-    "html",
-    "Express Js",
-    "MongoDB",
-    "Mongoose",
-    "Tech Blog",
-    "programming",
-    "coding",
-    "development",
-    "web development",
-    "software development",
-    "tutorials",
-    "tech",
-    "dwizard",
-    "login",
+    "YouTube",
+    "YouTube manager",
+    "my-tubes",
+    "YouTube channel management",
+    "YouTube analytics",
+    "YouTube statistics",
+    "channel management",
+    "content optimization",
   ],
   alternates: {
     canonical: new URL(WEBSITE_URL),
@@ -64,25 +54,27 @@ export const defaultMetadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Dev Wizard - A Place For Developers",
+    title:
+      "My-Yubes - Manage Your YouTube Channels and Get Detailed Statistics",
     description:
-      "Welcome to dwizard, your go-to programming blog for developers. Explore coding tutorials, tips, and discussions on various programming languages, frameworks, and technologies.",
+      "My-Tubes is a comprehensive tool for managing your YouTube channels, following other channels, and accessing a detailed statistics dashboard. Optimize your content and track your growth with ease.",
     url: WEBSITE_URL,
-    siteName: "Dev Wizard",
+    siteName: "My-Tubes",
     type: "website",
     images: [
       {
-        url: new URL("https://i.imgur.com/WwKlDyy.jpg"),
+        url: new URL("https://imgur.com/a/09WsI6y"),
         alt: "Intro",
         type: "image/jpg",
       },
     ],
   },
   twitter: {
-    title: "Dev Wizard - A Place For Developers",
-    site: "@devwizard",
+    title:
+      "My-Yubes - Manage Your YouTube Channels and Get Detailed Statistics",
+    site: "@mytubes",
     description:
-      "Welcome to dwizard, your go-to programming blog for developers. Explore coding tutorials, tips, and discussions on various programming languages, frameworks, and technologies.",
+      "My-Tubes is a comprehensive tool for managing your YouTube channels, following other channels, and accessing a detailed statistics dashboard. Optimize your content and track your growth with ease.",
     card: "summary_large_image",
   },
 };
