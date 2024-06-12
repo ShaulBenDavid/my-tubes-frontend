@@ -10,6 +10,8 @@ import { Avatar } from "@/src/components/Avatar";
 import { DND_TYPE_ID } from "@/src/features/Subscriptions/components/GroupsSection/components/GroupCard";
 import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
 import { YOUTUBE_CHANNEL_URL } from "./ChannelCard.config";
+import { ActionButton } from "../ActionButton";
+import { ActionButtonVariants } from "../ActionButton/ActionButton.types";
 
 export const ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP =
   "removeSubscriptionFromGroupModal";
@@ -72,16 +74,17 @@ export const ChannelCard = ({
         <p className="line-clamp-3 text-ellipsis pt-2">{description}</p>
         <div className="mt-auto flex w-full flex-row items-center justify-between gap-2 pt-2">
           {onRemove && (
-            <button
+            <ActionButton
               type="button"
+              tooltip="Ungroup"
+              variant={ActionButtonVariants.WARNING}
               id="remove-subscription-from-group-button"
               aria-label={`remove ${title} from the group `}
               aria-controls={ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP}
               className="rounded-xl p-2 hover:bg-red-600/20 active:bg-red-600/30"
               onClick={onRemove}
-            >
-              <FaRegObjectUngroup size={24} />
-            </button>
+              icon={<FaRegObjectUngroup size={24} />}
+            />
           )}
           <span className="ml-auto w-7/12">
             <ButtonLink
