@@ -7,7 +7,7 @@ import { WEBSITE_URL } from "@/src/constants";
 import { Navbar } from "./Navbar";
 
 export const SideMenu = (): JSX.Element => (
-  <aside className="flex h-full w-72 flex-col border-r border-white/30 p-4">
+  <>
     <Link
       href={Routes.DASHBOARD}
       className="flex w-fit flex-row items-center gap-2 px-2"
@@ -29,5 +29,5 @@ export const SideMenu = (): JSX.Element => (
         </a>
       </span>
     </footer>
-  </aside>
+  </>
 );

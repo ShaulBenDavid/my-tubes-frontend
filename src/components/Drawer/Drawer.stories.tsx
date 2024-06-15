@@ -37,5 +37,9 @@ export const Primary: Story = {
       description: "Control the state of the drawer open or close",
       default: true,
     },
+    id: {
+      control: "string",
+      description: "For accessible use",
+    },
   },
 };

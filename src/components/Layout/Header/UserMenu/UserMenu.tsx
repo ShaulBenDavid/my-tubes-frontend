@@ -16,7 +16,7 @@ export const UserMenu = (): JSX.Element => {
   const { userInfo, isUserLoading } = useGetUserInfo();
 
   return (
-    <div className="ml-5 max-tb:ml-auto">
+    <div className="ml-auto h-fit">
       {isUserLoading && (
         <div className="h-8 w-8 shrink-0 animate-pulse rounded-full bg-primary-200" />
       )}

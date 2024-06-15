@@ -10,7 +10,7 @@ import {
 
 interface ActionButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  tooltip: string;
+  tooltip?: string;
   variant?: ActionButtonVariants;
   icon: JSX.Element;
 }
@@ -25,9 +25,11 @@ export const ActionButton = ({
   const id = useId();
   return (
     <>
-      <Tooltip id={id}>
-        <p className="text-white">{tooltip}</p>
-      </Tooltip>
+      {tooltip && (
+        <Tooltip id={id}>
+          <p className="text-white">{tooltip}</p>
+        </Tooltip>
+      )}
       <button
         type="button"
         data-tooltip-id={id}

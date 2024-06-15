@@ -7,9 +7,10 @@ import { Backdrop } from "../Backdrop";
 type DrawerProps = React.PropsWithChildren<{
   onClose: () => void;
   isOpen: boolean;
+  id: string;
 }>;
 
-export const Drawer = ({ onClose, isOpen, children }: DrawerProps) => {
+export const Drawer = ({ onClose, isOpen, children, id }: DrawerProps) => {
   useEffect((): any => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
     // eslint-disable-next-line no-return-assign
@@ -31,16 +32,16 @@ export const Drawer = ({ onClose, isOpen, children }: DrawerProps) => {
       role="presentation"
       onKeyDown={handleKeyPress}
       aria-hidden={!isOpen}
-      id="navigation-drawer"
+      id={id}
     >
       <Backdrop onClick={onClose} />
       <ReactFocusLock>
-        <nav
-          className="absolute z-50 h-dvh w-72 animate-[enterIn_0.2s_ease-in_forwards] bg-white shadow-2xl ease-in"
+        <div
+          className="absolute z-50 flex h-dvh animate-[enterIn_0.2s_ease-in_forwards] bg-spec-space-bg px-2 py-4 shadow-2xl ease-in"
           tabIndex={-1}
         >
           {children}
-        </nav>
+        </div>
       </ReactFocusLock>
     </div>
   );
