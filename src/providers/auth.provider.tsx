@@ -25,7 +25,7 @@ export const AuthProvider = ({
     handleLogout: logout,
     enabled: !isAuthInitialized,
   });
-  if (!isAuthInitialized) return null;
+  if (!isAuthInitialized) return <div />;
 
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{children}</>;
