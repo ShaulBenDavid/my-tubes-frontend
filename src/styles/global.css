@@ -149,6 +149,10 @@ body {
   --rt-opacity: 1;
 }
 
+.react-tooltip {
+  border-radius: 12px !important;
+}
+
 /* clears the 'X' from Internet Explorer */
 input[type="search"]::-ms-clear {
   display: none;
