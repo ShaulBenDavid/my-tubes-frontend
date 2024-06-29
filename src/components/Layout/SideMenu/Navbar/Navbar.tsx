@@ -6,7 +6,11 @@ import { getNavigationLinksConfig } from "./Navbar.config";
 import { MenuTab } from "./MenuTab";
 import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
 
-export const Navbar = (): JSX.Element => {
+interface NavbarProps {
+  onClick?: () => void;
+}
+
+export const Navbar = ({ onClick }: NavbarProps): JSX.Element => {
   const activeSegment = useSelectedLayoutSegment() ?? "/";
   const { subscriptionsInfo } = useGetSubscriptionsInfo();
   const navigationLinksConfig = getNavigationLinksConfig(
@@ -26,6 +30,7 @@ export const Navbar = (): JSX.Element => {
               href={href}
               icons={icon}
               label={label}
+              onClick={onClick}
             />
           );
         })}

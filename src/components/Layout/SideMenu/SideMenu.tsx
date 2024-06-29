@@ -6,7 +6,11 @@ import theme from "@/src/styles/tailwind.theme";
 import { WEBSITE_URL } from "@/src/constants";
 import { Navbar } from "./Navbar";
 
-export const SideMenu = (): JSX.Element => (
+interface SideMenuProps {
+  onClick?: () => void;
+}
+
+export const SideMenu = ({ onClick }: SideMenuProps): JSX.Element => (
   <>
     <Link
       href={Routes.DASHBOARD}
@@ -15,7 +19,7 @@ export const SideMenu = (): JSX.Element => (
       <FaYoutube fill={theme.primary[700]} size={32} />
       <span className="text-xl font-bold">My Tubes</span>
     </Link>
-    <Navbar />
+    <Navbar onClick={onClick} />
     <footer className="mt-auto">
       <span className="text-sm opacity-70">
         @ {new Date().getFullYear()}

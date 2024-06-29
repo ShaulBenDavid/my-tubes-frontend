@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, type ReactNode } from "react";
+import React, { useCallback, useState, type ReactNode } from "react";
 import { ProtectedRoute } from "@/src/providers";
 import { SideMenu } from "@/src/components/Layout/SideMenu";
 import { Header } from "@/src/components/Layout/Header";
@@ -14,6 +14,8 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
 
+  const toggleDrawer = useCallback(() => setShowDrawer((prev) => !prev), []);
+
   return (
     <ProtectedRoute>
       <div className="flex h-full flex-1 flex-row justify-start">
@@ -21,18 +23,18 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
           <SideMenu />
         </aside>
         <div className="flex w-full flex-col">
-          <Header onClick={() => setShowDrawer(true)} />
+          <Header onClick={toggleDrawer} />
           <main className="w-full flex-1 justify-center overflow-hidden p-4">
             {children}
           </main>
           <div className="visible lg:hidden">
             <Drawer
-              onClose={() => setShowDrawer(false)}
+              onClose={toggleDrawer}
               isOpen={showDrawer}
               id={SIDE_DRAWER_ARIA}
             >
               <div className="flex h-full w-72  flex-col">
-                <SideMenu />
+                <SideMenu onClick={toggleDrawer} />
               </div>
             </Drawer>
           </div>
