@@ -78,7 +78,6 @@ npm run storybook
 ```
 
 Open http://localhost:6006 in your browser
-![Logo](https://i.postimg.cc/qqk3KDP9/Screenshot-2024-02-03-at-15-41-02.png)
 
 ## Running Tests
 
