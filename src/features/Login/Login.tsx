@@ -10,7 +10,7 @@ export const Login = (): JSX.Element => {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: process.env.NEXT_PUBLIC_GOOGLE_OAUTH2_CLIENT_ID ?? "",
-    redirect_uri: `http://localhost:3000/google`,
+    redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_CALLBACK_URL ?? "",
     prompt: "select_account",
     access_type: "offline",
     scope,
