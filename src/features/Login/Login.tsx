@@ -11,7 +11,7 @@ export const Login = (): JSX.Element => {
     response_type: "code",
     client_id: process.env.NEXT_PUBLIC_GOOGLE_OAUTH2_CLIENT_ID ?? "",
     redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_CALLBACK_URL ?? "",
-    prompt: "select_account",
+    prompt: "consent",
     access_type: "offline",
     scope,
   });
