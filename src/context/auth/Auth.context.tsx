@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import type { AuthResponseType } from "@/src/api/auth";
 import { appQueryClient } from "@/src/queries";
 import { dwInstance } from "@/src/api/http.service";
+import { Routes } from "@/src/routes";
 
 export type Auth = AuthResponseType | null | undefined;
 
@@ -33,8 +34,9 @@ export const AuthContextProvider = ({
     appQueryClient.resetQueries();
     appQueryClient.cancelQueries();
     appQueryClient.removeQueries();
-    router.refresh();
     setAuth(null);
+    router.push(Routes.LOGIN);
+    router.refresh();
   }, [router]);
 
   const value = useMemo(

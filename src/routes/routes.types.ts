@@ -1,4 +1,6 @@
 export enum Routes {
+  // AUTH
+  LOGOUT = "/logout",
   // Public Routes
   ROOT = "/",
   LOGIN = "/login",

@@ -1,18 +1,15 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import ReactFocusLock from "react-focus-lock";
-import { AuthContext } from "@/src/context/auth";
-import { useLogout } from "@/src/api/auth/hooks";
 import { useGetUserInfo } from "@/src/api/user/hooks";
+import { Routes } from "@/src/routes";
 import { Avatar } from "../../../Avatar";
 import { Dropdown } from "../../../Dropdown";
 import { AppLink } from "../../../AppLink";
 
 export const UserMenu = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { handleLogout } = useContext(AuthContext);
-  const { logout } = useLogout({ handleSuccess: handleLogout });
   const { userInfo, isUserLoading } = useGetUserInfo();
 
   return (
@@ -50,7 +47,7 @@ export const UserMenu = (): JSX.Element => {
               <hr className="border-r-2 border-white/30" />
 
               <li role="menuitem">
-                <AppLink onClick={logout}>Logout</AppLink>
+                <AppLink href={Routes.LOGOUT}>Logout</AppLink>
               </li>
             </ul>
           </ReactFocusLock>
