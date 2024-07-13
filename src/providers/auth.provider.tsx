@@ -13,8 +13,9 @@ export const AuthProvider = ({
   children,
 }: AuthProviderProps): JSX.Element | null => {
   const { handleLogout, setAuth, isAuthInitialized } = useContext(AuthContext);
-
-  const { logout } = useLogout({ handleSuccess: handleLogout });
+  const { logout, isLogoutLoading } = useLogout({
+    handleSuccess: handleLogout,
+  });
 
   const handleSuccess = (res: AuthResponseType): void => {
     setAuth(res);
@@ -25,8 +26,8 @@ export const AuthProvider = ({
     handleLogout: logout,
     enabled: !isAuthInitialized,
   });
-  if (!isAuthInitialized) return <div />;
 
+  if (!isAuthInitialized || isLogoutLoading) return <div />;
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{children}</>;
 };

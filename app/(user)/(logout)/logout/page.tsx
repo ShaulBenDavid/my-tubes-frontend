@@ -1,12 +1,20 @@
 "use client";
 
 import React, { useContext, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { AuthContext } from "@/src/context/auth";
 import { useLogout } from "@/src/api/auth/hooks";
+import { Routes } from "@/src/routes";
 
 const LogoutPage = () => {
   const { handleLogout } = useContext(AuthContext);
-  const { logout } = useLogout({ handleSuccess: handleLogout });
+  const router = useRouter();
+  const { logout } = useLogout({
+    handleSuccess: () => {
+      handleLogout();
+      router.push(Routes.LOGIN);
+    },
+  });
 
   useEffect(() => {
     logout();
