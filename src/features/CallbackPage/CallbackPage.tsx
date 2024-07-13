@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import type { AuthResponseType } from "@/src/api/auth";
 import { useLogin } from "@/src/api/auth/hooks";
@@ -16,7 +16,6 @@ import S from "./CallbackPage.module.css";
 export const CallbackPage = (): JSX.Element => {
   const { setAuth } = useContext(AuthContext);
   const searchParams = useSearchParams();
-  const router = useRouter();
   const code = searchParams.get("code");
 
   const params = {
@@ -24,12 +23,11 @@ export const CallbackPage = (): JSX.Element => {
   };
 
   const handleSuccess = (res: AuthResponseType): void => {
-    router.push(Routes.DASHBOARD);
     setAuth(res);
   };
+
   const { isLoginLoading, isLoginError } = useLogin({
     params,
-    enabled: !!code,
     handleSuccess,
   });
 

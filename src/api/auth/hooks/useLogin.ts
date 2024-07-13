@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import ms from "ms";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { login } from "../auth.methods";
@@ -10,20 +11,14 @@ const GET_LOGIN_KEY = "getLogin";
 
 interface UseLoginProps {
   params: LoginParamsType;
-  enabled?: boolean;
   handleSuccess: (res: AuthResponseType) => void;
 }
 
-export const useLogin = ({
-  params,
-  enabled = false,
-  handleSuccess,
-}: UseLoginProps) => {
+export const useLogin = ({ params, handleSuccess }: UseLoginProps) => {
   const { data, isError, isSuccess, isLoading, error } = useQuery({
-    queryKey: [GET_LOGIN_KEY],
+    queryKey: [GET_LOGIN_KEY, params],
     queryFn: () => login(params),
-    enabled,
-    gcTime: 60 * 60 * 1000,
+    gcTime: ms("4h"),
     retry: 0,
   });
 
