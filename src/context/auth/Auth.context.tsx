@@ -33,8 +33,8 @@ export const AuthContextProvider = ({
     appQueryClient.resetQueries();
     appQueryClient.cancelQueries();
     appQueryClient.removeQueries();
-    setAuth(null);
     router.refresh();
+    setAuth(null);
   }, [router]);
 
   const value = useMemo(
