@@ -22,7 +22,7 @@ export const SubscriptionsList = (): JSX.Element => {
     SubscriptionsListSortEnum | undefined
   >();
   const [search, setSearch] = useState<string>("");
-  const [isShowUngroup, setIsShowUngroup] = useState<boolean>(false);
+  const [isShowUngroup, setIsShowUngroup] = useState<boolean>(true);
   const debouncedValue = useDebounce(search, 300);
 
   const {
