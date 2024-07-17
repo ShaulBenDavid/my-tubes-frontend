@@ -27,12 +27,12 @@ export const AuthContextProvider = ({
   const [auth, setAuth] = useState<Auth>();
   const router = useRouter();
 
-  const handleLogout = useCallback((): void => {
+  const handleLogout = useCallback(async (): Promise<void> => {
     dwInstance.defaults.headers.Authorization = null;
-    appQueryClient.clear();
-    appQueryClient.resetQueries();
-    appQueryClient.cancelQueries();
-    appQueryClient.removeQueries();
+    await appQueryClient.clear();
+    await appQueryClient.removeQueries();
+    await appQueryClient.resetQueries();
+    await appQueryClient.cancelQueries();
     router.refresh();
     setAuth(null);
   }, [router]);
