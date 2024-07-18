@@ -41,7 +41,7 @@ export const CallbackPage = (): JSX.Element => {
           </section>
         </div>
       )}
-      {(!code || isLoginError) && (
+      {(!code || isLoginError) && !isLoginLoading && (
         <Card className="p-4">
           <EmptyState
             header="Sorry the login failed, please try again."
