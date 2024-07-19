@@ -58,6 +58,7 @@ export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
     <>
       <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />
       <GroupHeader
+        isSubscriptionsLoading={isSubscriptionsLoading}
         title={subscriptionsGroup?.title}
         description={subscriptionsGroup?.description}
         subscriptionsCount={subscriptionsCount}

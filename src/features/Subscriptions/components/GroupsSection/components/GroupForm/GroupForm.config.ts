@@ -18,6 +18,6 @@ export const groupDetailsSchema = z.object({
       required_error: "Title is required",
     })
     .trim()
-    .min(1)
-    .max(255, "Description can be long than 255 characters"),
+    .max(255, "Description can be long than 255 characters")
+    .nullable(),
 });

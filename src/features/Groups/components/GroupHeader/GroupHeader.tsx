@@ -6,8 +6,9 @@ import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
 import type { SubscriptionsSortOptionType } from "../../../Subscriptions/components/SubscriptionsList";
 
 interface GroupHeaderProps {
+  isSubscriptionsLoading: boolean;
   title?: string;
-  description?: string;
+  description?: string | null;
   subscriptionsCount?: number;
   searchValue: string;
   sortOptions: SubscriptionsSortOptionType[];
@@ -17,6 +18,7 @@ interface GroupHeaderProps {
 }
 
 export const GroupHeader = ({
+  isSubscriptionsLoading,
   title,
   description,
   subscriptionsCount,
@@ -33,7 +35,11 @@ export const GroupHeader = ({
 
         <span className="ps-2">({subscriptionsCount || "--"})</span>
       </h1>
-      <p>{description || <Skeleton width="100%" height="14px" count={2} />}</p>
+      {isSubscriptionsLoading ? (
+        <Skeleton width="100%" height="14px" count={2} />
+      ) : (
+        description && <p>{description}</p>
+      )}
     </div>
     <div className="flex w-full items-end justify-end">
       <span className="flex h-10 w-24 items-center">

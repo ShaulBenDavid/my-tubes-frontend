@@ -63,7 +63,7 @@ export const GroupCard = ({
             {capitalizedTitle}
           </Link>
         </h5>
-        <p className="line-clamp-6">{description}</p>
+        {description && <p className="line-clamp-6">{description}</p>}
         <div className="mt-auto flex flex-row justify-between">
           <Tooltip content={countDetails} id={String(id)} />
           <span

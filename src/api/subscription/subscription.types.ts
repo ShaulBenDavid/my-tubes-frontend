@@ -29,7 +29,7 @@ export type GetSubscriptionsListParams = PaginationParams & {
 export type SubscriptionsGroupType = {
   id: number;
   title: string;
-  description: string;
+  description?: string | null;
   subscriptionCount: number;
 };
 
