@@ -19,11 +19,11 @@ import { subscriptionsListSortConfig } from "../Subscriptions/components/Subscri
 import { GroupBody } from "./components/GroupBody";
 // import { GroupAside } from "./components/GroupAside";
 
-interface GroupsProps {
+interface GroupProps {
   groupId: number;
 }
 
-export const Groups = ({ groupId }: GroupsProps): JSX.Element => {
+export const Group = ({ groupId }: GroupProps): JSX.Element => {
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();

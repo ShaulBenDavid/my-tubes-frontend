@@ -1,10 +1,23 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
-import { SubscriptionsList } from "./components/SubscriptionsList";
+import { Spinner } from "@/src/components/Spinner";
 import { Header } from "./components/Header";
-import { GroupsSection } from "./components/GroupsSection";
+import { SubscriptionsList } from "./components/SubscriptionsList";
+
+const GroupsSection = dynamic(
+  () => import("./components/GroupsSection").then((mod) => mod.GroupsSection),
+  {
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <Spinner />
+      </div>
+    ),
+    ssr: false,
+  },
+);
 
 export const Subscriptions = (): JSX.Element => {
   const { subscriptionsInfo } = useGetSubscriptionsInfo();

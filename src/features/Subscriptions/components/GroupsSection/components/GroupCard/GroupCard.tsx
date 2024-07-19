@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Tooltip } from "react-tooltip";
 import { useDrop } from "react-dnd";
+import { FaArrowRight } from "react-icons/fa";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { Routes } from "@/src/routes";
 import { Card } from "@/src/components/Card";
@@ -49,9 +50,9 @@ export const GroupCard = ({
         className="flex h-60 w-full flex-col border-2"
         style={{ borderColor: color, borderStyle: isDrag ? "dashed" : "solid" }}
       >
-        <h5 className="text-lg font-semibold">
+        <h5 className="flex text-lg font-semibold">
           <Link
-            className="hover:text-blue-400 hover:underline"
+            className="flex w-full flex-row items-center hover:text-blue-400 hover:underline"
             href={buildRoutePath(
               Routes.SUBSCRIPTIONS,
               Routes.GROUP,
@@ -59,8 +60,11 @@ export const GroupCard = ({
               String(id),
             )}
           >
-            <span style={{ color }}>#</span>
-            {capitalizedTitle}
+            <span style={{ color }} aria-hidden>
+              #
+            </span>
+            <span className="line-clamp-1">{capitalizedTitle}</span>
+            <FaArrowRight aria-hidden className="ml-2" />
           </Link>
         </h5>
         {description && <p className="line-clamp-6">{description}</p>}

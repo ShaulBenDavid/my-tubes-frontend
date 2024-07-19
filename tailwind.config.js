@@ -89,6 +89,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         "groups-auto-fit": "repeat(auto-fill, minmax(400px, 1fr))",
+        "tablet-groups-auto-fit": "repeat(auto-fill, minmax(250px, 1fr))",
       },
       gridTemplateRows: {
         "groups-row-fit": "repeat(auto-fill, 240px)",

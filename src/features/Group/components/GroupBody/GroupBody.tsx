@@ -103,7 +103,7 @@ export const GroupBody = ({
     <>
       <section
         /* prettier-ignore */
-        className="grid-rows-groups-row-fit grid h-full w-full grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4 px-4"
+        className="grid-rows-groups-row-fit grid h-full w-full grid-cols-tablet-groups-auto-fit lg:grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4 px-4"
         ref={rootRef}
         id="searchResults"
       >

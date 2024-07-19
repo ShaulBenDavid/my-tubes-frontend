@@ -1,6 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import { Groups } from "@/src/features/Groups";
+import { Group } from "@/src/features/Group";
 
 interface GroupPageProps {
   params: {
@@ -15,7 +15,7 @@ const GroupPage = async ({ params: { group } }: GroupPageProps) => {
     notFound();
   }
 
-  return <Groups groupId={Number(groupId)} />;
+  return <Group groupId={Number(groupId)} />;
 };
 
 export default GroupPage;
