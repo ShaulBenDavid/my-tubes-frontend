@@ -5,6 +5,7 @@ import { defaultMetadata } from "@/src/metadata";
 import { AppProviders } from "@/src/providers";
 import theme from "@/src/styles/tailwind.theme";
 import "@/src/styles/global.css";
+import { GoogleAnalytics } from "@/src/providers/GoogleAnalytics";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,6 +24,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }): JSX.Element => (
   <html lang="en">
+    {process.env.NODE_ENV === "production" && <GoogleAnalytics />}
     <body
       /* prettier-ignore */
       className={`min-h-[100dvh] w-full ${inter.variable} bg-spec-space-bg font-inter text-white`}

@@ -8,6 +8,7 @@ import { QueryProvider } from "./query.provider";
 import { AxiosInterceptor } from "../api";
 import { AuthContextProvider } from "../context/auth";
 import { AuthProvider } from "./auth.provider";
+import { CookieConsent } from "./CookieConsent";
 import "react-toastify/dist/ReactToastify.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-tooltip/dist/react-tooltip.css";
@@ -26,6 +27,7 @@ export const AppProviders = ({
         <AuthProvider>
           <SkeletonTheme baseColor="#282828" highlightColor="#48484833">
             {children}
+            <CookieConsent />
             <ToastContainer
               limit={MAX_NUMBER_DISPLAYED_TOASTS}
               stacked
