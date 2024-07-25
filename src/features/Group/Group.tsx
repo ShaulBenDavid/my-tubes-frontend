@@ -17,7 +17,7 @@ import { HttpStatusCode } from "@/src/types";
 import { GroupHeader } from "./components/GroupHeader";
 import { subscriptionsListSortConfig } from "../Subscriptions/components/SubscriptionsList";
 import { GroupBody } from "./components/GroupBody";
-// import { GroupAside } from "./components/GroupAside";
+import { GroupAside } from "./components/GroupAside";
 
 interface GroupProps {
   groupId: number;
@@ -85,20 +85,19 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
           />
         </div>
       ) : (
-        // TODO adding a share option
-        // <div className="flex h-full w-full overflow-hidden">
-        //   <GroupAside />
-        <GroupBody
-          groupName={subscriptionsGroup?.title ?? ""}
-          isFetchingNextPage={isFetchingNextPage}
-          isSubscriptionsError={isSubscriptionsError}
-          isSubscriptionsLoading={isSubscriptionsLoading}
-          searchValue={debouncedValue}
-          hasNextPage={hasNextPage}
-          fetchNextPage={fetchNextPage}
-          subscriptionsList={subscriptionsList}
-        />
-        // </div>
+        <div className="flex h-full w-full overflow-hidden">
+          <GroupAside currentGroupId={groupId} />
+          <GroupBody
+            groupName={subscriptionsGroup?.title ?? ""}
+            isFetchingNextPage={isFetchingNextPage}
+            isSubscriptionsError={isSubscriptionsError}
+            isSubscriptionsLoading={isSubscriptionsLoading}
+            searchValue={debouncedValue}
+            hasNextPage={hasNextPage}
+            fetchNextPage={fetchNextPage}
+            subscriptionsList={subscriptionsList}
+          />
+        </div>
       )}
     </>
   );
