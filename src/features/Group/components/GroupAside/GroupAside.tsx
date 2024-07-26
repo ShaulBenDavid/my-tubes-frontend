@@ -9,7 +9,7 @@ interface GroupAsideProps {
 export const GroupAside = ({
   currentGroupId,
 }: GroupAsideProps): JSX.Element => (
-  <aside className="flex h-full w-72 flex-col border-r border-white/30 p-2">
+  <aside className="flex h-full w-72 shrink-0 flex-col border-r border-white/30 p-2 pl-0">
     {/* <Share /> */}
     <GroupsNavbar currentGroupId={currentGroupId} />
   </aside>
