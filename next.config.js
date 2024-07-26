@@ -21,6 +21,13 @@ const nextConfig = {
       },
     ],
   },
+  trailingSlash: true,
+  rewrites: async () => [
+    {
+      source: "/api/:path*",
+      destination: `${process.env.NEXT_PUBLIC_MY_TUBES_URL}:path*/`,
+    },
+  ],
   reactStrictMode: true,
 };
 
