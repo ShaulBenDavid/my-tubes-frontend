@@ -30,7 +30,7 @@ export const GroupLink = ({
     >
       <span className="truncate pr-3">{title}</span>
       <div className="flex flex-row">
-        <span aria-label="subscriptions count in group">{`(${count})`}</span>
+        <span aria-label="subscriptions count in group">{`(${count || "--"})`}</span>
         <IoIosArrowForward aria-hidden size={24} />
       </div>
     </Link>
