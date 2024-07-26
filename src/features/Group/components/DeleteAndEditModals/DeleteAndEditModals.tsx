@@ -8,6 +8,7 @@ import { Modal } from "@/src/components/Modal";
 import { ValidationContentModal } from "@/src/components/ValidationContentModal";
 import {
   GET_SUBSCRIPTIONS_GROUPS_KEY,
+  GET_SUBSCRIPTIONS_GROUP_KEY,
   GET_SUBSCRIPTIONS_LIST_KEY,
   useDeleteSubscriptionsGroup,
   useEditSubscriptionsGroup,
@@ -43,8 +44,11 @@ export const DeleteAndEditModals = ({
     appQueryClient.invalidateQueries({
       queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],
     });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUP_KEY, id],
+    });
     onDeleteClose();
-  }, [onDeleteClose, title]);
+  }, [onDeleteClose, title, id]);
 
   const { deleteGroup, isDeleteGroupLoading } = useDeleteSubscriptionsGroup({
     handleSuccess: handleDeleteSuccess,
@@ -60,8 +64,11 @@ export const DeleteAndEditModals = ({
     appQueryClient.invalidateQueries({
       queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
     });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUP_KEY, id],
+    });
     onEditClose();
-  }, [onEditClose, title]);
+  }, [id, onEditClose, title]);
 
   const { editGroup, isEditGroupLoading, isEditGroupError, editGroupError } =
     useEditSubscriptionsGroup({
