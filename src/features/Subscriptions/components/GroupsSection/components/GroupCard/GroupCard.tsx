@@ -8,12 +8,12 @@ import { FaArrowRight } from "react-icons/fa";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { Routes } from "@/src/routes";
 import { Card } from "@/src/components/Card";
+import { GroupActions } from "@/src/features/Group/components/GroupActions";
 import type {
   SubscriptionType,
   SubscriptionsGroupType,
 } from "@/src/api/subscription";
 import { buildRoutePath, stringToColor, wordToCapitalize } from "@/src/utils";
-import { CardActions } from "./CardActions";
 
 export const DND_TYPE_ID = "channel";
 
@@ -79,7 +79,7 @@ export const GroupCard = ({
             <HiMiniUserGroup size={24} color={color} />
             {subscriptionCount}
           </span>
-          <CardActions
+          <GroupActions
             name={title}
             onDelete={handleDeleteClick}
             onEdit={handleEditClick}

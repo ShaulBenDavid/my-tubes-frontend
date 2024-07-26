@@ -15,7 +15,7 @@ import {
 import {
   ARIA_CONTROL_GROUP_DELETE,
   ARIA_CONTROL_GROUP_EDIT,
-} from "../GroupCard/CardActions/CardActions";
+} from "../GroupActions";
 import { GroupForm } from "../GroupForm";
 
 interface DeleteAndEditModalsProps {
@@ -90,7 +90,7 @@ export const DeleteAndEditModals = ({
         closeModal={onEditClose}
         id={ARIA_CONTROL_GROUP_EDIT}
       >
-        {title && description && id && (
+        {title && id && (
           <GroupForm
             key={title}
             title={`Edit Group - ${title}`}

@@ -11,7 +11,7 @@ import { Card } from "@/src/components/Card";
 import { appQueryClient } from "@/src/queries";
 import { Button, ButtonVariants } from "@/src/components/Button";
 import { Modal } from "@/src/components/Modal";
-import { GroupForm } from "../GroupForm";
+import { GroupForm } from "../../../../../Group/components/GroupForm";
 
 const ARIA_CONTROL_GROUP_CREATE = "createGroupModal";
 

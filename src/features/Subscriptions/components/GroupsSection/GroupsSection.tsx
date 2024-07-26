@@ -20,7 +20,7 @@ import { GroupCardLoader } from "./components/GroupCard/GroupCard.loader";
 
 const DeleteAndEditModals = dynamic(
   () =>
-    import("./components/DeleteAndEditModals").then(
+    import("@/src/features/Group/components/DeleteAndEditModals").then(
       (mod) => mod.DeleteAndEditModals,
     ),
   {

@@ -7,17 +7,17 @@ import { ActionButtonVariants } from "@/src/components/ActionButton/ActionButton
 export const ARIA_CONTROL_GROUP_EDIT = "editGroupModal";
 export const ARIA_CONTROL_GROUP_DELETE = "deleteGroupModal";
 
-interface CardActionsProps {
+interface GroupActionsProps {
   name: string;
   onDelete: () => void;
   onEdit: () => void;
 }
 
-export const CardActions = ({
+export const GroupActions = ({
   name,
   onDelete,
   onEdit,
-}: CardActionsProps): JSX.Element => (
+}: GroupActionsProps): JSX.Element => (
   <div>
     <ActionButton
       id="edit-group-button"
