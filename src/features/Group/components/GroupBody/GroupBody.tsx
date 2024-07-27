@@ -121,6 +121,7 @@ export const GroupBody = ({
           </div>
         )}
         {!!subscriptionsList?.length &&
+          !isSubscriptionsLoading &&
           subscriptionsList.map(
             ({ title, description, imageUrl, channelId, id }, index) => (
               <ChannelCard
