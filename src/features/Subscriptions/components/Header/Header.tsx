@@ -29,7 +29,7 @@ export const Header = ({
               Last Sync: This indicates the most recent time we synchronized
               your subscribers with your YouTube account.
               <br />
-              (For Lite users we sync once a month) only if you are logged in.
+              We sync once a week only if you are logged in.
             </>
           }
         />
