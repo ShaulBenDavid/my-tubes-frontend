@@ -42,7 +42,9 @@ export const SortFilter = <T extends string | number>({
     >
       <option value="">Recommended</option>
       {options.map((option) => (
-        <option value={option.value}>{option.label}</option>
+        <option value={option.value} key={option.label}>
+          {option.label}
+        </option>
       ))}
     </select>
   </div>
