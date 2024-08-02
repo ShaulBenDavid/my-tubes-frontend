@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { GroupsNavbar } from "./GroupsNavbar";
 // import { Share } from "@/src/components/Share";

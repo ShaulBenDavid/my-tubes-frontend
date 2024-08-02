@@ -30,6 +30,7 @@ export type SubscriptionsGroupType = {
   id: number;
   title: string;
   description?: string | null;
+  emoji?: string | null;
   subscriptionCount: number;
 };
 

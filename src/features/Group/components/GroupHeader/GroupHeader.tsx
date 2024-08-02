@@ -7,7 +7,8 @@ import type {
   SubscriptionsListSortEnum,
 } from "@/src/api/subscription";
 import type { SubscriptionsSortOptionType } from "../../../Subscriptions/components/SubscriptionsList";
-import { Actions } from "./Actions";
+import { Actions } from "./components/Actions";
+import { EmojiDropdown } from "./components/EmojiDropdown";
 
 interface GroupHeaderProps {
   isSubscriptionsLoading: boolean;
@@ -30,21 +31,23 @@ export const GroupHeader = ({
   onSearchChange,
   onSearchReset,
 }: GroupHeaderProps): JSX.Element => {
-  const { title, description } = currentGroup ?? {};
+  const { title, description, emoji } = currentGroup ?? {};
 
   return (
     <header className="flex w-full flex-row border-b border-white/30 py-4">
-      <div className="w-3/5">
-        <h1 className="flex flex-row text-xl font-semibold capitalize">
-          {title || <Skeleton width="100px" height="20px" />}
-
-          <span className="ps-2">({subscriptionsCount || "--"})</span>
-        </h1>
-        {isSubscriptionsLoading ? (
-          <Skeleton width="100%" height="14px" count={2} />
-        ) : (
-          description && <p>{description}</p>
-        )}
+      <div className="flex flex-row gap-2">
+        <EmojiDropdown selectedIcon={emoji} />
+        <div>
+          <h1 className="flex flex-row text-xl font-semibold capitalize">
+            {title || <Skeleton width="100px" height="20px" />}
+            <span className="ps-2">({subscriptionsCount || "--"})</span>
+          </h1>
+          {isSubscriptionsLoading ? (
+            <Skeleton width="100%" height="14px" count={2} />
+          ) : (
+            description && <p>{description}</p>
+          )}
+        </div>
       </div>
       <div className="flex w-full items-end justify-end">
         <span className="flex h-10 w-24 items-center">

@@ -3,7 +3,7 @@
 import React, { useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
-import { GroupActions } from "../../GroupActions";
+import { GroupActions } from "../../../GroupActions";
 
 const DeleteAndEditModals = dynamic(
   () =>

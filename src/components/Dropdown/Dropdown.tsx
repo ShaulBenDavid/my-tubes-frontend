@@ -20,7 +20,7 @@ export const Dropdown = ({
   setState,
   children,
 }: PropsWithChildren<DropdownProps>): JSX.Element => {
-  const ariaLabel = `${label.replace(" ", "-")}-desc`;
+  const ariaLabel = `${label.replace(/\s+/g, "-")}-desc`;
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     if (e.key === "Escape" || e.key === "ArrowDown") {
