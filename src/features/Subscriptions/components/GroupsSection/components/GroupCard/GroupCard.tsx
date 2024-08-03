@@ -30,7 +30,7 @@ export const GroupCard = ({
   handleEditClick,
   onDrop,
 }: GroupCardProps): JSX.Element => {
-  const { title, description, subscriptionCount, id } = data;
+  const { title, description, subscriptionCount, emoji, id } = data;
   const color = stringToColor(title + id);
   const capitalizedTitle = wordToCapitalize(title);
   const countDetails = `Subscriptions count in ${capitalizedTitle} group is ${subscriptionCount}`;
@@ -60,6 +60,7 @@ export const GroupCard = ({
               String(id),
             )}
           >
+            {emoji && <span className="mr-2 text-4xl">{emoji}</span>}
             <span style={{ color }} aria-hidden>
               #
             </span>

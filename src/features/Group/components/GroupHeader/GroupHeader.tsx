@@ -13,6 +13,7 @@ import { Actions } from "./components/Actions";
 const EmojiDropdown = dynamic(
   () => import("./components/EmojiDropdown").then((mod) => mod.EmojiDropdown),
   {
+    loading: () => <Skeleton width="32px" height="32px" className="mx-2" />,
     ssr: false,
   },
 );
