@@ -1,21 +1,49 @@
 "use client";
 
-import React, { useState } from "react";
-import ReactFocusLock from "react-focus-lock";
-import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
+import React, { useCallback, useState } from "react";
 import { LuImagePlus } from "react-icons/lu";
+import {
+  GET_SUBSCRIPTIONS_GROUPS_KEY,
+  GET_SUBSCRIPTIONS_GROUP_KEY,
+  useEditSubscriptionsGroup,
+} from "@/src/api/subscription/hooks";
 import { Dropdown } from "@/src/components/Dropdown";
-import S from "./EmojiDropdown.module.css";
+import { appQueryClient } from "@/src/queries";
+import { EmojiPicker } from "./EmojiPicker";
 
 interface EmojiDropdownProps {
+  id: number;
+  title: string;
   selectedIcon?: string | null;
 }
 
 export const EmojiDropdown = ({
   selectedIcon,
+  id,
+  title,
 }: EmojiDropdownProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleEditSuccess = useCallback((): void => {
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_SUBSCRIPTIONS_GROUP_KEY, id],
+    });
+  }, [id]);
+
+  const { editGroup, variables } = useEditSubscriptionsGroup({
+    handleSuccess: handleEditSuccess,
+  });
+
+  const onSelect = useCallback(
+    (emoji: string) => {
+      editGroup({ emoji, id, title });
+      setIsOpen(false);
+    },
+    [editGroup, id, title],
+  );
 
   return (
     <Dropdown
@@ -23,7 +51,9 @@ export const EmojiDropdown = ({
       isOpen={isOpen}
       trigger={
         selectedIcon ? (
-          <span>{selectedIcon}</span>
+          <span className="mx-2 text-3xl">
+            {variables?.emoji ?? selectedIcon}
+          </span>
         ) : (
           <LuImagePlus
             size={32}
@@ -34,19 +64,7 @@ export const EmojiDropdown = ({
       label="Change page icon"
       className="left-0 p-0"
     >
-      <ReactFocusLock>
-        <div className={S.emojiPicker}>
-          <Picker
-            data={data}
-            onEmojiSelect={({ native }: { native: string }) =>
-              console.log(native)
-            }
-            theme="dark"
-            autoFocus
-            skinTonePosition="none"
-          />
-        </div>
-      </ReactFocusLock>
+      <EmojiPicker onSelect={onSelect} />
     </Dropdown>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import Skeleton from "react-loading-skeleton";
 import { SearchInput } from "@/src/components/SearchInput";
 import { SortFilter } from "@/src/components/SortFilter";
@@ -8,7 +9,13 @@ import type {
 } from "@/src/api/subscription";
 import type { SubscriptionsSortOptionType } from "../../../Subscriptions/components/SubscriptionsList";
 import { Actions } from "./components/Actions";
-import { EmojiDropdown } from "./components/EmojiDropdown";
+
+const EmojiDropdown = dynamic(
+  () => import("./components/EmojiDropdown").then((mod) => mod.EmojiDropdown),
+  {
+    ssr: false,
+  },
+);
 
 interface GroupHeaderProps {
   isSubscriptionsLoading: boolean;
@@ -31,12 +38,14 @@ export const GroupHeader = ({
   onSearchChange,
   onSearchReset,
 }: GroupHeaderProps): JSX.Element => {
-  const { title, description, emoji } = currentGroup ?? {};
+  const { title, description, emoji, id } = currentGroup ?? {};
 
   return (
     <header className="flex w-full flex-row border-b border-white/30 py-4">
       <div className="flex flex-row gap-2">
-        <EmojiDropdown selectedIcon={emoji} />
+        {id && title && (
+          <EmojiDropdown selectedIcon={emoji} id={id} title={title} />
+        )}
         <div>
           <h1 className="flex flex-row text-xl font-semibold capitalize">
             {title || <Skeleton width="100px" height="20px" />}

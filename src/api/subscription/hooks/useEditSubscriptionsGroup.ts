@@ -12,7 +12,7 @@ interface UseEditSubscriptionsGroupProps {
 export const useEditSubscriptionsGroup = ({
   handleSuccess,
 }: UseEditSubscriptionsGroupProps) => {
-  const { mutate, isPending, isError, error, data } = useMutation({
+  const { mutate, isPending, isError, error, data, variables } = useMutation({
     mutationKey: [EDIT_SUBSCRIPTIONS_GROUP_KEY],
     mutationFn: editSubscriptionsGroup,
     onSuccess: handleSuccess,
@@ -24,5 +24,6 @@ export const useEditSubscriptionsGroup = ({
     editGroupError: error,
     isEditGroupLoading: isPending,
     isEditGroupError: isError,
+    variables,
   };
 };
