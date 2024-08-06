@@ -42,7 +42,7 @@ export const GroupHeader = ({
   const { title, description, emoji, id } = currentGroup ?? {};
 
   return (
-    <header className="flex w-full flex-row border-b border-white/30 py-4">
+    <header className="flex w-full flex-row justify-between border-b border-white/30 py-4">
       <div className="flex flex-row gap-2">
         {id && title && (
           <EmojiDropdown selectedIcon={emoji} id={id} title={title} />
@@ -59,7 +59,7 @@ export const GroupHeader = ({
           )}
         </div>
       </div>
-      <div className="flex w-full items-end justify-end">
+      <div className="flex w-fit shrink-0 items-start">
         <span className="flex h-10 w-24 items-center">
           <SortFilter
             label="sort"

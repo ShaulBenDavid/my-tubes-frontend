@@ -27,6 +27,7 @@ describe("GroupLink component", () => {
 
     expect(linkElement).toBeInTheDocument();
     expect(titleElement).toBeInTheDocument();
+    expect(titleElement).toBeInTheDocument();
     expect(countElement).toHaveTextContent(`(${count})`);
     expect(iconElement).toBeInTheDocument();
     expect(linkElement).toHaveStyle("border-color: #000000");
