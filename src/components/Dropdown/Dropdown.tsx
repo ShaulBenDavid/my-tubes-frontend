@@ -50,7 +50,7 @@ export const Dropdown = ({
       {isOpen && (
         <div
           aria-hidden
-          className="fixed inset-0 h-screen w-screen"
+          className="fixed inset-0 z-10 h-screen w-screen"
           onClick={handleClose}
         />
       )}
