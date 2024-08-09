@@ -48,3 +48,16 @@ export type PostAddSubscriptionGroupPayload = Record<
   `${"subscription" | "group"}Id`,
   number
 >;
+
+export type GetGroupShareLinkParams = {
+  path: string;
+  groupId: number;
+};
+
+export type GetGroupShareLinkResponse = {
+  link: string;
+};
+
+export type GetSubscriptionsFromShareLinkParams = {
+  token: string;
+};
