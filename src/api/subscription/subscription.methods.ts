@@ -3,7 +3,6 @@ import { Methods } from "../api.config";
 import { apiMethodInstance } from "../http.service";
 import type {
   EditSubscriptionGroupPayload,
-  GetSubscriptionsFromShareLinkParams,
   GetGroupShareLinkParams,
   GetGroupShareLinkResponse,
   GetSubscriptionsInfoResponse,
@@ -98,15 +97,6 @@ export const getGroupShareLink = (
 ): Promise<GetGroupShareLinkResponse> =>
   apiMethodInstance({
     url: ApiEndpoints.GET_GROUP_SHARE_LINK,
-    method: Methods.GET,
-    params,
-  });
-
-export const getSubscriptionsFromShareLink = (
-  params: GetSubscriptionsFromShareLinkParams,
-): Promise<SubscriptionType[]> =>
-  apiMethodInstance({
-    url: ApiEndpoints.GET_SUBSCRIPTIONS_FROM_SHARE_LINK,
     method: Methods.GET,
     params,
   });

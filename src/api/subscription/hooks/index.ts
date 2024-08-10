@@ -16,5 +16,4 @@ export {
   GET_SUBSCRIPTIONS_GROUP_KEY,
 } from "./useGetSubscriptionsGroup";
 export { useDeleteSubscriptionFromGroup } from "./useDeleteSubscriptionFromGroup";
-export { useGetSubscriptionsFromShareLink } from "./useGetSubscriptionsFromShareLink";
 export { useGetGroupShareLink } from "./useGetGroupShareLink";

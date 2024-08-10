@@ -30,3 +30,17 @@ export const refreshInstance: AxiosInstance = applyCaseMiddleware(
 export const refreshMethodInstance = <T>(
   options: AxiosRequestConfig,
 ): Promise<T> => refreshInstance(options).then((res) => res.data);
+
+const publicConfig: AxiosRequestConfig = {
+  baseURL,
+  headers: { "Content-Type": "application/json" },
+  withCredentials: true,
+};
+
+export const publicInstance: AxiosInstance = applyCaseMiddleware(
+  axios.create(publicConfig),
+);
+
+export const publicMethodInstance = <T>(
+  options: AxiosRequestConfig,
+): Promise<T> => publicInstance(options).then((res) => res.data);

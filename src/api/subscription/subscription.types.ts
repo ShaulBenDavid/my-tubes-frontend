@@ -57,7 +57,3 @@ export type GetGroupShareLinkParams = {
 export type GetGroupShareLinkResponse = {
   link: string;
 };
-
-export type GetSubscriptionsFromShareLinkParams = {
-  token: string;
-};
