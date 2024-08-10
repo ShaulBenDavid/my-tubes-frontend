@@ -48,7 +48,6 @@ export const Share = ({
       <RedditShareButton url={url} title={content}>
         <RedditIcon size={32} round />
       </RedditShareButton>
-
       <TwitterShareButton url={url} title={content}>
         <TwitterIcon size={32} round />
       </TwitterShareButton>
