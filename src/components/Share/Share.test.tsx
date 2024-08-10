@@ -4,7 +4,9 @@ import { Share } from "./Share";
 
 describe("Share", () => {
   it("renders correctly", () => {
-    const { getByTestId } = render(<Share />);
+    const { getByTestId } = render(
+      <Share url="test" title="test" content="test" />,
+    );
     const shareElement = getByTestId("share-component-test-id");
     expect(shareElement).toBeInTheDocument();
   });

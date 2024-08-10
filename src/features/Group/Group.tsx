@@ -85,7 +85,10 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
         </div>
       ) : (
         <div className="flex h-full w-full overflow-hidden">
-          <GroupAside currentGroupId={groupId} />
+          <GroupAside
+            currentGroupId={groupId}
+            groupName={subscriptionsGroup?.title ?? ""}
+          />
           <GroupBody
             groupName={subscriptionsGroup?.title ?? ""}
             isFetchingNextPage={isFetchingNextPage}

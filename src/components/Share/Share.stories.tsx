@@ -19,7 +19,7 @@ const meta: Meta<typeof Share> = {
       control: "string",
       description: "Title of the share.",
     },
-    subject: {
+    content: {
       control: "string",
       description: "Title of the share.",
     },

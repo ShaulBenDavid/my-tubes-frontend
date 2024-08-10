@@ -21,7 +21,7 @@ export const GroupsNavbar = ({
   return (
     <nav aria-label="groups navbar" className="flex h-full flex-col">
       {isGroupsLoading && <GroupLinkLoader />}
-      {filteredGroup?.length && !isGroupsLoading && (
+      {!!filteredGroup?.length && !isGroupsLoading && (
         <>
           <h3 className="text-base font-semibold">Your Groups</h3>
           <div className="flex h-full flex-col gap-2 overflow-y-auto pr-1 pt-4">

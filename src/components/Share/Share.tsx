@@ -15,60 +15,41 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "next-share";
-import { shareContent } from "./Share.config";
 
 interface ShareProps {
-  url?: string;
-  subject?: string;
-  title?: string;
+  url: string;
+  title: string;
+  content: string;
 }
 
 export const Share = ({
   url = "",
-  subject,
   title,
+  content,
 }: ShareProps): JSX.Element => (
-  <div className="flex w-full flex-col gap-3">
+  <div className="flex w-full flex-col gap-4">
     <h3 className="text-base font-semibold">Share with your friends</h3>
     <div
       className="flex flex-wrap gap-2 pl-2"
       data-testid="share-component-test-id"
     >
-      <EmailShareButton
-        url={`${shareContent.url}${url}`}
-        subject={subject ?? shareContent.subject}
-        body={title ?? shareContent.title}
-      >
+      <EmailShareButton url={url} subject={title} body={content}>
         <EmailIcon size={32} round />
       </EmailShareButton>
-      <FacebookShareButton
-        url={`${shareContent.url}${url}`}
-        quote={title ?? shareContent.title}
-        hashtag="#dwizard"
-      >
+      <FacebookShareButton url={url} quote={content} hashtag="#dwizard">
         <FacebookIcon size={32} round />
       </FacebookShareButton>
-      <LinkedinShareButton url={`${shareContent.url}${url}`}>
+      <LinkedinShareButton url={url}>
         <LinkedinIcon size={32} round />
       </LinkedinShareButton>
-      <WhatsappShareButton
-        url={`${shareContent.url}${url}`}
-        title={title ?? shareContent.title}
-        separator=":: "
-      >
+      <WhatsappShareButton url={url} title={content} separator=":: ">
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
-      <RedditShareButton
-        url={`${shareContent.url}${url}`}
-        title={title ?? shareContent.title}
-      >
+      <RedditShareButton url={url} title={content}>
         <RedditIcon size={32} round />
       </RedditShareButton>
 
-      <TwitterShareButton
-        url={`${shareContent.url}${url}`}
-        title={title ?? shareContent.title}
-      >
+      <TwitterShareButton url={url} title={content}>
         <TwitterIcon size={32} round />
       </TwitterShareButton>
     </div>
