@@ -28,17 +28,15 @@ export const GroupsNavbar = ({
         <>
           <h3 className="text-base font-semibold">Your Groups</h3>
           <div className="flex h-full flex-col gap-2 overflow-y-auto pr-1 pt-4">
-            {filteredGroup
-              .concat(filteredGroup)
-              .map(({ title, id, subscriptionCount, emoji }) => (
-                <GroupLink
-                  key={title + id}
-                  title={title}
-                  id={id}
-                  count={subscriptionCount}
-                  emoji={emoji}
-                />
-              ))}
+            {filteredGroup.map(({ title, id, subscriptionCount, emoji }) => (
+              <GroupLink
+                key={title + id}
+                title={title}
+                id={id}
+                count={subscriptionCount}
+                emoji={emoji}
+              />
+            ))}
           </div>
         </>
       )}
