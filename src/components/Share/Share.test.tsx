@@ -5,7 +5,7 @@ import { Share } from "./Share";
 describe("Share", () => {
   it("renders correctly", () => {
     const { getByTestId } = render(
-      <Share url="test" title="test" content="test" />,
+      <Share url="test" title="test" content="test" tooltipContent="test" />,
     );
     const shareElement = getByTestId("share-component-test-id");
     expect(shareElement).toBeInTheDocument();

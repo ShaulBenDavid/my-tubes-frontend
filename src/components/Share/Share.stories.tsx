@@ -23,6 +23,10 @@ const meta: Meta<typeof Share> = {
       control: "string",
       description: "Title of the share.",
     },
+    tooltipContent: {
+      control: "string",
+      description: "Tooltip content of the share.",
+    },
   },
 };
 

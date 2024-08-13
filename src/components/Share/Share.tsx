@@ -15,20 +15,26 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "next-share";
+import { InfoTooltip } from "../InfoTooltip";
 
 interface ShareProps {
   url: string;
   title: string;
   content: string;
+  tooltipContent: string;
 }
 
 export const Share = ({
   url = "",
   title,
   content,
+  tooltipContent,
 }: ShareProps): JSX.Element => (
   <div className="flex w-full flex-col gap-4">
-    <h3 className="text-base font-semibold">Share with your friends</h3>
+    <div className="flex flex-row justify-between">
+      <h3 className="text-base font-semibold">Share with your friends</h3>
+      <InfoTooltip title={tooltipContent} />
+    </div>
     <div
       className="flex flex-wrap gap-2 pl-2"
       data-testid="share-component-test-id"
