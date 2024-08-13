@@ -16,6 +16,7 @@ import {
   WhatsappShareButton,
 } from "next-share";
 import { InfoTooltip } from "../InfoTooltip";
+import { CopyButton } from "../CopyButton";
 
 interface ShareProps {
   url: string;
@@ -39,6 +40,7 @@ export const Share = ({
       className="flex flex-wrap gap-2 pl-2"
       data-testid="share-component-test-id"
     >
+      <CopyButton textToCopy={url} tooltipText="Copy Link!" />
       <EmailShareButton url={url} subject={title} body={content}>
         <EmailIcon size={32} round />
       </EmailShareButton>

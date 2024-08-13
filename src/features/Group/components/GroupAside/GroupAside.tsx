@@ -34,6 +34,7 @@ export const GroupAside = ({
           tooltipContent="This link allows you to share all subscriptions within this group. It's valid for 24 hours."
         />
       )}
+
       <GroupsNavbar currentGroupId={currentGroupId} />
     </aside>
   );

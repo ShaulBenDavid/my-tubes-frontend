@@ -23,6 +23,7 @@ export const ActionButton = ({
   ...props
 }: ActionButtonProps): JSX.Element => {
   const id = useId();
+
   return (
     <>
       {tooltip && (
