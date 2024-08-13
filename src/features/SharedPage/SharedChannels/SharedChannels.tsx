@@ -17,7 +17,7 @@ export const SharedChannels = ({ token }: SharedChannelsProps): JSX.Element => {
   return (
     <section
       /* prettier-ignore */
-      className="grid-rows-groups-row-fit grid h-full w-full grid-cols-tablet-groups-auto-fit lg:grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4 px-4"
+      className="sm:grid-rows-groups-row-fit sm:grid h-full w-full flex sm:grid-cols-tablet-groups-auto-fit lg:grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4 px-4"
     >
       {isSubscriptionsLoading && <ChannelCardLoader />}
       {!isSubscriptionsLoading && !subscriptions?.length && (
@@ -36,7 +36,7 @@ export const SharedChannels = ({ token }: SharedChannelsProps): JSX.Element => {
               imageUrl={imageUrl}
               itemId={id}
               channelId={channelId}
-              className="h-60 animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0"
+              className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 sm:h-60"
               style={{ animationDelay: `${index * 0.07}s` }}
             />
           ),
