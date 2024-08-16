@@ -12,7 +12,7 @@ const ChannelsPage = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <main className="mx-auto flex h-full w-full max-w-[1400px] px-2">
+      <main className="mx-auto flex h-fit min-h-full w-full max-w-[1400px] px-2">
         {token && <SharedChannels token={token} />}
       </main>
     </DndProvider>
