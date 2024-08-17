@@ -9,7 +9,8 @@ export enum ApiEndpoints {
   // SUBSCRIPTIONS
   SUBSCRIPTIONS_INFO = "subscribe/info/",
   SUBSCRIPTIONS_LIST = "subscribe/list/",
-  GET_SUBSCRIPTIONS_FROM_SHARE_LINK = "subscribe/shared-subscriptions/",
+  GET_SUBSCRIPTIONS_FROM_SHARED_LINK = "subscribe/shared-subscriptions/",
+  GET_GROUP_INFO_FROM_SHARED_LINK = "subscribe/shared-group/info/",
 
   // GROUPS
   GROUPS = "subscribe/groups/",
