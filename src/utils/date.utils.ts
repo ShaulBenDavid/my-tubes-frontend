@@ -20,3 +20,18 @@ export const formatDateToCustomFormat = (date: Date): string => {
   };
   return new Intl.DateTimeFormat("en-US", options).format(date);
 };
+
+export const formatDateAndHour = (timestamp: number): string => {
+  const date = new Date(timestamp * 1000);
+
+  const options: Intl.DateTimeFormatOptions = {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+
+  const formatter = new Intl.DateTimeFormat("en-US", options);
+
+  return formatter.format(date);
+};
