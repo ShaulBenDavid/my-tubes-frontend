@@ -9,7 +9,8 @@ interface UserInfoProps extends UserSharedInfoType {
 
 export const UserInfo = ({
   expirationDate,
-  username,
+  firstName,
+  lastName,
   imageUrl,
 }: UserInfoProps): JSX.Element => {
   const date = new Date(Number(expirationDate) * 1000);
@@ -20,10 +21,10 @@ export const UserInfo = ({
       <span className="flex flex-col items-center gap-2">
         <Avatar
           url={imageUrl ?? undefined}
-          name={username}
+          name={`${firstName} ${lastName}`}
           className="h-20 w-20"
         />
-        <span aria-label="username">{username}</span>
+        <span aria-label="username">{`${firstName} ${lastName}`}</span>
       </span>
 
       <span

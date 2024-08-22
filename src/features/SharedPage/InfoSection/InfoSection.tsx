@@ -43,7 +43,8 @@ export const InfoSection = ({ token }: InfoSectionProps): JSX.Element => {
           />
           <UserInfo
             expirationDate={groupInfo.expirationDate}
-            username={groupInfo.userList.user.username}
+            firstName={groupInfo.userList.user.firstName}
+            lastName={groupInfo.userList.user?.lastName ?? ""}
             imageUrl={groupInfo.userList.user.imageUrl}
           />
         </>

@@ -5,8 +5,9 @@ export type SharedLinkParams = {
 };
 
 export type UserSharedInfoType = {
-  username: string;
-  imageUrl: string | null;
+  imageUrl?: string | null;
+  firstName: string;
+  lastName?: string | null;
 };
 
 export type GetSharedGroupInfoResponse = Omit<
