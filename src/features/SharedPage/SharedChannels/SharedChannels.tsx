@@ -17,7 +17,7 @@ export const SharedChannels = ({ token }: SharedChannelsProps): JSX.Element => {
   return (
     <section
       /* prettier-ignore */
-      className="sm:grid-rows-groups-row-fit sm:grid min-h-full w-full flex sm:grid-cols-tablet-groups-auto-fit lg:grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto py-4"
+      className="sm:grid-rows-groups-row-fit sm:grid w-full flex sm:grid-cols-tablet-groups-auto-fit lg:grid-cols-groups-auto-fit flex-col gap-4 py-4"
     >
       {isSubscriptionsLoading && <ChannelCardLoader />}
       {!isSubscriptionsLoading && !subscriptions?.length && (
