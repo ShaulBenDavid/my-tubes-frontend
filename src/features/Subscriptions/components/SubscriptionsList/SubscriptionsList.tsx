@@ -17,7 +17,13 @@ import { FiltersHeader } from "./FiltersHeader";
 
 const UNGROUP_SUBSCRIPTION_FILTER = "ungroup";
 
-export const SubscriptionsList = (): JSX.Element => {
+interface SubscriptionsListProps {
+  isDesktop: boolean;
+}
+
+export const SubscriptionsList = ({
+  isDesktop,
+}: SubscriptionsListProps): JSX.Element => {
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
@@ -47,7 +53,7 @@ export const SubscriptionsList = (): JSX.Element => {
   });
 
   return (
-    <div className="flex h-full w-96 shrink-0 flex-col gap-4">
+    <div className="flex h-full w-full shrink-0 flex-col gap-4 tb:w-96">
       <FiltersHeader
         isShowUngroup={isShowUngroup}
         onUngroupChange={() => setIsShowUngroup((prev) => !prev)}
@@ -82,7 +88,7 @@ export const SubscriptionsList = (): JSX.Element => {
                 imageUrl={imageUrl}
                 itemId={id}
                 channelId={channelId}
-                isDraggable
+                isDraggable={isDesktop}
               />
             ),
           )}

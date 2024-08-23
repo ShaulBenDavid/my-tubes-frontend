@@ -6,6 +6,7 @@ import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
 import { Spinner } from "@/src/components/Spinner";
 import { Header } from "./components/Header";
 import { SubscriptionsList } from "./components/SubscriptionsList";
+import { useMediaQuery } from "@/src/hooks";
 
 const GroupsSection = dynamic(
   () => import("./components/GroupsSection").then((mod) => mod.GroupsSection),
@@ -21,6 +22,7 @@ const GroupsSection = dynamic(
 
 export const Subscriptions = (): JSX.Element => {
   const { subscriptionsInfo } = useGetSubscriptionsInfo();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
@@ -29,8 +31,8 @@ export const Subscriptions = (): JSX.Element => {
         lastSyncDate={subscriptionsInfo?.lastSyncDate}
       />
       <div className="flex h-full w-full flex-row gap-4 overflow-hidden">
-        <SubscriptionsList />
-        <GroupsSection />
+        <SubscriptionsList isDesktop={isDesktop} />
+        {isDesktop && <GroupsSection />}
       </div>
     </>
   );
