@@ -25,6 +25,12 @@ export const FiltersHeader = ({
   onSearchReset,
 }: FiltersHeaderProps): JSX.Element => (
   <div>
+    <SearchInput
+      value={searchValue}
+      onReset={onSearchReset}
+      placeholder="Search Channels..."
+      onChange={(event) => onSearchChange(event.target.value)}
+    />
     <div className="flex flex-row items-center justify-between">
       <div className="w-20">
         <SortFilter
@@ -41,11 +47,5 @@ export const FiltersHeader = ({
         onChange={onUngroupChange}
       />
     </div>
-    <SearchInput
-      value={searchValue}
-      onReset={onSearchReset}
-      placeholder="Search Channels..."
-      onChange={(event) => onSearchChange(event.target.value)}
-    />
   </div>
 );

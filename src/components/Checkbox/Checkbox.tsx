@@ -14,7 +14,7 @@ export const Checkbox = ({
   <label
     aria-checked={props["aria-checked"]}
     htmlFor={idFor}
-    className="flex items-center whitespace-nowrap p-4 text-sm font-medium text-white"
+    className="flex items-center whitespace-nowrap p-2 text-sm font-medium text-white"
   >
     <div className="me-2 grid items-center justify-center">
       <input

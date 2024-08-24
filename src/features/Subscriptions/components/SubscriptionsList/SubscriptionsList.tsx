@@ -53,7 +53,7 @@ export const SubscriptionsList = ({
   });
 
   return (
-    <div className="flex h-full w-full shrink-0 flex-col gap-4 tb:w-96">
+    <div className="flex h-full w-full shrink-0 flex-col gap-2 tb:w-96 tb:gap-4">
       <FiltersHeader
         isShowUngroup={isShowUngroup}
         onUngroupChange={() => setIsShowUngroup((prev) => !prev)}
@@ -64,7 +64,7 @@ export const SubscriptionsList = ({
         onSearchChange={(searchValue) => setSearch(searchValue)}
       />
       <div
-        className="flex h-full w-full snap-y snap-mandatory flex-col gap-4 overflow-y-auto pr-2"
+        className="flex h-full w-full snap-y snap-mandatory flex-col gap-4 overflow-y-auto px-2 tb:pr-0"
         ref={rootRef}
         id="searchResults"
       >

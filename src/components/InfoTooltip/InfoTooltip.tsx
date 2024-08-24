@@ -14,7 +14,7 @@ export const InfoTooltip = ({ title }: InfoTooltipProps): JSX.Element => {
 
   return (
     <>
-      <Tooltip id={id} className="z-10">
+      <Tooltip id={id} className="z-10 max-w-full">
         <p className="text-white">{title}</p>
       </Tooltip>
       <IoIosInformationCircleOutline

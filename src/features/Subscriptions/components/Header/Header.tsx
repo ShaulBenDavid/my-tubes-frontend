@@ -12,13 +12,13 @@ export const Header = ({
   lastSyncDate,
 }: HeaderProps): JSX.Element => (
   <div className="flex flex-row justify-between pb-2">
-    <h1 className="text-xl font-semibold">
+    <h1 className="font-semibold tb:text-xl">
       Subscriptions <span>({subscriptionsCount})</span>
     </h1>
     {lastSyncDate && (
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-row items-center gap-2 text-sm tb:text-base">
         <span>
-          last sync:{" "}
+          <span className="hidden xs:inline">last sync: </span>
           <time className="font-bold">
             {formatDateToCustomFormat(new Date(lastSyncDate))}
           </time>
