@@ -80,7 +80,7 @@ export const SubscriptionsList = ({
         )}
         {!!subscriptionsList?.length &&
           subscriptionsList.map(
-            ({ title, description, imageUrl, channelId, id }) => (
+            ({ title, description, imageUrl, channelId, id, group }) => (
               <ChannelCard
                 key={title}
                 title={title}
@@ -89,6 +89,7 @@ export const SubscriptionsList = ({
                 itemId={id}
                 channelId={channelId}
                 isDraggable={isDesktop}
+                group={group}
               />
             ),
           )}

@@ -1,13 +1,17 @@
 import React, { type CSSProperties } from "react";
+import Link from "next/link";
 import { useDrag } from "react-dnd";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { FaRegObjectUngroup } from "react-icons/fa";
-import { MdDragIndicator } from "react-icons/md";
+import { MdDragIndicator, MdGroups } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
+import { buildRoutePath, stringToColor } from "@/src/utils";
+import { Routes } from "@/src/routes";
 import theme from "@/src/styles/tailwind.theme";
 import { Card } from "@/src/components/Card";
 import { Avatar } from "@/src/components/Avatar";
 import { DND_TYPE_ID } from "@/src/features/Subscriptions/components/GroupsSection/components/GroupCard";
+import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
 import { YOUTUBE_CHANNEL_URL } from "./ChannelCard.config";
 import { ActionButton } from "../ActionButton";
@@ -26,6 +30,7 @@ interface ChannelCardProps {
   style?: CSSProperties;
   isDraggable?: boolean;
   onRemove?: () => void;
+  group?: Pick<SubscriptionsGroupType, "id" | "title"> | null;
 }
 
 export const ChannelCard = ({
@@ -38,6 +43,7 @@ export const ChannelCard = ({
   style,
   isDraggable = false,
   onRemove,
+  group,
 }: ChannelCardProps): JSX.Element => {
   const [{ opacity, draggingClass }, drag] = useDrag(
     () => ({
@@ -64,11 +70,36 @@ export const ChannelCard = ({
       >
         <div className="flex flex-row items-center gap-2">
           <Avatar name={title} url={imageUrl} />
-          <h5 className="line-clamp-1 text-ellipsis text-base font-semibold capitalize">
-            {title}
-          </h5>
+          <span className="flex w-full flex-col">
+            <h5 className="line-clamp-1 text-ellipsis text-base font-semibold capitalize">
+              {title}
+            </h5>
+            {group?.title && (
+              <span className="flex flex-row items-center gap-1">
+                <MdGroups
+                  aria-hidden
+                  className="shrink-0"
+                  fill={stringToColor(group.title + group.id)}
+                />
+                <Link
+                  className="line-clamp-1 text-ellipsis text-sm font-normal opacity-80 hover:underline"
+                  href={buildRoutePath(
+                    Routes.SUBSCRIPTIONS,
+                    Routes.GROUP,
+                    title,
+                    String(group.id),
+                  )}
+                >
+                  {group.title}
+                </Link>
+              </span>
+            )}
+          </span>
           {isDraggable && (
-            <MdDragIndicator size={30} className="ml-auto opacity-70" />
+            <MdDragIndicator
+              size={30}
+              className="ml-auto shrink-0 opacity-70"
+            />
           )}
         </div>
         <p className="line-clamp-3 text-ellipsis pt-2">{description}</p>

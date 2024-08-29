@@ -9,7 +9,7 @@ import type {
 
 export const getSubscriptionsFromShareLink = (
   params: SharedLinkParams,
-): Promise<SubscriptionType[]> =>
+): Promise<Omit<SubscriptionType, "group">[]> =>
   publicMethodInstance({
     url: ApiEndpoints.GET_SUBSCRIPTIONS_FROM_SHARED_LINK,
     method: Methods.GET,

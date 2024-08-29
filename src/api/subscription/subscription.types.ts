@@ -1,11 +1,20 @@
 import type { PaginationParams, PaginationType } from "../common.types";
 
+export type SubscriptionsGroupType = {
+  id: number;
+  title: string;
+  description?: string | null;
+  emoji?: string | null;
+  subscriptionCount: number;
+};
+
 export interface SubscriptionType {
   id: number;
   title: string;
   description: string;
   channelId: string;
   imageUrl: string;
+  group?: Pick<SubscriptionsGroupType, "id" | "title"> | null;
 }
 
 export interface GetSubscriptionsInfoResponse {
@@ -24,14 +33,6 @@ export type GetSubscriptionsListParams = PaginationParams & {
   ordering?: SubscriptionsListSortEnum;
   search?: string;
   group?: number | "ungroup";
-};
-
-export type SubscriptionsGroupType = {
-  id: number;
-  title: string;
-  description?: string | null;
-  emoji?: string | null;
-  subscriptionCount: number;
 };
 
 export type PostSubscriptionGroupPayload = Pick<
