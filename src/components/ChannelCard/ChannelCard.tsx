@@ -82,7 +82,7 @@ export const ChannelCard = ({
                   fill={stringToColor(group.title + group.id)}
                 />
                 <Link
-                  className="line-clamp-1 text-ellipsis text-sm font-normal opacity-80 hover:underline"
+                  className="line-clamp-1 text-ellipsis text-sm font-normal capitalize opacity-80 hover:underline"
                   href={buildRoutePath(
                     Routes.SUBSCRIPTIONS,
                     Routes.GROUP,
