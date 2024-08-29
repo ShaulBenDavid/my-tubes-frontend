@@ -103,7 +103,7 @@ export const GroupBody = ({
     <>
       <section
         /* prettier-ignore */
-        className="grid-rows-groups-row-fit grid h-full w-full grid-cols-tablet-groups-auto-fit lg:grid-cols-groups-auto-fit flex-col gap-4 overflow-y-auto pt-4 px-4"
+        className="flex h-full w-full grid-cols-tablet-groups-auto-fit grid-rows-groups-row-fit flex-col gap-3 overflow-y-auto tb:grid tb:gap-4 tb:px-4 pt-2 tb:pt-4 lg:grid-cols-groups-auto-fit"
         ref={rootRef}
         id="searchResults"
       >
@@ -131,7 +131,7 @@ export const GroupBody = ({
                 imageUrl={imageUrl}
                 itemId={id}
                 channelId={channelId}
-                className="h-60 animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0"
+                className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-60"
                 style={{ animationDelay: `${index * 0.07}s` }}
                 onRemove={() =>
                   handleSubscriptionSelect({

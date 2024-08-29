@@ -61,7 +61,10 @@ export const ChannelCard = ({
       className={isDraggable ? draggingClass : ""}
     >
       <Card
-        className={twMerge("flex h-full snap-start flex-col", className)}
+        className={twMerge(
+          "flex h-full snap-start flex-col p-2 tb:p-3",
+          className,
+        )}
         style={style}
       >
         <CardHeader

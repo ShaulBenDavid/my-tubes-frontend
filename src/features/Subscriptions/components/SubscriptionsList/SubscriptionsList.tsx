@@ -28,7 +28,7 @@ export const SubscriptionsList = ({
     SubscriptionsListSortEnum | undefined
   >();
   const [search, setSearch] = useState<string>("");
-  const [isShowUngroup, setIsShowUngroup] = useState<boolean>(true);
+  const [isShowUngroup, setIsShowUngroup] = useState<boolean>(isDesktop);
   const debouncedValue = useDebounce(search, 300);
 
   const {
@@ -64,7 +64,7 @@ export const SubscriptionsList = ({
         onSearchChange={(searchValue) => setSearch(searchValue)}
       />
       <div
-        className="flex h-full w-full snap-y snap-mandatory flex-col gap-4 overflow-y-auto px-2 tb:pr-0"
+        className="flex h-full w-full snap-y snap-mandatory flex-col gap-3 overflow-y-auto tb:gap-4 tb:pr-2"
         ref={rootRef}
         id="searchResults"
       >

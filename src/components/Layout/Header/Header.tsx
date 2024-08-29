@@ -14,7 +14,7 @@ interface HeaderProps {
 }
 
 export const Header = ({ onClick }: HeaderProps): JSX.Element => (
-  <header className="flex h-14 w-full flex-row items-center px-2 tb:px-4">
+  <header className="flex h-12 w-full flex-row items-center pr-2 tb:h-14 tb:px-4">
     <div className="flex flex-row gap-1 lg:hidden">
       <ActionButton
         icon={<RxHamburgerMenu size={24} />}

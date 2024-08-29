@@ -8,7 +8,7 @@ import {
   useGetSubscriptionsList,
 } from "@/src/api/subscription/hooks";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
-import { useDebounce } from "@/src/hooks";
+import { useDebounce, useMediaQuery } from "@/src/hooks";
 import { EmptyState } from "@/src/components/EmptyState";
 import NotFoundSVG from "@/src/assets/images/404SVG.svg";
 import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
@@ -24,6 +24,7 @@ interface GroupProps {
 }
 
 export const Group = ({ groupId }: GroupProps): JSX.Element => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
@@ -56,8 +57,9 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
 
   return (
     <>
-      <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />
+      {isDesktop && <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />}
       <GroupHeader
+        isDesktop={isDesktop}
         isSubscriptionsLoading={isSubscriptionsLoading}
         currentGroup={subscriptionsGroup}
         subscriptionsCount={subscriptionsCount}

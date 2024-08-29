@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import dynamic from "next/dynamic";
 import Skeleton from "react-loading-skeleton";
@@ -19,6 +21,7 @@ const EmojiDropdown = dynamic(
 );
 
 interface GroupHeaderProps {
+  isDesktop: boolean;
   isSubscriptionsLoading: boolean;
   currentGroup?: SubscriptionsGroupType;
   subscriptionsCount?: number;
@@ -30,6 +33,7 @@ interface GroupHeaderProps {
 }
 
 export const GroupHeader = ({
+  isDesktop,
   isSubscriptionsLoading,
   currentGroup,
   subscriptionsCount,
@@ -42,24 +46,27 @@ export const GroupHeader = ({
   const { title, description, emoji, id } = currentGroup ?? {};
 
   return (
-    <header className="flex w-full flex-row justify-between border-b border-white/30 py-4">
+    <header className="flex w-full flex-col justify-between gap-2 border-b border-white/30 pb-2 tb:flex-row tb:py-4">
       <div className="flex flex-row gap-2">
         {id && title && (
           <EmojiDropdown selectedIcon={emoji} id={id} title={title} />
         )}
-        <div>
+        <div className="flex flex-col justify-center">
           <h1 className="flex flex-row text-xl font-semibold capitalize">
             {title || <Skeleton width="100px" height="20px" />}
             <span className="ps-2">({subscriptionsCount || "--"})</span>
           </h1>
-          {isSubscriptionsLoading ? (
-            <Skeleton width="100%" height="14px" count={2} />
-          ) : (
-            description && <p>{description}</p>
-          )}
+          {isDesktop &&
+            (isSubscriptionsLoading ? (
+              <Skeleton width="100%" height="14px" count={2} />
+            ) : (
+              description && (
+                <p className="line-clamp-3 text-ellipsis">{description}</p>
+              )
+            ))}
         </div>
       </div>
-      <div className="flex w-fit shrink-0 items-start">
+      <div className="flex w-full shrink-0 flex-row-reverse items-start justify-between tb:w-fit tb:flex-row tb:justify-normal">
         <span className="flex h-10 w-24 items-center">
           <SortFilter
             label="sort"
@@ -68,15 +75,17 @@ export const GroupHeader = ({
           />
         </span>
         <SearchInput
-          width="350px"
+          width={isDesktop ? "350px" : "100%"}
           value={searchValue}
           onReset={onSearchReset}
           placeholder="Search Channels..."
           onChange={(event) => onSearchChange(event.target.value)}
         />
-        <div className="ml-4">
-          {currentGroup && <Actions currentGroup={currentGroup} />}
-        </div>
+        {isDesktop && (
+          <div className="ml-4">
+            {currentGroup && <Actions currentGroup={currentGroup} />}
+          </div>
+        )}
       </div>
     </header>
   );
