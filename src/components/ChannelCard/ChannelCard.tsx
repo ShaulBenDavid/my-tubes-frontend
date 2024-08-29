@@ -1,21 +1,17 @@
 import React, { type CSSProperties } from "react";
-import Link from "next/link";
 import { useDrag } from "react-dnd";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { FaRegObjectUngroup } from "react-icons/fa";
-import { MdDragIndicator, MdGroups } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
-import { buildRoutePath, stringToColor } from "@/src/utils";
-import { Routes } from "@/src/routes";
 import theme from "@/src/styles/tailwind.theme";
 import { Card } from "@/src/components/Card";
-import { Avatar } from "@/src/components/Avatar";
 import { DND_TYPE_ID } from "@/src/features/Subscriptions/components/GroupsSection/components/GroupCard";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
 import { YOUTUBE_CHANNEL_URL } from "./ChannelCard.config";
 import { ActionButton } from "../ActionButton";
 import { ActionButtonVariants } from "../ActionButton/ActionButton.types";
+import { CardHeader } from "./CardHeader";
 
 export const ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP =
   "removeSubscriptionFromGroupModal";
@@ -68,40 +64,12 @@ export const ChannelCard = ({
         className={twMerge("flex h-full snap-start flex-col", className)}
         style={style}
       >
-        <div className="flex flex-row items-center gap-2">
-          <Avatar name={title} url={imageUrl} />
-          <span className="flex w-full flex-col">
-            <h5 className="line-clamp-1 text-ellipsis text-base font-semibold capitalize">
-              {title}
-            </h5>
-            {group?.title && (
-              <span className="flex flex-row items-center gap-1">
-                <MdGroups
-                  aria-hidden
-                  className="shrink-0"
-                  fill={stringToColor(group.title + group.id)}
-                />
-                <Link
-                  className="line-clamp-1 text-ellipsis text-sm font-normal capitalize opacity-80 hover:underline"
-                  href={buildRoutePath(
-                    Routes.SUBSCRIPTIONS,
-                    Routes.GROUP,
-                    title,
-                    String(group.id),
-                  )}
-                >
-                  {group.title}
-                </Link>
-              </span>
-            )}
-          </span>
-          {isDraggable && (
-            <MdDragIndicator
-              size={30}
-              className="ml-auto shrink-0 opacity-70"
-            />
-          )}
-        </div>
+        <CardHeader
+          title={title}
+          imageUrl={imageUrl}
+          isDraggable={isDraggable}
+          group={group}
+        />
         <p className="line-clamp-3 text-ellipsis pt-2">{description}</p>
         <div className="mt-auto flex w-full flex-row items-center justify-between gap-2 pt-2">
           {onRemove && (
@@ -110,7 +78,7 @@ export const ChannelCard = ({
               tooltip="Ungroup"
               variant={ActionButtonVariants.WARNING}
               id="remove-subscription-from-group-button"
-              aria-label={`remove ${title} from the group `}
+              aria-label={`remove ${title} from the group`}
               aria-controls={ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP}
               className="rounded-xl p-2 hover:bg-red-600/20 active:bg-red-600/30"
               onClick={onRemove}

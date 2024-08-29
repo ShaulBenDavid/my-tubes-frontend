@@ -24,7 +24,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
         </aside>
         <div className="flex w-full flex-col">
           <Header onClick={toggleDrawer} />
-          <main className="w-full flex-1 justify-center overflow-hidden p-4">
+          <main className="w-full flex-1 justify-center overflow-hidden p-2 tb:p-4">
             {children}
           </main>
           <div className="visible lg:hidden">
