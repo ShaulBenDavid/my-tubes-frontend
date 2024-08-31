@@ -3,7 +3,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import Skeleton from "react-loading-skeleton";
+import { RiSettings5Fill } from "react-icons/ri";
 import { SearchInput } from "@/src/components/SearchInput";
+import { ActionButton } from "@/src/components/ActionButton";
 import { SortFilter } from "@/src/components/SortFilter";
 import type {
   SubscriptionsGroupType,
@@ -20,6 +22,8 @@ const EmojiDropdown = dynamic(
   },
 );
 
+export const GROUP_SETTINGS_DRAWER = "group-settings-drawer";
+
 interface GroupHeaderProps {
   isDesktop: boolean;
   isSubscriptionsLoading: boolean;
@@ -30,6 +34,7 @@ interface GroupHeaderProps {
   onSortChange: (value?: SubscriptionsListSortEnum | undefined) => void;
   onSearchChange: (value: string) => void;
   onSearchReset: () => void;
+  toggleDrawer: () => void;
 }
 
 export const GroupHeader = ({
@@ -42,6 +47,7 @@ export const GroupHeader = ({
   onSortChange,
   onSearchChange,
   onSearchReset,
+  toggleDrawer,
 }: GroupHeaderProps): JSX.Element => {
   const { title, description, emoji, id } = currentGroup ?? {};
 
@@ -74,6 +80,15 @@ export const GroupHeader = ({
             handleChange={onSortChange}
           />
         </span>
+        {!isDesktop && (
+          <ActionButton
+            icon={<RiSettings5Fill size={24} />}
+            id="open-settings"
+            aria-label="menu"
+            aria-controls={GROUP_SETTINGS_DRAWER}
+            onClick={toggleDrawer}
+          />
+        )}
         <SearchInput
           width={isDesktop ? "350px" : "100%"}
           value={searchValue}

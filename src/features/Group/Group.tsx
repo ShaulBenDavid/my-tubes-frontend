@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Breadcrumbs } from "@/src/components/Breadcrumbs";
 import {
@@ -9,15 +9,12 @@ import {
 } from "@/src/api/subscription/hooks";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
 import { useDebounce, useMediaQuery } from "@/src/hooks";
-import { EmptyState } from "@/src/components/EmptyState";
-import NotFoundSVG from "@/src/assets/images/404SVG.svg";
-import { ButtonLink, ButtonLinkVariants } from "@/src/components/ButtonLink";
-import { Routes } from "@/src/routes";
 import { HttpStatusCode } from "@/src/types";
 import { GroupHeader } from "./components/GroupHeader";
 import { subscriptionsListSortConfig } from "../Subscriptions/components/SubscriptionsList";
 import { GroupBody } from "./components/GroupBody";
 import { GroupAside } from "./components/GroupAside";
+import { Group404 } from "./Group404";
 
 interface GroupProps {
   groupId: number;
@@ -25,6 +22,7 @@ interface GroupProps {
 
 export const Group = ({ groupId }: GroupProps): JSX.Element => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
@@ -55,6 +53,11 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
     ordering: selectedSort,
   });
 
+  const toggleDrawer = useCallback(
+    (): void => setIsDrawerOpen((prev) => !prev),
+    [setIsDrawerOpen],
+  );
+
   return (
     <>
       {isDesktop && <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />}
@@ -68,28 +71,18 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
         onSortChange={(value) => setSelectedSort(value)}
         onSearchReset={() => setSearch("")}
         onSearchChange={(searchValue) => setSearch(searchValue)}
+        toggleDrawer={toggleDrawer}
       />
       {groupError?.response?.status === HttpStatusCode.NOT_FOUND ? (
-        <div className="flex h-full w-full items-center justify-center">
-          <EmptyState
-            svgUrl={NotFoundSVG}
-            header="Group Does Not Exist"
-            footer={
-              <ButtonLink
-                href={Routes.SUBSCRIPTIONS}
-                variant={ButtonLinkVariants.PRIMARY}
-                width="240px"
-              >
-                Go to subscriptions page
-              </ButtonLink>
-            }
-          />
-        </div>
+        <Group404 />
       ) : (
         <div className="flex h-full w-full overflow-hidden">
           <GroupAside
             currentGroupId={groupId}
             groupName={subscriptionsGroup?.title ?? ""}
+            isDrawerOpen={isDrawerOpen}
+            isDesktop={isDesktop}
+            toggleDrawer={toggleDrawer}
           />
           <GroupBody
             groupName={subscriptionsGroup?.title ?? ""}
