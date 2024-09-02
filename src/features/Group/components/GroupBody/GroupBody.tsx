@@ -8,6 +8,7 @@ import type {
   InfiniteData,
   InfiniteQueryObserverResult,
 } from "@tanstack/react-query";
+import { FaRegObjectUngroup } from "react-icons/fa";
 import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
 import { ChannelCard, ChannelCardLoader } from "@/src/components/ChannelCard";
 import { EmptyState } from "@/src/components/EmptyState";
@@ -24,6 +25,8 @@ import {
   useDeleteSubscriptionFromGroup,
 } from "@/src/api/subscription/hooks";
 import { appQueryClient } from "@/src/queries";
+import { ActionButtonVariants } from "@/src/components/ActionButton/ActionButton.types";
+import { ActionButton } from "@/src/components/ActionButton";
 
 interface GroupBodyProps {
   groupName: string;
@@ -134,14 +137,26 @@ export const GroupBody = ({
                 channelId={channelId}
                 className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-60"
                 style={{ animationDelay: `${index * 0.07}s` }}
-                onRemove={() =>
-                  handleSubscriptionSelect({
-                    title,
-                    description,
-                    imageUrl,
-                    channelId,
-                    id,
-                  })
+                actionButtons={
+                  <ActionButton
+                    type="button"
+                    tooltip="Ungroup"
+                    variant={ActionButtonVariants.WARNING}
+                    id="remove-subscription-from-group-button"
+                    aria-label={`remove ${title} from the group`}
+                    aria-controls={ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP}
+                    className="rounded-xl hover:bg-red-600/20 active:bg-red-600/30"
+                    onClick={() =>
+                      handleSubscriptionSelect({
+                        title,
+                        description,
+                        imageUrl,
+                        channelId,
+                        id,
+                      })
+                    }
+                    icon={<FaRegObjectUngroup size={24} />}
+                  />
                 }
               />
             ),
