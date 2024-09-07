@@ -2,7 +2,7 @@ import React from "react";
 import { SearchInput } from "@/src/components/SearchInput";
 import { SortFilter } from "@/src/components/SortFilter";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
-import type { SubscriptionsSortOptionType } from "../SubscriptionsList.config";
+import type { SubscriptionsSortOptionType } from "../../SubscriptionsList.config";
 import { Checkbox } from "@/src/components/Checkbox";
 
 interface FiltersHeaderProps {

@@ -5,22 +5,22 @@ import { twMerge } from "tailwind-merge";
 import { Controller, useFormContext } from "react-hook-form";
 import { camelCaseToWords } from "@/src/utils";
 
-interface SelectInputProps
+interface SelectInputProps<T>
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   idFor: string;
   width?: string;
-  options: string[];
+  options: T[];
 }
 
-export const SelectInput = ({
+export const SelectInput = <T extends { title: string; id: number }>({
   label,
   idFor,
   width,
   form,
   className,
   options,
-}: SelectInputProps): JSX.Element => {
+}: SelectInputProps<T>): JSX.Element => {
   const {
     control,
     formState: { errors },
@@ -49,11 +49,19 @@ export const SelectInput = ({
             data-testid="selectinput-component-test-id"
             style={{ width }}
             {...field}
+            onChange={(e) => {
+              const isNumber = e.target.value.length > 0;
+              field.onChange(isNumber ? Number(e.target.value) : undefined);
+            }}
           >
             <option value="">Please select</option>
-            {options.map((option) => (
-              <option key={option} value={option}>
-                {camelCaseToWords(option)}
+            {options.map(({ title, id }) => (
+              <option
+                key={title}
+                value={id}
+                aria-label={`selection value - ${title}`}
+              >
+                {camelCaseToWords(title)}
               </option>
             ))}
           </select>

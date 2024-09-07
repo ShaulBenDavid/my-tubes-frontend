@@ -77,7 +77,11 @@ export const GroupForm = ({
             rows={4}
           />
           <div className="flex flex-row gap-2">
-            <Button variant={ButtonVariants.SECONDARY} onClick={onClose}>
+            <Button
+              variant={ButtonVariants.SECONDARY}
+              onClick={onClose}
+              type="button"
+            >
               cancel
             </Button>
             <Button

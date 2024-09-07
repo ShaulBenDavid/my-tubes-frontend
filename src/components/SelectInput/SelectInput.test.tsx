@@ -9,7 +9,11 @@ describe("SelectInput", () => {
 
     return <FormProvider {...formMethods}>{props.children}</FormProvider>;
   };
-  const options = ["blue", "yellow", "green"];
+  const options = [
+    { title: "other", id: 0 },
+    { title: "blue", id: 1 },
+    { title: "yellow", id: 2 },
+  ];
   it("Label renders correctly", () => {
     const { getByTestId } = render(
       <Wrapper>
@@ -30,10 +34,11 @@ describe("SelectInput", () => {
     const selectOptions = Array.from(
       selectInput.getElementsByTagName("option"),
     );
-    options.unshift("");
+    selectOptions.shift();
+    options.push({ title: "more", id: 3 });
 
     selectOptions.forEach((option, index) => {
-      expect(option).toHaveAttribute("value", options[index]);
+      expect(option).toHaveAttribute("value", String(options[index].id));
     });
     expect(selectInput.getElementsByTagName("option").length).toBe(4);
   });

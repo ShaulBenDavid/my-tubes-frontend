@@ -72,6 +72,10 @@ export const Default: Story = {
     label: "Select",
     idFor: "email",
     placeholder: "Write something...",
-    options: ["other", "blue", "yellow"],
+    options: [
+      { title: "other", id: 0 },
+      { title: "blue", id: 1 },
+      { title: "yellow", id: 2 },
+    ],
   },
 };
