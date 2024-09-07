@@ -22,7 +22,7 @@ export const Login = (): JSX.Element => {
     <div className={S.loginBackground}>
       <Card className="flex h-52 flex-col items-center justify-between p-4">
         <ImYoutube2 fill={theme.white} size={90} />
-        <h1 className="mb-10 text-xl font-bold">
+        <h1 className="mb-10 text-center text-xl font-bold">
           Welcome to My-Tubes Dashboard please login.
         </h1>
         <a
