@@ -44,6 +44,7 @@ export const MoveGroupModal = forwardRef<
       reset,
       formState: { isValid, isDirty },
     } = method;
+    console.log(method.getValues(), isDirty, isValid);
 
     useEffect(() => {
       setValue("subscriptionId", subscriptionId);
