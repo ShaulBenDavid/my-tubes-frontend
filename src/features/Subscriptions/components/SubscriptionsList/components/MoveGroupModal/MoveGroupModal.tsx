@@ -44,13 +44,10 @@ export const MoveGroupModal = forwardRef<
       reset,
       formState: { isValid, isDirty },
     } = method;
-    console.log(method.getValues(), isDirty, isValid);
 
     useEffect(() => {
       setValue("subscriptionId", subscriptionId);
-      if (currentGroupId) {
-        setValue("groupId", currentGroupId);
-      }
+      setValue("groupId", 9_000_000);
     }, [subscriptionId, setValue, currentGroupId]);
 
     const handleClose = (): void => {
