@@ -51,7 +51,6 @@ export const SelectInput = <T extends { title: string; id: number }>({
             {...field}
             onChange={(e) => {
               const isNumber = e.target.value.length > 0;
-              console.log("1", e.target.value);
               field.onChange(isNumber ? Number(e.target.value) : undefined);
             }}
           >
