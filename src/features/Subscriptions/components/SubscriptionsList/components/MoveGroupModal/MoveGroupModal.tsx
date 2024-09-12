@@ -37,6 +37,10 @@ export const MoveGroupModal = forwardRef<
     const method = useForm<PostAddSubscriptionGroupPayload>({
       resolver: zodResolver(moveToGroupSchema),
       mode: "onChange",
+      defaultValues: {
+        subscriptionId,
+        groupId: currentGroupId,
+      },
     });
     const {
       handleSubmit,
@@ -47,7 +51,9 @@ export const MoveGroupModal = forwardRef<
 
     useEffect(() => {
       setValue("subscriptionId", subscriptionId);
-      setValue("groupId", 9_000_000);
+      if (currentGroupId) {
+        setValue("groupId", currentGroupId, { shouldDirty: false });
+      }
     }, [subscriptionId, setValue, currentGroupId]);
 
     const handleClose = (): void => {
