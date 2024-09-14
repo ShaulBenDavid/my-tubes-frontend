@@ -4,7 +4,17 @@ import { MenuTab } from "./MenuTab";
 
 describe("MenuTab", () => {
   it("renders correctly", () => {
-    const { getByText } = render(<MenuTab href="s" isActive label="Docs" />);
+    const { getByText } = render(
+      <MenuTab
+        href="s"
+        isActive
+        label="Docs"
+        id={1}
+        isNestedLink
+        nestedLinks={[]}
+        activeSegment=""
+      />,
+    );
     const alertElement = getByText("Docs");
     expect(alertElement).toBeInTheDocument();
   });

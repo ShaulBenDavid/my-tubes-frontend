@@ -1,17 +1,17 @@
 "use client";
 
 import React from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { getNavigationLinksConfig } from "./Navbar.config";
-import { MenuTab } from "./MenuTab";
 import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
+import { MenuTabList } from "./components/MenuTabList";
 
 interface NavbarProps {
   onClick?: () => void;
 }
 
 export const Navbar = ({ onClick }: NavbarProps): JSX.Element => {
-  const activeSegment = useSelectedLayoutSegment() ?? "/";
+  const activeSegment = usePathname() ?? "/";
   const { subscriptionsInfo } = useGetSubscriptionsInfo();
   const navigationLinksConfig = getNavigationLinksConfig(
     subscriptionsInfo?.subscriptionsCount,
@@ -19,22 +19,11 @@ export const Navbar = ({ onClick }: NavbarProps): JSX.Element => {
 
   return (
     <nav role="navigation" aria-label="main" className="flex-1 pt-4">
-      <ul className="flex flex-col gap-2">
-        {navigationLinksConfig.map(({ label, href, icon }) => {
-          const isActive = activeSegment === href.substring(1);
-
-          return (
-            <MenuTab
-              key={label}
-              isActive={isActive}
-              href={href}
-              icons={icon}
-              label={label}
-              onClick={onClick}
-            />
-          );
-        })}
-      </ul>
+      <MenuTabList
+        navigationLinksConfig={navigationLinksConfig}
+        activeSegment={activeSegment.slice(0, -1)}
+        onClick={onClick}
+      />
     </nav>
   );
 };

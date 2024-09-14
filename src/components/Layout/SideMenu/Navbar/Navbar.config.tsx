@@ -1,20 +1,24 @@
 import React from "react";
 import { GoHome, GoHomeFill } from "react-icons/go";
 import { MdSubscriptions, MdOutlineSubscriptions } from "react-icons/md";
+import { HiOutlineUserGroup, HiUserGroup } from "react-icons/hi2";
 import { Routes } from "@/src/routes";
 import theme from "@/src/styles/tailwind.theme";
-import type { TabIconsType } from "./MenuTab";
+import type { TabIconsType } from "./components/MenuTab";
 
-interface NavigationLinksConfig {
+export interface NavigationLinksConfig {
+  id: number;
   href: Routes;
   label: string;
   icon: TabIconsType;
+  parent?: number;
 }
 
 export const getNavigationLinksConfig = (
   count?: number,
 ): NavigationLinksConfig[] => [
   {
+    id: 0,
     href: Routes.DASHBOARD,
     label: "dashboard",
     icon: {
@@ -23,6 +27,7 @@ export const getNavigationLinksConfig = (
     },
   },
   {
+    id: 1,
     href: Routes.SUBSCRIPTIONS,
     label: `subscriptions (${count ?? "--"})`,
     icon: {
@@ -31,5 +36,17 @@ export const getNavigationLinksConfig = (
       ),
       active: <MdSubscriptions aria-hidden size={24} fill={theme.white} />,
     },
+  },
+  {
+    id: 3,
+    href: [Routes.SUBSCRIPTIONS, Routes.GROUP].join("") as Routes,
+    label: "groups",
+    icon: {
+      default: (
+        <HiOutlineUserGroup aria-hidden size={24} stroke={theme.white} />
+      ),
+      active: <HiUserGroup aria-hidden size={24} fill={theme.white} />,
+    },
+    parent: 1,
   },
 ];
