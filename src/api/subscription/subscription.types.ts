@@ -58,3 +58,12 @@ export type GetGroupShareLinkParams = {
 export type GetGroupShareLinkResponse = {
   link: string;
 };
+
+export type DetailedGroup = {
+  id: number;
+  title: string;
+  emoji?: string | null;
+  subscriptions: Omit<SubscriptionType, "group">[];
+};
+
+export type GetGroupDetailedList = PaginationType<DetailedGroup>;

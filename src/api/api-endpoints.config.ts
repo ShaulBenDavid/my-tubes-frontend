@@ -14,6 +14,7 @@ export enum ApiEndpoints {
 
   // GROUPS
   GROUPS = "subscribe/groups/",
+  GROUPS_DETAILED = "subscribe/groups/detailed/",
   ADD_SUBSCRIPTION_GROUP = "subscribe/groups/{groupId}/add-subscription/",
   REMOVE_SUBSCRIPTION_GROUP = "subscribe/subs/{subscriptionId}/ungroup-subscription/",
   GET_GROUP_SHARE_LINK = "subscribe/group-share-link/",
