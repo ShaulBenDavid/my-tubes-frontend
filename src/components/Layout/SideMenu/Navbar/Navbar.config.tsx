@@ -1,5 +1,5 @@
 import React from "react";
-import { GoHome, GoHomeFill } from "react-icons/go";
+import { GoHome, GoHomeFill, GoHistory } from "react-icons/go";
 import { MdSubscriptions, MdOutlineSubscriptions } from "react-icons/md";
 import { HiOutlineUserGroup, HiUserGroup } from "react-icons/hi2";
 import { Routes } from "@/src/routes";
@@ -8,7 +8,7 @@ import type { TabIconsType } from "./components/MenuTab";
 
 export interface NavigationLinksConfig {
   id: number;
-  href: Routes;
+  href: Routes | string;
   label: string;
   icon: TabIconsType;
   parent?: number;
@@ -39,7 +39,7 @@ export const getNavigationLinksConfig = (
   },
   {
     id: 3,
-    href: [Routes.SUBSCRIPTIONS, Routes.GROUP].join("") as Routes,
+    href: [Routes.SUBSCRIPTIONS, Routes.GROUP].join(""),
     label: "groups",
     icon: {
       default: (
@@ -48,5 +48,13 @@ export const getNavigationLinksConfig = (
       active: <HiUserGroup aria-hidden size={24} fill={theme.white} />,
     },
     parent: 1,
+  },
+  {
+    id: 4,
+    href: "https://www.youtube.com/feed/history",
+    label: "history",
+    icon: {
+      default: <GoHistory aria-hidden size={24} stroke={theme.white} />,
+    },
   },
 ];

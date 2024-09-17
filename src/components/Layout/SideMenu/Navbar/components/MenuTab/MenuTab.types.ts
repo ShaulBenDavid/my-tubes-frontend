@@ -1,1 +1,4 @@
-export type TabIconsType = Record<"default" | "active", JSX.Element>;
+export type TabIconsType = {
+  default: JSX.Element;
+  active?: JSX.Element;
+};
