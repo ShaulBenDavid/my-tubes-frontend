@@ -4,7 +4,10 @@ import { useMemo } from "react";
 import ms from "ms";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getGroupDetailedList } from "../subscription.methods";
-import type { GetSubscriptionsListParams } from "../subscription.types";
+import type {
+  DetailedGroup,
+  GetSubscriptionsListParams,
+} from "../subscription.types";
 
 export const GET_GROUP_DETAILED_LIST_KEY = "getGroupDetailedList";
 
@@ -26,7 +29,7 @@ export const useGetGroupDetailedList = (params: GetSubscriptionsListParams) => {
     gcTime: ms("4h"),
   });
 
-  const flatData = useMemo(
+  const flatData: DetailedGroup[] | undefined = useMemo(
     () => data?.pages.flatMap(({ results }) => results),
     [data],
   );

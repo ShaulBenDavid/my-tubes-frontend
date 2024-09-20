@@ -55,7 +55,7 @@ export const ChannelCard = ({
     <div
       ref={drag}
       style={{ opacity }}
-      className={isDraggable ? draggingClass : ""}
+      className={isDraggable ? draggingClass : "h-full"}
     >
       <Card
         className={twMerge(

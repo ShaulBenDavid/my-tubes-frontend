@@ -63,6 +63,7 @@ export type DetailedGroup = {
   id: number;
   title: string;
   emoji?: string | null;
+  subscriptionsCount: number;
   subscriptions: Omit<SubscriptionType, "group">[];
 };
 
