@@ -36,11 +36,11 @@ export const GroupCarousel = ({
         subscriptionsCount={subscriptionsCount}
       />
       { /* prettier-ignore */}
-      <div className="scrollbar-none flex h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-scroll min-h-fit" ref={scrollRef}>
+      <div className="scrollbar-none flex h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-x-scroll" ref={scrollRef}>
       {subscriptions?.map(
         ({ title: name, description, imageUrl, channelId, id: itemId }) => (
           <div
-            className="mr-4 aspect-video shrink-0 w-[70%] tb:w-1/3 snap-start snap-always"
+            className="mr-4 aspect-video shrink-0 w-[70%] tb:w-1/3 snap-start snap-always h-full"
             key={name + itemId}
           >
             <ChannelCard
