@@ -34,7 +34,7 @@ export const CarouselHeader = ({
             {emoji}
           </span>
         )}
-        {title} ({subscriptionsCount ?? "--"})
+        {title} ({subscriptionsCount || "--"})
       </h2>
       <FaArrowRight aria-hidden className="ml-2" />
     </Link>
