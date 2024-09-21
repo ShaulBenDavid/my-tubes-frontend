@@ -1,13 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import { useGetGroupDetailedList } from "@/src/api/subscription/hooks";
+import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
+import { Spinner } from "@/src/components/Spinner";
 import { GroupsHeader } from "./components/GroupsHeader";
 import { GroupCarousel } from "./components/GroupCarousel";
-import { Spinner } from "@/src/components/Spinner";
 
 export const GroupsPage = (): JSX.Element => {
+  const [selectedSort, setSelectedSort] = useState<
+    SubscriptionsListSortEnum | undefined
+  >();
+
   const {
     groupsCount,
     groupList,
@@ -16,7 +21,7 @@ export const GroupsPage = (): JSX.Element => {
     fetchNextPage,
     hasNextPage,
     isGroupListError,
-  } = useGetGroupDetailedList({});
+  } = useGetGroupDetailedList({ ordering: selectedSort });
 
   const [sentryRef, { rootRef }] = useInfiniteScroll({
     loading: isGroupListLoading || isFetchingNextPage,
@@ -31,7 +36,10 @@ export const GroupsPage = (): JSX.Element => {
       className="flex h-full w-full flex-col overflow-auto pr-1"
       ref={rootRef}
     >
-      <GroupsHeader groupsCount={groupsCount} />
+      <GroupsHeader
+        groupsCount={groupsCount}
+        onSortChange={(value) => setSelectedSort(value)}
+      />
       <section className="flex h-full flex-col gap-6">
         {!!groupList?.length &&
           !isGroupListLoading &&
