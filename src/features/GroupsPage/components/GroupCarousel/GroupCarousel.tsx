@@ -63,7 +63,7 @@ export const GroupCarousel = ({
                 aria-label="previous sections"
                 tabIndex={0}
                 className="p-2 duration-75 hover:text-blue-400 tb:p-4"
-                onClick={() => handleScroll(-200)}
+                onClick={() => handleScroll(-300)}
               >
                 <SlArrowLeft stroke={theme.white} size={24} />
               </button>
@@ -75,7 +75,7 @@ export const GroupCarousel = ({
                 aria-label="next sections"
                 tabIndex={0}
                 className="p-2 duration-75 hover:text-blue-400 tb:p-4"
-                onClick={() => handleScroll(200)}
+                onClick={() => handleScroll(300)}
               >
                 <SlArrowRight stroke={theme.white} size={24} />
               </button>
