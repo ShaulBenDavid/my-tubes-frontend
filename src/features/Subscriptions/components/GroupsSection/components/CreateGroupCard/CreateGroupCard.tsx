@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { FcFolder, FcPlus } from "react-icons/fc";
 import { toast } from "react-toastify";
 import {
+  GET_GROUP_DETAILED_LIST_KEY,
   GET_SUBSCRIPTIONS_GROUPS_KEY,
   usePostSubscriptionsGroup,
 } from "@/src/api/subscription/hooks";
@@ -24,6 +25,9 @@ export const CreateGroupCard = (): JSX.Element => {
     toast.success("Group created successfully!");
     appQueryClient.invalidateQueries({
       queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_GROUP_DETAILED_LIST_KEY],
     });
     handleCloseModal();
   };

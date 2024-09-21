@@ -3,6 +3,7 @@
 import React, { useCallback, useState } from "react";
 import { LuImagePlus } from "react-icons/lu";
 import {
+  GET_GROUP_DETAILED_LIST_KEY,
   GET_SUBSCRIPTIONS_GROUPS_KEY,
   GET_SUBSCRIPTIONS_GROUP_KEY,
   useEditSubscriptionsGroup,
@@ -27,6 +28,9 @@ export const EmojiDropdown = ({
   const handleEditSuccess = useCallback((): void => {
     appQueryClient.invalidateQueries({
       queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_GROUP_DETAILED_LIST_KEY],
     });
     appQueryClient.invalidateQueries({
       queryKey: [GET_SUBSCRIPTIONS_GROUP_KEY, id],

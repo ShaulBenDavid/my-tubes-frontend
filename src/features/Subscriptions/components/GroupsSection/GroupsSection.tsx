@@ -9,6 +9,7 @@ import type {
 } from "@/src/api/subscription";
 import { appQueryClient } from "@/src/queries";
 import {
+  GET_GROUP_DETAILED_LIST_KEY,
   GET_SUBSCRIPTIONS_GROUPS_KEY,
   GET_SUBSCRIPTIONS_LIST_KEY,
   useGetSubscriptionsGroups,
@@ -40,6 +41,9 @@ export const GroupsSection = (): JSX.Element => {
     handleSuccess: (res) => {
       appQueryClient.invalidateQueries({
         queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+      });
+      appQueryClient.invalidateQueries({
+        queryKey: [GET_GROUP_DETAILED_LIST_KEY],
       });
       appQueryClient.invalidateQueries({
         queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],

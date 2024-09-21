@@ -12,6 +12,7 @@ import {
   GET_SUBSCRIPTIONS_LIST_KEY,
   useDeleteSubscriptionsGroup,
   useEditSubscriptionsGroup,
+  GET_GROUP_DETAILED_LIST_KEY,
 } from "@/src/api/subscription/hooks";
 import {
   ARIA_CONTROL_GROUP_DELETE,
@@ -40,6 +41,9 @@ export const DeleteAndEditModals = ({
     toast.success(`${title} Group deleted successfully!`);
     appQueryClient.invalidateQueries({
       queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+    });
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_GROUP_DETAILED_LIST_KEY],
     });
     appQueryClient.invalidateQueries({
       queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],

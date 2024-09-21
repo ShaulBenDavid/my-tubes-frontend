@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Modal } from "@/src/components/Modal";
 import {
+  GET_GROUP_DETAILED_LIST_KEY,
   GET_SUBSCRIPTIONS_GROUPS_KEY,
   GET_SUBSCRIPTIONS_LIST_KEY,
   useGetSubscriptionsGroups,
@@ -67,6 +68,9 @@ export const MoveGroupModal = forwardRef<
         handleSuccess: (res) => {
           appQueryClient.invalidateQueries({
             queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+          });
+          appQueryClient.invalidateQueries({
+            queryKey: [GET_GROUP_DETAILED_LIST_KEY],
           });
           appQueryClient.invalidateQueries({
             queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],

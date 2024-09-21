@@ -2,7 +2,7 @@
 
 import React from "react";
 import useInfiniteScroll from "react-infinite-scroll-hook";
-import { useGetGroupDetailedList } from "@/src/api/subscription/hooks/useGetGroupDetailedList";
+import { useGetGroupDetailedList } from "@/src/api/subscription/hooks";
 import { GroupsHeader } from "./components/GroupsHeader";
 import { GroupCarousel } from "./components/GroupCarousel";
 import { Spinner } from "@/src/components/Spinner";
