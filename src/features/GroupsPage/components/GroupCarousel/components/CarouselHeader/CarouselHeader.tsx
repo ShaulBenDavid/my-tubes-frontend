@@ -36,7 +36,7 @@ export const CarouselHeader = ({
         )}
         {title} ({subscriptionsCount || "--"})
       </h2>
-      <FaArrowRight aria-hidden className="ml-2" />
+      <FaArrowRight aria-hidden className="mr-3 tb:mr-6" />
     </Link>
   );
 };

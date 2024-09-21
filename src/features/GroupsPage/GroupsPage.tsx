@@ -27,7 +27,10 @@ export const GroupsPage = (): JSX.Element => {
   });
 
   return (
-    <div className="flex h-full w-full flex-col overflow-auto" ref={rootRef}>
+    <div
+      className="flex h-full w-full flex-col overflow-auto pr-1"
+      ref={rootRef}
+    >
       <GroupsHeader groupsCount={groupsCount} />
       <section className="flex h-full flex-col gap-6">
         {!!groupList?.length &&
