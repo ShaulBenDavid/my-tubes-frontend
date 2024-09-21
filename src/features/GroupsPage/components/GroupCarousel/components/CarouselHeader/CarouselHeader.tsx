@@ -40,7 +40,7 @@ export const CarouselHeader = ({
         <span className="translate-x-20 opacity-0 duration-100 group-hover:translate-x-0 group-hover:opacity-100">
           Explore All
         </span>
-        <FaArrowRight aria-hidden className="mr-3 tb:mr-6" />
+        <FaArrowRight aria-hidden className="mr-2 tb:mr-6" />
       </span>
     </Link>
   );
