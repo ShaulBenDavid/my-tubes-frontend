@@ -33,7 +33,7 @@ export const GroupsPage = (): JSX.Element => {
 
   return (
     <div
-      className="flex h-full w-full flex-col overflow-auto pr-1"
+      className="flex h-full w-full flex-col overflow-y-auto pr-1"
       ref={rootRef}
     >
       <GroupsHeader
