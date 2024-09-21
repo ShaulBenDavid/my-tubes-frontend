@@ -5,8 +5,13 @@ import useInfiniteScroll from "react-infinite-scroll-hook";
 import { useGetGroupDetailedList } from "@/src/api/subscription/hooks";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
 import { Spinner } from "@/src/components/Spinner";
+import { EmptyState } from "@/src/components/EmptyState";
+import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
+import WarningSVG from "@/src/assets/images/WarningDrawSVG.svg";
 import { GroupsHeader } from "./components/GroupsHeader";
-import { GroupCarousel } from "./components/GroupCarousel";
+import { GroupCarousel, GroupCarouselLoader } from "./components/GroupCarousel";
+import { Routes } from "@/src/routes";
+import { ButtonLink } from "@/src/components/ButtonLink";
 
 export const GroupsPage = (): JSX.Element => {
   const [selectedSort, setSelectedSort] = useState<
@@ -41,6 +46,31 @@ export const GroupsPage = (): JSX.Element => {
         onSortChange={(value) => setSelectedSort(value)}
       />
       <section className="flex h-full flex-col gap-6">
+        {isGroupListLoading && <GroupCarouselLoader />}
+        {!isGroupListLoading && !groupList?.length && (
+          <div className="flex h-full items-center justify-center">
+            <EmptyState
+              svgUrl={isGroupListError ? WarningSVG : NoDataSVG}
+              header={
+                isGroupListError
+                  ? "Some Error happened sorry for the inconvenience"
+                  : "There are no existing groups."
+              }
+              description={
+                isGroupListError
+                  ? undefined
+                  : "To create a group go to the subscription page."
+              }
+              footer={
+                isGroupListError ? undefined : (
+                  <ButtonLink href={Routes.SUBSCRIPTIONS}>
+                    Subscriptions
+                  </ButtonLink>
+                )
+              }
+            />
+          </div>
+        )}
         {!!groupList?.length &&
           !isGroupListLoading &&
           groupList.map(

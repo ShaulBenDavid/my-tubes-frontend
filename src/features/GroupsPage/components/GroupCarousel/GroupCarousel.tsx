@@ -1,12 +1,13 @@
 import React, { useCallback, useRef } from "react";
-import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { useIsScroll } from "@/src/hooks";
 import { ChannelCard } from "@/src/components/ChannelCard";
 import type { DetailedGroup } from "@/src/api/subscription/subscription.types";
+import { EmptyState } from "@/src/components/EmptyState";
+import { ButtonLink } from "@/src/components/ButtonLink";
+import { Routes } from "@/src/routes";
 import { CarouselHeader } from "./components/CarouselHeader";
 import { useShowsButtons } from "./useShowsButtons";
-import theme from "@/src/styles/tailwind.theme";
-import S from "./GroupCarousel.module.css";
+import { CarouselController } from "./components/CarouselController";
 
 type GroupCarouselProps = DetailedGroup;
 
@@ -36,52 +37,48 @@ export const GroupCarousel = ({
         subscriptionsCount={subscriptionsCount}
       />
       { /* prettier-ignore */}
-      <div className="scrollbar-none flex h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-x-scroll" ref={scrollRef}>
-      {subscriptions?.map(
-        ({ title: name, description, imageUrl, channelId, id: itemId }) => (
-          <div
-            className="mr-4 aspect-video shrink-0 w-[70%] tb:w-1/3 snap-start snap-always h-full"
-            key={name + itemId}
-          >
-            <ChannelCard
-              title={name}
-              description={description}
-              imageUrl={imageUrl}
-              itemId={itemId}
-              channelId={channelId}
-              className="h-full"
+      <div
+        className="flex h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-x-scroll scrollbar-none"
+        ref={scrollRef}
+      >
+        {subscriptions.length ? (
+          subscriptions.map(
+            ({ title: name, description, imageUrl, channelId, id: itemId }) => (
+              <div
+                className="mr-4 aspect-video h-full w-[70%] shrink-0 snap-start snap-always tb:w-1/3"
+                key={name + itemId}
+                >
+                <ChannelCard
+                  title={name}
+                  description={description}
+                  imageUrl={imageUrl}
+                  itemId={itemId}
+                  channelId={channelId}
+                  className="h-full"
+                  />
+              </div>
+            ),
+          )
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <EmptyState
+              header="This group empty"
+              description="To add Subscription to this group, go to the Subscription page."
+              footer={
+                <ButtonLink href={Routes.SUBSCRIPTIONS} width="170px">
+                  Subscriptions
+                </ButtonLink>
+              }
             />
           </div>
-        ),
-      )}
+        )}
       </div>
       {isScroll && (
-        <>
-          {showsButtons.left && (
-            <div className={S.leftBackground}>
-              <button
-                aria-label="previous sections"
-                tabIndex={0}
-                className="p-2 duration-75 hover:text-blue-400 tb:p-4"
-                onClick={() => handleScroll(-300)}
-              >
-                <SlArrowLeft stroke={theme.white} size={24} />
-              </button>
-            </div>
-          )}
-          {showsButtons.right && (
-            <div className={S.rightBackground}>
-              <button
-                aria-label="next sections"
-                tabIndex={0}
-                className="p-2 duration-75 hover:text-blue-400 tb:p-4"
-                onClick={() => handleScroll(300)}
-              >
-                <SlArrowRight stroke={theme.white} size={24} />
-              </button>
-            </div>
-          )}
-        </>
+        <CarouselController
+          handleScroll={handleScroll}
+          isShowLeft={showsButtons.left}
+          isShowRight={showsButtons.right}
+        />
       )}
     </div>
   );

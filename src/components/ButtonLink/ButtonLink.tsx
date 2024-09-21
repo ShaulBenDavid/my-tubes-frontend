@@ -1,10 +1,10 @@
 import React, { type ReactNode } from "react";
 import Link, { type LinkProps } from "next/link";
-import type { ButtonLinkVariants } from "./ButtonLink.types";
+import { ButtonLinkVariants } from "./ButtonLink.types";
 import { linkStyleConfig } from "./ButtonLink.config";
 
 interface ButtonLinkProps extends LinkProps {
-  variant: ButtonLinkVariants;
+  variant?: ButtonLinkVariants;
   width?: string;
   ariaLabel?: string;
   isOutSource?: boolean;
@@ -12,7 +12,7 @@ interface ButtonLinkProps extends LinkProps {
 }
 
 export const ButtonLink = ({
-  variant,
+  variant = ButtonLinkVariants.PRIMARY,
   width,
   isOutSource = false,
   children,

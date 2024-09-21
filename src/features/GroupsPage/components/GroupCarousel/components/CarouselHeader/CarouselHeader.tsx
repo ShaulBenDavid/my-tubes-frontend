@@ -17,7 +17,7 @@ export const CarouselHeader = ({
 
   return (
     <Link
-      className="flex flex-row items-center justify-between border-b py-1 duration-75 hover:text-blue-400"
+      className="group flex flex-row items-center justify-between border-b py-1 duration-75 hover:text-blue-400"
       style={{
         borderImage: `linear-gradient(to right, ${color}, transparent) 1`,
       }}
@@ -36,7 +36,12 @@ export const CarouselHeader = ({
         )}
         {title} ({subscriptionsCount || "--"})
       </h2>
-      <FaArrowRight aria-hidden className="mr-3 tb:mr-6" />
+      <span className="flex flex-row items-center gap-3">
+        <span className="translate-x-20 opacity-0 duration-100 group-hover:translate-x-0 group-hover:opacity-100">
+          Explore All
+        </span>
+        <FaArrowRight aria-hidden className="mr-3 tb:mr-6" />
+      </span>
     </Link>
   );
 };
