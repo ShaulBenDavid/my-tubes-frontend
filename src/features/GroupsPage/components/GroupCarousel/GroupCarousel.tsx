@@ -40,7 +40,7 @@ export const GroupCarousel = ({
       {subscriptions?.map(
         ({ title: name, description, imageUrl, channelId, id: itemId }) => (
           <div
-            className="mr-4 aspect-video shrink-0 w-[70%] tb:w-1/3 snap-start snap-always"
+            className="mr-4 aspect-video shrink-0 w-[70%] tb:w-1/3 snap-start snap-always min-h-fit"
             key={name + itemId}
           >
             <ChannelCard
