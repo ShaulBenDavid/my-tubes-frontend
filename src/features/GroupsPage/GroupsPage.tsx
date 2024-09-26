@@ -45,7 +45,7 @@ export const GroupsPage = (): JSX.Element => {
         groupsCount={groupsCount}
         onSortChange={(value) => setSelectedSort(value)}
       />
-      <section className="flex h-full flex-col gap-6">
+      <section className="flex h-full flex-col gap-8">
         {isGroupListLoading && <GroupCarouselLoader />}
         {!isGroupListLoading && !groupList?.length && (
           <div className="flex h-full items-center justify-center">
