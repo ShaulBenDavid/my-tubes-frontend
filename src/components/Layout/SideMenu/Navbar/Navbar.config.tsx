@@ -2,6 +2,7 @@ import React from "react";
 import { GoHome, GoHomeFill, GoHistory } from "react-icons/go";
 import { MdSubscriptions, MdOutlineSubscriptions } from "react-icons/md";
 import { HiOutlineUserGroup, HiUserGroup } from "react-icons/hi2";
+import { SiYoutubemusic } from "react-icons/si";
 import { Routes } from "@/src/routes";
 import theme from "@/src/styles/tailwind.theme";
 import type { TabIconsType } from "./components/MenuTab";
@@ -55,6 +56,14 @@ export const getNavigationLinksConfig = (
     label: "history",
     icon: {
       default: <GoHistory aria-hidden size={24} stroke={theme.white} />,
+    },
+  },
+  {
+    id: 5,
+    href: "https://music.youtube.com/",
+    label: "music",
+    icon: {
+      default: <SiYoutubemusic aria-hidden size={24} fill={theme.white} />,
     },
   },
 ];
