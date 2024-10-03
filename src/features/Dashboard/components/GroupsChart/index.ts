@@ -1,0 +1,1 @@
+export { GroupsChart } from "./GroupsChart";
