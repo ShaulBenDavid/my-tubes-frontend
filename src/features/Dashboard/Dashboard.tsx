@@ -21,11 +21,11 @@ export const Dashboard = (): JSX.Element => {
   const { subscriptionsInfo, isSubscriptionsError, isSubscriptionsLoading } =
     useGetSubscriptionsInfo();
 
-  const isLoading = isGroupsLoading || isSubscriptionsLoading;
-  const isError = isSubscriptionsError || isGroupsError;
+  const isLoading: boolean = isGroupsLoading || isSubscriptionsLoading;
+  const isError: boolean = isSubscriptionsError || isGroupsError;
 
   const totalGroupedSubscriptions = useMemo(
-    () =>
+    (): number | undefined =>
       subscriptionsGroups?.reduce<number>(
         (acc, cur) => acc + cur.subscriptionCount,
         0,

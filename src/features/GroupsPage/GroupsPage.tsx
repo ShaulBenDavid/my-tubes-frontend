@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import { useGetGroupDetailedList } from "@/src/api/subscription/hooks";
 import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
@@ -8,15 +9,23 @@ import { Spinner } from "@/src/components/Spinner";
 import { EmptyState } from "@/src/components/EmptyState";
 import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
 import WarningSVG from "@/src/assets/images/WarningDrawSVG.svg";
-import { GroupsHeader } from "./components/GroupsHeader";
-import { GroupCarousel, GroupCarouselLoader } from "./components/GroupCarousel";
 import { Routes } from "@/src/routes";
 import { ButtonLink } from "@/src/components/ButtonLink";
+import { Breadcrumbs } from "@/src/components/Breadcrumbs";
+import { useMediaQuery } from "@/src/hooks";
+import { GroupsHeader } from "./components/GroupsHeader";
+import { GroupCarousel, GroupCarouselLoader } from "./components/GroupCarousel";
 
 export const GroupsPage = (): JSX.Element => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
+  const pathname = usePathname();
+  const breadcrumbs = pathname
+    .replace("%20", " ")
+    .split("/")
+    .filter((crumb) => crumb !== "");
 
   const {
     groupsCount,
@@ -41,6 +50,11 @@ export const GroupsPage = (): JSX.Element => {
       className="flex h-full w-full flex-col overflow-hidden overflow-y-auto pr-1"
       ref={rootRef}
     >
+      {isDesktop && (
+        <div className="pb-4">
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </div>
+      )}
       <GroupsHeader
         groupsCount={groupsCount}
         onSortChange={(value) => setSelectedSort(value)}

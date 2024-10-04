@@ -47,6 +47,7 @@ export const GroupPie = ({
             stroke="transparent"
             fill="#ffffff2b"
             dataKey="value"
+            isAnimationActive={false}
           />
           <Pie
             data={data}
