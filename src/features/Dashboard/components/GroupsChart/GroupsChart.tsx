@@ -10,10 +10,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-
 import { Card } from "@/src/components/Card";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
-import { stringToColor } from "@/src/utils";
+import { stringToColor, wordToCapitalize } from "@/src/utils";
 import { useMediaQuery } from "@/src/hooks";
 import { BarTooltip } from "./BarTooltip";
 
@@ -25,9 +24,13 @@ interface GroupsChartProps {
 
 export const GroupsChart = ({ data }: GroupsChartProps): JSX.Element => {
   const isDesktop = useMediaQuery("(min-width: 1440px)");
-  const truncateLabel = (label: string): string =>
-    label.length > MAX_LENGTH ? `${label.substring(0, MAX_LENGTH)}...` : label;
-
+  const truncateLabel = (label: string): string => {
+    const text =
+      label.length > MAX_LENGTH
+        ? `${label.substring(0, MAX_LENGTH)}...`
+        : label;
+    return wordToCapitalize(text);
+  };
   return (
     <Card className="col-span-1 flex h-96 flex-col gap-2 tb:col-span-2 tb:h-full md:col-span-3">
       <h2 className="text-base font-semibold tb:text-lg">
