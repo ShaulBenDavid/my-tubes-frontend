@@ -41,7 +41,7 @@ export const CardHeader = ({
           <Link
             data-tooltip-id={group.title}
             data-tooltip-variant="info"
-            className="line-clamp-1 text-ellipsis text-sm font-normal capitalize opacity-80 hover:underline"
+            className="line-clamp-1 text-ellipsis text-sm font-normal capitalize opacity-80 hover:text-blue-400 hover:underline"
             href={buildRoutePath(
               Routes.SUBSCRIPTIONS,
               Routes.GROUP,
