@@ -17,14 +17,14 @@ export const BarTooltip = ({
   const title = payload[0].payload.title as string;
 
   return (
-    <div className="rounded-xl bg-spec-text-secondary p-2">
+    <div className="rounded-xl bg-spec-text-secondary p-2 capitalize">
+      <p>
+        <strong>group name:</strong>&nbsp;
+        {title}
+      </p>
       <p>
         <strong>Subscriptions Count:</strong>&nbsp;
         {payload[0].value}
-      </p>
-      <p>
-        <strong>Title:</strong>&nbsp;
-        {title}
       </p>
     </div>
   );

@@ -17,7 +17,7 @@ import { stringToColor } from "@/src/utils";
 import { useMediaQuery } from "@/src/hooks";
 import { BarTooltip } from "./BarTooltip";
 
-const MAX_LENGTH = 10;
+const MAX_LENGTH = 7;
 
 interface GroupsChartProps {
   data?: SubscriptionsGroupType[];
@@ -29,7 +29,7 @@ export const GroupsChart = ({ data }: GroupsChartProps): JSX.Element => {
     label.length > MAX_LENGTH ? `${label.substring(0, MAX_LENGTH)}...` : label;
 
   return (
-    <Card className="flex h-full flex-col gap-2">
+    <Card className="col-span-1 flex h-full flex-col gap-2 tb:col-span-2 md:col-span-3">
       <h2 className="text-base font-semibold tb:text-lg">
         Subscriptions Count
       </h2>

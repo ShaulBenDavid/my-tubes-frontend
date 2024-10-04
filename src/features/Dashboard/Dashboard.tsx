@@ -1,54 +1,77 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { BsCloudPlusFill } from "react-icons/bs";
+import {
+  useGetSubscriptionsGroups,
+  useGetSubscriptionsInfo,
+} from "@/src/api/subscription/hooks";
 import { EmptyState } from "@/src/components/EmptyState";
 import NextOptionSVG from "@/src/assets/images/NextOptionSVG.svg";
 import WarningSVG from "@/src/assets/images/WarningDrawSVG.svg";
 import { Routes } from "@/src/routes";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { GroupsChart } from "./components/GroupsChart";
-import { useGetSubscriptionsGroups } from "@/src/api/subscription/hooks";
+import { GroupPie } from "./components/GroupPie";
 
 export const Dashboard = (): JSX.Element => {
   const { subscriptionsGroups, isGroupsError, isGroupsLoading } =
     useGetSubscriptionsGroups();
+  const { subscriptionsInfo, isSubscriptionsError, isSubscriptionsLoading } =
+    useGetSubscriptionsInfo();
+
+  const isLoading = isGroupsLoading || isSubscriptionsLoading;
+  const isError = isSubscriptionsError || isGroupsError;
+
+  const totalGroupedSubscriptions = useMemo(
+    () =>
+      subscriptionsGroups?.reduce<number>(
+        (acc, cur) => acc + cur.subscriptionCount,
+        0,
+      ),
+    [subscriptionsGroups],
+  );
 
   return (
     <div className="flex h-full w-full flex-col">
-      {(subscriptionsGroups?.length === 0 || isGroupsError) &&
-        !isGroupsLoading && (
-          <div className="flex flex-1 items-center justify-center">
-            <EmptyState
-              svgUrl={isGroupsError ? WarningSVG : NextOptionSVG}
-              header={
-                isGroupsError
-                  ? "Some Error happened sorry for the inconvenience"
-                  : "Welcome to my tubes!"
-              }
-              description={
-                isGroupsError
-                  ? undefined
-                  : "To experience the full potential of the app, start by creating a group."
-              }
-              footer={
-                isGroupsError ? undefined : (
-                  <ButtonLink href={Routes.SUBSCRIPTIONS}>
-                    <span className="flex flex-row gap-2">
-                      Go To Subscriptions{" "}
-                      <BsCloudPlusFill size={24} aria-hidden />
-                    </span>
-                  </ButtonLink>
-                )
-              }
-            />
-          </div>
-        )}
-      {!isGroupsLoading && !!subscriptionsGroups?.length && (
-        <div className="h-1/2 w-full">
-          <GroupsChart data={subscriptionsGroups} />
+      {(subscriptionsGroups?.length === 0 || isError) && !isLoading && (
+        <div className="flex flex-1 items-center justify-center">
+          <EmptyState
+            svgUrl={isError ? WarningSVG : NextOptionSVG}
+            header={
+              isError
+                ? "Some Error happened sorry for the inconvenience"
+                : "Welcome to my tubes!"
+            }
+            description={
+              isError
+                ? undefined
+                : "To experience the full potential of the app, start by creating a group."
+            }
+            footer={
+              isError ? undefined : (
+                <ButtonLink href={Routes.SUBSCRIPTIONS}>
+                  <span className="flex flex-row gap-2">
+                    Go To Subscriptions{" "}
+                    <BsCloudPlusFill size={24} aria-hidden />
+                  </span>
+                </ButtonLink>
+              )
+            }
+          />
         </div>
       )}
+      {!isLoading &&
+        !!subscriptionsGroups?.length &&
+        !!subscriptionsInfo?.subscriptionsCount && (
+          <div className="grid h-1/2 w-full grid-cols-1 gap-4 tb:grid-cols-3 md:grid-cols-4">
+            <GroupPie
+              totalGroupedSubscriptions={totalGroupedSubscriptions || 0}
+              totalSubscriptions={subscriptionsInfo.subscriptionsCount}
+            />
+            <GroupsChart data={subscriptionsGroups} />
+          </div>
+        )}
     </div>
   );
 };
