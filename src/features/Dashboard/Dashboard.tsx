@@ -13,6 +13,7 @@ import { Routes } from "@/src/routes";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { GroupsChart } from "./components/GroupsChart";
 import { GroupPie } from "./components/GroupPie";
+import { Spinner, SpinnerSize } from "@/src/components/Spinner";
 
 export const Dashboard = (): JSX.Element => {
   const { subscriptionsGroups, isGroupsError, isGroupsLoading } =
@@ -34,6 +35,11 @@ export const Dashboard = (): JSX.Element => {
 
   return (
     <div className="flex h-full w-full flex-col">
+      {isLoading && (
+        <div className="flex flex-1 items-center justify-center">
+          <Spinner size={SpinnerSize.LARGE} />
+        </div>
+      )}
       {(subscriptionsGroups?.length === 0 || isError) && !isLoading && (
         <div className="flex flex-1 items-center justify-center">
           <EmptyState
@@ -64,7 +70,7 @@ export const Dashboard = (): JSX.Element => {
       {!isLoading &&
         !!subscriptionsGroups?.length &&
         !!subscriptionsInfo?.subscriptionsCount && (
-          <div className="grid h-1/2 w-full grid-cols-1 gap-4 tb:grid-cols-3 md:grid-cols-4">
+          <div className="grid w-full grid-cols-1 gap-4 tb:h-1/2 tb:grid-cols-3 md:grid-cols-4">
             <GroupPie
               totalGroupedSubscriptions={totalGroupedSubscriptions || 0}
               totalSubscriptions={subscriptionsInfo.subscriptionsCount}

@@ -29,7 +29,7 @@ export const GroupsChart = ({ data }: GroupsChartProps): JSX.Element => {
     label.length > MAX_LENGTH ? `${label.substring(0, MAX_LENGTH)}...` : label;
 
   return (
-    <Card className="col-span-1 flex h-full flex-col gap-2 tb:col-span-2 md:col-span-3">
+    <Card className="col-span-1 flex h-96 flex-col gap-2 tb:col-span-2 tb:h-full md:col-span-3">
       <h2 className="text-base font-semibold tb:text-lg">
         Subscriptions Count
       </h2>
