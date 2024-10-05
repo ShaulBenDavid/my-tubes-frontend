@@ -5,12 +5,17 @@ import { Routes } from "@/src/routes";
 import theme from "@/src/styles/tailwind.theme";
 import { WEBSITE_URL } from "@/src/constants";
 import { Navbar } from "./Navbar";
+import type { NavigationLinksConfig } from "./Navbar/Navbar.config";
 
 interface SideMenuProps {
+  navigationLinks: NavigationLinksConfig[];
   onClick?: () => void;
 }
 
-export const SideMenu = ({ onClick }: SideMenuProps): JSX.Element => (
+export const SideMenu = ({
+  navigationLinks,
+  onClick,
+}: SideMenuProps): JSX.Element => (
   <>
     <Link
       href={Routes.DASHBOARD}
@@ -19,7 +24,7 @@ export const SideMenu = ({ onClick }: SideMenuProps): JSX.Element => (
       <FaYoutube fill={theme.primary[700]} size={32} />
       <span className="text-xl font-bold">My Tubes</span>
     </Link>
-    <Navbar onClick={onClick} />
+    <Navbar onClick={onClick} navigationLinks={navigationLinks} />
     <footer className="mt-auto">
       <span className="text-sm opacity-70">
         @ {new Date().getFullYear()}

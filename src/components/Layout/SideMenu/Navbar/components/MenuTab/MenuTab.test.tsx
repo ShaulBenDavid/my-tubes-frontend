@@ -12,6 +12,7 @@ describe("MenuTab", () => {
         id={1}
         isNestedLink
         nestedLinks={[]}
+        icons={{ default: <div /> }}
         activeSegment=""
       />,
     );

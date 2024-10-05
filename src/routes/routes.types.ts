@@ -10,6 +10,8 @@ export enum Routes {
   DASHBOARD = "/dashboard",
   SUBSCRIPTIONS = "/subscriptions",
   GROUP = "/group",
+  // Settings
+  SETTINGS = "/settings",
 
   // Error
   NOT_FOUND = "/404",

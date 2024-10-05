@@ -18,7 +18,8 @@ interface MenuTabProps {
   id: number;
   isActive: boolean;
   isNestedLink: boolean;
-  icons?: TabIconsType;
+  icons: TabIconsType;
+  isOutSource?: boolean;
   onClick?: () => void;
   nestedLinks: NavigationLinksConfig[];
 }
@@ -31,10 +32,10 @@ export const MenuTab = ({
   isActive,
   isNestedLink,
   icons,
+  isOutSource = false,
   onClick,
   nestedLinks,
 }: MenuTabProps): JSX.Element => {
-  const isExternalLink = !icons?.active;
   const hasNestedLinks: boolean = nestedLinks.some(
     ({ parent }) => parent === id,
   );
@@ -51,12 +52,12 @@ export const MenuTab = ({
           className={`${MenuTabStyles} ${isActive ? "bg-white/10" : ""}`}
           aria-label={label}
           aria-current={isActive ? "page" : undefined}
-          target={isExternalLink ? "_blank" : undefined}
+          target={isOutSource ? "_blank" : undefined}
         >
           <span className="flex w-full flex-row items-center gap-2">
-            {icons && icons[isActive ? "active" : "default"]}
+            {icons[isActive && icons.active ? "active" : "default"]}
             {label}
-            {isExternalLink && (
+            {isOutSource && (
               <FiExternalLink
                 aria-hidden
                 size={16}

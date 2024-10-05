@@ -6,6 +6,8 @@ import { SideMenu } from "@/src/components/Layout/SideMenu";
 import { Header } from "@/src/components/Layout/Header";
 import { Drawer } from "@/src/components/Drawer";
 import { SIDE_DRAWER_ARIA } from "@/src/components/Layout/Header/Header";
+import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
+import { getNavigationLinksConfig } from "@/src/components/Layout/SideMenu/Navbar/Navbar.config";
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,6 +15,10 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
+  const { subscriptionsInfo } = useGetSubscriptionsInfo();
+  const navigationLinksConfig = getNavigationLinksConfig(
+    subscriptionsInfo?.subscriptionsCount,
+  );
 
   const toggleDrawer = useCallback(() => setShowDrawer((prev) => !prev), []);
 
@@ -20,7 +26,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
     <ProtectedRoute>
       <div className="flex h-full flex-1 flex-row justify-start">
         <aside className="hidden h-full w-72 shrink-0 flex-col border-r border-white/30 p-4 lg:flex">
-          <SideMenu />
+          <SideMenu navigationLinks={navigationLinksConfig} />
         </aside>
         <div className="flex w-full flex-col overflow-hidden">
           <Header onClick={toggleDrawer} />
@@ -33,7 +39,10 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
             id={SIDE_DRAWER_ARIA}
           >
             <div className="flex h-full w-72  flex-col">
-              <SideMenu onClick={toggleDrawer} />
+              <SideMenu
+                onClick={toggleDrawer}
+                navigationLinks={navigationLinksConfig}
+              />
             </div>
           </Drawer>
         </div>

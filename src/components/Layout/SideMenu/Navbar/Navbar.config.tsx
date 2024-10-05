@@ -13,6 +13,7 @@ export interface NavigationLinksConfig {
   label: string;
   icon: TabIconsType;
   parent?: number;
+  isOutSource?: boolean;
 }
 
 export const getNavigationLinksConfig = (
@@ -57,6 +58,7 @@ export const getNavigationLinksConfig = (
     icon: {
       default: <GoHistory aria-hidden size={24} stroke={theme.white} />,
     },
+    isOutSource: true,
   },
   {
     id: 5,
@@ -65,5 +67,6 @@ export const getNavigationLinksConfig = (
     icon: {
       default: <SiYoutubemusic aria-hidden size={24} fill={theme.white} />,
     },
+    isOutSource: true,
   },
 ];

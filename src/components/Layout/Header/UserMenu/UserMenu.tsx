@@ -47,6 +47,9 @@ export const UserMenu = (): JSX.Element => {
               <hr className="border-r-2 border-white/30" />
 
               <li role="menuitem">
+                <AppLink href={Routes.SETTINGS}>Settings</AppLink>
+              </li>
+              <li role="menuitem">
                 <AppLink href={Routes.LOGOUT}>Logout</AppLink>
               </li>
             </ul>

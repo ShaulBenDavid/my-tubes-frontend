@@ -47,7 +47,7 @@ export const MenuTabList = ({
 
   return (
     <ul className="flex flex-col gap-2">
-      {currentLinks.map(({ label, href, icon, id }) => {
+      {currentLinks.map(({ label, href, icon, id, isOutSource }) => {
         const isActive = activeSegment === href;
 
         return (
@@ -62,6 +62,7 @@ export const MenuTabList = ({
             onClick={onClick}
             nestedLinks={nestedLinks}
             isNestedLink={isNestedLink}
+            isOutSource={isOutSource}
           />
         );
       })}
