@@ -19,7 +19,7 @@ export const SideMenu = ({
   <>
     <Link
       href={Routes.DASHBOARD}
-      className="flex w-fit flex-row items-center gap-2 px-2"
+      className="flex w-fit flex-row items-center gap-2 px-2 pb-4"
     >
       <FaYoutube fill={theme.primary[700]} size={32} />
       <span className="text-xl font-bold">My Tubes</span>

@@ -17,7 +17,7 @@ export const Navbar = ({
   const activeSegment = usePathname() ?? "/";
 
   return (
-    <nav role="navigation" aria-label="main" className="flex-1 pt-4">
+    <nav role="navigation" aria-label="main" className="flex-1">
       <MenuTabList
         navigationLinksConfig={navigationLinks}
         activeSegment={activeSegment.slice(0, -1)}

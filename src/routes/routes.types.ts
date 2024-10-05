@@ -12,6 +12,8 @@ export enum Routes {
   GROUP = "/group",
   // Settings
   SETTINGS = "/settings",
+  ACCOUNT = "/account",
+  MY_TUBES = "/mytubes",
 
   // Error
   NOT_FOUND = "/404",
