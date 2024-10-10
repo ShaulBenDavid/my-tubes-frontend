@@ -26,7 +26,7 @@ export const GROUP_SETTINGS_DRAWER = "group-settings-drawer";
 
 interface GroupHeaderProps {
   isDesktop: boolean;
-  isSubscriptionsLoading: boolean;
+  isGroupLoading: boolean;
   currentGroup?: SubscriptionsGroupType;
   subscriptionsCount?: number;
   searchValue: string;
@@ -39,7 +39,7 @@ interface GroupHeaderProps {
 
 export const GroupHeader = ({
   isDesktop,
-  isSubscriptionsLoading,
+  isGroupLoading,
   currentGroup,
   subscriptionsCount,
   searchValue,
@@ -63,7 +63,7 @@ export const GroupHeader = ({
             <span className="ps-2">({subscriptionsCount || "--"})</span>
           </h1>
           {isDesktop &&
-            (isSubscriptionsLoading ? (
+            (isGroupLoading ? (
               <Skeleton width="100%" height="14px" count={2} />
             ) : (
               description && (
