@@ -16,8 +16,7 @@ export const SearchInput = ({
   placeholder,
 }: SearchInputProps): JSX.Element => (
   <div
-    /* prettier-ignore */
-    className="border-spec-text-secondary flex h-10 flex-row items-center rounded-xl border-[1px] bg-transparent px-2 text-white focus-within:border-2 focus-within:border-blue-900"
+    className="flex h-10 flex-row items-center rounded-xl border-[1px] border-spec-text-secondary bg-transparent px-2 text-white focus-within:border-2 focus-within:border-blue-900"
     style={{ width }}
     data-testid="app-search-input-test-id"
   >
@@ -25,8 +24,7 @@ export const SearchInput = ({
       type="search"
       placeholder={placeholder}
       value={value}
-      /* prettier-ignore */
-      className="placeholder:text-spec-text-secondary w-full bg-transparent focus:outline-none"
+      className="w-full bg-transparent placeholder:text-spec-text-secondary focus:outline-none"
       onChange={onChange}
       aria-label="search"
       aria-controls="searchResults"

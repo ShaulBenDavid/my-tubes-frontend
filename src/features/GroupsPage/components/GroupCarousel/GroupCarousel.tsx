@@ -38,7 +38,7 @@ export const GroupCarousel = ({
         emoji={emoji}
         subscriptionsCount={subscriptionsCount}
       />
-      { /* prettier-ignore */}
+
       <div
         className="flex h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-x-scroll scrollbar-none"
         ref={scrollRef}
@@ -49,7 +49,7 @@ export const GroupCarousel = ({
               <div
                 className="mr-4 aspect-video h-full w-[70%] shrink-0 snap-start snap-always tb:w-1/3"
                 key={name + itemId}
-                >
+              >
                 <ChannelCard
                   title={name}
                   description={description}
@@ -58,7 +58,7 @@ export const GroupCarousel = ({
                   channelId={channelId}
                   className="h-full"
                   wrapperClassName="h-full"
-                  />
+                />
               </div>
             ),
           )

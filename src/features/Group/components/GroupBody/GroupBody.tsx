@@ -109,9 +109,8 @@ export const GroupBody = ({
   return (
     <>
       <section
-        /* prettier-ignore */
         className="flex h-full w-full grid-cols-tablet-groups-auto-fit grid-rows-groups-row-fit 
-        flex-col gap-3 overflow-y-auto tb:grid tb:gap-4 tb:px-4 pt-2 tb:pt-4 lg:grid-cols-groups-auto-fit"
+        flex-col gap-3 overflow-y-auto pt-2 tb:grid tb:gap-4 tb:px-4 tb:pt-4 lg:grid-cols-groups-auto-fit"
         ref={rootRef}
         id="searchResults"
       >

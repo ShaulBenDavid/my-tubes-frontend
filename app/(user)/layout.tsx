@@ -26,7 +26,6 @@ const RootLayout = ({
   <html lang="en">
     {process.env.NODE_ENV === "production" && <GoogleAnalytics />}
     <body
-      /* prettier-ignore */
       className={`min-h-[100dvh] w-full ${inter.variable} bg-spec-space-bg font-inter text-white`}
     >
       <AppProviders>{children}</AppProviders>

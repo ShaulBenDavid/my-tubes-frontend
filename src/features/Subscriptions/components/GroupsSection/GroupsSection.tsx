@@ -82,10 +82,7 @@ export const GroupsSection = (): JSX.Element => {
   );
 
   return (
-    <section
-      /* prettier-ignore */
-      className="grid-rows-groups-row-fit grid h-full w-full grid-cols-tablet-groups-auto-fit xl:grid-cols-groups-auto-fit gap-4 overflow-hidden overflow-y-auto pr-2"
-    >
+    <section className="grid h-full w-full grid-cols-tablet-groups-auto-fit grid-rows-groups-row-fit gap-4 overflow-hidden overflow-y-auto pr-2 xl:grid-cols-groups-auto-fit">
       <CreateGroupCard />
       {isGroupsLoading && <GroupCardLoader />}
       {!isGroupsLoading &&

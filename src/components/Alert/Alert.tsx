@@ -19,8 +19,7 @@ export const Alert = ({
 }: AlertProps): JSX.Element => (
   <div
     className={twMerge(
-      /* prettier-ignore */
-      `border-spec-text-secondary flex w-full flex-row items-center bg-spec-space-bg gap-2 rounded-lg border-[1px] p-4 text-sm shadow-lg ${alertVariantsStyleConfig[variant]}`,
+      `flex w-full flex-row items-center gap-2 rounded-lg border-[1px] border-spec-text-secondary bg-spec-space-bg p-4 text-sm shadow-lg ${alertVariantsStyleConfig[variant]}`,
       className,
     )}
     role="alert"

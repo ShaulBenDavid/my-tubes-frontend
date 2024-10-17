@@ -40,8 +40,7 @@ export const TextArea = ({
         placeholder={placeholder}
         value={value}
         className={twMerge(
-          /* prettier-ignore */
-          `border-spec-text-secondary resize-none rounded-xl border-[1px] bg-transparent px-2 text-white placeholder:text-white/70 ${
+          `resize-none rounded-xl border-[1px] border-spec-text-secondary bg-transparent px-2 text-white placeholder:text-white/70 ${
             !!errorMessage &&
             "border-red-500 focus:border-2 focus:border-red-500 focus:outline-none"
           }`,
