@@ -25,12 +25,12 @@ export const Input = ({
     register,
     formState: { errors },
   } = useFormContext();
-  const errorMessage = errors[idFor]?.message;
+  const errorMessage = errors[label]?.message;
 
   return (
     <div className="relative flex flex-col gap-1">
       <label htmlFor={idFor} className="font-medium capitalize text-white">
-        {camelCaseToWords(label)}
+        {camelCaseToWords(idFor)}
       </label>
       <input
         id={idFor}
@@ -39,16 +39,15 @@ export const Input = ({
         value={value}
         disabled={disabled}
         className={twMerge(
-          /* prettier-ignore */
-          `border-spec-text-secondary h-10 rounded-xl border-[1px] bg-transparent px-2 text-white placeholder:text-white/70 ${
+          `h-10 rounded-xl border-[1px] border-spec-text-secondary bg-transparent px-2 text-white placeholder:text-white/70 ${
             !!errorMessage &&
             "border-red-500 focus:border-2 focus:border-red-500 focus:outline-none"
-            
-          } ${disabled ? 'opacity-70 cursor-not-allowed': '' }`,
+          } ${disabled ? "cursor-not-allowed opacity-70" : ""}`,
           className,
+          idFor,
         )}
         style={{ width }}
-        {...register(label)}
+        {...register(idFor, { setValueAs: (v) => (v === "" ? null : v) })}
       />
       {!!errorMessage && (
         <p className="absolute top-[68px] text-sm font-medium leading-4 text-red-500 first-letter:capitalize">

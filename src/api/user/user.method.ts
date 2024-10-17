@@ -14,3 +14,12 @@ export const getUserProfile = (): Promise<UserProfileType> =>
     url: ApiEndpoints.USER_PROFILE,
     method: Methods.GET,
   });
+
+export const patchUserProfile = (
+  data: UserProfileType,
+): Promise<UserProfileType> =>
+  apiMethodInstance<UserProfileType>({
+    url: ApiEndpoints.USER_PROFILE,
+    method: Methods.PATCH,
+    data,
+  });

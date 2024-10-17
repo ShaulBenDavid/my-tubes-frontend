@@ -15,7 +15,7 @@ export const groupDetailsSchema = z.object({
     ),
   description: z
     .string({
-      required_error: "Title is required",
+      required_error: "Description is required",
     })
     .trim()
     .max(255, "Description can be long than 255 characters")

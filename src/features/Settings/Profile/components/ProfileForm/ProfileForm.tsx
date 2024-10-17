@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useCallback } from "react";
+import type { AxiosError } from "axios";
+import { toast } from "react-toastify";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { UserProfileType } from "@/src/api/user";
-import { profileSchema } from "./ProfileForm.config";
 import { Input } from "@/src/components/Input";
 import { Button, ButtonVariants } from "@/src/components/Button";
+import {
+  GET_USER_PROFILE_KEY,
+  usePatchUserProfile,
+} from "@/src/api/user/hooks";
+import { appQueryClient } from "@/src/queries";
+import { profileSchema } from "./ProfileForm.config";
 
 interface UserFormProps {
   defaultForm: UserProfileType;
@@ -22,15 +29,28 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
     formState: { isValid, isDirty },
   } = method;
 
-  const onSubmit = handleSubmit((values): void => {
-    console.log(values);
-    // mutate(value);
+  const handleSuccess = useCallback(() => {
+    appQueryClient.invalidateQueries({
+      queryKey: [GET_USER_PROFILE_KEY],
+    });
+  }, []);
+
+  const handleError = useCallback((data: AxiosError<{ error: string }>) => {
+    toast.error(data.message);
+  }, []);
+
+  const { patchProfile, isUserProfileLoading } = usePatchUserProfile({
+    handleSuccess,
+    handleError,
   });
-  console.log(defaultForm);
+
+  const onSubmit = handleSubmit((values): void => {
+    patchProfile(values);
+  });
 
   return (
     <FormProvider {...method}>
-      <form className="flex w-full flex-col gap-5 pt-4" onSubmit={onSubmit}>
+      <form className="flex w-full max-w-sm flex-col gap-5" onSubmit={onSubmit}>
         <Input
           label="username"
           idFor="username"
@@ -62,15 +82,15 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
           placeholder="Enter your YouTube URL"
           type="url"
         />
-        <div className="flex justify-end">
+        <div className="flex justify-start">
           <Button
             variant={ButtonVariants.PRIMARY}
             type="submit"
             disabled={!isValid || !isDirty}
             width="170px"
-            // isLoading={isLoading}
+            isLoading={isUserProfileLoading}
           >
-            submit
+            save
           </Button>
         </div>
       </form>
