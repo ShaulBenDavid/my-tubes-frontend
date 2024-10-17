@@ -16,6 +16,6 @@ export const SettingsLayout = ({
     >
       <Navbar navigationLinks={settingsNavigationLinksConfig} />
     </aside>
-    {children}
+    <div className="flex w-full tb:p-2 tb:px-4">{children}</div>
   </div>
 );

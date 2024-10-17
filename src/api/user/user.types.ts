@@ -5,3 +5,11 @@ export interface UserInfoType {
   firstName: string;
   lastName: string;
 }
+
+export interface UserProfileType {
+  username: string;
+  instagramUrl?: string | null;
+  twitterUrl?: string | null;
+  linkedinUrl?: string | null;
+  youtubeUrl?: string | null;
+}

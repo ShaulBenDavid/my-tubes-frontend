@@ -19,6 +19,7 @@ export const Input = ({
   value,
   placeholder,
   className,
+  disabled,
 }: InputProps): JSX.Element => {
   const {
     register,
@@ -36,12 +37,14 @@ export const Input = ({
         type={type}
         placeholder={placeholder}
         value={value}
+        disabled={disabled}
         className={twMerge(
           /* prettier-ignore */
           `border-spec-text-secondary h-10 rounded-xl border-[1px] bg-transparent px-2 text-white placeholder:text-white/70 ${
             !!errorMessage &&
             "border-red-500 focus:border-2 focus:border-red-500 focus:outline-none"
-          }`,
+            
+          } ${disabled ? 'opacity-70 cursor-not-allowed': '' }`,
           className,
         )}
         style={{ width }}
