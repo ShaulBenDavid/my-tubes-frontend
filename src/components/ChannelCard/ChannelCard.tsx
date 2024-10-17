@@ -20,6 +20,7 @@ interface ChannelCardProps {
   itemId: number;
   channelId: string;
   className?: string;
+  wrapperClassName?: string;
   style?: CSSProperties;
   isDraggable?: boolean;
   actionButtons?: ReactNode;
@@ -33,6 +34,7 @@ export const ChannelCard = ({
   itemId,
   channelId,
   className,
+  wrapperClassName,
   style,
   isDraggable = false,
   actionButtons,
@@ -55,7 +57,7 @@ export const ChannelCard = ({
     <div
       ref={drag}
       style={{ opacity }}
-      className={isDraggable ? draggingClass : "h-full"}
+      className={isDraggable ? draggingClass : wrapperClassName}
     >
       <Card
         className={twMerge(

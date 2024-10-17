@@ -139,7 +139,7 @@ export const GroupBody = ({
                 imageUrl={imageUrl}
                 itemId={id}
                 channelId={channelId}
-                className="h-fit animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-60"
+                className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-60"
                 style={{ animationDelay: `${index * 0.07}s` }}
                 actionButtons={
                   <ActionButton

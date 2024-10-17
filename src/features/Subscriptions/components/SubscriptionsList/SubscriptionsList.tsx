@@ -118,7 +118,6 @@ export const SubscriptionsList = ({
                 channelId={channelId}
                 isDraggable={isDesktop}
                 group={group}
-                className="h-fit"
                 actionButtons={
                   isDesktop ? undefined : (
                     <ActionButton

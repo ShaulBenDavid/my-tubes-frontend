@@ -22,9 +22,11 @@ export const GroupCarousel = ({
   const isScroll = useIsScroll(scrollRef);
   const showsButtons = useShowsButtons(scrollRef);
 
-  const handleScroll = useCallback((scrollIn: number) => {
+  const handleScroll = useCallback((scrollTo: number) => {
     if (scrollRef?.current) {
-      scrollRef.current.scrollBy({ left: scrollIn, behavior: "smooth" });
+      const left =
+        scrollRef.current.children[0].getBoundingClientRect().width ?? 0;
+      scrollRef.current.scrollBy({ left: scrollTo * left, behavior: "smooth" });
     }
   }, []);
 
@@ -55,6 +57,7 @@ export const GroupCarousel = ({
                   itemId={itemId}
                   channelId={channelId}
                   className="h-full"
+                  wrapperClassName="h-full"
                   />
               </div>
             ),

@@ -21,7 +21,7 @@ export const CarouselController = ({
           aria-label="previous sections"
           tabIndex={0}
           className="duration-75 hover:text-blue-400 tb:p-4"
-          onClick={() => handleScroll(-300)}
+          onClick={() => handleScroll(-1)}
         >
           <SlArrowLeft stroke={theme.white} size={24} />
         </button>
@@ -33,7 +33,7 @@ export const CarouselController = ({
           aria-label="next sections"
           tabIndex={0}
           className="duration-75 hover:text-blue-400 tb:p-4"
-          onClick={() => handleScroll(300)}
+          onClick={() => handleScroll(1)}
         >
           <SlArrowRight stroke={theme.white} size={24} />
         </button>
