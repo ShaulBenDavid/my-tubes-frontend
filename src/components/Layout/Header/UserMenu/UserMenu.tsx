@@ -12,6 +12,8 @@ export const UserMenu = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { userInfo, isUserLoading } = useGetUserInfo();
 
+  const handleClose = () => setIsOpen(false);
+
   return (
     <div className="ml-auto h-fit">
       {isUserLoading && (
@@ -32,7 +34,7 @@ export const UserMenu = (): JSX.Element => {
         >
           <ReactFocusLock>
             <ul role="menu" className="flex flex-col gap-1">
-              <li role="menuitem">
+              <li onClick={handleClose} onKeyDown={() => ({})} role="menuitem">
                 <AppLink href={`/${userInfo.username}`}>
                   <div className="flex flex-col">
                     <span>
@@ -46,10 +48,10 @@ export const UserMenu = (): JSX.Element => {
               </li>
               <hr className="border-r-2 border-white/30" />
 
-              <li role="menuitem">
+              <li onClick={handleClose} onKeyDown={() => ({})} role="menuitem">
                 <AppLink href={Routes.SETTINGS}>Settings</AppLink>
               </li>
-              <li role="menuitem">
+              <li onClick={handleClose} onKeyDown={() => ({})} role="menuitem">
                 <AppLink href={Routes.LOGOUT}>Logout</AppLink>
               </li>
             </ul>
