@@ -2,8 +2,9 @@ import React from "react";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import { Card } from "@/src/components/Card";
 import { InfoTooltip } from "@/src/components/InfoTooltip";
+import { GradientEffect } from "../GradientEffect";
 
-const COLORS = ["#84d2f6", "#ff9e00"];
+const COLORS = ["#0D92F4", "#FF204E"];
 
 interface GroupPieProps {
   totalGroupedSubscriptions: number;
@@ -49,6 +50,15 @@ export const GroupPie = ({
             dataKey="value"
             isAnimationActive={false}
           />
+          <defs>
+            {data.map(({ name }, index) => (
+              <GradientEffect
+                key={`colors-${name}`}
+                hexColor={COLORS[index]}
+                id={index}
+              />
+            ))}
+          </defs>
           <Pie
             data={data}
             cx={75}
@@ -64,7 +74,7 @@ export const GroupPie = ({
             {data.map(({ name }, index) => (
               <Cell
                 key={`cell-${name}`}
-                fill={COLORS[index]}
+                fill={`url(#shine-gradient-${index})`}
                 style={{ outline: "none" }}
               />
             ))}

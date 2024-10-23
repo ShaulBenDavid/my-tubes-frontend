@@ -14,8 +14,8 @@ import { Card } from "@/src/components/Card";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { stringToColor, wordToCapitalize } from "@/src/utils";
 import { useMediaQuery } from "@/src/hooks";
-import { BarTooltip } from "./components/BarTooltip";
-import { GradientEffect } from "./components/GradientEffect";
+import { BarTooltip } from "./BarTooltip";
+import { GradientEffect } from "../GradientEffect";
 
 const MAX_LENGTH = 7;
 
