@@ -14,7 +14,8 @@ import { Card } from "@/src/components/Card";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { stringToColor, wordToCapitalize } from "@/src/utils";
 import { useMediaQuery } from "@/src/hooks";
-import { BarTooltip } from "./BarTooltip";
+import { BarTooltip } from "./components/BarTooltip";
+import { GradientEffect } from "./components/GradientEffect";
 
 const MAX_LENGTH = 7;
 
@@ -47,13 +48,22 @@ export const GroupsChart = ({ data }: GroupsChartProps): JSX.Element => {
             />
             <YAxis tick={{ stroke: "white" }} width={40} />
             <Tooltip cursor={{ fill: "#464646" }} content={BarTooltip} />
+            <defs>
+              {data.map(({ title, id }) => (
+                <GradientEffect
+                  key={`colors-${id}`}
+                  hexColor={stringToColor(title + id)}
+                  id={id}
+                />
+              ))}
+            </defs>
             <Bar
               dataKey="subscriptionCount"
               barSize={isDesktop ? 15 : 10}
               radius={[10, 10, 0, 0]}
             >
-              {data.map(({ title, id }) => (
-                <Cell key={`cell-${id}`} fill={stringToColor(title + id)} />
+              {data.map(({ id }) => (
+                <Cell key={`cell-${id}`} fill={`url(#shine-gradient-${id})`} />
               ))}
             </Bar>
           </BarChart>
