@@ -7,7 +7,7 @@ import { patchUserProfile } from "../user.method";
 
 const PATCH_USER_PROFILE_KEY = "patchUserProfile";
 
-interface UsePatchUserProfile {
+interface UsePatchUserProfileProps {
   handleSuccess?: (data: UserProfileType) => void;
   handleError?: (data: AxiosError<{ error: string }>) => void;
 }
@@ -15,7 +15,7 @@ interface UsePatchUserProfile {
 export const usePatchUserProfile = ({
   handleSuccess,
   handleError,
-}: UsePatchUserProfile) => {
+}: UsePatchUserProfileProps) => {
   const { mutate, isPending, isError, error, data } = useMutation({
     mutationKey: [PATCH_USER_PROFILE_KEY],
     mutationFn: patchUserProfile,

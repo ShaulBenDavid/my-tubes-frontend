@@ -23,3 +23,9 @@ export const patchUserProfile = (
     method: Methods.PATCH,
     data,
   });
+
+export const deleteUser = (): Promise<UserProfileType> =>
+  apiMethodInstance<UserProfileType>({
+    url: ApiEndpoints.USER_PROFILE,
+    method: Methods.DELETE,
+  });
