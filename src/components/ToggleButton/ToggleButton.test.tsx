@@ -1,4 +1,5 @@
 import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { ToggleButton } from "./ToggleButton";
 
@@ -6,8 +7,18 @@ describe("ToggleButton", () => {
   const idFor = "test-toggle";
   const label = "Test Toggle";
 
+  const Wrapper = (props: { children: JSX.Element }) => {
+    const formMethods = useForm();
+
+    return <FormProvider {...formMethods}>{props.children}</FormProvider>;
+  };
+
   beforeEach(() => {
-    render(<ToggleButton idFor={idFor} label={label} />);
+    render(
+      <Wrapper>
+        <ToggleButton idFor={idFor} label={label} />
+      </Wrapper>,
+    );
   });
 
   it("renders the label correctly", () => {

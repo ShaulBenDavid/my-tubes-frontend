@@ -10,4 +10,5 @@ export const profileSchema = z.object({
   twitterUrl: z.string().url({ message: "Invalid Twitter URL" }).nullable(),
   linkedinUrl: z.string().url({ message: "Invalid LinkedIn URL" }).nullable(),
   youtubeUrl: z.string().url({ message: "Invalid YouTube URL" }).nullable(),
+  isPublic: z.boolean(),
 });

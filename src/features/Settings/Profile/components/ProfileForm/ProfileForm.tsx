@@ -12,6 +12,7 @@ import {
 } from "@/src/api/user/hooks";
 import { appQueryClient } from "@/src/queries";
 import { profileSchema } from "./ProfileForm.config";
+import { ToggleButton } from "@/src/components/ToggleButton";
 
 interface UserFormProps {
   defaultForm: UserProfileType;
@@ -26,14 +27,20 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
 
   const {
     handleSubmit,
+    reset,
+
     formState: { isValid, isDirty },
   } = method;
 
-  const handleSuccess = useCallback(() => {
-    appQueryClient.invalidateQueries({
-      queryKey: [GET_USER_PROFILE_KEY],
-    });
-  }, []);
+  const handleSuccess = useCallback(
+    (data: UserProfileType) => {
+      appQueryClient.invalidateQueries({
+        queryKey: [GET_USER_PROFILE_KEY],
+      });
+      reset(data);
+    },
+    [reset],
+  );
 
   const handleError = useCallback((data: AxiosError<{ error: string }>) => {
     toast.error(data.message);
@@ -82,6 +89,16 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
           placeholder="Enter your YouTube URL"
           type="url"
         />
+        <div className="flex flex-col gap-2">
+          <ToggleButton label="Make profile public" idFor="isPublic" />
+          <span className="text-sm text-white/70">
+            <strong>Enable</strong> this option to make your&nbsp;
+            <strong>profile</strong>&nbsp; discoverable by other users on My
+            Tubes. When active, users can search for your profile and view the{" "}
+            <strong>groups</strong>&nbsp; you&apos;ve created, as long as those
+            groups are also set to &nbsp;<strong>public</strong>.
+          </span>
+        </div>
         <div className="flex justify-start">
           <Button
             variant={ButtonVariants.PRIMARY}

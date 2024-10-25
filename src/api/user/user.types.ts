@@ -8,6 +8,7 @@ export interface UserInfoType {
 
 export interface UserProfileType {
   username: string;
+  isPublic: boolean;
   instagramUrl?: string | null;
   twitterUrl?: string | null;
   linkedinUrl?: string | null;
