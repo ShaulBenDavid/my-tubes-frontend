@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import Link from "next/link";
 import type { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { FormProvider, useForm } from "react-hook-form";
@@ -13,6 +14,8 @@ import {
 import { appQueryClient } from "@/src/queries";
 import { profileSchema } from "./ProfileForm.config";
 import { ToggleButton } from "@/src/components/ToggleButton";
+import { Routes } from "@/src/routes";
+import { buildRoutePath } from "@/src/utils";
 
 interface UserFormProps {
   defaultForm: UserProfileType;
@@ -38,6 +41,7 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
         queryKey: [GET_USER_PROFILE_KEY],
       });
       reset(data);
+      toast.success("From saved successfully!");
     },
     [reset],
   );
@@ -97,6 +101,15 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
             Tubes. When active, users can search for your profile and view the{" "}
             <strong>groups</strong>&nbsp; you&apos;ve created, as long as those
             groups are also set to &nbsp;<strong>public</strong>.
+          </span>
+          <span className="text-sm text-white/70">
+            To manage <strong>groups</strong> go to{" "}
+            <Link
+              className="app-link"
+              href={buildRoutePath(Routes.SETTINGS, Routes.MY_TUBES)}
+            >
+              My-Tubes.
+            </Link>
           </span>
         </div>
         <div className="flex justify-start">

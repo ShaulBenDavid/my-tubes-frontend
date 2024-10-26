@@ -4,7 +4,7 @@
 
 @layer components {
   .app-link {
-    @apply text-center text-primary-900 hover:underline;
+    @apply font-semibold capitalize text-blue-400 hover:underline;
   }
   .dw-skeleton {
     @apply animate-[skeleton-loading_1s_ease-in-out_infinite];
