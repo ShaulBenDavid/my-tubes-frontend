@@ -1,6 +1,8 @@
 import React, { type ReactNode } from "react";
 import { Navbar } from "@/src/components/Layout/SideMenu/Navbar";
 import { settingsNavigationLinksConfig } from "./SettingsLayout.config";
+import { useMediaQuery } from "@/src/hooks";
+import { MobileBar } from "@/src/components/Layout/MobileBar";
 
 interface SettingsLayoutProps {
   children: ReactNode;
@@ -8,14 +10,24 @@ interface SettingsLayoutProps {
 
 export const SettingsLayout = ({
   children,
-}: SettingsLayoutProps): JSX.Element => (
-  <div className="flex h-full flex-1 flex-row">
-    <aside
-      className="hidden h-full shrink-0 flex-col lg:flex"
-      aria-label="Settings"
-    >
-      <Navbar navigationLinks={settingsNavigationLinksConfig} />
-    </aside>
-    <div className="flex w-full overflow-y-auto tb:p-2 tb:px-4">{children}</div>
-  </div>
-);
+}: SettingsLayoutProps): JSX.Element => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  return (
+    <div className="flex h-full flex-1 flex-col tb:flex-row">
+      {isDesktop ? (
+        <aside
+          className="h-full shrink-0 flex-col lg:flex"
+          aria-label="Settings"
+        >
+          <Navbar navigationLinks={settingsNavigationLinksConfig} />
+        </aside>
+      ) : (
+        <MobileBar navigationLinks={settingsNavigationLinksConfig} />
+      )}
+      <div className="flex w-full overflow-y-auto tb:p-2 tb:px-4">
+        {children}
+      </div>
+    </div>
+  );
+};
