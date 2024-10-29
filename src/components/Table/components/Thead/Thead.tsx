@@ -8,12 +8,12 @@ interface TheadProps<T extends TableRowType> {
 export const Thead = <T extends TableRowType>({
   columns,
 }: TheadProps<T>): JSX.Element => (
-  <thead className="h-10 text-lg">
-    <tr className="text-left">
+  <thead className="h-10 bg-white/10 text-lg">
+    <tr className="overflow-hidden text-left">
       {columns.map((column) => (
         <th
           key={`th-${String(column.accessor)}`}
-          className="px-2 capitalize tb:px-4"
+          className="truncate px-2 capitalize tb:px-4"
         >
           {column.header}
         </th>

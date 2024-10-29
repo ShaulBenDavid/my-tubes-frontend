@@ -24,9 +24,9 @@ export const Tbody = <T extends TableRowType>({
           key={`table-row-${rowIndex}`}
           className="h-10 border-t border-spec-text-secondary/60 duration-75 ease-in-out first:border-spec-text-secondary hover:bg-white/10"
         >
-          {columns.map(({ accessor }) => (
+          {columns.map(({ accessor, render }) => (
             <td key={`col-row-${accessor as string}`} className="px-2 tb:px-4">
-              {row[accessor]}
+              {render ? render(row[accessor]) : row[accessor]}
             </td>
           ))}
         </tr>

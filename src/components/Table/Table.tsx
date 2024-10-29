@@ -15,7 +15,7 @@ export const Table = <T extends TableRowType>({
   data,
   isLoading,
 }: TableProps<T>): JSX.Element => (
-  <table className="w-full border-collapse overflow-hidden rounded-xl bg-spec-menu-bg/90">
+  <table className="w-full table-fixed border-collapse overflow-hidden rounded-xl bg-spec-menu-bg/90">
     <ColSettings columns={columns} />
     <Thead columns={columns} />
     <Tbody columns={columns} data={data} isLoading={isLoading} />
