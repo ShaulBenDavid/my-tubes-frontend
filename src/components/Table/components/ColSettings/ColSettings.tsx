@@ -8,12 +8,12 @@ interface ColSettingsProps<T extends TableRowType> {
 export const ColSettings = <T extends TableRowType>({
   columns,
 }: ColSettingsProps<T>): JSX.Element => (
-  <>
+  <colgroup>
     {columns.map((column) => (
       <col
         key={`col-set-${String(column.accessor)}`}
         style={{ width: `${column.width}%` }}
       />
     ))}
-  </>
+  </colgroup>
 );

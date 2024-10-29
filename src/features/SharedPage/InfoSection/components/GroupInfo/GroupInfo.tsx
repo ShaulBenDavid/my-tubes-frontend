@@ -2,7 +2,10 @@ import React from "react";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { stringToColor } from "@/src/utils";
 
-type GroupInfoProps = Omit<SubscriptionsGroupType, "subscriptionCount">;
+type GroupInfoProps = Omit<
+  SubscriptionsGroupType,
+  "isPublic" | "subscriptionCount"
+>;
 
 export const GroupInfo = ({
   id,

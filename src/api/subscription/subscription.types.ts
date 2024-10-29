@@ -6,6 +6,7 @@ export type SubscriptionsGroupType = {
   description?: string | null;
   emoji?: string | null;
   subscriptionCount: number;
+  isPublic: boolean;
 };
 
 export interface SubscriptionType {
@@ -42,7 +43,7 @@ export type PostSubscriptionGroupPayload = Pick<
 
 export type EditSubscriptionGroupPayload = Omit<
   SubscriptionsGroupType,
-  "subscriptionCount"
+  "subscriptionCount" | "isPublic"
 >;
 
 export type PostAddSubscriptionGroupPayload = Record<

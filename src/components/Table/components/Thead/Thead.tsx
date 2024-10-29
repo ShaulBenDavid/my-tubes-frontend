@@ -11,7 +11,10 @@ export const Thead = <T extends TableRowType>({
   <thead className="h-10 text-lg">
     <tr className="text-left">
       {columns.map((column) => (
-        <th key={`th-${String(column.accessor)}`} className="px-2 tb:px-4">
+        <th
+          key={`th-${String(column.accessor)}`}
+          className="px-2 capitalize tb:px-4"
+        >
           {column.header}
         </th>
       ))}
