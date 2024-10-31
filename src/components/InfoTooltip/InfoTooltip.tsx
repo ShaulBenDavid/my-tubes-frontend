@@ -21,6 +21,7 @@ export const InfoTooltip = ({ title }: InfoTooltipProps): JSX.Element => {
         data-tooltip-id={id}
         data-tooltip-variant="info"
         stroke={theme["spec-text-secondary"]}
+        className="shrink-0"
         size={24}
       />
     </>

@@ -33,6 +33,8 @@ export const getColumns = ({
     accessor: "isPublic",
     header: "Public",
     width: 15,
+    infoTooltip:
+      "Enable this option to make your group discoverable by other users on My Tubes.",
     render: ({ title, isPublic, id }) => (
       <div className="flex items-center">
         <ToggleButton

@@ -4,6 +4,7 @@ export type ColumnType<T> = {
   width: number;
   accessor: keyof T;
   header: string;
+  infoTooltip?: string;
   render?: (data: T, row: number) => ReactNode;
 };
 
