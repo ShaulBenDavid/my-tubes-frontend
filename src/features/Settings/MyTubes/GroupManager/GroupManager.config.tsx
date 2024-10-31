@@ -1,7 +1,10 @@
 import React from "react";
+import Link from "next/link";
 import type { ColumnType } from "@/src/components/Table";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { ToggleButton } from "@/src/components/ToggleButton";
+import { Routes } from "@/src/routes";
+import { buildRoutePath } from "@/src/utils";
 
 export const getColumns = ({
   isDesktop,
@@ -19,7 +22,24 @@ export const getColumns = ({
         },
       ]
     : []),
-  { accessor: "title", header: "group name", width: 45 },
+  {
+    accessor: "title",
+    header: "group name",
+    width: 45,
+    render: ({ title, id }) => (
+      <Link
+        className="app-link font-medium"
+        href={buildRoutePath(
+          Routes.SUBSCRIPTIONS,
+          Routes.GROUP,
+          title,
+          String(id),
+        )}
+      >
+        {title}
+      </Link>
+    ),
+  },
   ...(isDesktop
     ? [
         {

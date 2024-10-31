@@ -38,7 +38,6 @@ export const GroupCarousel = ({
         emoji={emoji}
         subscriptionsCount={subscriptionsCount}
       />
-
       <div
         className="flex h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-x-scroll scrollbar-none"
         ref={scrollRef}
