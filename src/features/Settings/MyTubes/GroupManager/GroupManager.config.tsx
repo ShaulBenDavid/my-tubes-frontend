@@ -1,10 +1,14 @@
+import React from "react";
 import type { ColumnType } from "@/src/components/Table";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
+import { ToggleButton } from "@/src/components/ToggleButton";
 
 export const getColumns = ({
   isDesktop,
+  onPublicChange,
 }: {
   isDesktop: boolean;
+  onPublicChange: (id: number, boolean: boolean) => void;
 }): ColumnType<SubscriptionsGroupType>[] => [
   ...(isDesktop
     ? [
@@ -15,7 +19,7 @@ export const getColumns = ({
         },
       ]
     : []),
-  { accessor: "title", header: "group name", width: 40 },
+  { accessor: "title", header: "group name", width: 45 },
   ...(isDesktop
     ? [
         {
@@ -28,6 +32,15 @@ export const getColumns = ({
   {
     accessor: "isPublic",
     header: "Public",
-    width: 20,
+    width: 15,
+    render: ({ title, isPublic, id }) => (
+      <div className="flex items-center">
+        <ToggleButton
+          idFor={`${title}-isPublic`}
+          checked={isPublic}
+          onChange={() => onPublicChange(id, !isPublic)}
+        />
+      </div>
+    ),
   },
 ];

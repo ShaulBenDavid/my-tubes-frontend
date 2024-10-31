@@ -41,10 +41,8 @@ export type PostSubscriptionGroupPayload = Pick<
   "title" | "description"
 >;
 
-export type EditSubscriptionGroupPayload = Omit<
-  SubscriptionsGroupType,
-  "subscriptionCount" | "isPublic"
->;
+export type EditSubscriptionGroupPayload = Partial<SubscriptionsGroupType> &
+  Required<Pick<SubscriptionsGroupType, "id">>;
 
 export type PostAddSubscriptionGroupPayload = Record<
   `${"subscription" | "group"}Id`,

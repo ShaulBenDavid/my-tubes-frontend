@@ -4,7 +4,7 @@ export type ColumnType<T> = {
   width: number;
   accessor: keyof T;
   header: string;
-  render?: (data: T[keyof T]) => ReactNode;
+  render?: (data: T, row: number) => ReactNode;
 };
 
 export interface TableRowType {

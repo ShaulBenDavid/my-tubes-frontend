@@ -8,7 +8,7 @@ interface TheadProps<T extends TableRowType> {
 export const Thead = <T extends TableRowType>({
   columns,
 }: TheadProps<T>): JSX.Element => (
-  <thead className="h-10 bg-white/10 text-lg">
+  <thead className="h-10 shrink-0 bg-white/10 text-lg">
     <tr className="overflow-hidden text-left">
       {columns.map((column) => (
         <th
