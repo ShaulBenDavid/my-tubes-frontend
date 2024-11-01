@@ -75,7 +75,10 @@ export const Dashboard = (): JSX.Element => {
               totalGroupedSubscriptions={totalGroupedSubscriptions || 0}
               totalSubscriptions={subscriptionsInfo.subscriptionsCount}
             />
-            <GroupsChart data={subscriptionsGroups} />
+            <GroupsChart
+              subscriptionsCount={subscriptionsInfo.subscriptionsCount}
+              data={subscriptionsGroups}
+            />
           </div>
         )}
     </div>
