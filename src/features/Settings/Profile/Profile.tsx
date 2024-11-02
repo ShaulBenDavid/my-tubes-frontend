@@ -18,14 +18,16 @@ export const Profile = (): JSX.Element => {
     >
       {isUserLoading && <ShareLoader />}
       {userProfile?.isPublic && !isUserLoading && (
-        <Share
-          url={`${PUBLIC_SHARED_GROUP_URL}@${userProfile.username}/`}
-          title={`${userProfile.username} - MyTubes`}
-          content={`${userProfile.username} Invites You to Explore his Subscriptions..`}
-          tooltipContent="This link allows you to share your profile data and your public groups."
-        />
+        <>
+          <Share
+            url={`${PUBLIC_SHARED_GROUP_URL}@${userProfile.username}/`}
+            title={`${userProfile.username} - MyTubes`}
+            content={`${userProfile.username} Invites You to Explore his Subscriptions..`}
+            tooltipContent="This link allows you to share your profile data and your public groups."
+          />
+          <hr className="border-r-2 border-white/30" />
+        </>
       )}
-      <hr className="border-r-2 border-white/30" />
       {isUserLoading && <Skeleton width="full" height="20px" count={5} />}
       {!isUserLoading && userProfile && (
         <ProfileForm defaultForm={userProfile} />
