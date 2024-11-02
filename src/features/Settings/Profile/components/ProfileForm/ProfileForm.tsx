@@ -95,6 +95,14 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
         />
         <div className="flex flex-col gap-2">
           <ToggleButton label="Make profile public" idFor="isPublic" />
+          {defaultForm.isPublic && (
+            <Link
+              className="app-link animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0"
+              href={`/@${defaultForm.username}`}
+            >
+              Your Public Dashboard
+            </Link>
+          )}
           <span className="text-sm text-white/70">
             <strong>Enable</strong> this option to make your&nbsp;
             <strong>profile</strong>&nbsp; discoverable by other users on My

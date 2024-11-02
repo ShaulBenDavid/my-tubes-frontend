@@ -35,7 +35,7 @@ export const UserMenu = (): JSX.Element => {
           <ReactFocusLock>
             <ul role="menu" className="flex flex-col gap-1">
               <li onClick={handleClose} onKeyDown={() => ({})} role="menuitem">
-                <AppLink href={`/${userInfo.username}`}>
+                <AppLink href={`/@${userInfo.username}`}>
                   <div className="flex flex-col">
                     <span>
                       {userInfo.firstName} {userInfo.lastName}
@@ -47,7 +47,6 @@ export const UserMenu = (): JSX.Element => {
                 </AppLink>
               </li>
               <hr className="border-r-2 border-white/30" />
-
               <li onClick={handleClose} onKeyDown={() => ({})} role="menuitem">
                 <AppLink href={Routes.SETTINGS}>Settings</AppLink>
               </li>
