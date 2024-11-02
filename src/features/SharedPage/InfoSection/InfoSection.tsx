@@ -31,7 +31,7 @@ export const InfoSection = ({ token }: InfoSectionProps): JSX.Element => {
   }, [groupInfoError, router]);
 
   return (
-    <div className="flex flex-col gap-4 pt-4">
+    <div className="flex flex-col gap-4">
       {isGroupInfoLoading && <InfoSectionLoader />}
       {groupInfo && !isGroupInfoLoading && (
         <>
