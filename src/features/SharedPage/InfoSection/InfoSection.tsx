@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { HttpStatusCode } from "@/src/types";
 import { GroupInfo } from "./components/GroupInfo";
-import { useGetGroupInfoFromShareLink } from "@/src/api/openToPublic/hooks/useGetGroupInfoFromShareLink";
+import { useGetGroupInfoFromShareLink } from "@/src/api/openToPublic/hooks";
 import { UserInfo } from "./components/UserInfo";
 import { InfoSectionLoader } from "./InfoSection.loader";
 import { Routes } from "@/src/routes";

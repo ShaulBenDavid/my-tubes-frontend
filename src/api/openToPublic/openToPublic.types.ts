@@ -1,4 +1,5 @@
 import type { SubscriptionsGroupType } from "../subscription";
+import type { UserInfoType, UserProfileType } from "../user";
 
 export type SharedLinkParams = {
   token: string;
@@ -19,3 +20,5 @@ export type GetSharedGroupInfoResponse = Omit<
     user: UserSharedInfoType;
   };
 };
+
+export type GetPublicUserInfo = UserProfileType & { user: UserInfoType };
