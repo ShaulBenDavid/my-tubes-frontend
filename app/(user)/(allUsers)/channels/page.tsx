@@ -13,7 +13,7 @@ const ChannelsPage = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <main className="mx-auto flex h-full w-full max-w-[1400px] flex-col p-2 tb:p-4">
+      <main className="mx-auto flex h-full w-full max-w-[1400px] flex-col overflow-y-auto p-2 tb:p-4">
         {token && (
           <>
             <InfoSection token={token} />

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type ReactNode } from "react";
 import { Navbar } from "@/src/components/Layout/SideMenu/Navbar";
 import { settingsNavigationLinksConfig } from "./SettingsLayout.config";
@@ -14,7 +16,7 @@ export const SettingsLayout = ({
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="flex h-full flex-1 flex-col tb:flex-row">
+    <div className="flex h-full w-full flex-col overflow-hidden tb:flex-row">
       {isDesktop ? (
         <aside
           className="h-full shrink-0 flex-col lg:flex"
@@ -25,7 +27,7 @@ export const SettingsLayout = ({
       ) : (
         <MobileBar navigationLinks={settingsNavigationLinksConfig} />
       )}
-      <div className="flex w-full overflow-y-auto tb:p-2 tb:px-4">
+      <div className="flex h-full w-full flex-col overflow-y-auto tb:p-2 tb:px-4">
         {children}
       </div>
     </div>
