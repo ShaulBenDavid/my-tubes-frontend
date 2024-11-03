@@ -9,7 +9,9 @@ import { CarouselHeader } from "./components/CarouselHeader";
 import { useShowsButtons } from "./useShowsButtons";
 import { CarouselController } from "./components/CarouselController";
 
-type GroupCarouselProps = DetailedGroup;
+type GroupCarouselProps = DetailedGroup & {
+  headerHref: string;
+};
 
 export const GroupCarousel = ({
   title,
@@ -17,6 +19,7 @@ export const GroupCarousel = ({
   emoji,
   subscriptionsCount,
   subscriptions,
+  headerHref,
 }: GroupCarouselProps): JSX.Element => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isScroll = useIsScroll(scrollRef);
@@ -37,6 +40,7 @@ export const GroupCarousel = ({
         id={id}
         emoji={emoji}
         subscriptionsCount={subscriptionsCount}
+        href={headerHref}
       />
       <div
         className="flex h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-x-scroll scrollbar-none"

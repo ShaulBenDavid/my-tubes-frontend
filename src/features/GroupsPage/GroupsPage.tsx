@@ -15,6 +15,7 @@ import { Breadcrumbs } from "@/src/components/Breadcrumbs";
 import { useMediaQuery } from "@/src/hooks";
 import { GroupsHeader } from "./components/GroupsHeader";
 import { GroupCarousel, GroupCarouselLoader } from "./components/GroupCarousel";
+import { buildRoutePath } from "@/src/utils";
 
 export const GroupsPage = (): JSX.Element => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -96,6 +97,12 @@ export const GroupsPage = (): JSX.Element => {
                 emoji={emoji}
                 subscriptionsCount={subscriptionsCount}
                 subscriptions={subscriptions}
+                headerHref={buildRoutePath(
+                  Routes.SUBSCRIPTIONS,
+                  Routes.GROUP,
+                  title,
+                  String(id),
+                )}
               />
             ),
           )}

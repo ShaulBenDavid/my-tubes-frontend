@@ -2,16 +2,18 @@ import React from "react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import type { DetailedGroup } from "@/src/api/subscription/subscription.types";
-import { buildRoutePath, stringToColor } from "@/src/utils";
-import { Routes } from "@/src/routes";
+import { stringToColor } from "@/src/utils";
 
-type CarouselHeaderProps = Omit<DetailedGroup, "subscriptions">;
+type CarouselHeaderProps = Omit<DetailedGroup, "subscriptions"> & {
+  href: string;
+};
 
 export const CarouselHeader = ({
   title,
   id,
   subscriptionsCount,
   emoji,
+  href,
 }: CarouselHeaderProps): JSX.Element => {
   const color = stringToColor(title + id);
 
@@ -21,12 +23,7 @@ export const CarouselHeader = ({
       style={{
         borderImage: `linear-gradient(to right, ${color}, transparent) 1`,
       }}
-      href={buildRoutePath(
-        Routes.SUBSCRIPTIONS,
-        Routes.GROUP,
-        title,
-        String(id),
-      )}
+      href={href}
     >
       <h2 className="text-base font-bold capitalize tb:text-lg">
         {emoji && (
