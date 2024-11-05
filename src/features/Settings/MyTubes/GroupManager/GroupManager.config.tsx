@@ -54,7 +54,7 @@ export const getColumns = ({
     header: "Public",
     width: 15,
     infoTooltip:
-      "Enable this option to make your group discoverable by other users on My Tubes.",
+      "Enable this option to make your group discoverable by other users on My Tubes. (!! Your User also need to be public).",
     render: ({ title, isPublic, id }) => (
       <div className="flex items-center">
         <ToggleButton

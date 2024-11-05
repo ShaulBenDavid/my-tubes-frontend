@@ -106,6 +106,8 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
             <Link
               className="app-link animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0"
               href={`/@${defaultForm.username}`}
+              target="_blank"
+              rel="noreferrer"
             >
               Your Public Dashboard
             </Link>
