@@ -10,7 +10,9 @@ type UserPageProps = {
   };
 };
 
-const UserPage = async ({ params: { user } }: UserPageProps) => {
+const UserPage = async ({
+  params: { user },
+}: UserPageProps): Promise<JSX.Element> => {
   const username: string | null = user.startsWith(AT_SIGN)
     ? user.replace(AT_SIGN, "")
     : null;
@@ -19,11 +21,7 @@ const UserPage = async ({ params: { user } }: UserPageProps) => {
     notFound();
   }
 
-  return (
-    <main className="flex h-full w-full flex-col items-center overflow-hidden overflow-y-auto">
-      <UserLandingPage username={username} />
-    </main>
-  );
+  return <UserLandingPage username={username} />;
 };
 
 export default UserPage;
