@@ -19,4 +19,7 @@ export enum ApiEndpoints {
   ADD_SUBSCRIPTION_GROUP = "subscribe/groups/{groupId}/add-subscription/",
   REMOVE_SUBSCRIPTION_GROUP = "subscribe/subs/{subscriptionId}/ungroup-subscription/",
   GET_GROUP_SHARE_LINK = "subscribe/group-share-link/",
+
+  // PUBLIC - Open to all users
+  USER_PUBLIC_GROUPS = "subscribe/user/groups/{username}/",
 }

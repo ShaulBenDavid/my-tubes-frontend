@@ -1,3 +1,4 @@
+import type { PaginationParams } from "../common.types";
 import type { SubscriptionsGroupType } from "../subscription";
 import type { UserInfoType, UserProfileType } from "../user";
 
@@ -22,3 +23,7 @@ export type GetSharedGroupInfoResponse = Omit<
 };
 
 export type GetPublicUserInfo = UserProfileType & { user: UserInfoType };
+
+export type GetPublicGroupsParams = PaginationParams & {
+  username: string;
+};

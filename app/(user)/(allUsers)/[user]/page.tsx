@@ -20,7 +20,7 @@ const UserPage = async ({ params: { user } }: UserPageProps) => {
   }
 
   return (
-    <main className="mx-auto flex h-full w-full max-w-[1400px] flex-col p-2 tb:p-4">
+    <main className="flex h-full w-full flex-col items-center overflow-hidden overflow-y-auto">
       <UserLandingPage username={username} />
     </main>
   );

@@ -13,12 +13,12 @@ const ChannelsPage = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <main className="mx-auto flex h-full w-full max-w-[1400px] flex-col overflow-y-auto p-2 tb:p-4">
+      <main className="flex h-full w-full flex-col items-center overflow-hidden overflow-y-auto">
         {token && (
-          <>
+          <article className="flex h-full w-full max-w-[1400px] flex-col gap-4 p-2 tb:p-4">
             <InfoSection token={token} />
             <SharedChannels token={token} />
-          </>
+          </article>
         )}
       </main>
     </DndProvider>
