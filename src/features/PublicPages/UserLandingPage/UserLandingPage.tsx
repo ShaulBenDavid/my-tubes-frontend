@@ -33,6 +33,7 @@ export const UserLandingPage = ({
   }
 
   const {
+    description,
     user: { imageUrl, firstName, lastName },
   } = userInfo;
 
@@ -42,6 +43,7 @@ export const UserLandingPage = ({
         imageUrl={imageUrl}
         firstName={firstName}
         lastName={lastName}
+        description={description}
       />
       <SocialLinks links={getSocialLinks(userInfo)} />
       <GroupsSection username={username} />

@@ -16,6 +16,7 @@ import { profileSchema } from "./ProfileForm.config";
 import { ToggleButton } from "@/src/components/ToggleButton";
 import { Routes } from "@/src/routes";
 import { buildRoutePath } from "@/src/utils";
+import { TextArea } from "@/src/components/TextArea";
 
 interface UserFormProps {
   defaultForm: UserProfileType;
@@ -68,6 +69,12 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
           placeholder="Enter your username"
           type="text"
           disabled
+        />
+        <TextArea
+          label="description"
+          idFor="description"
+          placeholder="Enter description of the group."
+          rows={4}
         />
         <Input
           label="instagramUrl"
