@@ -12,6 +12,6 @@ export const UserLandingPageLoader = (): JSX.Element => (
       />
       <Skeleton width="150px" height="20px" containerClassName="h-6" />
     </span>
-    <Skeleton width="100%" height="20px" count={8} />
+    <Skeleton width="100%" height="20px" count={2} />
   </div>
 );
