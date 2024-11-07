@@ -1,36 +1,51 @@
 import React from "react";
+import Link from "next/link";
+import { FaArrowLeftLong } from "react-icons/fa6";
 import type { SubscriptionsGroupType } from "@/src/api/subscription";
 import { stringToColor } from "@/src/utils";
 
 type GroupInfoProps = Omit<
   SubscriptionsGroupType,
   "isPublic" | "subscriptionCount"
->;
+> & { href?: string };
 
 export const GroupInfo = ({
   id,
   title,
   description,
   emoji,
+  href,
 }: GroupInfoProps): JSX.Element => {
   const borderColor = stringToColor(title + id);
 
   return (
-    <div
+    <header
       className="flex flex-col items-center gap-2 rounded-xl border-b pb-4"
       style={{ borderColor }}
     >
-      <h1 className="flex items-end justify-center gap-2 text-center text-2xl capitalize">
-        {emoji && (
-          <span aria-label="group emoji" className="text-5xl">
-            {emoji}
-          </span>
+      <div
+        className={`grid w-full gap-2 ${href ? "grid-cols-[32px_1fr_32px]" : ""}`}
+      >
+        {href && (
+          <Link
+            href={href}
+            className="p-2 duration-100 ease-linear hover:text-blue-400"
+          >
+            <FaArrowLeftLong size={24} className="shrink-0" />
+          </Link>
         )}
-        {title}
-      </h1>
+        <div className="flex w-full items-end justify-center gap-2 overflow-hidden">
+          {emoji && (
+            <span aria-label="group emoji" className="text-5xl">
+              {emoji}
+            </span>
+          )}
+          <h1 className="truncate text-center text-2xl capitalize">{title}</h1>
+        </div>
+      </div>
       {description && (
         <p className="w-[90%] text-center opacity-90 sm:w-4/5">{description}</p>
       )}
-    </div>
+    </header>
   );
 };
