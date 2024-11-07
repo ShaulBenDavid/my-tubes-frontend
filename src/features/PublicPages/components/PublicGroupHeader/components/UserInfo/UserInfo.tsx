@@ -4,7 +4,7 @@ import { Avatar } from "@/src/components/Avatar";
 import { formatDateAndHour } from "@/src/utils";
 
 interface UserInfoProps extends UserSharedInfoType {
-  expirationDate: Date;
+  expirationDate?: Date;
 }
 
 export const UserInfo = ({
@@ -27,15 +27,17 @@ export const UserInfo = ({
         <span aria-label="username">{`${firstName} ${lastName}`}</span>
       </span>
 
-      <span
-        className="text-sm font-semibold opacity-80"
-        title="Link expiration"
-      >
-        Link expiration:{" "}
-        <time dateTime={String(date)} className="font-bold">
-          {formatDateAndHour(Number(expirationDate))}
-        </time>
-      </span>
+      {expirationDate && (
+        <span
+          className="text-sm font-semibold opacity-80"
+          title="Link expiration"
+        >
+          Link expiration:{" "}
+          <time dateTime={String(date)} className="font-bold">
+            {formatDateAndHour(Number(expirationDate))}
+          </time>
+        </span>
+      )}
     </div>
   );
 };

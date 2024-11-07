@@ -1,7 +1,7 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 
-export const InfoSectionLoader = () => (
+export const PublicGroupHeaderLoader = () => (
   <div className="flex flex-col gap-2">
     <span className="flex flex-col items-center gap-1">
       <Skeleton
