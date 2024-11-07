@@ -52,7 +52,7 @@ export const GroupCard = ({
       >
         <h5 className="flex text-lg font-semibold">
           <Link
-            className="flex w-full flex-row items-center hover:text-blue-400 hover:underline"
+            className="flex w-full flex-row items-center duration-100 ease-linear hover:text-blue-400 hover:underline"
             href={buildRoutePath(
               Routes.SUBSCRIPTIONS,
               Routes.GROUP,

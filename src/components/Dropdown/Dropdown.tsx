@@ -50,13 +50,13 @@ export const Dropdown = ({
       {isOpen && (
         <div
           aria-hidden
-          className="fixed inset-0 z-10 h-screen w-screen"
+          className="fixed inset-0 z-10 h-screen w-screen "
           onClick={handleClose}
         />
       )}
       <div
         className={twMerge(
-          `absolute top-[115%] z-50 h-fit w-fit flex-col rounded-xl bg-spec-menu-bg p-2 shadow-dropdown ${
+          `absolute top-[115%] z-50 h-fit w-fit animate-[enterInSideTabs_.2s_ease-in_forwards] flex-col rounded-xl bg-spec-menu-bg p-2 shadow-dropdown ${
             isOpen ? "flex" : "hidden"
           }`,
           className,

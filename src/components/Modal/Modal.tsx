@@ -20,7 +20,7 @@ export const Modal = forwardRef(
         onCancel={closeModal}
         ref={ref}
         id={id}
-        className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl bg-modal-bg shadow-dropdown focus:outline-none"
+        className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-[fadeIn_0.3s_ease-in_forwards] overflow-hidden rounded-xl bg-modal-bg opacity-0 shadow-dropdown focus:outline-none"
       >
         <div ref={contentRef}>{children}</div>
       </dialog>
