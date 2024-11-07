@@ -1,12 +1,15 @@
 import type { PaginationParams, PaginationType } from "../common.types";
 
-export type SubscriptionsGroupType = {
+export type GroupType = {
   id: number;
   title: string;
   description?: string | null;
   emoji?: string | null;
-  subscriptionCount: number;
   isPublic: boolean;
+};
+
+export type SubscriptionsGroupType = GroupType & {
+  subscriptionCount: number;
 };
 
 export interface SubscriptionType {

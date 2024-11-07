@@ -7,6 +7,7 @@ export interface UserInfoType {
 }
 
 export interface UserProfileType {
+  id: number;
   username: string;
   isPublic: boolean;
   description?: string | null;

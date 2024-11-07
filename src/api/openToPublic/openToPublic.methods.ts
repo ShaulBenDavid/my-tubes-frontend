@@ -9,7 +9,10 @@ import type {
   GetSharedGroupInfoResponse,
   SharedLinkParams,
 } from "./openToPublic.types";
-import type { GetGroupDetailedList } from "../subscription/subscription.types";
+import type {
+  GetGroupDetailedList,
+  GroupType,
+} from "../subscription/subscription.types";
 
 export const getSubscriptionsFromShareLink = (
   params: SharedLinkParams,
@@ -45,4 +48,28 @@ export const getPublicGroupDetailedList = ({
     url: ApiEndpoints.USER_PUBLIC_GROUPS.replace("{username}", username),
     method: Methods.GET,
     params,
+  });
+
+export const getPublicGroupInfo = (
+  userId: number,
+  groupId: number,
+): Promise<GroupType> =>
+  publicMethodInstance<GroupType>({
+    url: ApiEndpoints.PUBLIC_GROUP_INFO.replace(
+      "{userId}",
+      userId.toString(),
+    ).replace("{groupId}", groupId.toString()),
+    method: Methods.GET,
+  });
+
+export const getPublicGroupSubscriptions = (
+  userId: number,
+  groupId: number,
+): Promise<GetGroupDetailedList> =>
+  publicMethodInstance<GetGroupDetailedList>({
+    url: ApiEndpoints.PUBLIC_GROUP_SUBSCRIPTIONS.replace(
+      "{userId}",
+      userId.toString(),
+    ).replace("{groupId}", groupId.toString()),
+    method: Methods.GET,
   });

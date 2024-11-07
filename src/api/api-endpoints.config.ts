@@ -22,4 +22,6 @@ export enum ApiEndpoints {
 
   // PUBLIC - Open to all users
   USER_PUBLIC_GROUPS = "subscribe/user/groups/{username}/",
+  PUBLIC_GROUP_INFO = "subscribe/public-user/{userId}/group/{groupId}/info/",
+  PUBLIC_GROUP_SUBSCRIPTIONS = "subscribe/public-user/{userId}/group/{groupId}/subscriptions/",
 }
