@@ -14,10 +14,12 @@ import { useGetPublicGroupDetailedList } from "@/src/api/openToPublic/hooks";
 
 interface GroupsSectionProps {
   username: string;
+  profileId: number;
 }
 
 export const GroupsSection = ({
   username,
+  profileId,
 }: GroupsSectionProps): JSX.Element => {
   const {
     groupList,
@@ -62,7 +64,7 @@ export const GroupsSection = ({
               emoji={emoji}
               subscriptionsCount={subscriptionsCount}
               subscriptions={subscriptions}
-              headerHref=""
+              headerHref={`/@${username.replace("%40", "@")}/${profileId}/group/${id}/`}
             />
           ),
         )}

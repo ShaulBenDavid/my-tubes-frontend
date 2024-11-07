@@ -2,8 +2,8 @@
 
 import React from "react";
 import { useSearchParams } from "next/navigation";
-import { SharedChannels } from "@/src/features/SharedPage/SharedChannels";
-import { InfoSection } from "@/src/features/SharedPage/InfoSection";
+import { SharedChannels } from "@/src/features/PublicPages/SharedPage/SharedChannels";
+import { InfoSection } from "@/src/features/PublicPages/SharedPage/InfoSection";
 
 const ChannelsPage = (): JSX.Element | null => {
   const searchParams = useSearchParams();

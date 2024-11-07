@@ -46,7 +46,7 @@ export const UserLandingPage = ({
         description={description}
       />
       <SocialLinks links={getSocialLinks(userInfo)} />
-      <GroupsSection username={username} />
+      <GroupsSection username={username} profileId={userInfo.id} />
     </article>
   );
 };
