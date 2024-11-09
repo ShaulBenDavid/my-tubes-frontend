@@ -20,7 +20,7 @@ export const Avatar = ({
 }: AvatarProps): JSX.Element => (
   <div
     className={twMerge(
-      `relative flex shrink-0 items-center justify-center overflow-hidden rounded-full uppercase text-white ${avatarSizesConfig[size]}`,
+      `flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-white uppercase text-white ${avatarSizesConfig[size]}`,
       className,
     )}
     style={{ backgroundColor: `${url ? "initial" : stringToColor(name)}` }}
@@ -28,12 +28,13 @@ export const Avatar = ({
   >
     {url ? (
       <Image
-        src={url as string}
+        src={url}
         alt={`Avatar - ${name}`}
-        className="dw-skeleton object-cover"
+        className="dw-skeleton h-full w-full object-cover"
         loading="lazy"
-        fill
         sizes="10vh"
+        height={0}
+        width={0}
       />
     ) : (
       stringToAvatar(name)

@@ -24,10 +24,12 @@ export const EmptyState = ({
         role="presentation"
         src={svgUrl}
         priority
-        className="w-[250px]"
+        className="w-32 tb:w-[220px]"
       />
     )}
-    <h2 className="text-center text-xl font-semibold capitalize">{header}</h2>
+    <h2 className="text-center font-semibold capitalize tb:text-xl">
+      {header}
+    </h2>
     {description && <p className="text-center">{description}</p>}
     {footer && footer}
   </div>
