@@ -1,0 +1,1 @@
+export { DetailedGroups } from "./DetailedGroups";
