@@ -27,7 +27,7 @@ export const MultiToggle = <T extends string>({
         onClick={() => onToggle(value)}
         aria-pressed={Boolean(selectedValue === value)}
         value={value}
-        className={`rounded-xl px-5 py-3 capitalize ${selectedValue === value ? "bg-spec-light-bg text-blue-500" : ""} duration-100 ease-in`}
+        className={`rounded-xl px-4 py-3 capitalize ${selectedValue === value ? "bg-spec-light-bg text-blue-500" : ""} duration-100 ease-in`}
       >
         {content}
       </button>

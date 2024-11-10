@@ -53,11 +53,11 @@ export const GroupsPage = (): JSX.Element => {
             onToggle={handleChange}
             buttons={[
               {
-                content: <TbListDetails size={24} />,
+                content: <TbListDetails size={20} />,
                 value: GroupTabsEnum.DETAILED,
               },
               {
-                content: <FaLayerGroup size={24} />,
+                content: <FaLayerGroup size={20} />,
                 value: GroupTabsEnum.LIST,
               },
             ]}
