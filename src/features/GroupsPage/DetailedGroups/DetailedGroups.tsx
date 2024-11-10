@@ -13,12 +13,12 @@ import { Routes } from "@/src/routes";
 import { ButtonLink } from "@/src/components/ButtonLink";
 import { Breadcrumbs } from "@/src/components/Breadcrumbs";
 import { useMediaQuery } from "@/src/hooks";
+import { buildRoutePath } from "@/src/utils";
 import { GroupsHeader } from "../components/GroupsHeader";
 import {
   GroupCarousel,
   GroupCarouselLoader,
 } from "../components/GroupCarousel";
-import { buildRoutePath } from "@/src/utils";
 
 export const DetailedGroups = (): JSX.Element => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
