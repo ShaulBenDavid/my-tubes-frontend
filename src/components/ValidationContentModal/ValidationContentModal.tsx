@@ -6,7 +6,7 @@ import theme from "@/src/styles/tailwind.theme";
 interface ValidationContentModalProps {
   title: string;
   content: string;
-  isLoading: boolean;
+  isLoading?: boolean;
   onClose: () => void;
   onDelete: () => void;
 }
@@ -14,7 +14,7 @@ interface ValidationContentModalProps {
 export const ValidationContentModal = ({
   title,
   content,
-  isLoading,
+  isLoading = false,
   onClose,
   onDelete,
 }: ValidationContentModalProps): JSX.Element => (
