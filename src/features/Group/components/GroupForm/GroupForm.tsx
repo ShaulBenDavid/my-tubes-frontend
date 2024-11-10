@@ -52,7 +52,7 @@ export const GroupForm = ({
   };
 
   return (
-    <div className="flex h-fit w-96 flex-col items-center justify-center">
+    <div className="flex h-fit w-72 flex-col items-center justify-center tb:w-96">
       <h4 className="text-center text-lg font-semibold text-white">{title}</h4>
       <p className="text-center text-base text-white/70">{content}</p>
       {isError && (
