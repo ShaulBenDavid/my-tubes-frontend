@@ -38,7 +38,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
             isOpen={showDrawer}
             id={SIDE_DRAWER_ARIA}
           >
-            <div className="flex h-full w-72  flex-col">
+            <div className="flex h-full w-72 flex-col">
               <SideMenu
                 onClick={toggleDrawer}
                 navigationLinks={navigationLinksConfig}

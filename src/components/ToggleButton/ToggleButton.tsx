@@ -28,7 +28,7 @@ export const ToggleButton = ({
             <input
               id={idFor}
               type="checkbox"
-              className="peer sr-only"
+              className="peer sr-only focus:fixed"
               checked={field.value}
               {...props}
               {...field}
@@ -36,7 +36,12 @@ export const ToggleButton = ({
           )}
         />
       ) : (
-        <input id={idFor} type="checkbox" className="peer sr-only" {...props} />
+        <input
+          id={idFor}
+          type="checkbox"
+          className="peer sr-only focus:fixed"
+          {...props}
+        />
       )}
       <div
         className="peer relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5
