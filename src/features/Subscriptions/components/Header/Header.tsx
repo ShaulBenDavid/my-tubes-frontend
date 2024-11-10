@@ -11,7 +11,7 @@ export const Header = ({
   subscriptionsCount,
   lastSyncDate,
 }: HeaderProps): JSX.Element => (
-  <div className="flex flex-row justify-between pb-2">
+  <div className="inside-header flex flex-row justify-between pb-2">
     <h1 className="font-semibold tb:text-xl">
       Subscriptions <span>({subscriptionsCount})</span>
     </h1>

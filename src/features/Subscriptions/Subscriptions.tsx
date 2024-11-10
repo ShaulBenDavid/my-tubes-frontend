@@ -30,7 +30,7 @@ export const Subscriptions = (): JSX.Element => {
         subscriptionsCount={subscriptionsInfo?.subscriptionsCount ?? "--"}
         lastSyncDate={subscriptionsInfo?.lastSyncDate}
       />
-      <div className="flex h-full w-full flex-row gap-4 overflow-hidden">
+      <div className="flex h-full w-full flex-row gap-4">
         <SubscriptionsList isDesktop={isDesktop} />
         {isDesktop && <GroupsSection />}
       </div>

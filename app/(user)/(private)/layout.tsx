@@ -24,28 +24,28 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 
   return (
     <ProtectedRoute>
-      <div className="flex h-full flex-1 flex-row justify-start">
-        <aside className="hidden h-full w-72 shrink-0 flex-col border-r border-white/30 p-4 lg:flex">
-          <SideMenu navigationLinks={navigationLinksConfig} />
+      <div className="flex min-h-full flex-row justify-start">
+        <Header onClick={toggleDrawer} />
+        <aside className="hidden min-h-full w-[--main-aside-menu-width] shrink-0 border-r border-white/30 lg:flex">
+          <div className="fixed flex h-dvh flex-col p-4">
+            <SideMenu navigationLinks={navigationLinksConfig} />
+          </div>
         </aside>
-        <div className="flex w-full flex-col overflow-hidden">
-          <Header onClick={toggleDrawer} />
-          <main className="w-full flex-1 justify-center overflow-hidden p-2 tb:p-4">
-            {children}
-          </main>
-          <Drawer
-            onClose={toggleDrawer}
-            isOpen={showDrawer}
-            id={SIDE_DRAWER_ARIA}
-          >
-            <div className="flex h-full w-72 flex-col">
-              <SideMenu
-                onClick={toggleDrawer}
-                navigationLinks={navigationLinksConfig}
-              />
-            </div>
-          </Drawer>
-        </div>
+        <main className="w-full p-2 pt-[--mobile-top-padding] tb:p-4 tb:pt-[--desktop-top-padding]">
+          {children}
+        </main>
+        <Drawer
+          onClose={toggleDrawer}
+          isOpen={showDrawer}
+          id={SIDE_DRAWER_ARIA}
+        >
+          <div className="flex h-full w-72 flex-col">
+            <SideMenu
+              onClick={toggleDrawer}
+              navigationLinks={navigationLinksConfig}
+            />
+          </div>
+        </Drawer>
       </div>
     </ProtectedRoute>
   );

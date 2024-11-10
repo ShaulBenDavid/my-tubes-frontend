@@ -34,7 +34,7 @@ export const Dashboard = (): JSX.Element => {
   );
 
   return (
-    <div className="flex h-full w-full flex-col overflow-y-auto">
+    <div className="flex h-full w-full flex-col">
       {isLoading && (
         <div className="flex flex-1 items-center justify-center">
           <Spinner size={SpinnerSize.LARGE} />

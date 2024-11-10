@@ -23,10 +23,10 @@ const RootLayout = ({
 }: {
   children: React.ReactNode;
 }): JSX.Element => (
-  <html lang="en" className="h-dvh overflow-hidden">
+  <html lang="en">
     {process.env.NODE_ENV === "production" && <GoogleAnalytics />}
     <body
-      className={`h-dvh w-full overflow-hidden ${inter.variable} bg-spec-space-bg font-inter text-white`}
+      className={`w-full ${inter.variable} bg-spec-space-bg font-inter text-white`}
     >
       <AppProviders>{children}</AppProviders>
     </body>

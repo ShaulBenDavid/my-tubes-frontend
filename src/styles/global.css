@@ -18,6 +18,9 @@
   .shadow-inset-blur {
     box-shadow: 1px -48px 180px 46px rgba(255, 255, 255, 1) inset;
   }
+  .inside-header {
+    @apply sticky top-[--mobile-top-padding] z-10 bg-spec-space-bg tb:top-[--desktop-top-padding];
+  }
 }
 
 /*
@@ -171,4 +174,10 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
+}
+
+:root {
+  --main-aside-menu-width: 288px;
+  --desktop-top-padding: 56px;
+  --mobile-top-padding: 48px;
 }

@@ -82,77 +82,79 @@ export const SubscriptionsList = ({
 
   return (
     <div className="flex h-full w-full shrink-0 flex-col gap-2 tb:w-96 tb:gap-4">
-      <FiltersHeader
-        isShowUngroup={isShowUngroup}
-        onUngroupChange={() => setIsShowUngroup((prev) => !prev)}
-        searchValue={search}
-        sortOptions={subscriptionsListSortConfig}
-        onSortChange={(value) => setSelectedSort(value)}
-        onSearchReset={() => setSearch("")}
-        onSearchChange={(searchValue) => setSearch(searchValue)}
-      />
-      <div
-        className="flex h-full w-full snap-y snap-mandatory flex-col gap-3 overflow-y-auto tb:gap-4 tb:pr-2"
-        ref={rootRef}
-        id="searchResults"
-      >
-        {isSubscriptionsLoading && (
-          <div className="flex flex-col gap-6">
-            <ChannelCardLoader />
-          </div>
-        )}
-        {!isSubscriptionsLoading && !subscriptionsList?.length && (
-          <div className="flex h-full w-full items-center justify-center">
-            <EmptyState svgUrl={NoDataSVG} header="No Subscriptions Data." />
-          </div>
-        )}
-        {!!subscriptionsList?.length &&
-          subscriptionsList.map(
-            ({ title, description, imageUrl, channelId, id, group }) => (
-              <ChannelCard
-                key={title}
-                title={title}
-                description={description}
-                imageUrl={imageUrl}
-                itemId={id}
-                channelId={channelId}
-                isDraggable={isDesktop}
-                group={group}
-                actionButtons={
-                  isDesktop ? undefined : (
-                    <ActionButton
-                      type="button"
-                      tooltip="Update group"
-                      variant={ActionButtonVariants.DEFAULT}
-                      id="move-subscription-to-group"
-                      aria-label={`move ${title} to a group`}
-                      aria-controls={ARIA_MOVE_CHANNEL_TO_GROUP}
-                      onClick={() =>
-                        handleOpen({ title, id, currentGroupId: group?.id })
-                      }
-                      icon={<MdOutlineDriveFileMove size={24} />}
-                    />
-                  )
-                }
-              />
-            ),
+      <div className="fixed top-0 flex h-dvh flex-col pt-[calc(36px+var(--mobile-top-padding))] tb:w-96 tb:pt-[calc(36px+var(--desktop-top-padding))]">
+        <FiltersHeader
+          isShowUngroup={isShowUngroup}
+          onUngroupChange={() => setIsShowUngroup((prev) => !prev)}
+          searchValue={search}
+          sortOptions={subscriptionsListSortConfig}
+          onSortChange={(value) => setSelectedSort(value)}
+          onSearchReset={() => setSearch("")}
+          onSearchChange={(searchValue) => setSearch(searchValue)}
+        />
+        <div
+          className="flex h-full w-full snap-y snap-mandatory flex-col gap-3 overflow-y-auto tb:gap-4 tb:pr-2"
+          ref={rootRef}
+          id="searchResults"
+        >
+          {isSubscriptionsLoading && (
+            <div className="flex flex-col gap-6">
+              <ChannelCardLoader />
+            </div>
           )}
-        {(isFetchingNextPage || hasNextPage) && (
-          <div
-            ref={sentryRef}
-            className="flex w-full items-center justify-center p-2"
-          >
-            <Spinner />
-          </div>
-        )}
+          {!isSubscriptionsLoading && !subscriptionsList?.length && (
+            <div className="flex h-full w-full items-center justify-center">
+              <EmptyState svgUrl={NoDataSVG} header="No Subscriptions Data." />
+            </div>
+          )}
+          {!!subscriptionsList?.length &&
+            subscriptionsList.map(
+              ({ title, description, imageUrl, channelId, id, group }) => (
+                <ChannelCard
+                  key={title}
+                  title={title}
+                  description={description}
+                  imageUrl={imageUrl}
+                  itemId={id}
+                  channelId={channelId}
+                  isDraggable={isDesktop}
+                  group={group}
+                  actionButtons={
+                    isDesktop ? undefined : (
+                      <ActionButton
+                        type="button"
+                        tooltip="Update group"
+                        variant={ActionButtonVariants.DEFAULT}
+                        id="move-subscription-to-group"
+                        aria-label={`move ${title} to a group`}
+                        aria-controls={ARIA_MOVE_CHANNEL_TO_GROUP}
+                        onClick={() =>
+                          handleOpen({ title, id, currentGroupId: group?.id })
+                        }
+                        icon={<MdOutlineDriveFileMove size={24} />}
+                      />
+                    )
+                  }
+                />
+              ),
+            )}
+          {(isFetchingNextPage || hasNextPage) && (
+            <div
+              ref={sentryRef}
+              className="flex w-full items-center justify-center p-2"
+            >
+              <Spinner />
+            </div>
+          )}
+        </div>
+        <MoveGroupModal
+          title={selectedSubscription?.title ?? ""}
+          subscriptionId={selectedSubscription?.id ?? 0}
+          currentGroupId={selectedSubscription?.currentGroupId}
+          onClose={handleClose}
+          ref={moveSubscriptionModalRef}
+        />
       </div>
-      <MoveGroupModal
-        title={selectedSubscription?.title ?? ""}
-        subscriptionId={selectedSubscription?.id ?? 0}
-        currentGroupId={selectedSubscription?.currentGroupId}
-        onClose={handleClose}
-        ref={moveSubscriptionModalRef}
-      />
     </div>
   );
 };
