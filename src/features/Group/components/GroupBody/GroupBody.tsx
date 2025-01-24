@@ -62,7 +62,7 @@ export const GroupBody = ({
   >();
   const removeSubscriptionModalRef = useRef<HTMLDialogElement>(null);
 
-  const [sentryRef, { rootRef }] = useInfiniteScroll({
+  const [sentryRef] = useInfiniteScroll({
     loading: isSubscriptionsLoading || isFetchingNextPage,
     onLoadMore: fetchNextPage,
     hasNextPage,
@@ -111,7 +111,6 @@ export const GroupBody = ({
       <section
         className="flex w-full grid-cols-tablet-groups-auto-fit grid-rows-groups-row-fit 
         flex-col gap-3 pt-2 tb:grid tb:gap-4 tb:px-2 tb:pt-4 lg:grid-cols-groups-auto-fit"
-        ref={rootRef}
         id="searchResults"
       >
         {isSubscriptionsLoading && <ChannelCardLoader />}
