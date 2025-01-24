@@ -38,7 +38,7 @@ export const UserLandingPage = ({
   } = userInfo;
 
   return (
-    <article className="flex h-full w-full max-w-[1400px] flex-col gap-4 p-2 tb:p-4">
+    <article className="flex w-full max-w-[1400px] flex-col gap-4 p-2 tb:p-4">
       <UserHeader
         imageUrl={imageUrl}
         firstName={firstName}
