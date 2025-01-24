@@ -64,7 +64,6 @@ export const Dropdown = ({
         id={ariaLabel}
         role="presentation"
         tabIndex={-1}
-        aria-hidden={!isOpen}
         onKeyDown={handleKeyPress}
         data-testid="dropdown-component-test-id"
       >

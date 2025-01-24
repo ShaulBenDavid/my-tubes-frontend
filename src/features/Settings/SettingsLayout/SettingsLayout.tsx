@@ -16,16 +16,18 @@ export const SettingsLayout = ({
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="flex h-full w-full flex-col overflow-hidden tb:flex-row">
+    <div className="flex w-full flex-col tb:flex-row">
       {isDesktop ? (
         <aside
-          className="h-full shrink-0 flex-col lg:flex"
+          className="inside-header h-full shrink-0 flex-col lg:flex"
           aria-label="Settings"
         >
           <Navbar navigationLinks={settingsNavigationLinksConfig} />
         </aside>
       ) : (
-        <MobileBar navigationLinks={settingsNavigationLinksConfig} />
+        <div className="inside-header">
+          <MobileBar navigationLinks={settingsNavigationLinksConfig} />
+        </div>
       )}
       <div className="flex h-full w-full flex-col overflow-y-auto tb:p-2 tb:px-4">
         {children}
