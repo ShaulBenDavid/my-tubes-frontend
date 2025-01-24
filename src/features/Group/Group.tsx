@@ -79,7 +79,7 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
       {groupError?.response?.status === HttpStatusCode.NOT_FOUND ? (
         <Group404 />
       ) : (
-        <div className="flex h-full w-full overflow-hidden">
+        <div className="flex h-full w-full">
           <GroupAside
             currentGroupId={groupId}
             groupName={subscriptionsGroup?.title ?? ""}
