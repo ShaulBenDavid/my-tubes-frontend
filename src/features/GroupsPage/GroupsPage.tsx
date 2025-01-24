@@ -37,7 +37,7 @@ export const GroupsPage = (): JSX.Element => {
   return (
     <>
       {(selectedTab === GroupTabsEnum.DETAILED || isDesktop) && (
-        <div className="flex animate-[fadeIn_0.5s_ease-in_forwards]">
+        <div className="flex animate-[fadeIn_0.5s_ease-in_forwards] overflow-x-clip">
           <DetailedGroups />
         </div>
       )}
