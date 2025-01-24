@@ -36,7 +36,7 @@ export const SharedPage = ({ token }: SharedPageProps): JSX.Element => {
   const { expirationDate, userList, ...rest } = groupInfo ?? {};
 
   return (
-    <article className="flex h-full w-full max-w-[1400px] flex-col gap-4 p-2 tb:p-4">
+    <article className="flex w-full max-w-[1400px] flex-col gap-4 p-2 tb:p-4">
       <PublicGroupHeader
         groupInfo={(rest as GroupType)?.id ? (rest as GroupType) : undefined}
         userInfo={userList?.user}

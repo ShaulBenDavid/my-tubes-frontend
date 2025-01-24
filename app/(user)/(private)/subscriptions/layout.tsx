@@ -6,9 +6,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => (
   <DndProvider backend={HTML5Backend}>
-    <div className="flex h-full w-full flex-col overflow-hidden">
-      {children}
-    </div>
+    <div className="flex w-full flex-col">{children}</div>
   </DndProvider>
 );
 

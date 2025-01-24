@@ -61,19 +61,21 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
 
   return (
     <>
-      {isDesktop && <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />}
-      <GroupHeader
-        isDesktop={isDesktop}
-        isGroupLoading={isGroupLoading}
-        currentGroup={subscriptionsGroup}
-        subscriptionsCount={subscriptionsCount}
-        searchValue={search}
-        sortOptions={subscriptionsListSortConfig}
-        onSortChange={(value) => setSelectedSort(value)}
-        onSearchReset={() => setSearch("")}
-        onSearchChange={(searchValue) => setSearch(searchValue)}
-        toggleDrawer={toggleDrawer}
-      />
+      <div className="inside-header flex flex-col">
+        {isDesktop && <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />}
+        <GroupHeader
+          isDesktop={isDesktop}
+          isGroupLoading={isGroupLoading}
+          currentGroup={subscriptionsGroup}
+          subscriptionsCount={subscriptionsCount}
+          searchValue={search}
+          sortOptions={subscriptionsListSortConfig}
+          onSortChange={(value) => setSelectedSort(value)}
+          onSearchReset={() => setSearch("")}
+          onSearchChange={(searchValue) => setSearch(searchValue)}
+          toggleDrawer={toggleDrawer}
+        />
+      </div>
       {groupError?.response?.status === HttpStatusCode.NOT_FOUND ? (
         <Group404 />
       ) : (

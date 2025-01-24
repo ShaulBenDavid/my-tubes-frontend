@@ -41,7 +41,7 @@ export const DetailedGroups = (): JSX.Element => {
     isGroupListError,
   } = useGetGroupDetailedList({ ordering: selectedSort });
 
-  const [sentryRef, { rootRef }] = useInfiniteScroll({
+  const [sentryRef] = useInfiniteScroll({
     loading: isGroupListLoading || isFetchingNextPage,
     onLoadMore: fetchNextPage,
     hasNextPage,
@@ -50,12 +50,9 @@ export const DetailedGroups = (): JSX.Element => {
   });
 
   return (
-    <div
-      className="flex h-full w-full flex-col overflow-hidden overflow-y-auto pr-1"
-      ref={rootRef}
-    >
+    <div className="flex h-full w-full flex-col pr-1">
       {isDesktop && (
-        <div className="pb-4">
+        <div className="inside-header pb-4">
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </div>
       )}

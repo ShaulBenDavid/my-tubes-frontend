@@ -47,8 +47,10 @@ export const GroupAside = ({
   );
 
   return isDesktop ? (
-    <aside className="flex h-full w-72 shrink-0 flex-col gap-5 border-r border-white/30 p-2 pl-0">
-      {renderContent()}
+    <aside className="flex h-full w-72 shrink-0">
+      <div className="fixed top-0 flex h-dvh w-72 flex-col gap-5 border-r border-white/30 p-2 pl-0 pt-[calc(101px+var(--desktop-top-padding))]">
+        {renderContent()}
+      </div>
     </aside>
   ) : (
     <Drawer
