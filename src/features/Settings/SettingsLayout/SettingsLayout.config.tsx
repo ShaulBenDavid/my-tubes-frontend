@@ -1,5 +1,10 @@
 import React from "react";
-import { FcBarChart, FcBusinessContact, FcReadingEbook } from "react-icons/fc";
+import {
+  FcAddDatabase,
+  FcBarChart,
+  FcBusinessContact,
+  FcReadingEbook,
+} from "react-icons/fc";
 import { Routes } from "@/src/routes";
 import type { NavigationLinksConfig } from "@/src/components/Layout/SideMenu/Navbar/Navbar.config";
 import theme from "@/src/styles/tailwind.theme";
@@ -27,6 +32,14 @@ export const settingsNavigationLinksConfig: NavigationLinksConfig[] = [
     label: "My Tubes",
     icon: {
       default: <FcBarChart aria-hidden size={24} stroke={theme.white} />,
+    },
+  },
+  {
+    id: 3,
+    href: [Routes.SETTINGS, Routes.MY_LINKS].join(""),
+    label: "My Links",
+    icon: {
+      default: <FcAddDatabase aria-hidden size={24} stroke={theme.white} />,
     },
   },
 ];

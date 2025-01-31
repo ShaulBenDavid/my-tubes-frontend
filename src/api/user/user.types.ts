@@ -6,6 +6,12 @@ export interface UserInfoType {
   lastName: string;
 }
 
+export type CustomLinkType = Record<"name" | "url", string>;
+
+export interface UserMyLinksType {
+  customUrls?: CustomLinkType[];
+}
+
 export interface UserProfileType {
   id: number;
   username: string;

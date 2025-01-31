@@ -6,6 +6,7 @@ export enum ApiEndpoints {
   // USER
   USER_INFO = "user/info/",
   USER_PROFILE = "user/profile/",
+  USER_CUSTOM_LINKS = "user/custom-links/",
 
   // SUBSCRIPTIONS
   SUBSCRIPTIONS_INFO = "subscribe/info/",

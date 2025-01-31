@@ -25,12 +25,12 @@ export const Input = ({
     register,
     formState: { errors },
   } = useFormContext();
-  const errorMessage = errors[label]?.message;
+  const errorMessage = errors[idFor]?.message;
 
   return (
     <div className="relative flex flex-col gap-1">
       <label htmlFor={idFor} className="font-medium capitalize text-white">
-        {camelCaseToWords(idFor)}
+        {camelCaseToWords(label)}
       </label>
       <input
         id={idFor}

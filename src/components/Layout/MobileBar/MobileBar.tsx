@@ -18,7 +18,7 @@ export const MobileBar = ({ navigationLinks }: MobileBarProps): JSX.Element => {
       <ul className="relative flex w-full flex-row">
         <span
           aria-hidden
-          className="absolute h-full w-1/3 rounded-xl bg-white/10 transition-all ease-in-out"
+          className="absolute h-full w-1/4 rounded-xl bg-white/10 transition-all ease-in-out"
           style={{ transform: `translateX(${activeIndex * 100}%)` }}
         />
         {navigationLinks.map(({ label, icon, href }) => {
