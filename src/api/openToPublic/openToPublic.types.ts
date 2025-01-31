@@ -1,6 +1,6 @@
 import type { PaginationParams } from "../common.types";
 import type { GroupType } from "../subscription";
-import type { UserInfoType, UserProfileType } from "../user";
+import type { CustomLinkType, UserInfoType, UserProfileType } from "../user";
 
 export type SharedLinkParams = {
   token: string;
@@ -19,7 +19,10 @@ export type GetSharedGroupInfoResponse = GroupType & {
   };
 };
 
-export type GetPublicUserInfo = UserProfileType & { user: UserInfoType };
+export type GetPublicUserInfo = UserProfileType & {
+  user: UserInfoType;
+  customUrls?: CustomLinkType[];
+};
 
 export type GetPublicGroupsParams = PaginationParams & {
   username: string;

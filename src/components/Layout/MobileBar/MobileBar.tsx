@@ -18,8 +18,11 @@ export const MobileBar = ({ navigationLinks }: MobileBarProps): JSX.Element => {
       <ul className="relative flex w-full flex-row">
         <span
           aria-hidden
-          className="absolute h-full w-1/4 rounded-xl bg-white/10 transition-all ease-in-out"
-          style={{ transform: `translateX(${activeIndex * 100}%)` }}
+          className="absolute h-full rounded-xl bg-white/10 transition-all ease-in-out"
+          style={{
+            transform: `translateX(${activeIndex * 100}%)`,
+            width: `${100 / navigationLinks.length}%`,
+          }}
         />
         {navigationLinks.map(({ label, icon, href }) => {
           const isActive = activeSegment.slice(0, -1) === href;
