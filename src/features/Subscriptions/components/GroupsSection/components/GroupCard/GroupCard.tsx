@@ -30,7 +30,7 @@ export const GroupCard = ({
   handleEditClick,
   onDrop,
 }: GroupCardProps): JSX.Element => {
-  const { title, description, subscriptionCount, emoji, id } = data;
+  const { title, subscriptionCount, emoji, id } = data;
   const color = stringToColor(title + id);
   const capitalizedTitle = wordToCapitalize(title);
   const countDetails = `Subscriptions count in ${capitalizedTitle} group is ${subscriptionCount}`;
@@ -68,7 +68,6 @@ export const GroupCard = ({
             <FaArrowRight aria-hidden className="ml-2" />
           </Link>
         </h5>
-        {description && <p className="line-clamp-5">{description}</p>}
         <div className="mt-auto flex flex-row justify-between">
           <Tooltip content={countDetails} id={String(id)} />
           <span

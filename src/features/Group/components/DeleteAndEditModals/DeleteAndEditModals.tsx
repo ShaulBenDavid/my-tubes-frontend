@@ -35,7 +35,7 @@ export const DeleteAndEditModals = ({
   deleteModalRef,
   editModalRef,
 }: DeleteAndEditModalsProps): JSX.Element => {
-  const { title, description, id } = group ?? {};
+  const { title, id } = group ?? {};
 
   const handleDeleteSuccess = useCallback((): void => {
     toast.success(`${title} Group deleted successfully!`);
@@ -113,7 +113,6 @@ export const DeleteAndEditModals = ({
             handleCloseModal={onEditClose}
             defaultValues={{
               title,
-              description,
             }}
           />
         )}

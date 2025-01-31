@@ -3,7 +3,6 @@ import type { PaginationParams, PaginationType } from "../common.types";
 export type GroupType = {
   id: number;
   title: string;
-  description?: string | null;
   emoji?: string | null;
   isPublic: boolean;
 };
@@ -41,7 +40,7 @@ export type GetSubscriptionsListParams = PaginationParams & {
 
 export type PostSubscriptionGroupPayload = Pick<
   SubscriptionsGroupType,
-  "title" | "description"
+  "title"
 >;
 
 export type EditSubscriptionGroupPayload = Partial<SubscriptionsGroupType> &

@@ -26,7 +26,6 @@ export const GROUP_SETTINGS_DRAWER = "group-settings-drawer";
 
 interface GroupHeaderProps {
   isDesktop: boolean;
-  isGroupLoading: boolean;
   currentGroup?: SubscriptionsGroupType;
   subscriptionsCount?: number;
   searchValue: string;
@@ -39,7 +38,6 @@ interface GroupHeaderProps {
 
 export const GroupHeader = ({
   isDesktop,
-  isGroupLoading,
   currentGroup,
   subscriptionsCount,
   searchValue,
@@ -49,7 +47,7 @@ export const GroupHeader = ({
   onSearchReset,
   toggleDrawer,
 }: GroupHeaderProps): JSX.Element => {
-  const { title, description, emoji, id } = currentGroup ?? {};
+  const { title, emoji, id } = currentGroup ?? {};
 
   return (
     <header className="flex w-full flex-col justify-between gap-2 border-b border-white/30 pb-2 tb:flex-row tb:py-4">
@@ -62,14 +60,6 @@ export const GroupHeader = ({
             {title || <Skeleton width="100px" height="20px" />}
             <span className="ps-2">({subscriptionsCount || "--"})</span>
           </h1>
-          {isDesktop &&
-            (isGroupLoading ? (
-              <Skeleton width="100%" height="14px" count={2} />
-            ) : (
-              description && (
-                <p className="line-clamp-3 text-ellipsis">{description}</p>
-              )
-            ))}
         </div>
       </div>
       <div className="flex w-full shrink-0 flex-row-reverse items-start justify-between tb:w-fit tb:flex-row tb:justify-normal">

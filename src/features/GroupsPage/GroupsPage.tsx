@@ -7,7 +7,6 @@ import { FaLayerGroup } from "react-icons/fa";
 import { MultiToggle } from "@/src/components/MultiToggle";
 import { DetailedGroups } from "./DetailedGroups";
 import { GroupsSection } from "../Subscriptions/components/GroupsSection";
-import { useMediaQuery } from "@/src/hooks";
 
 const QUERY_PARAM_KEY = "tab";
 
@@ -20,7 +19,6 @@ export const GroupsPage = (): JSX.Element => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const selectedTab =
     searchParams.get(QUERY_PARAM_KEY) ?? GroupTabsEnum.DETAILED;
@@ -36,34 +34,32 @@ export const GroupsPage = (): JSX.Element => {
 
   return (
     <>
-      {(selectedTab === GroupTabsEnum.DETAILED || isDesktop) && (
+      {selectedTab === GroupTabsEnum.DETAILED && (
         <div className="flex animate-[fadeIn_0.5s_ease-in_forwards] overflow-x-clip">
           <DetailedGroups />
         </div>
       )}
-      {selectedTab === GroupTabsEnum.LIST && !isDesktop && (
+      {selectedTab === GroupTabsEnum.LIST && (
         <div className="flex h-full animate-[fadeIn_0.5s_ease-in_forwards] overflow-hidden">
           <GroupsSection />
         </div>
       )}
-      {!isDesktop && (
-        <div className="fixed bottom-5 left-1/2 -translate-x-1/2">
-          <MultiToggle
-            selectedValue={selectedTab}
-            onToggle={handleChange}
-            buttons={[
-              {
-                content: <TbListDetails size={20} />,
-                value: GroupTabsEnum.DETAILED,
-              },
-              {
-                content: <FaLayerGroup size={20} />,
-                value: GroupTabsEnum.LIST,
-              },
-            ]}
-          />
-        </div>
-      )}
+      <div className="fixed bottom-5 left-1/2 -translate-x-1/2">
+        <MultiToggle
+          selectedValue={selectedTab}
+          onToggle={handleChange}
+          buttons={[
+            {
+              content: <TbListDetails size={20} />,
+              value: GroupTabsEnum.DETAILED,
+            },
+            {
+              content: <FaLayerGroup size={20} />,
+              value: GroupTabsEnum.LIST,
+            },
+          ]}
+        />
+      </div>
     </>
   );
 };

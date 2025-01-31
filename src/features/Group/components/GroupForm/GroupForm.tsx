@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { PostSubscriptionGroupPayload } from "@/src/api/subscription";
 import { Input } from "@/src/components/Input";
 import { Button, ButtonVariants } from "@/src/components/Button";
-import { TextArea } from "@/src/components/TextArea";
 import { Alert, AlertVariants } from "@/src/components/Alert";
 import { groupDetailsSchema } from "./GroupForm.config";
 
@@ -48,7 +47,7 @@ export const GroupForm = ({
 
   const onClose = (): void => {
     handleCloseModal();
-    reset({ title: "", description: "" });
+    reset({ title: "" });
   };
 
   return (
@@ -69,12 +68,6 @@ export const GroupForm = ({
             idFor="title"
             placeholder="Enter the name of the group."
             type="text"
-          />
-          <TextArea
-            label="description"
-            idFor="description"
-            placeholder="Enter description of the group."
-            rows={4}
           />
           <div className="flex flex-row gap-2">
             <Button

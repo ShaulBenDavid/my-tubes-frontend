@@ -12,7 +12,6 @@ type GroupInfoProps = Omit<
 export const GroupInfo = ({
   id,
   title,
-  description,
   emoji,
   href,
 }: GroupInfoProps): JSX.Element => {
@@ -43,9 +42,6 @@ export const GroupInfo = ({
           <h1 className="truncate text-center text-2xl capitalize">{title}</h1>
         </div>
       </div>
-      {description && (
-        <p className="w-[90%] text-center opacity-90 sm:w-4/5">{description}</p>
-      )}
     </header>
   );
 };

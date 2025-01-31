@@ -28,7 +28,6 @@ export const PublicGroupHeader = ({
       <>
         <GroupInfo
           title={groupInfo.title}
-          description={groupInfo.description}
           id={groupInfo.id}
           emoji={groupInfo.emoji}
           href={backwardHref}

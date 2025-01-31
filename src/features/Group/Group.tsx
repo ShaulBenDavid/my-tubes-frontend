@@ -35,10 +35,9 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
     .filter((crumb) => crumb !== "");
   const breadcrumbsWithoutLast = breadcrumbs.slice(0, -1);
 
-  const { subscriptionsGroup, groupError, isGroupLoading } =
-    useGetSubscriptionsGroup({
-      groupId,
-    });
+  const { subscriptionsGroup, groupError } = useGetSubscriptionsGroup({
+    groupId,
+  });
 
   const {
     subscriptionsList,
@@ -65,7 +64,6 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
         {isDesktop && <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />}
         <GroupHeader
           isDesktop={isDesktop}
-          isGroupLoading={isGroupLoading}
           currentGroup={subscriptionsGroup}
           subscriptionsCount={subscriptionsCount}
           searchValue={search}

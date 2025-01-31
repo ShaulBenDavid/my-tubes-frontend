@@ -13,11 +13,4 @@ export const groupDetailsSchema = z.object({
       (value) => /^[A-Za-z\s]*$/.test(value),
       "only english letters allowed",
     ),
-  description: z
-    .string({
-      required_error: "Description is required",
-    })
-    .trim()
-    .max(255, "Description can be long than 255 characters")
-    .nullable(),
 });
