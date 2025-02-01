@@ -1,6 +1,6 @@
 import React from "react";
 import type { CustomLinkType } from "@/src/api/user";
-import { ButtonLink } from "@/src/components/ButtonLink";
+import { ColoredLink } from "./ColoredLink";
 
 interface CustomLinksProps {
   data: CustomLinkType[];
@@ -9,9 +9,9 @@ interface CustomLinksProps {
 export const CustomLinks = ({ data }: CustomLinksProps): JSX.Element => (
   <section className="flex w-full max-w-xs flex-row gap-2">
     {data.map(({ name, url }) => (
-      <ButtonLink href={url} key={name} isOutSource width="100%">
+      <ColoredLink href={url} key={name} isOutSource width="100%">
         {name}
-      </ButtonLink>
+      </ColoredLink>
     ))}
   </section>
 );
