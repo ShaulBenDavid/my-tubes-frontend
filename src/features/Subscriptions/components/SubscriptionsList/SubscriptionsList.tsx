@@ -82,7 +82,7 @@ export const SubscriptionsList = ({
 
   return (
     <div className="flex h-full w-full shrink-0 flex-col gap-2 overflow-x-clip tb:w-96 tb:gap-4">
-      <div className="fixed top-0 flex h-dvh w-full flex-col pr-4 pt-[calc(36px+var(--mobile-top-padding))] tb:w-96 tb:pr-0 tb:pt-[calc(36px+var(--desktop-top-padding))]">
+      <div className="fixed top-0 flex h-dvh w-full flex-col pb-2 pr-4 pt-[calc(36px+var(--mobile-top-padding))] tb:w-96 tb:pr-0 tb:pt-[calc(36px+var(--desktop-top-padding))]">
         <FiltersHeader
           isShowUngroup={isShowUngroup}
           onUngroupChange={() => setIsShowUngroup((prev) => !prev)}

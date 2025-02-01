@@ -2,6 +2,7 @@ import React from "react";
 import { GoHome, GoHomeFill, GoHistory } from "react-icons/go";
 import { MdSubscriptions, MdOutlineSubscriptions } from "react-icons/md";
 import { HiOutlineUserGroup, HiUserGroup } from "react-icons/hi2";
+import { IoSettings, IoSettingsOutline } from "react-icons/io5";
 import { SiYoutubemusic } from "react-icons/si";
 import { Routes } from "@/src/routes";
 import theme from "@/src/styles/tailwind.theme";
@@ -68,5 +69,14 @@ export const getNavigationLinksConfig = (
       default: <SiYoutubemusic aria-hidden size={24} fill={theme.white} />,
     },
     isOutSource: true,
+  },
+  {
+    id: 6,
+    href: Routes.SETTINGS,
+    label: "settings",
+    icon: {
+      default: <IoSettingsOutline aria-hidden size={24} stroke={theme.white} />,
+      active: <IoSettings aria-hidden size={24} fill={theme.white} />,
+    },
   },
 ];
