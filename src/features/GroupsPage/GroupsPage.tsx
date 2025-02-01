@@ -1,12 +1,28 @@
 "use client";
 
 import React, { useCallback } from "react";
+import dynamic from "next/dynamic";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { TbListDetails } from "react-icons/tb";
 import { FaLayerGroup } from "react-icons/fa";
 import { MultiToggle } from "@/src/components/MultiToggle";
+import { Spinner } from "@/src/components/Spinner";
 import { DetailedGroups } from "./DetailedGroups";
-import { GroupsSection } from "../Subscriptions/components/GroupsSection";
+
+const GroupsSection = dynamic(
+  () =>
+    import("../Subscriptions/components/GroupsSection").then(
+      (mod) => mod.GroupsSection,
+    ),
+  {
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <Spinner />
+      </div>
+    ),
+    ssr: false,
+  },
+);
 
 const QUERY_PARAM_KEY = "tab";
 

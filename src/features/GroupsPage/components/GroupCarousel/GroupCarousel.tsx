@@ -34,7 +34,7 @@ export const GroupCarousel = ({
   }, []);
 
   return (
-    <div className="relative flex h-1/4 max-h-[350px] min-h-[250px] flex-col gap-2">
+    <div className="relative flex max-h-[300px] min-h-[220px] flex-col gap-2">
       <CarouselHeader
         title={title}
         id={id}
@@ -43,14 +43,14 @@ export const GroupCarousel = ({
         href={headerHref}
       />
       <div
-        className="flex max-h-full w-full snap-x snap-mandatory scroll-px-[-20x] overflow-y-hidden overflow-x-scroll scrollbar-none"
+        className="flex h-full w-full flex-1 snap-x snap-mandatory scroll-px-[-20x] overflow-y-hidden overflow-x-scroll scrollbar-none"
         ref={scrollRef}
       >
         {subscriptions.length ? (
           subscriptions.map(
             ({ title: name, description, imageUrl, channelId, id: itemId }) => (
               <div
-                className="mr-4 aspect-video max-h-full w-[70%] shrink-0 snap-start snap-always tb:w-1/3"
+                className="mr-4 aspect-video min-h-full w-[70%] shrink-0 snap-start snap-always tb:w-1/3"
                 key={name + itemId}
               >
                 <ChannelCard

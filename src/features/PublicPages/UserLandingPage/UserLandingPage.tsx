@@ -9,6 +9,7 @@ import { UserLandingPageLoader } from "./UserLandingPage.loader";
 import { getSocialLinks } from "./UserLandingPage.utils";
 import { SocialLinks } from "./components/SocialLinks/SocialLinks";
 import { GroupsSection } from "./components/GroupsSection";
+import { CustomLinks } from "./components/CustomLinks";
 
 interface UserLandingPageProps {
   username: string;
@@ -35,10 +36,11 @@ export const UserLandingPage = ({
   const {
     description,
     user: { imageUrl, firstName, lastName },
+    customUrls,
   } = userInfo;
 
   return (
-    <article className="flex w-full max-w-[1400px] flex-col gap-4 p-2 tb:p-4">
+    <article className="flex w-full max-w-[1400px] flex-col items-center gap-4 p-2 tb:p-4">
       <UserHeader
         imageUrl={imageUrl}
         firstName={firstName}
@@ -46,6 +48,7 @@ export const UserLandingPage = ({
         description={description}
       />
       <SocialLinks links={getSocialLinks(userInfo)} />
+      {customUrls?.length && <CustomLinks data={customUrls} />}
       <GroupsSection username={username} profileId={userInfo.id} />
     </article>
   );

@@ -44,11 +44,11 @@ export const CreateGroupCard = (): JSX.Element => {
     <>
       <Card>
         <div className="flex h-full flex-col items-center justify-center gap-2">
-          <div className="relative h-32">
-            <FcFolder size={160} opacity={0.5} />
+          <div className="relative h-24">
+            <FcFolder size={120} opacity={0.5} />
             <FcPlus
-              size={50}
-              className="absolute left-[135px] top-7 -translate-x-1/2"
+              size={30}
+              className="absolute left-[105px] top-5 -translate-x-1/2"
             />
           </div>
           <h4 className="text-xl font-semibold">Create a group</h4>

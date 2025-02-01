@@ -95,6 +95,7 @@ module.exports = {
       },
       gridTemplateRows: {
         "groups-row-fit": "repeat(auto-fill, 240px)",
+        "groups-card-row-fit": "repeat(auto-fill, 192px)",
       },
       keyframes: {
         fadeIn: {
