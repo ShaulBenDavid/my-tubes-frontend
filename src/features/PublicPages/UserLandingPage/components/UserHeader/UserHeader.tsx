@@ -14,7 +14,7 @@ export const UserHeader = ({
   firstName,
   lastName,
 }: UserHeaderProps): JSX.Element => (
-  <header className="flex flex-col items-center gap-2">
+  <header className="flex w-full flex-col items-center gap-2">
     <Avatar
       url={imageUrl ?? undefined}
       name={`${firstName} ${lastName}`}
