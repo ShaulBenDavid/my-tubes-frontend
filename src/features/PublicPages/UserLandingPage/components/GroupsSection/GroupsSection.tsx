@@ -39,7 +39,7 @@ export const GroupsSection = ({
   });
 
   return (
-    <section className="flex h-full flex-col gap-8">
+    <section className="flex h-full w-full flex-col gap-8">
       {isGroupListLoading && <GroupCarouselLoader />}
       {!isGroupListLoading && !groupList?.length && (
         <div className="flex h-full items-center justify-center">
