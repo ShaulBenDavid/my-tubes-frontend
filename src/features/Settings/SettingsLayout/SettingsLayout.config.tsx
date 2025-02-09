@@ -22,14 +22,6 @@ export const getSettingsNavigationLinksConfig = (
     },
   },
   {
-    id: 1,
-    href: [Routes.SETTINGS, Routes.ACCOUNT].join(""),
-    label: "Account",
-    icon: {
-      default: <FcBusinessContact aria-hidden size={24} stroke={theme.white} />,
-    },
-  },
-  {
     id: 2,
     href: [Routes.SETTINGS, Routes.MY_TUBES].join(""),
     label: "My Tubes",
@@ -37,7 +29,6 @@ export const getSettingsNavigationLinksConfig = (
       default: <FcBarChart aria-hidden size={24} stroke={theme.white} />,
     },
   },
-
   ...(role === Roles.CREATOR
     ? [
         {
@@ -52,4 +43,12 @@ export const getSettingsNavigationLinksConfig = (
         },
       ]
     : []),
+  {
+    id: 1,
+    href: [Routes.SETTINGS, Routes.ACCOUNT].join(""),
+    label: "Account",
+    icon: {
+      default: <FcBusinessContact aria-hidden size={24} stroke={theme.white} />,
+    },
+  },
 ];
