@@ -109,7 +109,7 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
               target="_blank"
               rel="noreferrer"
             >
-              Your Public Dashboard
+              My Profile
             </Link>
           )}
           <span className="text-sm text-white/70">
