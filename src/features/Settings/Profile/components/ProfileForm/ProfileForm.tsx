@@ -100,6 +100,18 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
           placeholder="Enter your YouTube URL"
           type="url"
         />
+        <Input
+          label="tiktokUrl"
+          idFor="tiktokUrl"
+          placeholder="Enter your TikTok URL"
+          type="url"
+        />
+        <Input
+          label="telegramUrl"
+          idFor="telegramUrl"
+          placeholder="Enter your Telegram URL"
+          type="url"
+        />
         <div className="flex flex-col gap-2">
           <ToggleButton label="Make profile public" idFor="isPublic" />
           {defaultForm.isPublic && (

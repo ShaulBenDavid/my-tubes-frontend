@@ -1,5 +1,11 @@
 import React from "react";
-import { FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaTelegram,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import type { UserProfileType } from "@/src/api/user";
 import type { SocialLinkType } from "./components/SocialLinks/SocialLinks";
@@ -29,6 +35,18 @@ export const getSocialLinks = (profile: UserProfileType): SocialLinkType[] => {
       href: profile.twitterUrl,
       icon: <FaXTwitter size={24} className="shrink-0" />,
       title: "XTwitter",
+    },
+    {
+      backgroundColor: "#ff0050",
+      href: profile.tiktokUrl,
+      icon: <FaTiktok size={24} className="shrink-0" />,
+      title: "TikTok",
+    },
+    {
+      backgroundColor: "#7661C2",
+      href: profile.telegramUrl,
+      icon: <FaTelegram size={24} className="shrink-0" />,
+      title: "Telegram",
     },
   ];
 

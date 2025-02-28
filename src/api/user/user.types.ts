@@ -20,5 +20,7 @@ export interface UserProfileType {
   instagramUrl?: string | null;
   twitterUrl?: string | null;
   linkedinUrl?: string | null;
+  tiktokUrl?: string | null;
+  telegramUrl?: string | null;
   youtubeUrl?: string | null;
 }

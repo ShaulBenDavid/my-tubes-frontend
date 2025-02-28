@@ -16,6 +16,8 @@ export const profileSchema = z.object({
     .nullable(),
   twitterUrl: z.string().url({ message: "Invalid Twitter URL" }).nullable(),
   linkedinUrl: z.string().url({ message: "Invalid LinkedIn URL" }).nullable(),
+  tiktokUrl: z.string().url({ message: "Invalid TikTok URL" }).nullable(),
+  telegramUrl: z.string().url({ message: "Invalid Telegram URL" }).nullable(),
   youtubeUrl: z.string().url({ message: "Invalid YouTube URL" }).nullable(),
   isPublic: z.boolean(),
 });
