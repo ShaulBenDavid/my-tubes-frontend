@@ -113,7 +113,7 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
           type="url"
         />
         <div className="flex flex-col gap-2">
-          <ToggleButton label="Make profile public" idFor="isPublic" />
+          <ToggleButton label="Make Profile Public" idFor="isPublic" />
           {defaultForm.isPublic && (
             <Link
               className="app-link animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0"

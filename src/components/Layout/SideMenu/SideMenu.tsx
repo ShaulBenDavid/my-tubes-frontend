@@ -34,7 +34,7 @@ export const SideMenu = ({
           rel="noreferrer"
           className="ml-1 hover:underline"
         >
-          DevWizard
+          MyTubes
         </a>
       </span>
     </footer>
