@@ -1,9 +1,6 @@
-"use client";
-
 import React from "react";
+import { Home } from "@/src/features/Home";
 
-const Home = () => (
-  <div className="flex h-screen flex-col items-center justify-center">Home</div>
-);
+const HomePage = () => <Home />;
 
-export default Home;
+export default HomePage;

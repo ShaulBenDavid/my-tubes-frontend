@@ -32,7 +32,7 @@ export const CallbackPage = (): JSX.Element => {
   });
 
   return (
-    <div className="flex h-full items-center justify-center">
+    <div className="flex flex-1 items-center justify-center">
       {isLoginLoading && (
         <div className={S.box}>
           <section className="flex flex-row items-center gap-2">

@@ -1,5 +1,6 @@
 import React, { type ReactNode } from "react";
 import Link, { type LinkProps } from "next/link";
+import { twMerge } from "tailwind-merge";
 import { ButtonLinkVariants } from "./ButtonLink.types";
 import { linkStyleConfig } from "./ButtonLink.config";
 
@@ -7,6 +8,7 @@ interface ButtonLinkProps extends LinkProps {
   variant?: ButtonLinkVariants;
   width?: string;
   ariaLabel?: string;
+  className?: string;
   isOutSource?: boolean;
   children: ReactNode;
 }
@@ -16,14 +18,15 @@ export const ButtonLink = ({
   width,
   isOutSource = false,
   children,
+  className,
   ...props
 }: ButtonLinkProps): JSX.Element => {
-  const className = `flex h-[35px] w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-xl px-5 text-base capitalize ${linkStyleConfig[variant]}`;
+  const defaultClassName = `flex h-[35px] w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-xl px-5 text-base capitalize ${linkStyleConfig[variant]}`;
 
   return isOutSource ? ( // !! to fix
     <a
       href={props.href as string}
-      className={className}
+      className={twMerge(defaultClassName, className)}
       style={{ width }}
       target="_blank"
       rel="noopener noreferrer"
@@ -31,7 +34,11 @@ export const ButtonLink = ({
       {children}
     </a>
   ) : (
-    <Link {...props} className={className} style={{ width }}>
+    <Link
+      {...props}
+      className={twMerge(defaultClassName, className)}
+      style={{ width }}
+    >
       {children}
     </Link>
   );

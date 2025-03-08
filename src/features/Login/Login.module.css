@@ -1,7 +1,10 @@
 .loginBackground {
   position: relative;
-  height: 100%;
-  @apply flex justify-center pt-[40%] md:pt-[20%];
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 100%;
 }
 
 .loginBackground::before {

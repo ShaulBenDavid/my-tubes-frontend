@@ -1,5 +1,6 @@
 import React, { type ReactNode } from "react";
 import { PublicRoute } from "@/src/providers";
+import { PublicHeader } from "@/src/components/PublicLayout/PublicHeader";
 
 interface LayoutProps {
   children: ReactNode;
@@ -7,9 +8,10 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps): JSX.Element => (
   <PublicRoute>
-    <main className="h-full w-full flex-1 justify-center overflow-x-hidden">
-      {children}
-    </main>
+    <div className="flex min-h-screen flex-col items-center p-2 tb:p-4">
+      <PublicHeader />
+      <main className="flex w-full max-w-7xl grow">{children}</main>
+    </div>
   </PublicRoute>
 );
 
