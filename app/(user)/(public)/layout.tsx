@@ -8,7 +8,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps): JSX.Element => (
   <PublicRoute>
-    <div className="flex min-h-screen flex-col items-center p-2 tb:p-4">
+    <div className="flex min-h-screen flex-col items-center overflow-x-clip p-2 tb:p-4">
       <PublicHeader />
       <main className="flex w-full max-w-7xl grow">{children}</main>
     </div>

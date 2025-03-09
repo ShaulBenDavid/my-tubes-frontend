@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 500px;
+  height: 400px;
 }
 
 .intoBackground::before {
@@ -11,17 +11,18 @@
   position: absolute;
   inset: 0;
   height: 100%;
-  width: 150dvw;
+  width: 120dvw;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
+  opacity: 60%;
   background: linear-gradient(83.21deg, #3245ff 0%, #ff0000 100%);
-  mask-image: radial-gradient(rgba(15, 15, 15, 0.45), transparent 70%);
+  mask-image: radial-gradient(rgba(15, 15, 15, 0.45), transparent 50%);
   -webkit-mask-image: radial-gradient(rgba(15, 15, 15, 0.45), transparent 70%);
 }
 
 .title {
-  font-size: max(48px, min(5vw, 65px));
+  font-size: clamp(40px, 3vw, 90px);
   font-weight: bold;
   text-align: center;
   line-height: normal;

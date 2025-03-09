@@ -6,7 +6,7 @@ import { Routes } from "@/src/routes";
 import { ButtonLink } from "../../ButtonLink";
 
 export const PublicHeader = (): JSX.Element => (
-  <header className="sticky top-2 flex h-16 w-full max-w-7xl flex-row items-center rounded-xl bg-spec-text-secondary/50 px-4 backdrop-blur-lg tb:top-4">
+  <header className="sticky top-2 z-20 flex h-16 w-full max-w-7xl flex-row items-center rounded-xl bg-spec-text-secondary/50 px-4 backdrop-blur-lg tb:top-4">
     <Link href={Routes.ROOT} className="flex w-fit flex-row items-center gap-2">
       <FaYoutube fill={theme.primary[700]} size={32} />
       <span className="text-xl font-bold">My Tubes</span>
