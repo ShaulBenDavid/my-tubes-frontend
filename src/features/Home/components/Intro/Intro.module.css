@@ -1,9 +1,13 @@
 .intoBackground {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 32px;
   position: relative;
-  height: 400px;
+  height: fit-content;
+  min-height: 450px;
+  max-height: 700px;
 }
 
 .intoBackground::before {
@@ -22,7 +26,7 @@
 }
 
 .title {
-  font-size: clamp(40px, 3vw, 90px);
+  font-size: clamp(30px, 4vw, 60px);
   font-weight: bold;
   text-align: center;
   line-height: normal;
