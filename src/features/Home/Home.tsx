@@ -4,9 +4,9 @@ import { Services } from "./components/Services";
 import { AppShowCase } from "./components/AppShowCase";
 
 export const Home = (): JSX.Element => (
-  <div className="flex w-full flex-col gap-4">
+  <div className="flex w-full flex-col gap-8">
     <Intro />
-    <Services />
     <AppShowCase />
+    <Services />
   </div>
 );

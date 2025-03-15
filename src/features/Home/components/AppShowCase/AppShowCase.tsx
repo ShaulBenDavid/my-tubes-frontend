@@ -15,7 +15,7 @@ export const AppShowCase = (): JSX.Element => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <section className="flex flex-col gap-2 pt-6">
+    <section className="flex flex-col gap-2">
       <h2 className="text-center text-lg font-bold tb:text-2xl">
         Our Experience
       </h2>
