@@ -20,8 +20,8 @@ export const AppShowCase = (): JSX.Element => {
         Our Experience
       </h2>
       <Swiper
-        slidesPerView={1.7}
-        spaceBetween={30}
+        slidesPerView={isDesktop ? 1.7 : 1.3}
+        spaceBetween={isDesktop ? 30 : 15}
         loop
         pagination={{
           clickable: true,
@@ -43,21 +43,21 @@ export const AppShowCase = (): JSX.Element => {
         {appShowCaseConfig.map(
           ({ title, description, tabletImage, mobileImage, color }) => (
             <SwiperSlide key={title}>
-              <Card className="h-full overflow-hidden">
+              <Card className="flex h-full flex-col overflow-hidden">
                 <h3
                   className="text-lg font-semibold tb:text-xl"
                   style={{ color }}
                 >
                   {title}
                 </h3>
-                <p className="text-base tb:text-lg">{description}</p>
+                <p className="text-sm tb:text-lg">{description}</p>
                 <Image
                   src={isDesktop ? tabletImage : mobileImage}
                   alt={`Dashboard showcase - ${title}`}
                   loading="lazy"
                   height={0}
                   width={0}
-                  className="mt-4 h-full w-full scale-90 object-cover object-top drop-shadow-xl"
+                  className="mt-4 h-full w-full scale-100 object-contain object-top drop-shadow-xl tb:scale-90 tb:object-cover"
                 />
               </Card>
             </SwiperSlide>
