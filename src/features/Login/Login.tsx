@@ -1,10 +1,9 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { ImYoutube2 } from "react-icons/im";
 import { Card } from "@/src/components/Card";
-import theme from "@/src/styles/tailwind.theme";
 import { googleAuthUrl, scope } from "./Login.config";
 import S from "./Login.module.css";
+import { Logo } from "@/src/components/Logo";
 
 export const Login = (): JSX.Element => {
   const params = new URLSearchParams({
@@ -21,7 +20,7 @@ export const Login = (): JSX.Element => {
   return (
     <div className={S.loginBackground}>
       <Card className="flex h-52 flex-col items-center justify-between p-4">
-        <ImYoutube2 fill={theme.white} size={90} />
+        <Logo />
         <h1 className="mb-10 text-center text-xl font-bold">
           Welcome to My-Tubes Dashboard please login.
         </h1>

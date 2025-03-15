@@ -1,6 +1,6 @@
 import React from "react";
 import type { Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Yellowtail } from "next/font/google";
 import { defaultMetadata } from "@/src/metadata";
 import { AppProviders } from "@/src/providers";
 import { GoogleAnalytics } from "@/src/providers/GoogleAnalytics";
@@ -10,6 +10,12 @@ import "@/src/styles/global.css";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["cyrillic"],
+});
+
+const yellowtail = Yellowtail({
+  variable: "--font-yellowtail",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata = defaultMetadata;
@@ -26,7 +32,7 @@ const RootLayout = ({
   <html lang="en">
     {process.env.NODE_ENV === "production" && <GoogleAnalytics />}
     <body
-      className={`w-full ${inter.variable} bg-spec-space-bg font-inter text-white`}
+      className={`w-full ${inter.variable} bg-spec-space-bg font-inter text-white ${yellowtail.variable}`}
     >
       <AppProviders>{children}</AppProviders>
     </body>

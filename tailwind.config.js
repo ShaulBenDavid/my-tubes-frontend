@@ -77,6 +77,7 @@ module.exports = {
       },
       fontFamily: {
         inter: ["var(--font-inter)"],
+        yellowtail: ["var(--font-yellowtail)"],
       },
       fontSize: {
         "h1-dynamic": "clamp(2rem, 5vw, 4rem)",

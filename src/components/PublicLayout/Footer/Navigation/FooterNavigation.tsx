@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { FaYoutube } from "react-icons/fa";
 import { Routes } from "@/src/routes";
 import { NavigationColumn } from "./NavigationColumn";
 import { footerNavigationConfig } from "./FooterNavigation.config";
-import theme from "@/src/styles/tailwind.theme";
+import { Logo } from "@/src/components/Logo";
 
 export const FooterNavigation = (): JSX.Element => (
   <nav
@@ -13,12 +12,8 @@ export const FooterNavigation = (): JSX.Element => (
     aria-label="Footer"
   >
     <div className="mb-6 md:mb-0">
-      <Link
-        href={Routes.ROOT}
-        className="flex w-fit flex-row items-center gap-2"
-      >
-        <FaYoutube fill={theme.primary[700]} size={32} />
-        <span className="text-xl font-bold">My Tubes</span>
+      <Link href={Routes.ROOT}>
+        <Logo />
       </Link>
     </div>
     <ul className="grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-6">
