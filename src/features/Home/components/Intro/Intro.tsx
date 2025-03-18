@@ -11,7 +11,7 @@ export const Intro = (): JSX.Element => (
       share, and manage your{" "}
       <span className={S.coloredText}>Subscriptions.</span>
     </h1>
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex animate-[fadeIn_1s_0.3s_ease-in_forwards] flex-col items-center gap-4 opacity-0">
       <p className="max-w-2xl text-center text-base tb:text-lg">
         My-Tubes is a comprehensive tool for managing your YouTube channels,
         following other channels, and accessing a detailed statistics dashboard.
