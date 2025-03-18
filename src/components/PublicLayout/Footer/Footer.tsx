@@ -9,7 +9,7 @@ export const Footer = () => (
       <FooterNavigation />
       <hr className="my-6 border-primary-950 lg:my-8" aria-hidden />
       <div className="sm:flex sm:items-center sm:justify-between">
-        <span className="text-base font-medium sm:text-center">
+        <span className="text-sm font-medium sm:text-center">
           <Link
             href={Routes.ROOT}
             aria-label="Home"
