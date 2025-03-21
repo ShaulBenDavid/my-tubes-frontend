@@ -6,6 +6,7 @@ export enum Routes {
   LOGIN = "/login",
   GOOGLE = "/google",
   CONTACT_US = "contact-us",
+  PRIVACY_POLICY = "privacy-policy",
 
   // Private Routes
   DASHBOARD = "/dashboard",
