@@ -5,6 +5,7 @@ export enum Routes {
   ROOT = "/",
   LOGIN = "/login",
   GOOGLE = "/google",
+  CONTACT_US = "contact-us",
 
   // Private Routes
   DASHBOARD = "/dashboard",

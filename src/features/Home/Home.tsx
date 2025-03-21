@@ -6,11 +6,11 @@ import { Sharing } from "./components/Sharing";
 import { Plans } from "./components/Plans";
 
 export const Home = (): JSX.Element => (
-  <div className="flex w-full flex-col gap-8 pb-6">
+  <div className="flex w-full flex-col gap-12 pb-6">
     <Intro />
     <AppShowCase />
     <Services />
-    <Sharing />
     <Plans />
+    <Sharing />
   </div>
 );

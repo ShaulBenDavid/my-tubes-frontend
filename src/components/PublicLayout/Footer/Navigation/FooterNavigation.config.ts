@@ -12,7 +12,7 @@ const legalNavigationConfig: NavigationColumnLinksType = [
   },
   {
     title: "Contact Us",
-    link: Routes.ROOT,
+    link: Routes.CONTACT_US,
   },
 ];
 
