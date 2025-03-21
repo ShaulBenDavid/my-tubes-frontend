@@ -13,8 +13,8 @@ export const defaultMetadata: Metadata = {
     "My-Tubes is a comprehensive tool for managing your YouTube channels, following other channels, and accessing a detailed statistics dashboard. Optimize your content and track your growth with ease.",
   metadataBase: url,
   applicationName: "My Tubes",
-  authors: { name: "Dwizard team", url },
-  creator: "Dev Wizard Team",
+  authors: { name: "My Tubes", url },
+  creator: "My-Tubes Team",
   keywords: [
     "YouTube",
     "YouTube manager",
@@ -24,12 +24,13 @@ export const defaultMetadata: Metadata = {
     "YouTube statistics",
     "channel management",
     "content optimization",
+    "my subscriptions",
   ],
   alternates: {
     canonical: new URL(WEBSITE_URL),
   },
   generator: "Next.js",
-  publisher: "Dev Wizard Team",
+  publisher: "My-Tubes Team",
   manifest: "/site.json",
   icons: {
     apple: {
@@ -63,7 +64,7 @@ export const defaultMetadata: Metadata = {
     type: "website",
     images: [
       {
-        url: new URL("https://imgur.com/a/09WsI6y"),
+        url: new URL("https://imgur.com/09WsI6y.jpeg"),
         alt: "Intro",
         type: "image/jpg",
       },
