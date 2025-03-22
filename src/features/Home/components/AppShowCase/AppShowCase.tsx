@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, EffectCoverflow } from "swiper/modules";
+import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules";
 import { useMediaQuery } from "@/src/hooks";
 import { Card } from "@/src/components/Card";
 import { appShowCaseConfig } from "./AppShowCase.config";
@@ -20,6 +20,10 @@ export const AppShowCase = (): JSX.Element => {
         Our Experience
       </h2>
       <Swiper
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         slidesPerView={isDesktop ? 1.7 : 1.3}
         spaceBetween={isDesktop ? 30 : 15}
         loop
@@ -27,7 +31,7 @@ export const AppShowCase = (): JSX.Element => {
           clickable: true,
         }}
         centeredSlides
-        modules={[Pagination, EffectCoverflow]}
+        modules={[Pagination, EffectCoverflow, Autoplay]}
         className="h-96 w-full"
         grabCursor
         effect="coverflow"

@@ -60,7 +60,7 @@ export const GroupsPage = (): JSX.Element => {
           <GroupsSection />
         </div>
       )}
-      <div className="fixed bottom-5 left-1/2 -translate-x-1/2">
+      <div className="fixed bottom-5 left-1/2 -translate-x-1/2 lg:left-[calc(50%+var(--main-aside-menu-width)/2)]">
         <MultiToggle
           selectedValue={selectedTab}
           onToggle={handleChange}
