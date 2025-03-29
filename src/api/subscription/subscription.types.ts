@@ -53,7 +53,7 @@ export type PostAddSubscriptionGroupPayload = Record<
 
 export type GetGroupShareLinkParams = {
   path: string;
-  groupId: number;
+  groupId: GroupType["id"];
 };
 
 export type GetGroupShareLinkResponse = {

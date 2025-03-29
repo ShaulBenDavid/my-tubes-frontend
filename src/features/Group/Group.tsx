@@ -7,7 +7,10 @@ import {
   useGetSubscriptionsGroup,
   useGetSubscriptionsList,
 } from "@/src/api/subscription/hooks";
-import type { SubscriptionsListSortEnum } from "@/src/api/subscription";
+import type {
+  GroupType,
+  SubscriptionsListSortEnum,
+} from "@/src/api/subscription";
 import { useDebounce, useMediaQuery } from "@/src/hooks";
 import { HttpStatusCode } from "@/src/types";
 import { GroupHeader } from "./components/GroupHeader";
@@ -17,7 +20,7 @@ import { GroupAside } from "./components/GroupAside";
 import { Group404 } from "./Group404";
 
 interface GroupProps {
-  groupId: number;
+  groupId: GroupType["id"];
 }
 
 export const Group = ({ groupId }: GroupProps): JSX.Element => {
