@@ -23,6 +23,7 @@ export interface SubscriptionType {
 export interface GetSubscriptionsInfoResponse {
   subscriptionsCount: number;
   lastSyncDate: Date;
+  isDataSynced: boolean;
 }
 
 export type GetSubscriptionsListResponse = PaginationType<SubscriptionType>;
