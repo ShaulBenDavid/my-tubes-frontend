@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { appQueryClient } from "@/src/queries";
 import { getSubscriptionsInfo } from "../subscription.methods";
 import { GET_SUBSCRIPTIONS_LIST_KEY } from "./useGetSubscriptionsList";
+import { GET_SUBSCRIPTIONS_GROUPS_KEY } from "./useGetSubscriptionsGroups";
 
 const GET_SUBSCRIPTIONS_INFO_KEY = "getSubscriptionInfo";
 
@@ -15,6 +16,9 @@ export const useGetSubscriptionsInfo = () => {
           appQueryClient.invalidateQueries({
             queryKey: [GET_SUBSCRIPTIONS_LIST_KEY],
           });
+        appQueryClient.invalidateQueries({
+          queryKey: [GET_SUBSCRIPTIONS_GROUPS_KEY],
+        });
         return res;
       }),
     gcTime: ms("4h"),
