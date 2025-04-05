@@ -9,7 +9,7 @@ const PATCH_USER_PROFILE_KEY = "patchUserProfile";
 
 interface UsePatchUserProfileProps {
   handleSuccess?: (data: UserProfileType) => void;
-  handleError?: (data: AxiosError<{ error: string }>) => void;
+  handleError?: (data: AxiosError<{ username?: string }>) => void;
 }
 
 export const usePatchUserProfile = ({

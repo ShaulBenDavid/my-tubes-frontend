@@ -47,9 +47,12 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
     [reset],
   );
 
-  const handleError = useCallback((data: AxiosError<{ error: string }>) => {
-    toast.error(data.message);
-  }, []);
+  const handleError = useCallback(
+    (error: AxiosError<{ username?: string }>) => {
+      toast.error(error.response?.data?.username?.[0] ?? error.message);
+    },
+    [],
+  );
 
   const { patchProfile, isUserProfileLoading } = usePatchUserProfile({
     handleSuccess,
@@ -68,7 +71,6 @@ export const ProfileForm = ({ defaultForm }: UserFormProps): JSX.Element => {
           idFor="username"
           placeholder="Enter your username"
           type="text"
-          disabled
         />
         <TextArea
           label="description"
