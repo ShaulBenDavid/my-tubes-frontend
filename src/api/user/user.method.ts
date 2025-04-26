@@ -2,6 +2,7 @@ import { ApiEndpoints } from "../api-endpoints.config";
 import { Methods } from "../api.config";
 import { apiMethodInstance } from "../http.service";
 import type {
+  GetUserListParams,
   UserInfoType,
   UserMyLinksType,
   UserProfileType,
@@ -11,6 +12,15 @@ export const getUserInfo = (): Promise<UserInfoType> =>
   apiMethodInstance<UserInfoType>({
     url: ApiEndpoints.USER_INFO,
     method: Methods.GET,
+  });
+
+export const getUserList = (
+  params: GetUserListParams,
+): Promise<Pick<UserInfoType, "imageUrl" | "id" | "username">[]> =>
+  apiMethodInstance<Pick<UserInfoType, "imageUrl" | "id" | "username">[]>({
+    url: ApiEndpoints.USER_LIST,
+    method: Methods.GET,
+    params,
   });
 
 export const getUserProfile = (): Promise<UserProfileType> =>

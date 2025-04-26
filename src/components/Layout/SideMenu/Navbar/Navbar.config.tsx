@@ -1,6 +1,11 @@
 import React from "react";
 import { GoHome, GoHomeFill, GoHistory } from "react-icons/go";
-import { MdSubscriptions, MdOutlineSubscriptions } from "react-icons/md";
+import {
+  MdSubscriptions,
+  MdOutlineSubscriptions,
+  MdOutlineSupervisorAccount,
+  MdSupervisorAccount,
+} from "react-icons/md";
 import { HiOutlineUserGroup, HiUserGroup } from "react-icons/hi2";
 import { IoSettings, IoSettingsOutline } from "react-icons/io5";
 import { SiYoutubemusic } from "react-icons/si";
@@ -51,6 +56,21 @@ export const getNavigationLinksConfig = (
       active: <HiUserGroup aria-hidden size={24} fill={theme.white} />,
     },
     parent: 1,
+  },
+  {
+    id: 7,
+    href: Routes.USERS,
+    label: "users",
+    icon: {
+      default: (
+        <MdOutlineSupervisorAccount
+          aria-hidden
+          size={24}
+          stroke={theme.white}
+        />
+      ),
+      active: <MdSupervisorAccount aria-hidden size={24} fill={theme.white} />,
+    },
   },
   {
     id: 4,

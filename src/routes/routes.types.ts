@@ -12,6 +12,7 @@ export enum Routes {
   DASHBOARD = "/dashboard",
   SUBSCRIPTIONS = "/subscriptions",
   GROUP = "/group",
+  USERS = "/users",
   // Settings
   SETTINGS = "/settings",
   ACCOUNT = "/account",

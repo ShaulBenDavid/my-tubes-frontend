@@ -1,6 +1,7 @@
 export interface UserInfoType {
   username: string;
   imageUrl: string | null;
+  id: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -24,3 +25,7 @@ export interface UserProfileType {
   telegramUrl?: string | null;
   youtubeUrl?: string | null;
 }
+
+export type GetUserListParams = {
+  search: string;
+};
