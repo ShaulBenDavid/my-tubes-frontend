@@ -1,5 +1,6 @@
 import { ApiEndpoints } from "../api-endpoints.config";
 import { Methods } from "../api.config";
+import type { PaginationType } from "../common.types";
 import { apiMethodInstance } from "../http.service";
 import type {
   GetUserListParams,
@@ -16,8 +17,16 @@ export const getUserInfo = (): Promise<UserInfoType> =>
 
 export const getUserList = (
   params: GetUserListParams,
-): Promise<Pick<UserInfoType, "imageUrl" | "id" | "username">[]> =>
-  apiMethodInstance<Pick<UserInfoType, "imageUrl" | "id" | "username">[]>({
+): Promise<
+  PaginationType<
+    Pick<UserProfileType, "imageUrl" | "id" | "username" | "description">
+  >
+> =>
+  apiMethodInstance<
+    PaginationType<
+      Pick<UserProfileType, "imageUrl" | "id" | "username" | "description">
+    >
+  >({
     url: ApiEndpoints.USER_LIST,
     method: Methods.GET,
     params,

@@ -17,7 +17,7 @@ export const useGetUserList = ({ enabled, params }: UseGetUserListProps) => {
   });
 
   return {
-    userList: data,
+    userList: data?.results,
     isUserListLoading: isFetching,
     isUserListError: isError,
   };

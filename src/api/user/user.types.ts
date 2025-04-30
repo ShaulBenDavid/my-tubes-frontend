@@ -1,7 +1,6 @@
 export interface UserInfoType {
   username: string;
   imageUrl: string | null;
-  id: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -18,6 +17,7 @@ export interface UserProfileType {
   username: string;
   isPublic: boolean;
   description?: string | null;
+  imageUrl?: string | null;
   instagramUrl?: string | null;
   twitterUrl?: string | null;
   linkedinUrl?: string | null;
