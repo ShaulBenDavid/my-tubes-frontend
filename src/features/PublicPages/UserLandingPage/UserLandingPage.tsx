@@ -39,6 +39,8 @@ export const UserLandingPage = ({
     customUrls,
   } = userInfo;
 
+  const socialLinks = getSocialLinks(userInfo);
+
   return (
     <article className="flex w-full max-w-[1400px] flex-col items-center gap-4 p-2 tb:p-4">
       <UserHeader
@@ -47,8 +49,8 @@ export const UserLandingPage = ({
         lastName={lastName}
         description={description}
       />
-      <SocialLinks links={getSocialLinks(userInfo)} />
-      {customUrls?.length && <CustomLinks data={customUrls} />}
+      {!!socialLinks?.length && <SocialLinks links={socialLinks} />}
+      {!!customUrls?.length && <CustomLinks data={customUrls} />}
       <GroupsSection username={username} profileId={userInfo.id} />
     </article>
   );
