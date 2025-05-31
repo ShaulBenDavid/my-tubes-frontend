@@ -1,9 +1,12 @@
 import { z } from "zod";
 
 export const profileSchema = z.object({
-  username: z.string().regex(/^[a-zA-Z0-9]*$/, {
-    message: "Special characters are not allowed",
-  }),
+  username: z
+    .string()
+    .regex(/^[a-zA-Z0-9]*$/, {
+      message: "Special characters are not allowed",
+    })
+    .min(3),
   description: z
     .string({
       required_error: "Description is required",
