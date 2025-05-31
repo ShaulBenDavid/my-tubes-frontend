@@ -50,7 +50,7 @@ export const GroupCarousel = ({
           subscriptions.map(
             ({ title: name, description, imageUrl, channelId, id: itemId }) => (
               <div
-                className="mr-4 aspect-video min-h-full w-[70%] shrink-0 snap-start snap-always tb:w-1/3"
+                className="mr-4 aspect-video min-h-full w-[70%] shrink-0 snap-start snap-always tb:w-1/4"
                 key={name + itemId}
               >
                 <ChannelCard
@@ -66,7 +66,7 @@ export const GroupCarousel = ({
             ),
           )
         ) : (
-          <div className="flex h-full w-full items-center justify-center">
+          <div className="my-auto flex h-full w-full items-center justify-center">
             <EmptyState
               header="This group empty"
               description="To add Subscription to this group, go to the Subscription page."

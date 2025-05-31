@@ -38,24 +38,28 @@ export const GroupsSection = ({
     rootMargin: "100px",
   });
 
+  const filteredGroupList = groupList?.filter(
+    ({ subscriptionsCount }) => !!subscriptionsCount,
+  );
+
   return (
     <section className="flex h-full w-full flex-col gap-8">
       {isGroupListLoading && <GroupCarouselLoader />}
-      {!isGroupListLoading && !groupList?.length && (
-        <div className="flex h-full items-center justify-center">
+      {!isGroupListLoading && !filteredGroupList?.length && (
+        <div className="mt-8 flex h-full items-center justify-center">
           <EmptyState
             svgUrl={isGroupListError ? WarningSVG : NoDataSVG}
             header={
               isGroupListError
-                ? "Some Error happened sorry for the inconvenience"
-                : "There are no existing groups."
+                ? "An error occurred. Please try again later."
+                : "No groups available at the moment."
             }
           />
         </div>
       )}
-      {!!groupList?.length &&
+      {!!filteredGroupList?.length &&
         !isGroupListLoading &&
-        groupList.map(
+        filteredGroupList.map(
           ({ title, id, emoji, subscriptionsCount, subscriptions }) => (
             <GroupCarousel
               key={title + subscriptionsCount}

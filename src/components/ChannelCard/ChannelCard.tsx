@@ -72,10 +72,10 @@ export const ChannelCard = ({
           isDraggable={isDraggable}
           group={group}
         />
-        <p className="line-clamp-3 text-ellipsis pt-2">{description}</p>
+        <p className="line-clamp-3 text-ellipsis pt-2 text-sm">{description}</p>
         <div className="mt-auto flex w-full flex-row items-center justify-between gap-2 pt-2">
           {actionButtons}
-          <span className="ml-auto w-7/12">
+          <span className="ml-auto w-3/5">
             <ButtonLink
               variant={ButtonLinkVariants.PRIMARY}
               href={`${YOUTUBE_CHANNEL_URL}${channelId}`}

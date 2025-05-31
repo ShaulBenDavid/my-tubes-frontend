@@ -91,12 +91,12 @@ module.exports = {
           "rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
       },
       gridTemplateColumns: {
-        "groups-auto-fit": "repeat(auto-fill, minmax(400px, 1fr))",
-        "tablet-groups-auto-fit": "repeat(auto-fill, minmax(250px, 1fr))",
+        "groups-auto-fit": "repeat(auto-fill, minmax(360px, 1fr))",
+        "tablet-groups-auto-fit": "repeat(auto-fill, minmax(200px, 1fr))",
       },
       gridTemplateRows: {
         "groups-row-fit": "repeat(auto-fill, 240px)",
-        "groups-card-row-fit": "repeat(auto-fill, 192px)",
+        "groups-card-row-fit": "repeat(auto-fill, 160px)",
       },
       keyframes: {
         fadeIn: {

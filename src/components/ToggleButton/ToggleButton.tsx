@@ -49,7 +49,7 @@ export const ToggleButton = ({
          peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300
              peer-disabled:opacity-50 rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"
       />
-      {label && <span className="ms-3 text-base font-medium">{label}</span>}
+      {label && <span className="ms-3 text-sm font-medium">{label}</span>}
     </label>
   );
 };

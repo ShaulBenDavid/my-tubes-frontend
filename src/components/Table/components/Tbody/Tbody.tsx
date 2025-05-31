@@ -22,7 +22,7 @@ export const Tbody = <T extends TableRowType>({
         <tr
           // eslint-disable-next-line react/no-array-index-key
           key={`table-row-${rowIndex}`}
-          className="h-10 border-t border-spec-text-secondary/60 duration-75 ease-in-out first:border-spec-text-secondary tb:hover:bg-white/10"
+          className="h-10 border-t border-spec-text-secondary/60 text-sm duration-75 ease-in-out first:border-spec-text-secondary tb:hover:bg-white/10"
         >
           {columns.map(({ accessor, render }) => (
             <td

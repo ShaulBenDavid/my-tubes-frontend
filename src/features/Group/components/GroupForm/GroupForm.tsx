@@ -52,8 +52,10 @@ export const GroupForm = ({
 
   return (
     <div className="flex h-fit w-72 flex-col items-center justify-center tb:w-96">
-      <h4 className="text-center text-lg font-semibold text-white">{title}</h4>
-      <p className="text-center text-base text-white/70">{content}</p>
+      <h4 className="text-center text-base font-semibold text-white">
+        {title}
+      </h4>
+      <p className="text-center text-sm text-white/70">{content}</p>
       {isError && (
         <Alert
           variant={AlertVariants.DANGER}
@@ -62,7 +64,7 @@ export const GroupForm = ({
         />
       )}
       <FormProvider {...method}>
-        <form className="flex w-full flex-col gap-5 pt-4" onSubmit={onSubmit}>
+        <form className="flex w-full flex-col gap-6 pt-4" onSubmit={onSubmit}>
           <Input
             label="title"
             idFor="title"

@@ -45,16 +45,16 @@ export const CreateGroupCard = (): JSX.Element => {
       <Card>
         <div className="flex h-full flex-col items-center justify-center gap-2">
           <div className="relative h-24">
-            <FcFolder size={120} opacity={0.5} />
+            <FcFolder size={70} opacity={0.5} />
             <FcPlus
-              size={30}
-              className="absolute left-[105px] top-5 -translate-x-1/2"
+              size={20}
+              className="absolute left-[60px] top-2 -translate-x-1/2"
             />
           </div>
-          <h4 className="text-xl font-semibold">Create a group</h4>
+          <h4 className="text-base font-semibold">Create a group</h4>
           <Button
             variant={ButtonVariants.PRIMARY}
-            width="190px"
+            width="160px"
             onClick={() => modalRef.current?.showModal()}
             id="openModalButton"
             aria-controls={ARIA_CONTROL_GROUP_CREATE}

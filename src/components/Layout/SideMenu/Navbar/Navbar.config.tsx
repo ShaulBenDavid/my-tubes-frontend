@@ -9,6 +9,7 @@ import {
 import { HiOutlineUserGroup, HiUserGroup } from "react-icons/hi2";
 import { IoSettings, IoSettingsOutline } from "react-icons/io5";
 import { SiYoutubemusic } from "react-icons/si";
+import { BiLike } from "react-icons/bi";
 import { Routes } from "@/src/routes";
 import theme from "@/src/styles/tailwind.theme";
 import type { TabIconsType } from "./components/MenuTab";
@@ -83,6 +84,15 @@ export const getNavigationLinksConfig = (
   },
   {
     id: 5,
+    href: "https://www.youtube.com/playlist?list=LL",
+    label: "likes videos",
+    icon: {
+      default: <BiLike aria-hidden size={24} stroke={theme.white} />,
+    },
+    isOutSource: true,
+  },
+  {
+    id: 6,
     href: "https://music.youtube.com/",
     label: "music",
     icon: {
@@ -91,7 +101,7 @@ export const getNavigationLinksConfig = (
     isOutSource: true,
   },
   {
-    id: 6,
+    id: 7,
     href: Routes.SETTINGS,
     label: "settings",
     icon: {

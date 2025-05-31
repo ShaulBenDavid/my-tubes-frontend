@@ -52,7 +52,7 @@ export const getColumns = ({
   {
     accessor: "isPublic",
     header: "Public",
-    width: 15,
+    width: isDesktop ? 15 : 20,
     infoTooltip:
       "Enable this option to make your group discoverable by other users on My Tubes. (!! Your User also need to be public).",
     render: ({ title, isPublic, id }) => (

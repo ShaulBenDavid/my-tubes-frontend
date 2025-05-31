@@ -21,7 +21,7 @@ export const ButtonLink = ({
   className,
   ...props
 }: ButtonLinkProps): JSX.Element => {
-  const defaultClassName = `flex h-[35px] w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-xl px-5 text-base capitalize ${linkStyleConfig[variant]}`;
+  const defaultClassName = `flex h-[35px] w-full flex-row content-center items-center justify-center whitespace-nowrap rounded-xl px-5 text-sm font-medium capitalize ${linkStyleConfig[variant]}`;
 
   return isOutSource ? ( // !! to fix
     <a

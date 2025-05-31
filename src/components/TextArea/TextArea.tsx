@@ -30,7 +30,10 @@ export const TextArea = ({
 
   return (
     <div className="relative flex flex-col gap-1">
-      <label htmlFor={idFor} className="font-medium capitalize text-white">
+      <label
+        htmlFor={idFor}
+        className="text-sm font-medium capitalize text-white"
+      >
         {camelCaseToWords(label)}
       </label>
       <textarea
@@ -40,7 +43,7 @@ export const TextArea = ({
         placeholder={placeholder}
         value={value}
         className={twMerge(
-          `resize-none rounded-xl border-[1px] border-spec-text-secondary bg-transparent px-2 text-white placeholder:text-white/70 ${
+          `resize-none rounded-xl border-[1px] border-spec-text-secondary bg-transparent px-2 text-sm text-white placeholder:text-white/70 ${
             !!errorMessage &&
             "border-red-500 focus:border-2 focus:border-red-500 focus:outline-none"
           }`,

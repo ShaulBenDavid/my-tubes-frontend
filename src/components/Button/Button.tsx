@@ -27,7 +27,7 @@ export const Button = ({
     onClick={onClick}
     disabled={disabled || isLoading}
     className={twMerge(
-      `flex h-[35px] w-full items-center justify-center whitespace-nowrap rounded-xl px-2 text-base font-medium capitalize
+      `flex h-[35px] w-full items-center justify-center whitespace-nowrap rounded-xl px-2 text-sm font-semibold capitalize
       ${disabled && "cursor-not-allowed"}
       ${buttonVariantsStyleConfig[variant]}
       ${isLoading && "cursor-wait"} disabled:opacity-60`,

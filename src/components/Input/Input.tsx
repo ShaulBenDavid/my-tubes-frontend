@@ -29,7 +29,10 @@ export const Input = ({
 
   return (
     <div className="relative flex flex-col gap-1">
-      <label htmlFor={idFor} className="font-medium capitalize text-white">
+      <label
+        htmlFor={idFor}
+        className="text-sm font-medium capitalize text-white"
+      >
         {camelCaseToWords(label)}
       </label>
       <input
@@ -39,7 +42,7 @@ export const Input = ({
         value={value}
         disabled={disabled}
         className={twMerge(
-          `h-10 rounded-xl border-[1px] border-spec-text-secondary bg-transparent px-2 text-white placeholder:text-white/70 ${
+          `h-9 rounded-xl border-[1px] border-spec-text-secondary bg-transparent px-2 text-sm text-white placeholder:text-white/70 ${
             !!errorMessage &&
             "border-red-500 focus:border-2 focus:border-red-500 focus:outline-none"
           } ${disabled ? "cursor-not-allowed opacity-70" : ""}`,

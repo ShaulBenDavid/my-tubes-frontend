@@ -15,7 +15,7 @@ export const EmptyState = ({
   footer,
 }: EmptyStateProps): JSX.Element => (
   <div
-    className="flex max-w-[500px] flex-col items-center gap-4"
+    className="flex max-w-[500px] flex-col items-center gap-3"
     data-testid="empty-state-component-test-id"
   >
     {svgUrl && (
@@ -24,13 +24,13 @@ export const EmptyState = ({
         role="presentation"
         src={svgUrl}
         priority
-        className="w-32 tb:w-[220px]"
+        className="w-24 tb:w-[160px]"
       />
     )}
-    <h2 className="text-center font-semibold capitalize tb:text-xl">
+    <h2 className="text-center text-sm font-semibold capitalize tb:text-base">
       {header}
     </h2>
-    {description && <p className="text-center">{description}</p>}
+    {description && <p className="text-center text-sm">{description}</p>}
     {footer && footer}
   </div>
 );

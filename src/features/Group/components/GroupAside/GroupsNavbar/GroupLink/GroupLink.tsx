@@ -28,7 +28,7 @@ export const GroupLink = ({
         String(id),
       )}
       style={{ borderColor: color }}
-      className="flex flex-row items-center justify-between rounded-xl border p-2 text-base capitalize duration-75 hover:text-blue-400"
+      className="flex flex-row items-center justify-between rounded-xl border p-2 text-sm font-medium capitalize duration-75 hover:text-blue-400"
     >
       <span className="truncate pr-3">
         {emoji && <>{emoji}&nbsp;</>}

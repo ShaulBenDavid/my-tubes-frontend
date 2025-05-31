@@ -27,7 +27,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
       <div className="flex min-h-full flex-row justify-start">
         <Header onClick={toggleDrawer} />
         <aside className="hidden min-h-full w-[--main-aside-menu-width] shrink-0 border-r border-white/30 lg:flex">
-          <div className="fixed flex h-dvh flex-col p-4">
+          <div className="sticky top-0 flex h-dvh w-full flex-col p-4">
             <SideMenu navigationLinks={navigationLinksConfig} />
           </div>
         </aside>
