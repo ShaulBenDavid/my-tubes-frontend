@@ -110,7 +110,7 @@ export const GroupBody = ({
     <>
       <section
         className="flex w-full grid-cols-tablet-groups-auto-fit grid-rows-groups-row-fit 
-        flex-col gap-3 pt-2 tb:grid tb:gap-4 tb:px-2 tb:pt-4 lg:grid-cols-groups-auto-fit"
+        flex-col gap-2 pt-2 tb:grid tb:gap-3 tb:px-2 tb:pt-4 lg:grid-cols-groups-auto-fit"
         id="searchResults"
       >
         {isSubscriptionsLoading && <ChannelCardLoader />}
@@ -137,7 +137,7 @@ export const GroupBody = ({
                 imageUrl={imageUrl}
                 itemId={id}
                 channelId={channelId}
-                className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-60"
+                className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-44"
                 style={{ animationDelay: `${index * 0.07}s` }}
                 actionButtons={
                   <ActionButton

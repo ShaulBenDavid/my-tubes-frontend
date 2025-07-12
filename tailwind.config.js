@@ -95,7 +95,7 @@ module.exports = {
         "tablet-groups-auto-fit": "repeat(auto-fill, minmax(200px, 1fr))",
       },
       gridTemplateRows: {
-        "groups-row-fit": "repeat(auto-fill, 240px)",
+        "groups-row-fit": "repeat(auto-fill, 176px)",
         "groups-card-row-fit": "repeat(auto-fill, 160px)",
       },
       keyframes: {

@@ -39,18 +39,21 @@ export const GroupsChart = ({
 
   return (
     <Card className="col-span-1 flex h-96 flex-col gap-2 tb:col-span-2 tb:h-full md:col-span-3">
-      <h2 className="text-base font-semibold tb:text-lg">
+      <h2 className="text-sm font-semibold tb:text-base">
         Subscriptions Count ({subscriptionsCount})
       </h2>
       <ResponsiveContainer height="99%" width="99%">
         <BarChart data={data}>
           <XAxis
             dataKey={isDesktop ? "title" : "emoji"}
-            tick={{ stroke: "white", fontSize: isDesktop ? 16 : 14 }}
+            tick={{ stroke: "white", fontSize: isDesktop ? 13 : 12 }}
             tickFormatter={truncateLabel}
             interval={0}
           />
-          <YAxis tick={{ stroke: "white" }} width={40} />
+          <YAxis
+            tick={{ stroke: "white", fontSize: isDesktop ? 13 : 12 }}
+            width={40}
+          />
           <Tooltip cursor={{ fill: "#464646" }} content={BarTooltip} />
           <defs>
             {data.map(({ title, id }) => (

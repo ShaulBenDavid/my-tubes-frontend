@@ -16,8 +16,8 @@ export const PublicGroupBody = ({
   subscriptions,
 }: PublicGroupBodyProps): JSX.Element => (
   <section
-    className="flex w-full flex-col gap-3 sm:grid sm:grid-cols-tablet-groups-auto-fit sm:grid-rows-groups-row-fit
-     tb:gap-4 tb:py-4 lg:grid-cols-groups-auto-fit"
+    className="flex w-full flex-col gap-2 sm:grid sm:grid-cols-tablet-groups-auto-fit sm:grid-rows-groups-row-fit
+     tb:gap-3 tb:py-4 lg:grid-cols-groups-auto-fit"
   >
     {isLoading && <ChannelCardLoader />}
     {!isLoading && !subscriptions?.length && (
@@ -36,7 +36,7 @@ export const PublicGroupBody = ({
             imageUrl={imageUrl}
             itemId={id}
             channelId={channelId}
-            className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 sm:h-60"
+            className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 sm:h-44"
             style={{ animationDelay: `${index * 0.07}s` }}
           />
         ),

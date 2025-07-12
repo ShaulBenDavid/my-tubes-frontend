@@ -32,7 +32,7 @@ export const GroupPie = ({
   return (
     <Card className="col-span-1 flex h-full flex-col items-center gap-2">
       <span className="flex w-full flex-row justify-center">
-        <h2 className="w-full text-start text-base font-semibold tb:text-lg">
+        <h2 className="w-full text-start text-sm font-semibold tb:text-base">
           Subscriptions Groups
         </h2>
         <InfoTooltip title="This pie chart illustrates the count of grouped subscriptions compared to ungrouped subscriptions." />
