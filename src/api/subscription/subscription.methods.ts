@@ -110,3 +110,9 @@ export const getGroupDetailedList = (
     method: Methods.GET,
     params,
   });
+
+export const getEnrichSubscription = (): Promise<unknown> =>
+  apiMethodInstance<unknown>({
+    url: ApiEndpoints.GET_ENRICH_SUBSCRIPTIONS,
+    method: Methods.GET,
+  });

@@ -21,3 +21,4 @@ export {
   GET_GROUP_DETAILED_LIST_KEY,
   useGetGroupDetailedList,
 } from "./useGetGroupDetailedList";
+export { useGetEnrichSubscriptions } from "./useGetEnrichSubscriptions";

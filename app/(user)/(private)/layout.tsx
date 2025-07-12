@@ -6,7 +6,10 @@ import { SideMenu } from "@/src/components/Layout/SideMenu";
 import { Header } from "@/src/components/Layout/Header";
 import { Drawer } from "@/src/components/Drawer";
 import { SIDE_DRAWER_ARIA } from "@/src/components/Layout/Header/Header";
-import { useGetSubscriptionsInfo } from "@/src/api/subscription/hooks";
+import {
+  useGetEnrichSubscriptions,
+  useGetSubscriptionsInfo,
+} from "@/src/api/subscription/hooks";
 import { getNavigationLinksConfig } from "@/src/components/Layout/SideMenu/Navbar/Navbar.config";
 
 interface LayoutProps {
@@ -16,6 +19,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
   const { subscriptionsInfo } = useGetSubscriptionsInfo();
+  useGetEnrichSubscriptions({ enabled: !!subscriptionsInfo });
   const navigationLinksConfig = getNavigationLinksConfig(
     subscriptionsInfo?.subscriptionsCount,
   );

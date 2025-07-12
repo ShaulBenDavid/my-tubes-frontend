@@ -14,6 +14,7 @@ export enum ApiEndpoints {
   SUBSCRIPTIONS_LIST = "subscribe/list/",
   GET_SUBSCRIPTIONS_FROM_SHARED_LINK = "subscribe/shared-subscriptions/",
   GET_GROUP_INFO_FROM_SHARED_LINK = "subscribe/shared-group/info/",
+  GET_ENRICH_SUBSCRIPTIONS = "subscribe/enrich-subscriptions/",
 
   // GROUPS
   GROUPS = "subscribe/groups/",
