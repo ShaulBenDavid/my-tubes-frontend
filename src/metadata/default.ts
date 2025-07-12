@@ -66,7 +66,7 @@ export const defaultMetadata: Metadata = {
       {
         url: new URL("https://i.imgur.com/9lv4nqL.png"),
         alt: "Intro",
-        type: "image/jpg",
+        type: "image/png",
       },
     ],
   },
