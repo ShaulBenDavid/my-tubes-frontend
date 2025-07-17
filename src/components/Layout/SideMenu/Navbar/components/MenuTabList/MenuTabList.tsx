@@ -49,7 +49,6 @@ export const MenuTabList = ({
     <ul className="flex flex-col gap-2">
       {currentLinks.map(({ label, href, icon, id, isOutSource }) => {
         const isActive = activeSegment === href;
-        console.log(href);
 
         return (
           <MenuTab
