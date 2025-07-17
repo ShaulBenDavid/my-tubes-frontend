@@ -11,6 +11,13 @@ export type SubscriptionsGroupType = GroupType & {
   subscriptionCount: number;
 };
 
+export type SubscriptionUploadType = {
+  title: string;
+  videoUrl: string;
+  videoImageUrl: string;
+  uploadTime: Date;
+};
+
 export interface SubscriptionType {
   id: number;
   title: string;
@@ -18,6 +25,7 @@ export interface SubscriptionType {
   channelId: string;
   imageUrl: string;
   group?: Pick<SubscriptionsGroupType, "id" | "title"> | null;
+  upload?: SubscriptionUploadType | null;
 }
 
 export interface GetSubscriptionsInfoResponse {

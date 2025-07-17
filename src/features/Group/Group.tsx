@@ -2,6 +2,7 @@
 
 import React, { useCallback, useState } from "react";
 import { usePathname } from "next/navigation";
+import { FaPhotoVideo, FaRegAddressCard } from "react-icons/fa";
 import { Breadcrumbs } from "@/src/components/Breadcrumbs";
 import {
   useGetSubscriptionsGroup,
@@ -13,11 +14,13 @@ import type {
 } from "@/src/api/subscription";
 import { useDebounce, useMediaQuery } from "@/src/hooks";
 import { HttpStatusCode } from "@/src/types";
+import { MultiToggle } from "@/src/components/MultiToggle";
 import { GroupHeader } from "./components/GroupHeader";
 import { subscriptionsListSortConfig } from "../Subscriptions/components/SubscriptionsList";
 import { GroupBody } from "./components/GroupBody";
 import { GroupAside } from "./components/GroupAside";
 import { Group404 } from "./Group404";
+import { SubscriptionViewTypeEnum } from "./Group.types";
 
 interface GroupProps {
   groupId: GroupType["id"];
@@ -26,10 +29,14 @@ interface GroupProps {
 export const Group = ({ groupId }: GroupProps): JSX.Element => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [viewType, setViewType] = useState<SubscriptionViewTypeEnum>(
+    SubscriptionViewTypeEnum.CHANNEL,
+  );
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
   const [search, setSearch] = useState<string>("");
+
   const debouncedValue = useDebounce(search, 300);
   const pathname = usePathname();
   const breadcrumbs = pathname
@@ -98,6 +105,24 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
             fetchNextPage={fetchNextPage}
             subscriptionsList={subscriptionsList}
           />
+          <div className="fixed bottom-5 left-1/2 -translate-x-1/2 tb:left-[calc((50%+var(--main-aside-menu-width)/2)+16px)] lg:left-[calc((50%+var(--main-aside-menu-width)*2/2)+16px)]">
+            <MultiToggle
+              selectedValue={viewType}
+              onToggle={(type) => {
+                setViewType(type);
+              }}
+              buttons={[
+                {
+                  content: <FaRegAddressCard size={20} />,
+                  value: SubscriptionViewTypeEnum.CHANNEL,
+                },
+                {
+                  content: <FaPhotoVideo size={20} />,
+                  value: SubscriptionViewTypeEnum.VIDEO,
+                },
+              ]}
+            />
+          </div>
         </div>
       )}
     </>

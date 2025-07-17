@@ -4,4 +4,5 @@ export type {
   SubscriptionsGroupType,
   SubscriptionsListSortEnum,
   PostSubscriptionGroupPayload,
+  SubscriptionUploadType,
 } from "./subscription.types";

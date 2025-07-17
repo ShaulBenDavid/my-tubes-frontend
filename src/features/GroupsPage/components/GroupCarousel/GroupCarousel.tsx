@@ -34,7 +34,7 @@ export const GroupCarousel = ({
   }, []);
 
   return (
-    <div className="relative flex max-h-[300px] min-h-[220px] flex-col gap-2">
+    <div className="relative flex max-h-[220px] min-h-[220px] flex-col gap-2">
       <CarouselHeader
         title={title}
         id={id}
