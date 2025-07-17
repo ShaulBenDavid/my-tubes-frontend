@@ -35,7 +35,11 @@ export const GroupPie = ({
         <h2 className="w-full text-start text-sm font-semibold tb:text-base">
           Subscriptions Groups
         </h2>
-        <InfoTooltip title="This pie chart illustrates the count of grouped subscriptions compared to ungrouped subscriptions." />
+        <InfoTooltip
+          title="This pie chart illustrates the count of grouped subscriptions compared to ungrouped subscriptions."
+          place="bottom"
+          className="z-10"
+        />
       </span>
       <div className="flex flex-1 items-center justify-center tb:items-start tb:pt-6">
         <PieChart width={162} height={230}>

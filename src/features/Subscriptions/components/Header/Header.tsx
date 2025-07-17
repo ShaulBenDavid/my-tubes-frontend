@@ -24,6 +24,7 @@ export const Header = ({
           </time>
         </span>
         <InfoTooltip
+          place="bottom-start"
           title={
             <>
               Last Sync: This indicates the most recent time we synchronized
