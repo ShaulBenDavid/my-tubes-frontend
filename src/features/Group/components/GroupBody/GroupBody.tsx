@@ -14,7 +14,10 @@ import { ChannelCard, ChannelCardLoader } from "@/src/components/ChannelCard";
 import { EmptyState } from "@/src/components/EmptyState";
 import { Spinner } from "@/src/components/Spinner";
 import type { SubscriptionType } from "@/src/api/subscription";
-import type { GetSubscriptionsListResponse } from "@/src/api/subscription/subscription.types";
+import type {
+  GetSubscriptionsListResponse,
+  SubscriptionListResultType,
+} from "@/src/api/subscription/subscription.types";
 import { ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP } from "@/src/components/ChannelCard/ChannelCard";
 import { Modal } from "@/src/components/Modal";
 import { ValidationContentModal } from "@/src/components/ValidationContentModal";
@@ -28,8 +31,12 @@ import {
 import { appQueryClient } from "@/src/queries";
 import { ActionButtonVariants } from "@/src/components/ActionButton/ActionButton.types";
 import { ActionButton } from "@/src/components/ActionButton";
+import { VideoCard } from "@/src/components/VideoCard";
+import type { StrictSubscriptionListResultType } from "@/src/components/VideoCard/VideoCard";
+import { SubscriptionViewTypeEnum } from "../../Group.types";
 
 interface GroupBodyProps {
+  viewType: SubscriptionViewTypeEnum;
   groupName: string;
   isSubscriptionsLoading: boolean;
   isFetchingNextPage: boolean;
@@ -43,11 +50,12 @@ interface GroupBodyProps {
       Error
     >
   >;
-  subscriptionsList?: SubscriptionType[];
+  subscriptionsList?: SubscriptionListResultType[];
   searchValue: string;
 }
 
 export const GroupBody = ({
+  viewType,
   groupName,
   isSubscriptionsLoading,
   isFetchingNextPage,
@@ -106,11 +114,18 @@ export const GroupBody = ({
     removeSubscriptionModalRef.current?.showModal();
   };
 
+  const isChannelView = viewType === SubscriptionViewTypeEnum.CHANNEL;
+
+  const videoList = subscriptionsList?.filter(
+    (subscription): subscription is StrictSubscriptionListResultType =>
+      !!subscription.upload,
+  );
+
   return (
     <>
       <section
         className="flex w-full grid-cols-tablet-groups-auto-fit grid-rows-groups-row-fit 
-        flex-col gap-2 pt-2 tb:grid tb:gap-3 tb:px-2 tb:pt-4 lg:grid-cols-groups-auto-fit"
+        flex-col gap-3 pt-2 tb:grid tb:gap-4 tb:px-2 tb:pt-4 lg:grid-cols-groups-auto-fit"
         id="searchResults"
       >
         {isSubscriptionsLoading && <ChannelCardLoader />}
@@ -126,43 +141,55 @@ export const GroupBody = ({
             />
           </div>
         )}
-        {!!subscriptionsList?.length &&
-          !isSubscriptionsLoading &&
-          subscriptionsList.map(
-            ({ title, description, imageUrl, channelId, id }, index) => (
-              <ChannelCard
-                key={channelId}
-                title={title}
-                description={description}
-                imageUrl={imageUrl}
-                itemId={id}
-                channelId={channelId}
-                className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-44"
-                style={{ animationDelay: `${index * 0.07}s` }}
-                actionButtons={
-                  <ActionButton
-                    type="button"
-                    tooltip="Ungroup"
-                    variant={ActionButtonVariants.WARNING}
-                    id="remove-subscription-from-group-button"
-                    aria-label={`remove ${title} from the group`}
-                    aria-controls={ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP}
-                    className="rounded-xl hover:bg-red-600/20 active:bg-red-600/30"
-                    onClick={() =>
-                      handleSubscriptionSelect({
-                        title,
-                        description,
-                        imageUrl,
-                        channelId,
-                        id,
-                      })
+        {!isSubscriptionsLoading && (
+          <>
+            {isChannelView &&
+              subscriptionsList?.map(
+                ({ title, description, imageUrl, channelId, id }, index) => (
+                  <ChannelCard
+                    key={channelId}
+                    title={title}
+                    description={description}
+                    imageUrl={imageUrl}
+                    itemId={id}
+                    channelId={channelId}
+                    className="animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-44"
+                    style={{ animationDelay: `${index * 0.07}s` }}
+                    actionButtons={
+                      <ActionButton
+                        type="button"
+                        tooltip="Ungroup"
+                        variant={ActionButtonVariants.WARNING}
+                        id="remove-subscription-from-group-button"
+                        aria-label={`remove ${title} from the group`}
+                        aria-controls={
+                          ARIA_CONTROL_REMOVE_SUBSCRIPTION_FROM_GROUP
+                        }
+                        className="rounded-xl hover:bg-red-600/20 active:bg-red-600/30"
+                        onClick={() =>
+                          handleSubscriptionSelect({
+                            title,
+                            description,
+                            imageUrl,
+                            channelId,
+                            id,
+                          })
+                        }
+                        icon={<FaRegObjectUngroup size={24} />}
+                      />
                     }
-                    icon={<FaRegObjectUngroup size={24} />}
                   />
-                }
-              />
-            ),
-          )}
+                ),
+              )}
+            {!isChannelView &&
+              videoList?.map((data) => (
+                <div className="max-h-44 tb:h-44" key={data.channelId}>
+                  <VideoCard data={data} />
+                </div>
+              ))}
+          </>
+        )}
+
         {(isFetchingNextPage || hasNextPage) && (
           <div
             ref={sentryRef}

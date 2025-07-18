@@ -25,7 +25,6 @@ export interface SubscriptionType {
   channelId: string;
   imageUrl: string;
   group?: Pick<SubscriptionsGroupType, "id" | "title"> | null;
-  upload?: SubscriptionUploadType | null;
 }
 
 export interface GetSubscriptionsInfoResponse {
@@ -34,7 +33,12 @@ export interface GetSubscriptionsInfoResponse {
   isDataSynced: boolean;
 }
 
-export type GetSubscriptionsListResponse = PaginationType<SubscriptionType>;
+export type SubscriptionListResultType = SubscriptionType & {
+  upload?: SubscriptionUploadType | null;
+};
+
+export type GetSubscriptionsListResponse =
+  PaginationType<SubscriptionListResultType>;
 
 export enum SubscriptionsListSortEnum {
   ASCENDING = "title",

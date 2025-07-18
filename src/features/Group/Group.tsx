@@ -96,6 +96,7 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
             toggleDrawer={toggleDrawer}
           />
           <GroupBody
+            viewType={viewType}
             groupName={subscriptionsGroup?.title ?? ""}
             isFetchingNextPage={isFetchingNextPage}
             isSubscriptionsError={isSubscriptionsError}
