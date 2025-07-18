@@ -15,6 +15,7 @@ export const useGetEnrichSubscriptions = ({
     queryKey: [GET_ENRICH_SUBSCRIPTIONS_KEY],
     queryFn: getEnrichSubscription,
     gcTime: ms("4h"),
+    staleTime: ms("5m"),
     enabled,
   });
 
