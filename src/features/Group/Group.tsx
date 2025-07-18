@@ -12,7 +12,7 @@ import type {
   GroupType,
   SubscriptionsListSortEnum,
 } from "@/src/api/subscription";
-import { useDebounce, useMediaQuery } from "@/src/hooks";
+import { useDebounce, useMediaQuery, useQueryParamSelect } from "@/src/hooks";
 import { HttpStatusCode } from "@/src/types";
 import { MultiToggle } from "@/src/components/MultiToggle";
 import { GroupHeader } from "./components/GroupHeader";
@@ -22,6 +22,8 @@ import { GroupAside } from "./components/GroupAside";
 import { Group404 } from "./Group404";
 import { SubscriptionViewTypeEnum } from "./Group.types";
 
+const QUERY_PARAM_KEY = "viewType";
+
 interface GroupProps {
   groupId: GroupType["id"];
 }
@@ -29,13 +31,16 @@ interface GroupProps {
 export const Group = ({ groupId }: GroupProps): JSX.Element => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
-  const [viewType, setViewType] = useState<SubscriptionViewTypeEnum>(
-    SubscriptionViewTypeEnum.CHANNEL,
-  );
   const [selectedSort, setSelectedSort] = useState<
     SubscriptionsListSortEnum | undefined
   >();
   const [search, setSearch] = useState<string>("");
+
+  const { selectedValue, handleChange } =
+    useQueryParamSelect<SubscriptionViewTypeEnum>(
+      QUERY_PARAM_KEY,
+      SubscriptionViewTypeEnum.CHANNEL,
+    );
 
   const debouncedValue = useDebounce(search, 300);
   const pathname = usePathname();
@@ -69,7 +74,7 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
   );
 
   return (
-    <>
+    <div>
       <div className="inside-header flex flex-col">
         {isDesktop && <Breadcrumbs breadcrumbs={breadcrumbsWithoutLast} />}
         <GroupHeader
@@ -96,7 +101,7 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
             toggleDrawer={toggleDrawer}
           />
           <GroupBody
-            viewType={viewType}
+            viewType={selectedValue}
             groupName={subscriptionsGroup?.title ?? ""}
             isFetchingNextPage={isFetchingNextPage}
             isSubscriptionsError={isSubscriptionsError}
@@ -108,10 +113,8 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
           />
           <div className="fixed bottom-5 left-1/2 -translate-x-1/2 tb:left-[calc((50%+var(--main-aside-menu-width)/2)+16px)] lg:left-[calc((50%+var(--main-aside-menu-width)*2/2)+16px)]">
             <MultiToggle
-              selectedValue={viewType}
-              onToggle={(type) => {
-                setViewType(type);
-              }}
+              selectedValue={selectedValue}
+              onToggle={handleChange}
               buttons={[
                 {
                   content: <FaRegAddressCard size={20} />,
@@ -126,6 +129,6 @@ export const Group = ({ groupId }: GroupProps): JSX.Element => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };

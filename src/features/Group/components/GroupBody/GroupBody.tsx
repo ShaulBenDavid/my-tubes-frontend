@@ -182,8 +182,12 @@ export const GroupBody = ({
                 ),
               )}
             {!isChannelView &&
-              videoList?.map((data) => (
-                <div className="max-h-44 tb:h-44" key={data.channelId}>
+              videoList?.map((data, index) => (
+                <div
+                  className="max-h-44 animate-[fadeIn_1s_ease-in_50ms_forwards] opacity-0 tb:h-44"
+                  key={data.channelId}
+                  style={{ animationDelay: `${index * 0.07}s` }}
+                >
                   <VideoCard data={data} />
                 </div>
               ))}
