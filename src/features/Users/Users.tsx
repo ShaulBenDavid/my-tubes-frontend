@@ -10,7 +10,7 @@ import { EmptyState } from "@/src/components/EmptyState";
 import NoDataSVG from "@/src/assets/images/NoDataSVG.svg";
 import { AccountLinkLoader } from "@/src/components/AccountLink/AccountLink.loader";
 
-const MIN_SEARCH_LENGTH = 3;
+const MIN_SEARCH_LENGTH = 2;
 
 export const Users = (): JSX.Element => {
   const [searchValue, setSearchValue] = useState<string>("");
